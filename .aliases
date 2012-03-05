@@ -1,0 +1,88 @@
+# Easier navigation
+alias ..="cd .."
+alias cd..="cd .."
+alias ...="cd ../.."
+alias -- -="cd -"
+alias +='pushd .'
+
+# Shortcuts
+alias d="cd ~/Desktop"
+alias m="mate ."
+alias matep='mate ~/.bash_profile'
+alias materc='mate ~/.bashrc'
+
+# Current projects
+alias diss="cd ~/Uni/Dissertation/Dissertation"
+alias proj="cd ~/Dev/Java/PartIIProject"
+
+# SSH hosts
+alias pwf="ssh -Y sjb273@linux.pwf.cam.ac.uk"
+alias srcf="ssh sjb273@shell.srcf.ucam.org"
+
+# Listing files
+alias ls='ls -F'
+alias ll='ls -lhF'
+alias l='ls -1'
+alias la='ls -a'
+alias lla='ll -a'
+
+# Like to know what's just happened
+alias cp='cp -v'
+alias mv='mv -v'
+
+# Always use color output for `ls`
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+	alias ls="command ls -G"
+else
+	alias ls="command ls --color"
+	export LS_COLORS='no=00:fi=00:di=01;34:ln=01;36:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arj=01;31:*.taz=01;31:*.lzh=01;31:*.zip=01;31:*.z=01;31:*.Z=01;31:*.gz=01;31:*.bz2=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.jpg=01;35:*.jpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.avi=01;35:*.fli=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.ogg=01;35:*.mp3=01;35:*.wav=01;35:'
+fi
+
+# IP addresses
+alias ip="dig +short myip.opendns.com @resolver1.opendns.com"
+alias localip="ipconfig getifaddr en1"
+alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
+
+# Som Mac OSX helpers
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+# Recursively delete `.DS_Store` files
+alias cleanup="find . -type f -name '*.DS_Store' -ls -delete"
+
+# Show/hide hidden files in Finder
+alias show="defaults write com.apple.Finder AppleShowAllFiles -bool true && killall Finder"
+alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && killall Finder"
+
+# Hide/show all desktop icons (useful when presenting)
+alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
+alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
+fi
+
+# Useful...
+alias g='grep -i'  # case insensitive grep
+alias ducks='du -cks * | sort -rn|head -11' # Lists size of all folders & files
+alias top='top -o cpu'
+alias systail='tail -f /var/log/system.log'
+alias sshx="ssh -X"
+alias ccat='source-highlight --infer-lang -f esc -o STDOUT --style-file="styleSi.style" -i'
+
+# Moscow ML GNU readline hack
+alias mosml='rlwrap mosml'
+
+# I use a mac
+alias gvim=mvim
+
+# Subversion fun
+alias ss="svn stat"
+alias sd="svn diff --diff-cmd fmdiff"
+
+# Git stuff
+alias gitrevert='(git reset HEAD .);(git checkout -- .)'
+
+# Finding stuff
+alias f='find . -iname'
+alias findsrc='find . -name "*.java" -o -name "*.cpp" -o -name "*.h" -o -name "*.c" -o -name "*.mm" -o -name "*.m" '
+alias fs='findsrc | xargs grep --color'
+alias fwc='find . -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.m" -o -name "*.mm" | xargs cat | wc -l'
+
+# Wonder what I actually use...
+alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"

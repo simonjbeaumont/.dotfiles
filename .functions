@@ -1,0 +1,18 @@
+# Get a Cambridge Tripos question
+tripos() {
+    if [[ "$#" -ne 3 ]]; then 
+        echo "Provide 3 arguments: <year> <paper> <question>"; 
+    else
+        if [ "$1" -ge 1993 -a "$1" -le 2011 -a "$2" -ge 1 -a "$2" -le 10 -a $3 -ge 1 ]; then 
+            curl -O http://www.cl.cam.ac.uk/teaching/exams/pastpapers/y$1p$2q$3.pdf
+            open ./y$1p$2q$3.pdf
+        else
+            echo "Arguments out of bounds <year{1993..2011}> <paper{1..9}> <question>"
+        fi
+    fi
+}
+
+# Make a directory and change to it
+md () {
+	mkdir -p "$@" && cd "$@";
+}

@@ -1,0 +1,23 @@
+COLOR_YELLOW="\[\e[33;40m\]"
+COLOR_RED="\[\e[31;40m\]"
+COLOR_GREEN="\[\e[32;40m\]"
+COLOR_BLUE="\[\e[34;40m\]"
+COLOR_PURPLE="\[\e[35;40m\]"
+COLOR_CYAN="\[\e[36;40m\]"
+COLOR_NONE="\[\e[0m\]"
+COLOR_WHITE="\[\e[37;40m\]"
+COLOR_NONEP="\[\e[38;40m\]"
+
+git_dirty_flag() {
+  git status 2> /dev/null | grep -c : | awk '{if ($1 > 0) print "⚡"}'
+}
+
+parse_git_branch() {
+  git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ \1/'
+}
+
+prompt_func() {
+    prompt="${COLOR_WHITE}[${COLOR_CYAN}\u@\h ${COLOR_GREEN}\W${COLOR_YELLOW}$(parse_git_branch)$(git_dirty_flag)${COLOR_NONEP}${COLOR_WHITE}]"
+    PS1="${prompt}${COLOR_NONEP}${COLOR_NONE} "
+}
+PROMPT_COMMAND=prompt_func
