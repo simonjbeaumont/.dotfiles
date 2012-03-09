@@ -1,0 +1,18 @@
+[user]
+	name = Si Beaumont
+	email = [email]
+[color]
+   diff = auto
+   status = auto
+   branch = auto
+   interactive = auto
+[alias]
+   st = status
+   ci = commit
+   co = checkout
+
+[github]
+	user = sicode
+	token = [token]
+[core]
+	excludesfile = /Users/Simon/.gitignore_global
