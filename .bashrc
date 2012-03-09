@@ -17,7 +17,7 @@ export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY
 export VIM_APP_DIR=/Applications/Utilities/MacVim/
 
 # I Like TotalTerminal :) but(!) this is sloooowww :(
-/Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null
+# /Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null
     
 export CLICOLOR=1
 export LSCOLORS="cxfxxxxxxxxxxxxxxxGxGx"
