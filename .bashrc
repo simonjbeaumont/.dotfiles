@@ -13,9 +13,12 @@ export PATH=/Developer/SDKs/android-sdk-mac_86/tools:$PATH
 # CUDA
 export PATH=/usr/local/cuda/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY
+export PATH=$PATH:/usr/groups/xen/xenuse/bin
 
-export VIM_APP_DIR=/Applications/Utilities/MacVim/
-
+# Let's use autocomplete fun
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
 # I Like TotalTerminal :) but(!) this is sloooowww :(
 # /Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null
     
@@ -30,7 +33,7 @@ export DISPLAY=:0.0
 export EDITOR="mate -w"
 export SVN_EDITOR="mate -w"
 export GIT_EDITOR='mate -w'
-export LC_CTYPE=en_US.UTF-8
+# export LC_CTYPE=en_US.UTF-8
 
 export HISTCONTROL=ignoredups # Ignores dupes in the history
 export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"

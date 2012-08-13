@@ -15,7 +15,6 @@ else
     [ -f "$HOME/.gitignore_global"  ] && rm "$HOME/.gitignore_global"
     [ -f "$HOME/.inputrc"  ] && rm "$HOME/.inputrc"
     [ -f "$HOME/.vim"  ] && rm -r "$HOME/.vim"
-    [ -f "$HOME/.vimrc"  ] && rm "$HOME/.vimrc"
     
     ln -sv "$HOME/.dotfiles/.aliases" "$HOME/.aliases"
     ln -sv "$HOME/.dotfiles/.bash_profile" "$HOME/.bash_profile"
@@ -26,7 +25,6 @@ else
     ln -sv "$HOME/.dotfiles/.gitignore_global" "$HOME/.gitignore_global"
     ln -sv "$HOME/.dotfiles/.inputrc" "$HOME/.inputrc"
     ln -sv "$HOME/.dotfiles/.vim" "$HOME/.vim"
-    ln -sv "$HOME/.dotfiles/.vimrc" "$HOME/.vimrc"
 
     # if we're on a Mac, let's set it up properly
     if [[ "$OSTYPE" =~ ^darwin ]]; then

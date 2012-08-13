@@ -1,0 +1,9 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =7
+let g:netrw_dirhist_1='/usr/share/gnome-session/sessions'
+let g:netrw_dirhist_2='/work/build.hg/myrepos/sm.hg/drivers'
+let g:netrw_dirhist_3='/work/build.hg/myrepos/sm.hg/.hg'
+let g:netrw_dirhist_4='/home/simonbe'
+let g:netrw_dirhist_5='/home/simonbe/Documents'
+let g:netrw_dirhist_6='/home/simonbe'
+let g:netrw_dirhist_7='/work/hello/.hg/patches'
