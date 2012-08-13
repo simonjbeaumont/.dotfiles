@@ -30,33 +30,37 @@ nmap <leader>w :w!<CR>
 " Sudo write (if we forget to sudo vim)
 cnoremap w!! w !sudo tee % >/dev/null
 
+" Use ctags
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_width=30
+
+"
 " UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set scrolloff=4  " lines of context when scrolling 
+set go-=T           " no toolbar in gvim
+set scrolloff=4     " lines of context when scrolling 
 
 set wildmode=longest,list     " bash-style file completion
 set wildignore=*.o,*~,*.pyc   " Ignore compiled files
 
-set ruler        " Show current position 
-set number       " always show line numbers
+set ruler           " Show current position 
+set number          " always show line numbers
 
-set cmdheight=2  " Height of the command bar
+set cmdheight=2     " Height of the command bar
 
-set hidden       " Handle hidden buffers
+set hidden          " Handle hidden buffers
 
-set showmatch     " show matching parenthesis
-set matchtime=2   " show for 2 tenths of a second
+set showmatch       " show matching parenthesis
+set matchtime=2     " show for 2 tenths of a second
 
-set ignorecase    " ignore case when searching...
-set smartcase     " ...unless I use case to search
-set hlsearch      " highlight search terms
-set incsearch     " show search matches as you type
+set ignorecase      " ignore case when searching...
+set smartcase       " ...unless I use case to search
+set hlsearch        " highlight search terms
+set incsearch       " show search matches as you type
 
 " use sensible regex
 nnoremap / /\v
 vnoremap / /\v
-
-set nohidden      " don't hide buffers
 
 set lazyredraw    " don't redraw during macros
 
@@ -69,6 +73,11 @@ set t_vb=
 set wrap
 set textwidth=79
 set formatoptions=qrn1
+
+" I think Vim Powerline is classed as UI
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_cache_enabled = 1
+set laststatus=2
 
 " Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -91,8 +100,8 @@ endif
 " Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git et.c anyway...
-" set nobackup
-" set nowb
+ set nobackup
+ set nowb
 " set noswapfile
 
 " Text editing
@@ -118,14 +127,14 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
+nmap <silent> <leader>y :TagbarToggle
 " Use tabs like a 'normal' editor
-set switchbuf=usetab,newtab
-map <C-t>     :tabnew<CR>
-map <C-w>     :tabclose<CR>
-map <C-left>  :tabp<CR>
-map <C-right> :tabn<CR>
-map <A-}>     :tabn<CR>
-map <A-{>     :tabp<CR>
+"set switchbuf=usetab,newtab
+"map <C-t>     :tabnew<CR>
+"map <C-left>  :tabp<CR>
+"map <C-right> :tabn<CR>
+"map <A-}>     :tabn<CR>
+"map <A-{>     :tabp<CR>
 
 " Move between windows
 map <C-h> <C-w>h
