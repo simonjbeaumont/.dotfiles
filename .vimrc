@@ -74,6 +74,10 @@ set wrap
 set textwidth=79
 set formatoptions=qrn1
 
+" Show invisibles (in Textmate style)
+set list
+set listchars=tab:▸\ ,eol:¬
+
 " I think Vim Powerline is classed as UI
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_cache_enabled = 1
@@ -124,10 +128,12 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
 " Stuff I've not tidied yet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <leader>cd :cd %:p:h<cr>:pwd<cr>
+map <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
-nmap <silent> <leader>y :TagbarToggle
+nmap <silent> <leader>y :TagbarToggle<CR>
+nmap <silent> <leader>o :NERDTreeToggle<CR>
+
 " Use tabs like a 'normal' editor
 "set switchbuf=usetab,newtab
 "map <C-t>     :tabnew<CR>
