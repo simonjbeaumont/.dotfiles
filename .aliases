@@ -8,6 +8,7 @@ alias +='pushd .'
 # I work with Linux now :|
 function gvim () { (/usr/bin/gvim -f "$@" &) }
 alias e='gvim'
+alias login_screen='gnome-screensaver-command -l ; gdmflexiserver'
 
 # Shortcuts
 alias d="cd ~/Desktop"

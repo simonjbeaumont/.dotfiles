@@ -1,5 +1,5 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_cnt =9
 let g:netrw_dirhist_1='/usr/share/gnome-session/sessions'
 let g:netrw_dirhist_2='/work/build.hg/myrepos/sm.hg/drivers'
 let g:netrw_dirhist_3='/work/build.hg/myrepos/sm.hg/.hg'
@@ -8,3 +8,4 @@ let g:netrw_dirhist_5='/home/simonbe/Documents'
 let g:netrw_dirhist_6='/home/simonbe'
 let g:netrw_dirhist_7='/work/hello/.hg/patches'
 let g:netrw_dirhist_8='/usr/share/indicators/messages'
+let g:netrw_dirhist_9='/work/deforestation/xen-4.1.hg/tools/python/logging/logging-0.4.9.2'

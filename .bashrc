@@ -30,9 +30,10 @@ export EDITOR="mvim -f"
 # Extra stuff found on https://gist.github.com/102187
 #-------------------------------------------------------------------------------
 export DISPLAY=:0.0
-export EDITOR="mate -w"
-export SVN_EDITOR="mate -w"
-export GIT_EDITOR='mate -w'
+export EDITOR="vim"
+# export EDITOR="mate -w"
+# export SVN_EDITOR="mate -w"
+# export GIT_EDITOR='mate -w'
 # export LC_CTYPE=en_US.UTF-8
 
 export HISTCONTROL=ignoredups # Ignores dupes in the history

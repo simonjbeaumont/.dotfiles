@@ -33,10 +33,13 @@ cnoremap w!! w !sudo tee % >/dev/null
 " Use ctags
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_width=30
+set tags=tags;/
 
 "
 " UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set guifont=Monospace\ 9
+
 set go-=T           " no toolbar in gvim
 set scrolloff=4     " lines of context when scrolling 
 
