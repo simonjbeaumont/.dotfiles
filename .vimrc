@@ -61,9 +61,16 @@ set smartcase       " ...unless I use case to search
 set hlsearch        " highlight search terms
 set incsearch       " show search matches as you type
 
+set splitbelow      " open new splits below
+set splitright      " open new vsplits to the right
+
 " use sensible regex
 nnoremap / /\v
 vnoremap / /\v
+
+" Move between bracket pairs
+nnoremap <tab> %
+vnoremap <tab> %
 
 set lazyredraw    " don't redraw during macros
 
@@ -86,6 +93,9 @@ let g:Powerline_symbols = 'fancy'
 let g:Powerline_cache_enabled = 1
 set laststatus=2
 
+" Command-t preferences
+let g:CommandTMatchWindowReverse=1
+
 " Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I know I'm using gnome => force 256 colors
@@ -106,15 +116,16 @@ endif
 
 " Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Turn backup off, since most stuff is in SVN, git et.c anyway...
- set nobackup
- set nowb
-" set noswapfile
+set undodir=~/.vim/tmp/undo//     " undo files
+set backupdir=~/.vim/tmp/backup// " backups
+set directory=~/.vim/tmp/swap//   " swap files
+set backup                        " enable backups
+set noswapfile                    " It's 2012, Vim.
 
 " Text editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap          " wrap lines
-set showbreak=--> " useful indication of wrapping
+set showbreak=↪   " useful indication of wrapping
 
 set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
@@ -150,3 +161,12 @@ map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
+
+" System clipboard interaction
+noremap <leader>y "*y
+noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
+vnoremap <leader>y "*ygv
+
+" Clean trailing whitespace
+nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
