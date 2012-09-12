@@ -13,7 +13,7 @@ export PATH=/Developer/SDKs/android-sdk-mac_86/tools:$PATH
 # CUDA
 export PATH=/usr/local/cuda/bin:$PATH
 export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY
-export PATH=$PATH:/usr/groups/xen/xenuse/bin
+export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin
 
 # Let's use autocomplete fun
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then

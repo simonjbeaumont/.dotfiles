@@ -40,6 +40,8 @@ set tags=tags;/
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guifont=Monospace\ 9
 
+set mouse=a         " use the mouse in terminal mode
+
 set go-=T           " no toolbar in gvim
 set scrolloff=4     " lines of context when scrolling 
 
@@ -125,7 +127,7 @@ set noswapfile                    " It's 2012, Vim.
 " Text editing
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap          " wrap lines
-set showbreak=↪   " useful indication of wrapping
+set showbreak=↪\   " useful indication of wrapping
 
 set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
@@ -145,7 +147,7 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
 nnoremap <silent> <leader>/ :nohlsearch<CR>
 
-nmap <silent> <leader>y :TagbarToggle<CR>
+nmap <silent> <leader>r :TagbarToggle<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
 
 " Use tabs like a 'normal' editor
@@ -163,10 +165,13 @@ map <C-k> <C-w>k
 map <C-l> <C-w>l
 
 " System clipboard interaction
-noremap <leader>y "*y
-noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
-vnoremap <leader>y "*ygv
+noremap <leader>y "+y
+noremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"+P<CR>:set nopaste<CR>
+vnoremap <leader>y "+ygv
 
 " Clean trailing whitespace
 nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
+
+" Quick access to the Ack plugin
+nmap <leader>a :Ack 

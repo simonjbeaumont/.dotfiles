@@ -17,7 +17,11 @@ parse_git_branch() {
 }
 
 prompt_func() {
-    prompt="${COLOR_WHITE}[${COLOR_CYAN}\u@\h ${COLOR_GREEN}\W${COLOR_YELLOW}$(parse_git_branch)$(git_dirty_flag)${COLOR_NONEP}${COLOR_WHITE}]"
+    if [ ! -n "$SSH_TTY" ]; then
+        prompt="${COLOR_WHITE}[${COLOR_CYAN}\u@\h ${COLOR_GREEN}\W${COLOR_YELLOW}$(parse_git_branch)$(git_dirty_flag)${COLOR_NONEP}${COLOR_WHITE}]"
+    else
+        prompt="${COLOR_WHITE}[${COLOR_YELLOW}ssh:${COLOR_RED}\u@\h ${COLOR_GREEN}\W${COLOR_YELLOW}$(parse_git_branch)$(git_dirty_flag)${COLOR_NONEP}${COLOR_WHITE}]"
+    fi
     PS1="${prompt}${COLOR_NONEP}${COLOR_NONE} "
 }
 PROMPT_COMMAND=prompt_func
