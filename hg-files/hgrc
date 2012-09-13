@@ -1,0 +1,27 @@
+[ui]
+username = Si Beaumont <simon.beaumont@citrix.com>
+ignore = ~/.hgignore
+
+[extensions]
+mq =
+color =
+rebase =
+prompt = ~/.dotfiles/hg-files/hg-prompt/prompt.py
+reviewboard = ~/.dotfiles/hg-files/hg-reviewboard
+
+[reviewboard]
+server = http://10.80.239.211/rbtest/
+user = simonbe
+password = sihgreview
+
+[diff]
+git=1
+nodates=1
+
+[alias]
+qstatus = status --rev -2:.
+llog = log --limit 5
+
+[format]
+parentdelta=0
+dotencode=0

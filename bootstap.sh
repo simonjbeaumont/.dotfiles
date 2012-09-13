@@ -5,32 +5,38 @@ if [ "$PWD" != "$HOME/.dotfiles" ]; then
 else
     # Check we're up to date
     git pull
-    
-    [ -f "$HOME/.aliases"  ] && rm "$HOME/.aliases"
-    [ -f "$HOME/.bash_profile"  ] && rm "$HOME/.bash_profile"
-    [ -f "$HOME/.bash_prompt"  ] && rm "$HOME/.bash_prompt"
-    [ -f "$HOME/.bashrc"  ] && rm "$HOME/.bashrc"
-    [ -f "$HOME/.functions"  ] && rm "$HOME/.functions"
-    [ -f "$HOME/.gitconfig"  ] && rm "$HOME/.gitconfig"
-    [ -f "$HOME/.gitignore_global"  ] && rm "$HOME/.gitignore_global"
-    [ -f "$HOME/.inputrc"  ] && rm "$HOME/.inputrc"
-    [ -f "$HOME/.vim"  ] && rm -r "$HOME/.vim"
-    [ -f "$HOME/.vimrc"  ] && rm "$HOME/.vimrc"
-    
-    ln -sv "$HOME/.dotfiles/.aliases" "$HOME/.aliases"
-    ln -sv "$HOME/.dotfiles/.bash_profile" "$HOME/.bash_profile"
-    ln -sv "$HOME/.dotfiles/.bash_prompt" "$HOME/.bash_prompt"
-    ln -sv "$HOME/.dotfiles/.bashrc" "$HOME/.bashrc"
-    ln -sv "$HOME/.dotfiles/.functions" "$HOME/.functions"
-    ln -sv "$HOME/.dotfiles/.gitconfig" "$HOME/.gitconfig"
-    ln -sv "$HOME/.dotfiles/.gitignore_global" "$HOME/.gitignore_global"
-    ln -sv "$HOME/.dotfiles/.inputrc" "$HOME/.inputrc"
+
+    # Remove other files
+    [ -e "$HOME/.aliases" -o -h "$HOME/.aliases" ] && rm -v "$HOME/.aliases"
+    [ -e "$HOME/.bash_profile" -o -h "$HOME/.bash_profile" ] && rm -v "$HOME/.bash_profile"
+    [ -e "$HOME/.bash_prompt" -o -h "$HOME/.bash_prompt" ] && rm -v "$HOME/.bash_prompt"
+    [ -e "$HOME/.bashrc" -o -h "$HOME/.bashrc" ] && rm -v "$HOME/.bashrc"
+    [ -e "$HOME/.functions" -o -h "$HOME/.functions" ] && rm -v "$HOME/.functions"
+    [ -e "$HOME/.gitconfig" -o -h "$HOME/.gitconfig" ] && rm -v "$HOME/.gitconfig"
+    [ -e "$HOME/.gitignore_global" -o -h "$HOME/.gitignore_global" ] && rm -v "$HOME/.gitignore_global"
+    [ -e "$HOME/.hgrc" -o -h "$HOME/.hgrc" ] && rm -v "$HOME/.hgrc"
+    [ -e "$HOME/.hgignore" -o -h "$HOME/.hgignore" ] && rm -v "$HOME/.hgignore"
+    [ -e "$HOME/.inputrc" -o -h "$HOME/.inputrc" ] && rm -v "$HOME/.inputrc"
+    [ -e "$HOME/.vim" -o -h "$HOME/.vim" ] && rm -r -v "$HOME/.vim"
+    [ -e "$HOME/.vimrc" -o -h "$HOME/.vimrc" ] && rm -v "$HOME/.vimrc"
+
+    # Add links to these files
+    ln -sv "$HOME/.dotfiles/aliases" "$HOME/.aliases"
+    ln -sv "$HOME/.dotfiles/bash_profile" "$HOME/.bash_profile"
+    ln -sv "$HOME/.dotfiles/bash_prompt" "$HOME/.bash_prompt"
+    ln -sv "$HOME/.dotfiles/bashrc" "$HOME/.bashrc"
+    ln -sv "$HOME/.dotfiles/functions" "$HOME/.functions"
+    ln -sv "$HOME/.dotfiles/gitconfig" "$HOME/.gitconfig"
+    ln -sv "$HOME/.dotfiles/gitignore_global" "$HOME/.gitignore_global"
+    ln -sv "$HOME/.dotfiles/hg-files/hgrc" "$HOME/.hgrc"
+    ln -sv "$HOME/.dotfiles/hg-files/hgignore" "$HOME/.hgignore"
+    ln -sv "$HOME/.dotfiles/inputrc" "$HOME/.inputrc"
     ln -sv "$HOME/.dotfiles/.vim" "$HOME/.vim"
-    ln -sv "$HOME/.dotfiles/.vimrc" "$HOME/.vimrc"
+    ln -sv "$HOME/.dotfiles/vimrc" "$HOME/.vimrc"
 
     # if we're on a Mac, let's set it up properly
     if [[ "$OSTYPE" =~ ^darwin ]]; then
-    	source "$HOME/.dotfiles/.osx"
+    	source "$HOME/.dotfiles/osx"
     fi
 
     source ~/.bash_profile
