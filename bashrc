@@ -10,9 +10,7 @@ export PATH=$PATH:/usr/local/bin:/Developer/usr/bin
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Android SDK
 export PATH=/Developer/SDKs/android-sdk-mac_86/tools:$PATH
-# CUDA
-export PATH=/usr/local/cuda/bin:$PATH
-export DYLD_LIBRARY_PATH=/usr/local/cuda/lib:$DYLD_LIBRARY
+# Citrix
 export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin
 
 # Let's use autocomplete fun
