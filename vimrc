@@ -43,12 +43,12 @@ set guifont=Monospace\ 9
 set mouse=a         " use the mouse in terminal mode
 
 set go-=T           " no toolbar in gvim
-set scrolloff=4     " lines of context when scrolling 
+set scrolloff=4     " lines of context when scrolling
 
 set wildmode=longest,list     " bash-style file completion
 set wildignore=*.o,*~,*.pyc   " Ignore compiled files
 
-set ruler           " Show current position 
+set ruler           " Show current position
 set number          " always show line numbers
 
 set cmdheight=2     " Height of the command bar
