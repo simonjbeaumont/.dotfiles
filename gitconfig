@@ -12,7 +12,7 @@
    co = checkout
 
 [github]
-	user = sicode
+	user = sjbx
 	token = [token]
 [core]
 	excludesfile = /Users/Simon/.gitignore_global
