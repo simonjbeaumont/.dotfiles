@@ -9,7 +9,7 @@ COLOR_WHITE="\[\e[37;40m\]"
 COLOR_NONEP="\[\e[38;40m\]"
 
 git_dirty_flag() {
-  git status 2> /dev/null | grep -c : | awk '{if ($1 > 0) print "⚡"}'
+  git status 2> /dev/null | grep -c : | awk '{if ($1 > 0) print "⚡︎"}'
 }
 
 parse_git_branch() {
