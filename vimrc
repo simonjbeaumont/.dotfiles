@@ -98,6 +98,10 @@ set laststatus=2
 " Command-t preferences
 let g:CommandTMatchWindowReverse=1
 
+" NERDCommenter preferences
+let g:NERDSpaceDelims=1
+let g:NERDRemoveExtraSpaces=1
+
 " Colours
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I know I'm using gnome => force 256 colors
