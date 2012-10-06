@@ -86,6 +86,9 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 # Total terminal (quake stile terminal)
 alias visor='/Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null'
 
+# Quickly lock screen
+alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
 fi
 
 
