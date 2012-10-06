@@ -28,7 +28,7 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <leader>w :w!<CR>
 
 " Sudo write (if we forget to sudo vim)
-cnoremap w!! w !sudo tee % >/dev/null
+cnoreabbrev w!! w !sudo tee % >/dev/null
 
 " Use ctags
 let g:tagbar_ctags_bin='/usr/bin/ctags'
