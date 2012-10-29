@@ -14,26 +14,26 @@ let colors_name = "mustang"
 
 " Vim >= 7.0 specific colors
 if version >= 700
-  hi CursorLine guibg=#2d2d2d ctermbg=236
-  hi CursorColumn guibg=#2d2d2d ctermbg=236
+  hi CursorLine guibg=#252525 ctermbg=236
+  hi CursorColumn guibg=#252525 ctermbg=236
   hi MatchParen guifg=#d0ffc0 guibg=#2f2f2f gui=bold ctermfg=157 ctermbg=237 cterm=bold
   hi Pmenu 		guifg=#ffffff guibg=#444444 ctermfg=255 ctermbg=238
   hi PmenuSel 	guifg=#000000 guibg=#b1d631 ctermfg=0 ctermbg=148
 endif
 
 " General colors
-hi Cursor 		guifg=NONE    guibg=#626262 gui=none ctermbg=241
-hi Normal 		guifg=#e2e2e5 guibg=#202020 gui=none ctermfg=253 ctermbg=234
+hi Cursor 		guifg=NONE    guibg=#505050 gui=none ctermbg=241
+hi Normal 		guifg=#e2e2e5 guibg=#181818 gui=none ctermfg=253 ctermbg=234
 "hi NonText 		guifg=#808080 guibg=#303030 gui=none ctermfg=244 ctermbg=235
-hi NonText 		guifg=#404040 guibg=#202020 gui=none ctermfg=244 ctermbg=235
-hi LineNr 		guifg=#404040 guibg=#202020 gui=none ctermfg=244 ctermbg=232
+hi NonText 		guifg=#404040 guibg=#181818 gui=none ctermfg=244 ctermbg=235
+hi LineNr 		guifg=#404040 guibg=#181818 gui=none ctermfg=244 ctermbg=232
 hi StatusLine 	guifg=#d3d3d5 guibg=#444444 gui=italic ctermfg=253 ctermbg=238 cterm=italic
 hi StatusLineNC guifg=#939395 guibg=#444444 gui=none ctermfg=246 ctermbg=238
 hi VertSplit 	guifg=#444444 guibg=#444444 gui=none ctermfg=238 ctermbg=238
 hi Folded 		guibg=#384048 guifg=#a0a8b0 gui=none ctermbg=4 ctermfg=248
 hi Title		guifg=#f6f3e8 guibg=NONE	gui=bold ctermfg=254 cterm=bold
 hi Visual		guifg=#faf4c6 guibg=#3c414c gui=none ctermfg=254 ctermbg=4
-hi SpecialKey	guifg=#808080 guibg=#343434 gui=none ctermfg=244 ctermbg=236
+hi SpecialKey	guifg=#808080 guibg=#252525 gui=none ctermfg=244 ctermbg=236
 
 " Syntax highlighting
 hi Comment 		guifg=#808080 gui=italic ctermfg=244

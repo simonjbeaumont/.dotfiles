@@ -35,6 +35,11 @@ let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_width=30
 set tags=tags;/
 
+" Work file types
+au BufRead,BufNewFile *xensource.log* set filetype=messages
+au BufRead,BufNewFile *isl_trace.log* set filetype=messages
+au BufRead,BufNewFile *SMlog* set filetype=messages
+au BufRead,BufNewFile *messages* set filetype=messages
 "
 " UI
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -50,6 +55,7 @@ set wildignore=*.o,*~,*.pyc   " Ignore compiled files
 
 set ruler           " Show current position
 set number          " always show line numbers
+set cursorline      " highlight the current line
 
 set cmdheight=2     " Height of the command bar
 
@@ -179,3 +185,13 @@ nnoremap <leader>w mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
 " Quick access to the Ack plugin
 nmap <leader>a :Ack 
+
+" Useful to see what you've changed before saving
+function! s:DiffWithSaved()
+    let filetype=&ft
+    diffthis
+    vnew | r # | normal! 1Gdd
+    diffthis
+    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
+endfunction
+com! DiffSaved call s:DiffWithSaved()
