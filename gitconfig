@@ -15,4 +15,4 @@
 	user = sjbx
 	token = [token]
 [core]
-	excludesfile = /Users/Simon/.gitignore_global
+	excludesfile = ~/.gitignore_global
