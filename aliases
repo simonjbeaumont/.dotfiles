@@ -83,6 +83,12 @@ alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && kil
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
+# Total terminal (quake stile terminal)
+alias visor='/Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null'
+
+# Quickly lock screen
+alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
 fi
 
 

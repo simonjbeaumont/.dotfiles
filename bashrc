@@ -19,20 +19,13 @@ unset file
 # Make life easier with autocomplete
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-    if [ -r `brew --prefix`/etc/bash_completion ]; then
-        . `brew --prefix`/etc/bash_completion
+    if [ -r /usr/local/etc/bash_completion ]; then
+        . /usr/local/etc/bash_completion
     fi
 elif [[ "$OSTYPE" =~ ^linux ]]; then
     if [ -r /etc/bash_completion ] && ! shopt -oq posix; then
         . /etc/bash_completion
     fi
-fi
-
-
-# TotalTerminal is pretty neat... start by default for Mac
-#-------------------------------------------------------------------------------
-if [[ "$OSTYPE" =~ ^darwin ]]; then
-    /Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null
 fi
 
 
