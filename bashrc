@@ -4,6 +4,8 @@ for file in ~/.{bash_prompt,aliases,functions}; do
 done
 unset file
 
+# Stop resizing from foobaring readline support
+shopt -s checkwinsize
 
 # PATH modifications I've gathered over the years
 #-------------------------------------------------------------------------------
