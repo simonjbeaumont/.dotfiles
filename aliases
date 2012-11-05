@@ -47,6 +47,7 @@ alias mosml='rlwrap mosml'
 
 # Git stuff
 alias gitrevert='(git reset HEAD .);(git checkout -- .)'
+alias gl='git log --graph --abbrev-commit --pretty=oneline --decorate'
 
 # Finding stuff (although I tend to use Ack now)
 alias f='find . -iname'
@@ -102,6 +103,9 @@ alias e='gvim'
 
 # Quickly lock screen
 alias lock='gnome-screensaver-command -l ; gdmflexiserver'
+
+# open file with the default application for its type
+alias open='xdg-open'
 
 # GNU style ls
 alias ls="command ls -hF --color"
