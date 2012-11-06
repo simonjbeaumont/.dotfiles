@@ -128,7 +128,9 @@ endif
 
 " Files, backups and undo
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set undodir=~/.vim/tmp/undo//     " undo files
+if version >= 703
+    set undodir=~/.vim/tmp/undo// " undo files
+endif
 set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
