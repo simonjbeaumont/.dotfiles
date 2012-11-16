@@ -10,6 +10,7 @@ alias -- -="cd -"
 alias +='pushd .'
 
 # Shortcuts
+alias sm='cd /work/trunk-storage/build.hg/myrepos/sm.hg'
 alias d="cd ~/Desktop"
 alias vimp='gvim ~/.bash_profile'
 alias vimrc='gvim ~/.bashrc'
@@ -38,7 +39,6 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # Useful...
 alias g='grep -i'  # case insensitive grep
 alias ducks='du -cks * | sort -rn|head -11' # Lists size of all folders & files
-alias top='top -o cpu'
 alias systail='tail -f /var/log/system.log'
 alias sshx="ssh -X"
 
@@ -48,6 +48,10 @@ alias mosml='rlwrap mosml'
 # Git stuff
 alias gitrevert='(git reset HEAD .);(git checkout -- .)'
 alias gl='git log --graph --abbrev-commit --pretty=oneline --decorate'
+
+# Mercurial
+alias hl='hg log --template "* \x1B[0;33m{node|short}\x1B[0;30m———\x1B[0;31m\x1B[33m{date|shortdate}\x1B[30m———\x1B[33m{author|person}\n\x1B[0m{desc|strip|firstline|fill76|strip}\n\n" --color true | less -R'
+alias hlx='hl | less -RX'
 
 # Finding stuff (although I tend to use Ack now)
 alias f='find . -iname'
@@ -89,6 +93,8 @@ alias visor='/Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null'
 
 # Quickly lock screen
 alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
+
+alias top='top -o cpu'
 
 fi
 
