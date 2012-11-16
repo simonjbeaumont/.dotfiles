@@ -6,6 +6,7 @@ ignore = ~/.hgignore
 mq =
 color =
 rebase =
+graphlog =
 prompt = ~/.dotfiles/hg-files/hg-prompt/prompt.py
 reviewboard = ~/.dotfiles/hg-files/hg-reviewboard
 
@@ -21,6 +22,7 @@ nodates=1
 [alias]
 qstatus = status --rev -2:.
 llog = log --limit 5
+glog = glog --limit 5
 
 [format]
 parentdelta=0
