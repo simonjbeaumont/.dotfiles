@@ -14,6 +14,7 @@ alias sm='cd /work/trunk-storage/build.hg/myrepos/sm.hg'
 alias d="cd ~/Desktop"
 alias vimp='gvim ~/.bash_profile'
 alias vimrc='gvim ~/.bashrc'
+alias vimrl='vim /work/tools/RokClock/log.txt'
 
 # Current projects
 alias diss="cd ~/Uni/Dissertation/Dissertation"
