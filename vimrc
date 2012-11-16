@@ -6,6 +6,10 @@
 " This must be first, because it changes other options as side effect
 set nocompatible
 
+" Get rid of nasty lag on ESC (timeout and ttimeout seem useless)
+set ttimeout
+set ttimeoutlen=1
+
 " Use pathogen to manage plugins under ~/.vim/bundle
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
@@ -23,6 +27,11 @@ filetype plugin indent on
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
 nmap <silent> <leader>sv :so $MYVIMRC<CR>
+
+" Quickly edit my todo file
+nmap <silent> <leader>et :e /work/todo.txt<CR>
+nmap <silent> <leader>mi 0cl☐ <esc>ddma/\=\=\=<CR>,/p'ak
+nmap <silent> <leader>md 0r☑
 
 " (Slightly) quicker saving of files
 nmap <leader>w :w!<CR>
@@ -76,9 +85,9 @@ set splitright      " open new vsplits to the right
 nnoremap / /\v
 vnoremap / /\v
 
-" Move between bracket pairs
-nnoremap <tab> %
-vnoremap <tab> %
+" Move between bracket pairs---N.B. this breaks C-I jumping :(
+" nnoremap <tab> %
+" vnoremap <tab> %
 
 set lazyredraw    " don't redraw during macros
 
@@ -161,6 +170,7 @@ nnoremap <silent> <leader>/ :nohlsearch<CR>
 
 nmap <silent> <leader>r :TagbarToggle<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
+nmap <silent> <leader>O :NERDTreeFind<CR>
 
 " Use tabs like a 'normal' editor
 "set switchbuf=usetab,newtab
@@ -171,10 +181,10 @@ nmap <silent> <leader>o :NERDTreeToggle<CR>
 "map <A-{>     :tabp<CR>
 
 " Move between windows
-map <C-h> <C-w>h
-map <C-j> <C-w>j
-map <C-k> <C-w>k
-map <C-l> <C-w>l
+" map <C-h> <C-w>h
+" map <C-j> <C-w>j
+" map <C-k> <C-w>k
+" map <C-l> <C-w>l
 
 " System clipboard interaction
 noremap <leader>y "+y
