@@ -54,3 +54,6 @@
 	path = .vim/bundle/vim-surround
 	url = https://github.com/tpope/vim-surround.git
     ignore = dirty
+[submodule ".vim/bundle/delimitMate"]
+	path = .vim/bundle/delimitMate
+	url = https://github.com/Raimondi/delimitMate.git

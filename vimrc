@@ -1,5 +1,4 @@
-" Si's .vimrc
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -7,8 +6,8 @@
 set nocompatible
 
 " Get rid of nasty lag on ESC (timeout and ttimeout seem useless)
-set ttimeout
-set ttimeoutlen=1
+au InsertEnter * set timeoutlen=1
+au InsertLeave * set timeoutlen=1000
 
 " Use pathogen to manage plugins under ~/.vim/bundle
 call pathogen#infect()
