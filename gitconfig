@@ -1,6 +1,6 @@
 [user]
 	name = Si Beaumont
-	email = [email]
+	email = simon.beaumont@citrix.com
 [color]
    diff = auto
    status = auto
@@ -12,7 +12,7 @@
    co = checkout
 
 [github]
-	user = sjbx
+	user = simonjbeaumont
 	token = [token]
 [core]
 	excludesfile = ~/.gitignore_global
