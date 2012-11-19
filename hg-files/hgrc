@@ -20,7 +20,7 @@ git=1
 nodates=1
 
 [alias]
-qstatus = status --rev -2:.
+qstatus = !hg status --rev qparent 2> /dev/null
 llog = log --limit 5
 glog = glog --limit 5
 
