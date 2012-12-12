@@ -98,7 +98,7 @@ set t_vb=
 " Handle long lines
 set wrap
 set textwidth=79
-set formatoptions=qrn1
+set formatoptions=qrn1t
 
 " Show invisibles (in Textmate style)
 set list
