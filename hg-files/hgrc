@@ -9,6 +9,8 @@ rebase =
 graphlog =
 prompt = ~/.dotfiles/hg-files/hg-prompt/prompt.py
 reviewboard = ~/.dotfiles/hg-files/hg-reviewboard
+hgext.bookmarks =
+hgext.git =
 
 [reviewboard]
 server = http://10.80.239.211/rbtest/
@@ -21,8 +23,14 @@ nodates=1
 
 [alias]
 qstatus = !hg status --rev qparent 2> /dev/null
+latest = log --limit $1
 llog = log --limit 5
 glog = glog --limit 5
+patchreview = postreview --parent qparent --git --webbrowser --target_groups storage
+updatepatchreview = postreview --existing $1 --update --parent qparent --git -w
+
+[hooks]
+preoutgoing.confirm = read -p 'Are you sure you want to push to remote? (y/n): ';
 
 [format]
 parentdelta=0
