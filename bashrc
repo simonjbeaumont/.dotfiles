@@ -15,7 +15,7 @@ shopt -s checkwinsize
 [ -r /opt/local/bin ] && export PATH=$PATH:/opt/local/bin:/opt/local/sbin
 # Citrix
 [ -r /usr/groups/xen ] && \
-    export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin:/work/tools
+    export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin:/usr/groups/xen/xenrt/control:/work/tools
 
 
 # Make life easier with autocomplete
