@@ -57,3 +57,6 @@
 [submodule ".vim/bundle/delimitMate"]
 	path = .vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "tmux-powerline"]
+	path = tmux-powerline
+	url = https://github.com/simonjbeaumont/tmux-powerline.git

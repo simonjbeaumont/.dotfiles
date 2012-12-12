@@ -19,6 +19,7 @@ else
     [ -e "$HOME/.inputrc" -o -h "$HOME/.inputrc" ] && rm -v "$HOME/.inputrc"
     [ -e "$HOME/.vim" -o -h "$HOME/.vim" ] && rm -r -v "$HOME/.vim"
     [ -e "$HOME/.vimrc" -o -h "$HOME/.vimrc" ] && rm -v "$HOME/.vimrc"
+    [ -e "$HOME/.tmux.conf" -o -h "$HOME/.tmux.conf" ] && rm -v "$HOME/.tmux.conf"
     [ -e "$HOME/.xmonad/xmonad.hs" -o -h "$HOME/.xmonad/xmonad.hs" ] && rm -v "$HOME/.xmonad/xmonad.hs"
 
     # Add links to these files
@@ -34,6 +35,7 @@ else
     ln -sv "$HOME/.dotfiles/inputrc" "$HOME/.inputrc"
     ln -sv "$HOME/.dotfiles/.vim" "$HOME/.vim"
     ln -sv "$HOME/.dotfiles/vimrc" "$HOME/.vimrc"
+    ln -sv "$HOME/.dotfiles/tmux.conf" "$HOME/.tmux.conf"
     [ -e "$HOME/.xmonad" -a -d "$HOME/.xmonad" ] && ln -sv "$HOME/.dotfiles/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
 
     # if we're on a Mac, let's set it up properly
