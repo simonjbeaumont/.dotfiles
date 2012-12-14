@@ -6,7 +6,7 @@ else
     # Check we're up to date
     git pull
 
-    # Remove other files
+    # Remove other files (-h => only if they're symlinks already => a bit safer)
     [ -e "$HOME/.aliases" -o -h "$HOME/.aliases" ] && rm -v "$HOME/.aliases"
     [ -e "$HOME/.bash_profile" -o -h "$HOME/.bash_profile" ] && rm -v "$HOME/.bash_profile"
     [ -e "$HOME/.bash_prompt" -o -h "$HOME/.bash_prompt" ] && rm -v "$HOME/.bash_prompt"
@@ -20,6 +20,7 @@ else
     [ -e "$HOME/.vim" -o -h "$HOME/.vim" ] && rm -r -v "$HOME/.vim"
     [ -e "$HOME/.vimrc" -o -h "$HOME/.vimrc" ] && rm -v "$HOME/.vimrc"
     [ -e "$HOME/.tmux.conf" -o -h "$HOME/.tmux.conf" ] && rm -v "$HOME/.tmux.conf"
+    [ -e "$HOME/tmux_start" -o -h "$HOME/tmux_start" ] && rm -v "$HOME/tmux_start"
     [ -e "$HOME/.xmonad/xmonad.hs" -o -h "$HOME/.xmonad/xmonad.hs" ] && rm -v "$HOME/.xmonad/xmonad.hs"
 
     # Add links to these files
@@ -36,6 +37,7 @@ else
     ln -sv "$HOME/.dotfiles/.vim" "$HOME/.vim"
     ln -sv "$HOME/.dotfiles/vimrc" "$HOME/.vimrc"
     ln -sv "$HOME/.dotfiles/tmux.conf" "$HOME/.tmux.conf"
+    ln -sv "$HOME/.dotfiles/tmux_start" "$HOME/tmux_start"
     [ -e "$HOME/.xmonad" -a -d "$HOME/.xmonad" ] && ln -sv "$HOME/.dotfiles/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
 
     # if we're on a Mac, let's set it up properly

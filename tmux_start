@@ -1,0 +1,23 @@
+#!/bin/sh
+cd ~
+tmux start-server
+tmux new-session -d -s sm-work -n 'notes'
+
+tmux new-window -t sm-work:2 -n 'sm'
+tmux new-window -t sm-work:3 -n 'sm-hg'
+tmux new-window -t sm-work:4 -n 'dt19'
+tmux new-window -t sm-work:5 -n 'dt44'
+tmux new-window -t sm-work:8 -n 'xen-git'
+tmux new-window -t sm-work:9 -n 'config'
+
+tmux send-keys -t sm-work:1 'cd /work/Cx-Tickets/; vim ../xs-cheatsheet' C-m
+tmux send-keys -t sm-work:2 'cd /work/trunk-storage/build.hg/myrepos/sm.hg; vim .' C-m
+tmux send-keys -t sm-work:3 'cd /work/trunk-storage/build.hg/myrepos/sm.hg' C-m
+tmux send-keys -t sm-work:4 'ssh dt19' C-m
+tmux send-keys -t sm-work:5 'ssh dt44' C-m
+tmux send-keys -t sm-work:8 'ssh xen-git' C-m
+tmux send-keys -t sm-work:9 'cd ~/.dotfiles/; vim .' C-m
+
+tmux select-window -t sm-work:1
+tmux -2 attach-session -t sm-work
+
