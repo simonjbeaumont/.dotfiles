@@ -27,7 +27,9 @@ git_dirty_flag() {
     if [[ -n $(git status --porcelain '--ignore-submodules=dirty' 2> /dev/null) ]]; then echo '⚡︎'; fi
 }
 
-PS1="\[\e[0;37;40m\][\[\e[33;40m\]$(get_ssh_flag)\[\e[0;36;40m\]\u@\h \[\e[32;40m\]\W\[\e[33;40m\]\$(get_git_branch)\$(git_dirty_flag)\[\e[37;40m\]]\[\e[0;0m\] "
+# Note, to remove the bell, remove the \a near the end
+PS1="\[\e[0;37;40m\][\[\e[33;40m\]$(get_ssh_flag)\[\e[0;36;40m\]\u@\h \[\e[32;40m\]\W\[\e[33;40m\]\$(get_git_branch)\$(git_dirty_flag)\[\e[37;40m\]]\[\e[0;0m\a\] "
+PS2="\[\a\]"$PS2
 
 #---Colour codes---
 # In the form of \[\e[bold?;fg;bgm\]
