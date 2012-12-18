@@ -1,4 +1,4 @@
-
+" .vimrc : Si Beaumont
 
 " General
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -31,6 +31,9 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 nmap <silent> <leader>et :e /work/todo.txt<CR>
 nmap <silent> <leader>mi 0cl☐ <esc>ddma/\=\=\=<CR>,/p'ak
 nmap <silent> <leader>md 0r☑
+
+" Log to SMlog (work stuff)
+nmap <silent> <leader>sm yEoutil.SMlog("sjbx: pa = %s" % p
 
 " (Slightly) quicker saving of files
 nmap <leader>w :w!<CR>
