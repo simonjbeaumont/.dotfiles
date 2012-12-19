@@ -34,7 +34,7 @@ else
     ln -sv "$HOME/.dotfiles/hg-files/hgrc" "$HOME/.hgrc"
     ln -sv "$HOME/.dotfiles/hg-files/hgignore" "$HOME/.hgignore"
     ln -sv "$HOME/.dotfiles/inputrc" "$HOME/.inputrc"
-    ln -sv "$HOME/.dotfiles/.vim" "$HOME/.vim"
+    ln -sv "$HOME/.dotfiles/vim" "$HOME/.vim"
     ln -sv "$HOME/.dotfiles/vimrc" "$HOME/.vimrc"
     ln -sv "$HOME/.dotfiles/tmux.conf" "$HOME/.tmux.conf"
     ln -sv "$HOME/.dotfiles/tmux_start" "$HOME/tmux_start"
