@@ -45,6 +45,10 @@ else
     	source "$HOME/.dotfiles/osx"
     fi
 
+    # let's sort out all the vim submodules
+    git submodule init
+    git submodule update
+
     source ~/.bash_profile
     cd "$HOME"
     echo "Initalisation complete!"
