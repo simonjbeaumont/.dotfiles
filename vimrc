@@ -45,6 +45,7 @@ cnoreabbrev w!! w !sudo tee % >/dev/null
 let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_width=30
 set tags=tags;/
+set complete+=t
 
 " Work file types
 au BufRead,BufNewFile *xensource.log* set filetype=messages
@@ -164,6 +165,14 @@ set autoindent    " always set autoindenting on
 set smartindent   " for some auto-semantic-indenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
+" Python mode plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_run_key='<leader>R' " default (<leader>r) is used for :TagbarToggle
+" let g:pymode_lint_write=0      " annoying when working with (bad) shared code
+let g:pymode_lint_hold=0
+let g:pymode_lint_onfly=1
+let g:pymode_breakpoint=0
+let g:pymode_utils_whitespaces=0 " annoying when working with (bad) shared code
 
 " Stuff I've not tidied yet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
