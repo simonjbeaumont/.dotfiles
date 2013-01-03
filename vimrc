@@ -21,7 +21,7 @@ let mapleader=","
 filetype plugin indent on
 
 " Set to auto read when a file is changed from the outside
-" set autoread
+set autoread
 
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
