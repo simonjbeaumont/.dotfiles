@@ -167,10 +167,10 @@ set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
 " Python mode plugin
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:pymode_run_key='<leader>R' " default (<leader>r) is used for :TagbarToggle
-" let g:pymode_lint_write=0      " annoying when working with (bad) shared code
+let g:pymode_run=0                 " the flakey-ness of this is cheesing me off
+" let g:pymode_run_key='<leader>R' " default (<leader>r) is used for :TagbarToggle
+" let g:pymode_lint_write=0        " annoying when working with (bad) shared code
 let g:pymode_lint_hold=0
-let g:pymode_lint_onfly=1
 let g:pymode_breakpoint=0
 let g:pymode_utils_whitespaces=0 " annoying when working with (bad) shared code
 
