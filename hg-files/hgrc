@@ -7,8 +7,8 @@ mq =
 color =
 rebase =
 graphlog =
-prompt = ~/.dotfiles/hg-files/hg-prompt/prompt.py
-reviewboard = ~/.dotfiles/hg-files/hg-reviewboard
+prompt = /local/work/tools/hg-extensions/hg-prompt/prompt.py
+reviewboard = /local/work/tools/hg-extensions/hg-reviewboard
 hgext.bookmarks =
 hgext.git =
 
