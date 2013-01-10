@@ -9,7 +9,7 @@ tmux new-window -t sm-work:4 -n 'dt19'
 tmux new-window -t sm-work:5 -n 'dt44'
 tmux new-window -t sm-work:9 -n 'config'
 
-tmux send-keys -t sm-work:1 'cd /work/Cx-Tickets/; vim ../xs-cheatsheet' C-m
+tmux send-keys -t sm-work:1 'cd /work/Defects/; vim ../xs-cheatsheet' C-m
 tmux send-keys -t sm-work:2 'cd /work/trunk-storage/build.hg/myrepos/sm.hg; vim .' C-m
 tmux send-keys -t sm-work:3 'cd /work/trunk-storage/build.hg/myrepos/sm.hg' C-m
 tmux send-keys -t sm-work:4 'ssh dt19' C-m
