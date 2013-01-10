@@ -11,7 +11,7 @@ alias +='pushd .'
 
 # Shortcuts
 alias sm='cd /work/trunk-storage/build.hg/myrepos/sm.hg'
-alias defects='cd /work/Cx-Tickets/'
+alias defects='cd /work/Defects/'
 alias d="cd ~/Desktop"
 alias vimp='gvim ~/.bash_profile'
 alias vimrc='gvim ~/.bashrc'
