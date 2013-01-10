@@ -24,6 +24,9 @@ import XMonad.Layout.Grid
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimpleFloat
 
+-- actions
+import XMonad.Actions.CycleWS
+
 -------------------------------------------------------------------------------
 -- Main --
 main = do
@@ -40,12 +43,28 @@ main = do
               , layoutHook = layoutHook'
               , manageHook = manageHook'
               } `additionalKeys`
-              [((modMask' .|. shiftMask, xK_q), spawn "gnome-session-quit")
-              ,((modMask' .|. shiftMask, xK_l), sendMessage MirrorShrink)
-              ,((modMask' .|. shiftMask, xK_h), sendMessage MirrorExpand)
-              ,((modMask' .|. shiftMask, xK_b), spawn "chromium-browser")
-              ,((modMask' .|. shiftMask, xK_p), spawn "gnome-do")
-              ,((modMask',               xK_p), spawn "gmrun")
+              [-- windows and session
+                ((modMask',               xK_q),     kill)
+              , ((modMask',               xK_r),     spawn "xmonad --recompile; xmonad --restart")
+              , ((modMask' .|. shiftMask, xK_q),     spawn "gnome-session-quit")
+              , ((modMask' .|. shiftMask, xK_l),     sendMessage MirrorShrink)
+              , ((modMask' .|. shiftMask, xK_h),     sendMessage MirrorExpand)
+              -- workspaces (imagine vertical stack with horizontal screens)
+              , ((modMask',               xK_Down),  nextWS)
+              , ((modMask',               xK_Up),    prevWS)
+              , ((modMask' .|. shiftMask, xK_Down),  shiftToNext >> nextWS)
+              , ((modMask' .|. shiftMask, xK_Up),    shiftToPrev >> prevWS)
+              , ((modMask',               xK_grave), toggleWS)
+              , ((modMask',               xK_f),     moveTo Next EmptyWS)
+              -- screens
+              , ((modMask',               xK_Right), nextScreen)
+              , ((modMask',               xK_Left),  prevScreen)
+              , ((modMask' .|. shiftMask, xK_Right), shiftNextScreen)
+              , ((modMask' .|. shiftMask, xK_Left),  shiftPrevScreen)
+              -- launching
+              , ((modMask' .|. shiftMask, xK_b), spawn "google-chrome")
+              , ((modMask' .|. shiftMask, xK_p), spawn "gnome-do")
+              , ((modMask',               xK_p), spawn "gmrun")
               ]
 
 -------------------------------------------------------------------------------
@@ -139,7 +158,7 @@ customLayout = avoidStruts $ smartBorders tiled ||| smartBorders (Mirror tiled) 
     -- ratio   = toRational (2/(1 + sqrt 5 :: Double)) 
     ratio = 5/8
 
-imLayout    = avoidStruts $ spacing 15 $ withIM (1/5) (Or (And (ClassName "Pidgin") (Role "buddy_list")) (ClassName "Office Communicator")) Grid
+imLayout    = avoidStruts $ spacing 15 $ withIM (1/5) (Or (And (ClassName "Pidgin") (Role "buddy_list")) (ClassName "Office Communicator")) (Mirror Grid)
 rokLayout   = avoidStruts $ withIM (1/15) (ClassName "rokclock-Main") customLayout
 
 -------------------------------------------------------------------------------
