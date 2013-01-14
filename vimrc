@@ -174,6 +174,10 @@ let g:pymode_lint_hold=0
 let g:pymode_breakpoint=0
 let g:pymode_utils_whitespaces=0 " annoying when working with (bad) shared code
 
+" YankRing plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:yankring_history_file='.yankring-hist'
+
 " Stuff I've not tidied yet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
