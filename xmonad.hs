@@ -88,7 +88,7 @@ myManageHook = manageHook gnomeConfig <+> (composeOne . concat $
         role      = stringProperty "WM_WINDOW_ROLE"
         name      = stringProperty "WM_NAME"
         -- classnames
-        myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor", "Cinnamon Settings"]
+        myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor"]
         myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser"]
         myMovie   = ["Boxee","Trine"]
         myMusic   = ["Rhythmbox","Spotify"]
@@ -100,7 +100,7 @@ myManageHook = manageHook gnomeConfig <+> (composeOne . concat $
         myIgnores = ["desktop","desktop_window","Do", "notify-osd","stalonetray","trayer", "panel"]
         myXenApps = ["Wfica_Seamless"]
         -- names
-        myNames   = ["bashrun","Google Chrome Options","Chromium Options"]
+        myNames   = ["bashrun","Google Chrome Options","Chromium Options","Cinnamon Settings"]
 -- a trick for fullscreen but stil allow focusing of other WSs
 myDoFullFloat :: ManageHook
 myDoFullFloat = doF W.focusDown <+> doFullFloat
