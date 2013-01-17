@@ -33,7 +33,6 @@ fi
 
 # Other sensible(?) environment variables
 #-------------------------------------------------------------------------------
-export DISPLAY=:0.0
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 export HISTCONTROL=ignoredups # Ignores dupes in the history
