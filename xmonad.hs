@@ -71,40 +71,29 @@ main = do
 -------------------------------------------------------------------------------
 -- Hooks --
 manageHook' :: ManageHook
-myManageHook = manageHook gnomeConfig <+> (composeOne . concat $
-    [ [className    =? r    -?> doIgnore                |   r   <- myIgnores        ] -- ignore desktop
-    , [className    =? c    -?> doShift  " 4-xen "      |   c   <- ["XenCenter"]    ] -- move to WS
-    , [className    =? c    -?> doShift  " 5-xenrt "    |   c   <- ["XenRTCenter"]  ] -- move to WS
+manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
+    [ [className    =? c    -?> doCenterFloat           |   c   <- myFloats     ] -- float my floats
+    , [appName      =? c    -?> doCenterFloat           |   c   <- myXenApps    ] -- float my XenApps
+    , [className    =? c    -?> doIgnore                |   c   <- myIgnores    ] -- ignore desktop
+    -- shift certain apps to certain workspaces
     , [className    =? c    -?> doShift  " 6-chat "     |   c   <- myChat       ] -- move to WS
     , [className    =? c    -?> doShift  " 7-music "    |   c   <- myMusic      ] -- move to WS
-    , [className    =? c    -?> doCenterFloat           |   c   <- myFloats     ] -- float my floats
-    , [name         =? n    -?> doCenterFloat           |   n   <- myNames      ] -- float my names
-    , [name         =? n    -?> doCenterFloat           |   n   <- myXenApps    ] -- float my names
+    -- catch all...
     , [isFullscreen         -?> myDoFullFloat                                   ]
     , [isDialog             -?> doCenterFloat                                   ] -- float dialogs
     , [return True          -?> doF W.swapDown                                  ] -- open below, not above
     ]) 
     where
-        role      = stringProperty "WM_WINDOW_ROLE"
-        name      = stringProperty "WM_NAME"
-        -- classnames
-        myFloats  = ["Smplayer","MPlayer","VirtualBox","Xmessage","XFontSel","Downloads","Nm-connection-editor"]
-        myWebs    = ["Firefox","Google-chrome","Chromium", "Chromium-browser"]
-        myMovie   = ["Boxee","Trine"]
-        myMusic   = ["Rhythmbox","Spotify"]
-        myChat    = ["Pidgin","Buddy List"]
-        myGimp    = ["Gimp"]
-        myDev     = ["gnome-terminal"]
-        myVim     = ["Gvim"]
-        -- resources
-        myIgnores = ["desktop","desktop_window","Do", "notify-osd","stalonetray","trayer", "panel"]
-        myXenApps = ["Wfica_Seamless"]
-        -- names
-        myNames   = ["bashrun","Google Chrome Options","Chromium Options","Cinnamon Settings"]
--- a trick for fullscreen but stil allow focusing of other WSs
-myDoFullFloat :: ManageHook
-myDoFullFloat = doF W.focusDown <+> doFullFloat
-manageHook' = myManageHook <+> manageDocks
+        -- by className
+        myIgnores = ["Do", "Notification-daemon", "stalonetray", "trayer", "Wfica_Seamless"]
+        myFloats  = ["VirtualBox", "Xmessage", "XFontSel", "Nm-connection-editor", "Cinnamon-settings.py"]
+        -- specific classes of apps (for shifting) still by className
+        myChat    = ["Pidgin"]
+        myMusic   = ["Spotify"]
+        -- by appName (special treatment for _top-level_ windows of XenApps)
+        myXenApps = ["Inbox - Mailbox - Simon Beaumont - Microsoft Outlook", "XenCenter", "XenRTCenter"]
+        -- a trick for fullscreen but stil allow focusing of other WSs
+        myDoFullFloat = doF W.focusDown <+> doFullFloat
 
 logHook' h1 h2 = dynamicLogWithPP customPP { ppOutput = hPutStrLn h1 }
               >> dynamicLogWithPP customPP { ppOutput = hPutStrLn h2 }
