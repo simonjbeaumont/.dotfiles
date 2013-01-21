@@ -3,6 +3,7 @@ import XMonad
 import XMonad.Config.Gnome
 import qualified XMonad.StackSet as W
 import System.IO (Handle, hPutStrLn)
+import Data.List
 
 -- utils
 import XMonad.Util.Run (spawnPipe)
@@ -72,26 +73,27 @@ main = do
 -- Hooks --
 manageHook' :: ManageHook
 manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
-    [ [className    =? c    -?> doCenterFloat           |   c   <- myFloats     ] -- float my floats
-    , [appName      =? c    -?> doCenterFloat           |   c   <- myXenApps    ] -- float my XenApps
-    , [className    =? c    -?> doIgnore                |   c   <- myIgnores    ] -- ignore desktop
+    [ [className    =? c            -?> doCenterFloat           |   c <- myFloats   ] -- float my floats
+    , [fmap (isInfixOf a) appName   -?> doFloat                 |   a <- myXenApps  ] -- float my XenApps
+    , [className    =? c           <&&> appName =? ""-?> idHook |   c <- myXenApps  ]
+    , [className    =? c            -?> idHook                  |   c <- myXenApps  ]
     -- shift certain apps to certain workspaces
-    , [className    =? c    -?> doShift  " 6-chat "     |   c   <- myChat       ] -- move to WS
-    , [className    =? c    -?> doShift  " 7-music "    |   c   <- myMusic      ] -- move to WS
+    , [fmap (isInfixOf a) appName   -?> doShift  " 6-chat "     |   a <- myChat     ] -- move to WS
+    , [className    =? c            -?> doShift  " 7-music "    |   c <- myMusic    ] -- move to WS
     -- catch all...
-    , [isFullscreen         -?> myDoFullFloat                                   ]
-    , [isDialog             -?> doCenterFloat                                   ] -- float dialogs
-    , [return True          -?> doF W.swapDown                                  ] -- open below, not above
+    , [className    =? c            -?> doIgnore                |   c <- myIgnores  ] -- ignore desktop
+    , [isFullscreen                 -?> myDoFullFloat                               ] -- special full screen
+    , [isDialog                     -?> doCenterFloat                               ] -- float dialogs
+    , [return True                  -?> doF W.swapDown                              ] -- open below, not above
     ]) 
     where
         -- by className
-        myIgnores = ["Do", "Notification-daemon", "stalonetray", "trayer", "Wfica_Seamless"]
+        myIgnores = ["Do", "Notification-daemon", "stalonetray", "trayer"]
         myFloats  = ["VirtualBox", "Xmessage", "XFontSel", "Nm-connection-editor", "Cinnamon-settings.py"]
-        -- specific classes of apps (for shifting) still by className
-        myChat    = ["Pidgin"]
         myMusic   = ["Spotify"]
-        -- by appName (special treatment for _top-level_ windows of XenApps)
-        myXenApps = ["Inbox - Mailbox - Simon Beaumont - Microsoft Outlook", "XenCenter", "XenRTCenter"]
+        -- by appName (special treatment for _top-level_ windows of XenApps (Wfica_Seamless : className)
+        myXenApps = ["Microsoft Outlook", "XenCenter", "XenRTCenter", "- Message", "Office Communicator", "Wfica_Seamless"]
+        myChat    = ["Pidgin", "Office Communicator", "- Conversation"]
         -- a trick for fullscreen but stil allow focusing of other WSs
         myDoFullFloat = doF W.focusDown <+> doFullFloat
 
@@ -148,7 +150,7 @@ customLayout = avoidStruts $ smartBorders tiled ||| smartBorders (Mirror tiled) 
     -- ratio   = toRational (2/(1 + sqrt 5 :: Double)) 
     ratio = 5/8
 
-imLayout    = avoidStruts $ spacing 15 $ withIM (1/5) (Or (And (ClassName "Pidgin") (Role "buddy_list")) (ClassName "Office Communicator")) (Mirror Grid)
+imLayout    = avoidStruts $ spacing 15 $ withIM (1/5) (Resource "Office Communicator") (Mirror Grid)
 rokLayout   = avoidStruts $ withIM (1/15) (ClassName "rokclock-Main") customLayout
 
 -------------------------------------------------------------------------------
