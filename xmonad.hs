@@ -65,8 +65,8 @@ main = do
               -- launching
               , ((modMask' .|. shiftMask, xK_b), spawn "google-chrome")
               , ((modMask' .|. shiftMask, xK_s), spawn "/home/simonbe/spotify-notify/spotify-notify.py -n")
-              , ((modMask' .|. shiftMask, xK_p), spawn "gnome-do")
-              , ((modMask',               xK_p), spawn "gmrun")
+              , ((modMask' .|. shiftMask, xK_p), spawn "gmrun")
+              , ((modMask',               xK_p), spawn "gnome-do")
               ]
 
 -------------------------------------------------------------------------------
