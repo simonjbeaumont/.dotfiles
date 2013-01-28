@@ -47,6 +47,7 @@ let g:tagbar_ctags_bin='/usr/bin/ctags'
 let g:tagbar_width=30
 set tags=tags;/
 set complete+=t
+nmap <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 
 " Work file types
 au BufRead,BufNewFile *xensource.log* set filetype=messages
