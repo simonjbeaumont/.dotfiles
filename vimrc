@@ -29,8 +29,9 @@ nmap <silent> <leader>sv :so $MYVIMRC<CR>
 
 " Quickly edit my todo file
 nmap <silent> <leader>et :e /work/todo.txt<CR>
-nmap <silent> <leader>mi 0cl☐ <esc>ddma/\=\=\=<CR>,/p'ak
-nmap <silent> <leader>md 0r☑
+" nmap <silent> <leader>mi 0cl☐ <esc>ddma/\=\=\=<CR>,/p'ak
+nmap <silent> <leader>mi yy/\=\=\=<CR>,/p0r-
+" nmap <silent> <leader>md 0r☑
 
 " Log to SMlog (work stuff)
 nmap <silent> <leader>sm yEoutil.SMlog("sjbx: pa = %s" % p
