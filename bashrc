@@ -36,5 +36,5 @@ fi
 export EDITOR="vim"
 export GIT_EDITOR="vim"
 export HISTCONTROL=ignoredups # Ignores dupes in the history
-# export HISTIGNORE="ls:ls *:cd:cd -:pwd;exit:date:* --help"
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:* --help"
+export GREP_OPTIONS="--color=auto"
