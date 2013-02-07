@@ -2,7 +2,11 @@
 username = Si Beaumont <simon.beaumont@citrix.com>
 ignore = ~/.hgignore
 
+[pager]
+pager = LESS='rXSF' less -d
+
 [extensions]
+pager =
 mq =
 color =
 rebase =
