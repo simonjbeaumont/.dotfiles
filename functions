@@ -50,7 +50,7 @@ ex () {
 tmup() {
     echo -n "Updating to latest tmux environment..."
     export IFS=","
-    for line in $(tmux showenv -t $(tmux display -p "#S") | sed ':a;N;$!ba;s/\n/,/g'); do
+    for line in $(tmux showenv -t $(tmux display -p "#S") | tr "\n" ","); do
         if [[ $line == -* ]]; then
             unset $(echo $line | cut -c2-)
         else
