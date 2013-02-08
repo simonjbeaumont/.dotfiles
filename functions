@@ -93,3 +93,8 @@ actuals_bw() {
 
     popd > /dev/null
 }
+
+actuals_lw() {
+    actuals_bw $(date +%d/%m/%Y --date="last Monday -1 week") \
+               $(date +%d/%m/%Y --date="last Saturday")
+}
