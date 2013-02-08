@@ -60,3 +60,36 @@ tmup() {
     unset IFS
     echo "Done"
 }
+
+actuals_bw() {
+    if [ $# != 2 ]; then
+        echo "Wrong!"
+        return
+    fi
+
+    pushd /work/tools/RokClock > /dev/null
+
+    local df=$1
+    local dt=$2
+
+    local rel=$(java -cp /work/tools/RokClock/dist/RokClock/RokClock.jar \
+                    rokclock.Analyser /work/tools/RokClock/log.txt \
+                    $df $dt -r | tr -d " " | tr "," "-")
+
+    local abs=$(java -cp /work/tools/RokClock/dist/RokClock/RokClock.jar \
+                    rokclock.Analyser /work/tools/RokClock/log.txt \
+                    $df $dt | tr -d " " | tr "," "-")
+
+    local total=0
+    for line in $abs; do
+        local total=$( echo $total + $(echo $line | cut -d"-" -f2) | bc )
+    done
+
+    echo "Actuals for $df (inc.) to $dt (excl.):"
+    for line in $rel; do
+        echo " * "$(echo $line | cut -d- -f2- | tr "-" " ")
+    done;
+    echo "Total hours: "$total
+
+    popd > /dev/null
+}
