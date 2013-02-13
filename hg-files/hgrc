@@ -17,9 +17,8 @@ hgext.bookmarks =
 hgext.git =
 
 [reviewboard]
-server = http://10.80.239.211/rbtest/
+server = http://rb.xs.citrite.net
 user = simonbe
-password = sihgreview
 
 [diff]
 git=1
