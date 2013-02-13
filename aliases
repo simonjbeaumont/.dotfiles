@@ -39,8 +39,8 @@ alias lla='ll -aF'
 alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 
 # Useful...
-alias g='grep -i'  # case insensitive grep
-alias ducks='du -cks * | sort -rn|head -11' # Lists size of all folders & files
+alias g='grep -i'                               # case insensitive grep
+alias ducks='du -cksh * | sort -rh | head -11'  # List size of pwd's contents
 alias systail='tail -f /var/log/system.log'
 alias sshx="ssh -X"
 
