@@ -3,3 +3,4 @@ tab: complete
 set completion-ignore-case on
 set blink-matching-paren on
 set show-all-if-ambiguous On
+"\C-l":'clear\n'
