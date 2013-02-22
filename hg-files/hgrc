@@ -8,13 +8,14 @@ pager = LESS='rXSF' less -d
 [extensions]
 pager =
 mq =
+record =
 color =
 rebase =
 graphlog =
 prompt = /local/work/tools/hg-extensions/hg-prompt/prompt.py
 reviewboard = /local/work/tools/hg-extensions/hg-reviewboard
 hgext.bookmarks =
-hgext.git =
+hggit =
 
 [reviewboard]
 server = http://rb.xs.citrite.net
@@ -28,7 +29,7 @@ nodates=1
 qstatus = !hg status --rev qparent 2> /dev/null
 latest = log --limit $1
 llog = log --limit 5
-glog = glog --limit 5
+glog = glog
 patchreview = postreview --parent qparent --git --webbrowser --target_groups storage
 updatepatchreview = postreview --existing $1 --update --parent qparent --git -w
 
