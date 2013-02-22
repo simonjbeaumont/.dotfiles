@@ -95,10 +95,6 @@ set splitright      " open new vsplits to the right
 nnoremap / /\v
 vnoremap / /\v
 
-" Move between bracket pairs---N.B. this breaks C-I jumping :(
-" nnoremap <tab> %
-" vnoremap <tab> %
-
 set lazyredraw    " don't redraw during macros
 
 " No annoying sound on errors
@@ -139,7 +135,6 @@ if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
    syntax on
 endif
-
 
 " Higlight long lines
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
