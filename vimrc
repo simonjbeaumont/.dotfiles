@@ -9,6 +9,11 @@ set nocompatible
 au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
 
+" Use extended unicode mouse escape sequences
+if version >= 737
+    set ttym=sgr
+endif
+
 " Use pathogen to manage plugins under ~/.vim/bundle
 call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
