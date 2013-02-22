@@ -180,6 +180,10 @@ let g:pymode_utils_whitespaces=0 " annoying when working with (bad) shared code
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:yankring_history_file='.yankring-hist'
 
+" NERDTree plugin
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let NERDTreeIgnore = ['\.pyc$']
+
 " Stuff I've not tidied yet
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <leader>cd :cd %:p:h<CR>:pwd<CR>
