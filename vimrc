@@ -194,6 +194,8 @@ nmap <silent> <leader>r :TagbarToggle<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
 nmap <silent> <leader>O :NERDTreeFind<CR>
 
+vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+vmap <Leader>h :<C-U>!hg blame -ucdq <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 " Use tabs like a 'normal' editor
 "set switchbuf=usetab,newtab
 "map <C-t>     :tabnew<CR>
