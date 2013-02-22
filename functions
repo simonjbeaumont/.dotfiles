@@ -98,3 +98,24 @@ actuals_lw() {
     actuals_bw $(date +%d/%m/%Y --date="last Monday -1 week") \
                $(date +%d/%m/%Y --date="last Saturday")
 }
+
+cleanup_snfs ()
+{
+    echo -n "Killing all tapdisks...";
+    killall tapdisk 2> /dev/null;
+    echo "OK";
+    echo -n "Unmounting all SRs from /var/run/sr-mount/ ...";
+    for uuid in /var/run/sr-mount/*;
+    do
+        umount $uuid 2> /dev/null;
+        rm -r $uuid 2> /dev/null;
+    done;
+    echo "OK";
+    echo -n "Deleting /var/run/snfs ...";
+    rm -r /var/run/snfs;
+    echo "OK";
+    echo -n "Clearing SMlog...";
+     > /var/log/SMlog;
+    echo "OK";
+    service snfs restart
+}
