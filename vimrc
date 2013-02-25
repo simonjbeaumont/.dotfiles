@@ -10,7 +10,7 @@ au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
 
 " Use extended unicode mouse escape sequences
-if version >= 737
+if has('mouse_sgr')
     set ttym=sgr
 endif
 
