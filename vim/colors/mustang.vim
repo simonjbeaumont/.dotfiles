@@ -16,7 +16,7 @@ let colors_name = "mustang"
 if version >= 700
   hi CursorLine     guibg=#252525                           ctermbg=235 cterm=none
   hi CursorColumn   guibg=#252525                           ctermbg=236
-  hi ColorColumn    guibg=DarkRed                           ctermbg=DarkRed
+  hi ColorColumn    guibg=#181818                           ctermbg=235
   hi MatchParen     guifg=#d0ffc0 guibg=#2f2f2f gui=bold    ctermfg=157 ctermbg=237 cterm=bold
   hi Pmenu          guifg=#ffffff guibg=#444444             ctermfg=255 ctermbg=238
   hi PmenuSel       guifg=#000000 guibg=#b1d631             ctermfg=0   ctermbg=148

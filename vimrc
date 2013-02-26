@@ -74,6 +74,7 @@ set wildmode=longest,list     " bash-style file completion
 set wildignore=*.o,*~,*.pyc   " Ignore compiled files
 
 set ruler           " Show current position
+set colorcolumn=80  " always show width marker
 set number          " always show line numbers
 set cursorline      " highlight the current line
 
@@ -196,6 +197,9 @@ nmap <silent> <leader>O :NERDTreeFind<CR>
 
 vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
 vmap <Leader>h :<C-U>!hg blame -ucdq <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
+
+" Disable width-marker when needed
+map <leader>m :set colorcolumn=<CR>
 " Use tabs like a 'normal' editor
 "set switchbuf=usetab,newtab
 "map <C-t>     :tabnew<CR>
