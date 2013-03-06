@@ -18,7 +18,8 @@ alias rokc='ant -f /work/tools/RokClock/build.xml run'
 # Current projects
 alias sm='cd /work/trunk-storage/build.hg/myrepos/sm.hg'
 alias defects='cd /work/Defects/'
-alias snfs='cd /work/pr-1594/sm.hg'
+alias snfs='cd /local/export/pr-1594/sm.hg'
+alias pp='cd /work/scratch/python-playground'
 
 # Mercurial patch queues
 alias mq='hg -R $(hg root)/.hg/patches'
