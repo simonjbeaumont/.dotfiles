@@ -101,6 +101,7 @@ actuals_lw() {
 
 cleanup_snfs ()
 {
+    service snfs stop
     echo -n "Killing all tapdisks...";
     killall tapdisk 2> /dev/null;
     echo "OK";
@@ -117,5 +118,5 @@ cleanup_snfs ()
     echo -n "Clearing SMlog...";
      > /var/log/SMlog;
     echo "OK";
-    service snfs restart
+    service snfs start
 }
