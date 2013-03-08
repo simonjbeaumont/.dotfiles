@@ -1,6 +1,6 @@
 " .vimrc : Si Beaumont
 
-" General
+" General {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This must be first, because it changes other options as side effect
 set nocompatible
@@ -28,7 +28,7 @@ endif
 au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
 
-" UI
+" UI {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guifont=Monospace\ 9
 
@@ -75,7 +75,11 @@ set t_vb=
 set list
 set listchars=tab:▸\ ,eol:¬
 
-" Colours
+" Folding
+set foldmethod=marker
+set foldcolumn=2
+
+" Colours {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I have 256 colors even if my TERM variable says otherwise (tmux)
 set t_Co=256
@@ -98,7 +102,7 @@ au BufRead,BufNewFile *messages* set filetype=messages
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
 
-" Files, backups and undo
+" Files, backups and undo {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if version >= 703
     set undodir=~/.vim/tmp/undo// " undo files
@@ -108,7 +112,7 @@ set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
 set noswapfile                    " It's 2012, Vim.
 
-" Text editing
+" Text editing {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap
 set textwidth=79
@@ -127,7 +131,7 @@ set autoindent    " always set autoindenting on
 set smartindent   " for some auto-semantic-indenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
-" Plugin configuration
+" Plugin configuration {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags
 set tags=tags;/
@@ -159,7 +163,10 @@ let g:pymode_lint_hold=0
 " YankRing
 let g:yankring_history_file='.yankring-hist'
 
-" Functions
+" Pandoc
+let g:pandoc_use_hard_wraps=1
+
+" Functions {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " See what you've changed before saving
 function! s:DiffWithSaved()
@@ -171,7 +178,7 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-" Key mappings
+" Key mappings {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
