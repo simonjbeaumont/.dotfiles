@@ -1,4 +1,5 @@
 " .vimrc : Si Beaumont
+" vim: foldmethod=marker
 
 " General {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -233,3 +234,9 @@ nmap <silent> <leader>md ^cl☑<space><esc>
 
 " Log to SMlog (work stuff)
 nmap <silent> <leader>sm yEoutil.SMlog("sjbx: pa = %s" % p
+
+" Moving around splits with the leader key
+nmap <silent> <leader>h :wincmd h<CR>
+nmap <silent> <leader>j :wincmd j<CR>
+nmap <silent> <leader>k :wincmd k<CR>
+nmap <silent> <leader>l :wincmd l<CR>
