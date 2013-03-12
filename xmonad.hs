@@ -115,7 +115,7 @@ customPP :: PP
 customPP = defaultPP { ppCurrent = xmobarColor "#1b8ac2" "" . wrap "·" "·"
                      , ppVisible = wrap "·" "·"
                      , ppTitle =  shorten 80
-                     , ppSep =  "<fc=#AFAF87>       </fc>"
+                     , ppSep =  "       "
                      , ppWsSep = "    "
                      , ppHiddenNoWindows = xmobarColor "#777777" ""
                      , ppUrgent = xmobarColor "#FFFFAF" "" . wrap "*" "*" . xmobarStrip
