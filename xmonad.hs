@@ -24,6 +24,8 @@ import XMonad.Layout.IM
 import XMonad.Layout.Grid
 import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimpleFloat
+import XMonad.Layout.Renamed
+import XMonad.Layout.Tabbed
 
 -- actions
 import XMonad.Actions.CycleWS
@@ -118,13 +120,6 @@ customPP = defaultPP { ppCurrent = xmobarColor "#1b8ac2" "" . wrap "·" "·"
                      , ppHiddenNoWindows = xmobarColor "#777777" ""
                      , ppUrgent = xmobarColor "#FFFFAF" "" . wrap "*" "*" . xmobarStrip
                      , ppSort = getSortByXineramaRule
-                     , ppLayout = (\x -> case x of
-                            "Spacing 15 ResizableTall"        -> "· T ·"
-                            "Mirror Spacing 15 ResizableTall" -> "· M ·"
-                            "Full"                            -> "· X ·"
-                            "Spacing 15 IM Grid"              -> "· G ·"
-                            "IM Spacing 15 ResizableTall"     -> "· R ·"
-                            _                                 ->  x)
                      }
 
 
@@ -134,26 +129,34 @@ borderWidth' = 3
 
 normalBorderColor', focusedBorderColor' :: String
 normalBorderColor'  = "#333333"
-focusedBorderColor' = "#0775a8"
+{- focusedBorderColor' = "#0775a8" -}
+focusedBorderColor' = "#0799a8"
 
 -- workspaces
 workspaces' :: [WorkspaceId]
 workspaces' = [" 1-mail ", " 2-work ", " 3-web ", " 4-xen ", " 5-xenrt ", " 6-chat ", " 7-music ", " 8 ", " 9 "]
 
 -- layouts
-customLayout = avoidStruts $ smartBorders tiled ||| smartBorders (Mirror tiled)  ||| noBorders Full
+customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
   where
-    tiled = spacing 15 $ ResizableTall nmaster delta ratio []
-    -- Default number of windows in master pane
-    nmaster = 1
-    -- Percent of the screen to increment when resizing
-    delta   = 2/100
-    -- Default proportion of the screen taken up by main pane
-    -- ratio   = toRational (2/(1 + sqrt 5 :: Double)) 
-    ratio = 5/8
-
-imLayout    = avoidStruts $ spacing 15 $ withIM (1/5) (Resource "Office Communicator") (Mirror Grid)
-rokLayout   = avoidStruts $ withIM (1/15) (ClassName "rokclock-Main") customLayout
+    nmaster  = 1     -- Default number of windows in master pane
+    delta    = 2/100 -- Percentage of the screen to increment when resizing
+    ratio    = 5/8   -- Defaul proportion of the screen taken up by main pane
+    rt       = spacing 5 $ ResizableTall nmaster delta ratio []
+    tiled    = renamed [Replace "· T ·"] $ smartBorders rt
+    mtiled   = renamed [Replace "· M ·"] $ smartBorders $ Mirror rt
+    tab      = renamed [Replace "· * ·"] $ noBorders $ tabbed shrinkText tabTheme
+    full     = renamed [Replace "· X ·"] $ noBorders Full
+    tabTheme = defaultTheme { decoHeight = 16
+                            , activeColor = "#a6c292"
+                            , activeBorderColor = "#a6c292"
+                            , activeTextColor = "#000000"
+                            , inactiveBorderColor = "#000000"
+                            }
+imLayout    = renamed [Replace "· G ·"] $ avoidStruts $ spacing 5 $
+                    withIM (1/6) (Role "buddy_list") (Mirror Grid)
+rokLayout   = renamed [Replace "· R ·"] $ avoidStruts $
+                    withIM (1/18) (ClassName "rokclock-Main") customLayout
 
 -------------------------------------------------------------------------------
 -- Terminal --
