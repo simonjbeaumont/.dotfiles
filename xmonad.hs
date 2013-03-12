@@ -74,26 +74,27 @@ main = do
 -- Hooks --
 manageHook' :: ManageHook
 manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
-    [ [className    =? c            -?> doCenterFloat           |   c <- myFloats   ] -- float my floats
-    , [fmap (isInfixOf a) appName   -?> doFloat                 |   a <- myXenApps  ] -- float my XenApps
-    , [className    =? c           <&&> appName =? ""-?> idHook |   c <- myXenApps  ]
-    , [className    =? c            -?> idHook                  |   c <- myXenApps  ]
+    [ [className =? c -?> doCenterFloat | c <- myFloats ] -- float my floats
+    -- XenApp stuff
+    , [fmap (isInfixOf a) appName                       -?> doFloat     | a <- myXenApps ] -- float my XenApps
+    , [className =? "Wfica_Seamless" <&&> appName =? "" -?> doF W.focusDown <+> doIgnore ]
+    , [className =? "Wfica_Seamless"                    -?> doCenterFloat                ]
     -- shift certain apps to certain workspaces
-    , [fmap (isInfixOf a) appName   -?> doShift  " 6-chat "     |   a <- myChat     ] -- move to WS
-    , [className    =? c            -?> doShift  " 7-music "    |   c <- myMusic    ] -- move to WS
+    , [fmap (isInfixOf a) appName   -?> doShift  " 6-chat "  |   a <- myChat     ] -- move to WS
+    , [className    =? c            -?> doShift  " 7-music " |   c <- myMusic    ] -- move to WS
     -- catch all...
-    , [className    =? c            -?> doIgnore                |   c <- myIgnores  ] -- ignore desktop
-    , [isFullscreen                 -?> myDoFullFloat                               ] -- special full screen
-    , [isDialog                     -?> doCenterFloat                               ] -- float dialogs
-    , [return True                  -?> doF W.swapDown                              ] -- open below, not above
+    , [className    =? c            -?> doIgnore       |   c <- myIgnores  ] -- ignore desktop
+    , [isFullscreen                 -?> myDoFullFloat                      ] -- special full screen
+    , [isDialog                     -?> doCenterFloat                      ] -- float dialogs
+    , [return True                  -?> doF W.swapDown                     ] -- open below, not above
     ]) 
     where
         -- by className
-        myIgnores = ["Do", "Notification-daemon", "stalonetray", "trayer"]
+        myIgnores = ["Do", "Notification-daemon", "notify-osd", "stalonetray", "trayer"]
         myFloats  = ["VirtualBox", "Xmessage", "XFontSel", "Nm-connection-editor", "Cinnamon-settings.py"]
         myMusic   = ["Spotify"]
         -- by appName (special treatment for _top-level_ windows of XenApps (Wfica_Seamless : className)
-        myXenApps = ["Microsoft Outlook", "XenCenter", "XenRTCenter", "- Message", "Office Communicator", "Wfica_Seamless"]
+        myXenApps = ["Microsoft Outlook", "XenCenter", "XenRTCenter", "- Message", " Reminder", "Office Communicator"]
         myChat    = ["Pidgin", "Office Communicator", "- Conversation"]
         -- a trick for fullscreen but stil allow focusing of other WSs
         myDoFullFloat = doF W.focusDown <+> doFullFloat
