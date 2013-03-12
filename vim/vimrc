@@ -228,7 +228,7 @@ nmap <silent> <leader>o :NERDTreeToggle<CR>
 nmap <leader>a :Ack 
 
 " Quickly edit my todo file
-nmap <silent> <leader>et :e /work/todo.txt<CR>
+nmap <silent> <leader>et :e /work/todo.txt<CR>:set ft=pandoc<CR>
 nmap <silent> <leader>mi ^y$/\=\=\=<CR>,/o<ESC>p^r-
 nmap <silent> <leader>md ^cl☑<space><esc>
 
