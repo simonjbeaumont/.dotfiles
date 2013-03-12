@@ -37,7 +37,7 @@ else
     ln -sv "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
     ln -sv "$HOME/.dotfiles/tmux/tmux_start" "$HOME/tmux_start"
     ln -sv "$HOME/.dotfiles/vim" "$HOME/.vim"
-    ln -sv "$HOME/.dotfiles/vimrc" "$HOME/.vimrc"
+    ln -sv "$HOME/.dotfiles/vim/vimrc" "$HOME/.vimrc"
     [ -e "$HOME/.xmonad" -a -d "$HOME/.xmonad" ] && ln -sv "$HOME/.dotfiles/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
 
     # if we're on a Mac, let's set it up properly
