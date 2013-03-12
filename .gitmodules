@@ -54,7 +54,7 @@
 	path = vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
 [submodule "tmux-powerline"]
-	path = tmux-powerline
+	path = tmux/tmux-powerline
 	url = https://github.com/simonjbeaumont/tmux-powerline.git
 [submodule "vim/bundle/YankRing.vim"]
 	path = vim/bundle/YankRing.vim

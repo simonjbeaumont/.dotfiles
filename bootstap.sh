@@ -34,10 +34,10 @@ else
     ln -sv "$HOME/.dotfiles/git/gitignore_global" "$HOME/.gitignore_global"
     ln -sv "$HOME/.dotfiles/hg-files/hgrc" "$HOME/.hgrc"
     ln -sv "$HOME/.dotfiles/hg-files/hgignore" "$HOME/.hgignore"
+    ln -sv "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
+    ln -sv "$HOME/.dotfiles/tmux/tmux_start" "$HOME/tmux_start"
     ln -sv "$HOME/.dotfiles/vim" "$HOME/.vim"
     ln -sv "$HOME/.dotfiles/vimrc" "$HOME/.vimrc"
-    ln -sv "$HOME/.dotfiles/tmux.conf" "$HOME/.tmux.conf"
-    ln -sv "$HOME/.dotfiles/tmux_start" "$HOME/tmux_start"
     [ -e "$HOME/.xmonad" -a -d "$HOME/.xmonad" ] && ln -sv "$HOME/.dotfiles/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
 
     # if we're on a Mac, let's set it up properly
