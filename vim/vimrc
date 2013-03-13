@@ -78,7 +78,6 @@ set listchars=tab:▸\ ,eol:¬
 
 " Folding
 set foldmethod=marker
-set foldcolumn=2
 
 " Colours {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
