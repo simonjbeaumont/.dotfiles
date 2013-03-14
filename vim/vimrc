@@ -203,10 +203,10 @@ map <leader>m :set colorcolumn=<CR>
 nnoremap <leader>z zMzvzz
 
 " System clipboard interaction
-noremap <leader>y "*y
-noremap <leader>p :set paste<CR>"*p<CR>:set nopaste<CR>
-noremap <leader>P :set paste<CR>"*P<CR>:set nopaste<CR>
-vnoremap <leader>y "*ygv
+noremap <leader>y "+y
+noremap <leader>p :set paste<CR>"+p<CR>:set nopaste<CR>
+noremap <leader>P :set paste<CR>"+P<CR>:set nopaste<CR>
+vnoremap <leader>y "+ygv
 
 " Clean trailing whitespace from whole file
 nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<cr>`z
