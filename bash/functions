@@ -99,6 +99,11 @@ actuals_lw() {
                $(date +%d/%m/%Y --date="last Saturday")
 }
 
+actuals_tw() {
+    actuals_bw $(date +%d/%m/%Y --date="last Monday") \
+               $(date +%d/%m/%Y --date="tomorrow")
+}
+
 cleanup_snfs ()
 {
     service snfs stop
