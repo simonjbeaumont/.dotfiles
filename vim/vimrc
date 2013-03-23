@@ -102,6 +102,13 @@ au BufRead,BufNewFile *messages* set filetype=messages
 "highlight OverLength ctermbg=red ctermfg=white guibg=#592929
 "match OverLength /\%81v.\+/
 
+" Solarized colorscheme (overrides above)
+set bg=dark
+set t_Co=16
+let g:solarized_termcolors=16
+colorscheme solarized
+let Powerline_colorscheme="solarized16"
+
 " Files, backups and undo {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if version >= 703
