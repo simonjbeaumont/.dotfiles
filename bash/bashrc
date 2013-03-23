@@ -31,6 +31,19 @@ elif [[ "$OSTYPE" =~ ^linux ]]; then
     fi
 fi
 
+# Setting up GNU coreutils/ls
+#-------------------------------------------------------------------------------
+if [[ "$OSTYPE" =~ ^darwin ]]; then
+    if [[ $(brew list coreutils) ]]; then
+       # Let GNU coreutils take precedence over OSX/BSD utils
+       export PATH="$(brew --prefix coreutils)/libexec/gnubin":$PATH
+       eval `dircolors ~/.dircolors`
+    else
+        export LSCOLORS="gxfxbEaEBxxEhEhBaDaCaD"
+    fi
+elif [[ "$OSTYPE" =~ ^linux ]]; then
+    eval `dircolors ~/.dircolors`
+fi
 
 # Other sensible(?) environment variables
 #-------------------------------------------------------------------------------
