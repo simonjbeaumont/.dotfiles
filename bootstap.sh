@@ -44,7 +44,7 @@ else
 
     # if we're on a Mac, let's set it up properly
     if [[ "$OSTYPE" =~ ^darwin ]]; then
-    	source "$HOME/.dotfiles/osx"
+    	source "$HOME/.dotfiles/osx/osx-defaults-setup"
     fi
 
     # let's sort out all the vim submodules
