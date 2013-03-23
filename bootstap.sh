@@ -54,4 +54,9 @@ else
     source ~/.bash_profile
     cd "$HOME"
     echo "Initalisation complete!"
+
+    if [[ "$OSTYPE" =~ ^darwin ]]; then
+        echo "Note: Terminal.app and iTerm themes can be installed from:"
+        echo "  - $HOME/.dotfiles/osx/"
+    fi
 fi
