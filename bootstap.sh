@@ -21,6 +21,7 @@ else
     [ -e "$HOME/.vim" -o -h "$HOME/.vim" ] && rm -r -v "$HOME/.vim"
     [ -e "$HOME/.vimrc" -o -h "$HOME/.vimrc" ] && rm -v "$HOME/.vimrc"
     [ -e "$HOME/.tmux.conf" -o -h "$HOME/.tmux.conf" ] && rm -v "$HOME/.tmux.conf"
+    [ -e "$HOME/.tmux-powerlinerc" -o -h "$HOME/.tmux-powerlinerc" ] && rm -v "$HOME/.tmux-powerlinerc"
     [ -e "$HOME/tmux_start" -o -h "$HOME/tmux_start" ] && rm -v "$HOME/tmux_start"
     [ -e "$HOME/.xmonad/xmonad.hs" -o -h "$HOME/.xmonad/xmonad.hs" ] && rm -v "$HOME/.xmonad/xmonad.hs"
 
@@ -37,6 +38,7 @@ else
     ln -sv "$HOME/.dotfiles/hg/hgrc" "$HOME/.hgrc"
     ln -sv "$HOME/.dotfiles/hg/hgignore" "$HOME/.hgignore"
     ln -sv "$HOME/.dotfiles/tmux/tmux.conf" "$HOME/.tmux.conf"
+    ln -sv "$HOME/.dotfiles/tmux/tmux-powerline/tmux-powerlinerc" "$HOME/.tmux-powerlinerc"
     ln -sv "$HOME/.dotfiles/tmux/tmux_start" "$HOME/tmux_start"
     ln -sv "$HOME/.dotfiles/vim" "$HOME/.vim"
     ln -sv "$HOME/.dotfiles/vim/vimrc" "$HOME/.vimrc"
