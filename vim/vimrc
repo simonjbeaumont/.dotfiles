@@ -82,7 +82,6 @@ set foldmethod=marker
 " Colours {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " I have 256 colors even if my TERM variable says otherwise (tmux)
-set t_Co=256
 " Let's try to always have colours
 if &t_Co >= 256 || has("gui_running")
     colorscheme mustang
@@ -104,7 +103,7 @@ au BufRead,BufNewFile *messages* set filetype=messages
 
 " Solarized colorscheme (overrides above)
 set bg=dark
-set t_Co=16
+" set t_Co=16
 let g:solarized_termtrans=1
 let g:solarized_termcolors=16
 colorscheme solarized
@@ -247,3 +246,5 @@ nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>l :wincmd l<CR>
+
+map <C-k> :call OCamlType()<CR>

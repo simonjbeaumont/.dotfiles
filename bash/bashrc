@@ -4,6 +4,9 @@ for file in ~/.{bash_prompt,aliases,functions}; do
 done
 unset file
 
+# Give me 256 colors! gnome-terminal hardcodes TERM to xterm...
+if [[ $TERM = xterm ]]; then export TERM=xterm-256color; fi
+
 # Stop resizing from foobaring readline support
 shopt -s checkwinsize
 
