@@ -76,4 +76,4 @@
 	url = https://github.com/erikw/tmux-powerline.git
 [submodule "vim/bundle/vim-ocamlspot"]
 	path = vim/bundle/vim-ocamlspot
-	url = https://github.com/simonjbeaumont/.dotfiles.git
+	url = https://github.com/simonjbeaumont/vim-ocamlspot.git
