@@ -47,6 +47,7 @@ set number          " always show line numbers
 set cursorline      " highlight the current line
 
 set cmdheight=2     " Height of the command bar
+set laststatus=2    " Required for vim-powerline
 
 set hidden          " Handle hidden buffers
 
@@ -81,10 +82,14 @@ set foldmethod=marker
 
 " Colours {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" I have 256 colors even if my TERM variable says otherwise (tmux)
 " Let's try to always have colours
-if &t_Co >= 256 || has("gui_running")
-    colorscheme mustang
+if &t_Co >= 16 || has("gui_running")
+    " Solarized colorscheme (overrides above)
+    set bg=dark
+    let g:solarized_termtrans=1
+    let g:solarized_termcolors=16
+    let g:solarized_hitrail=1
+    colorscheme solarized
 endif
 if &t_Co > 2 || has("gui_running")
    " switch syntax highlighting on, when the terminal has colors
@@ -96,18 +101,6 @@ au BufRead,BufNewFile *xensource.log* set filetype=messages
 au BufRead,BufNewFile *isl_trace.log* set filetype=messages
 au BufRead,BufNewFile *SMlog* set filetype=messages
 au BufRead,BufNewFile *messages* set filetype=messages
-
-" Higlight long lines
-"highlight OverLength ctermbg=red ctermfg=white guibg=#592929
-"match OverLength /\%81v.\+/
-
-" Solarized colorscheme (overrides above)
-set bg=dark
-" set t_Co=16
-let g:solarized_termtrans=1
-let g:solarized_termcolors=16
-colorscheme solarized
-let Powerline_colorscheme="solarized16"
 
 " Files, backups and undo {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -152,7 +145,7 @@ let g:tagbar_autofocus=1
 " Vim Powerline
 let g:Powerline_symbols = 'fancy'
 let g:Powerline_cache_enabled = 1
-set laststatus=2                    " required for vim-powerline
+let Powerline_colorscheme="solarized16"
 
 " NERDTree
 let NERDTreeIgnore = ['\.pyc$']
