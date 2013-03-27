@@ -148,7 +148,12 @@ let g:Powerline_cache_enabled = 1
 let Powerline_colorscheme="solarized16"
 
 " NERDTree
-let NERDTreeIgnore = ['\.pyc$']
+let NERDTreeIgnore = [
+    \ '\.pyc$',
+    \ '\.cm\(x\(a\)\?\|i\|t\)$',
+    \ '\.sp\(o\|i\)t$',
+    \ '\.o\(\(pt\|mc\)\)\=$',
+    \ '\.annot$']
 
 " NERDCommenter
 let g:NERDSpaceDelims=1
