@@ -16,10 +16,13 @@ alias vimrl='vim /work/tools/RokClock/log.txt'
 alias rokc='ant -f /work/tools/RokClock/build.xml run'
 
 # Current projects
-alias sm='cd /work/trunk-storage/build.hg/myrepos/sm.hg'
+alias sm='cd /work/branches/trunk-storage/build.hg/myrepos/sm.hg'
+alias r3='cd /work/branches/trunk-ring3/build.hg/'
+alias xapi='cd /work/branches/trunk-ring3/build.hg/myrepos/xen-api'
 alias defects='cd /work/Defects/'
 alias snfs='cd /local/export/pr-1594/sm.hg'
 alias pp='cd /work/scratch/python-playground'
+alias op='cd /work/scratch/ocaml-playground'
 
 # Mercurial patch queues
 alias mq='hg -R $(hg root)/.hg/patches'

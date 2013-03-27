@@ -3,17 +3,21 @@ cd ~
 tmux start-server
 tmux new-session -d -s sm-work -n 'notes'
 
-tmux new-window -t sm-work:2 -n 'sm'
-tmux new-window -t sm-work:3 -n 'sm-hg'
-tmux new-window -t sm-work:4 -n 'dt19'
-tmux new-window -t sm-work:5 -n 'dt44'
+tmux new-window -t sm-work:0 -n 'irc'
+tmux new-window -t sm-work:2 -n 'build'
+tmux new-window -t sm-work:3 -n 'xapi'
+tmux new-window -t sm-work:4 -n 'xapi-git'
+tmux new-window -t sm-work:5 -n 'dt19'
+tmux new-window -t sm-work:6 -n 'dt44'
 tmux new-window -t sm-work:9 -n 'config'
 
-tmux send-keys -t sm-work:1 'cd /work/Defects/; vim ../xs-cheatsheet' C-m
-tmux send-keys -t sm-work:2 'cd /work/trunk-storage/build.hg/myrepos/sm.hg; vim .' C-m
-tmux send-keys -t sm-work:3 'cd /work/trunk-storage/build.hg/myrepos/sm.hg' C-m
-tmux send-keys -t sm-work:4 'ssh dt19' C-m
-tmux send-keys -t sm-work:5 'ssh dt44' C-m
+tmux send-keys -t sm-work:0 'irssi' C-m
+tmux send-keys -t sm-work:1 'cd /work/Defects/; vim ../todo.txt' C-m
+tmux send-keys -t sm-work:2 'r3' C-m C-l
+tmux send-keys -t sm-work:3 'xapi' C-m C-l
+tmux send-keys -t sm-work:4 'xapi' C-m C-l
+tmux send-keys -t sm-work:5 'ssh dt19' C-m
+tmux send-keys -t sm-work:6 'ssh dt44' C-m
 tmux send-keys -t sm-work:9 'cd ~/.dotfiles/; vim .' C-m
 
 tmux select-window -t sm-work:1
