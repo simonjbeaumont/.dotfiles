@@ -26,6 +26,7 @@ import XMonad.Layout.PerWorkspace
 import XMonad.Layout.SimpleFloat
 import XMonad.Layout.Renamed
 import XMonad.Layout.Tabbed
+import XMonad.Layout.Reflect
 
 -- actions
 import XMonad.Actions.CycleWS
@@ -156,7 +157,8 @@ customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
 imLayout    = renamed [Replace "· G ·"] $ avoidStruts $ spacing 5 $
                     withIM (1/6) (Role "buddy_list") (Mirror Grid)
 rokLayout   = renamed [Replace "· R ·"] $ avoidStruts $
-                    withIM (1/18) (ClassName "rokclock-Main") customLayout
+                    reflectHoriz $ withIM (1/18) (ClassName "rokclock-Main")
+                        (reflectHoriz customLayout)
 
 -------------------------------------------------------------------------------
 -- Terminal --
