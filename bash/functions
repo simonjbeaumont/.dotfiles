@@ -125,3 +125,9 @@ cleanup_snfs ()
     echo "OK";
     service snfs start
 }
+
+prompt ()
+{
+    read -sp "Echo this: " my_pass
+    echo $my_pass
+}
