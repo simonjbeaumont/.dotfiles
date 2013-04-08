@@ -20,7 +20,8 @@ shopt -s checkwinsize
 [ -r /usr/groups/xen ] && \
     export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin:/usr/groups/xen/xenrt/control:/work/tools && \
     source /usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenusecomplete
-
+# OPAM
+eval $(opam config env)
 
 # Make life easier with autocomplete
 #-------------------------------------------------------------------------------
