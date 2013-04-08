@@ -123,6 +123,7 @@ set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
 set tabstop=4     " a tab is four spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
+au FileType ocaml setl sw=2 sts=2 ts=2 tw=0 fo-=t wrapmargin=0 noexpandtab
 
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -245,4 +246,4 @@ nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>l :wincmd l<CR>
 
-map <C-k> :call OCamlType()<CR>
+map <leader>. :call OCamlType()<CR>
