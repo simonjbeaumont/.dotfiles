@@ -247,3 +247,5 @@ nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>l :wincmd l<CR>
 
 map <leader>. :call OCamlType()<CR>
+map <leader>] :call OCamlSpot()<CR>
+map <leader>t <C-o><CR>
