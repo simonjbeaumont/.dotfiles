@@ -7,10 +7,10 @@
    branch = auto
    interactive = auto
 [alias]
-   st = status
+   st = status -sb
    ci = commit
    co = checkout
-
+   gl = log --graph --abbrev-commit --oneline --decorate
 [github]
 	user = simonjbeaumont
 	token = [token]

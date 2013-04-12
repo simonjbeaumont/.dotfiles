@@ -52,7 +52,7 @@ alias mosml='rlwrap mosml'
 
 # Git stuff
 alias gitrevert='(git reset HEAD .);(git checkout -- .)'
-alias gl='git log --graph --abbrev-commit --pretty=oneline --decorate'
+alias gl='git gl'
 
 # Mercurial
 alias hl='hg log --template "* \x1B[0;33m{node|short}\x1B[0;30m———\x1B[0;31m\x1B[33m{date|shortdate}\x1B[30m———\x1B[33m{author|person}\n\x1B[0m{desc|strip|firstline|fill76|strip}\n\n" --color true | less -R'
