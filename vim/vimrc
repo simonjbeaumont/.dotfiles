@@ -83,17 +83,16 @@ set foldmethod=marker
 " Colours {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Let's try to always have colours
+if &t_Co > 2 || has("gui_running")
+   syntax on
+endif
 if &t_Co >= 16 || has("gui_running")
-    " Solarized colorscheme (overrides above)
+    " Solarized colorscheme
     set bg=dark
     let g:solarized_termtrans=1
     let g:solarized_termcolors=16
     let g:solarized_hitrail=1
     colorscheme solarized
-endif
-if &t_Co > 2 || has("gui_running")
-   " switch syntax highlighting on, when the terminal has colors
-   syntax on
 endif
 
 " Custom ft recognition
