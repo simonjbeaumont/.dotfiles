@@ -171,6 +171,9 @@ let g:yankring_history_file='.yankring-hist'
 " Pandoc
 let g:pandoc_use_hard_wraps=1
 
+" Syntastic
+let g:syntastic_ocaml_use_ocamlc = 1
+
 " Functions {{{1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " See what you've changed before saving

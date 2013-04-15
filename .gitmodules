@@ -77,3 +77,6 @@
 [submodule "vim/bundle/vim-ocamlspot"]
 	path = vim/bundle/vim-ocamlspot
 	url = https://github.com/simonjbeaumont/vim-ocamlspot.git
+[submodule "vim/bundle/syntastic"]
+	path = vim/bundle/syntastic
+	url = https://github.com/scrooloose/syntastic.git
