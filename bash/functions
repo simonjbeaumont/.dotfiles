@@ -129,3 +129,15 @@ prompt () {
     read -sp "Echo this: " my_pass
     echo $my_pass
 }
+
+function grml() {
+    find . -regex .*\\.mli? | xargs grep -Hn --color=always "$@"
+}
+
+function ssh() {
+    if [[ "${TERM}" = screen* ]]; then
+        env TERM=screen ssh "$@"
+    else
+        ssh "$@"
+    fi
+}
