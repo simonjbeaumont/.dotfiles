@@ -4,6 +4,7 @@ import XMonad.Config.Gnome
 import qualified XMonad.StackSet as W
 import System.IO (Handle, hPutStrLn)
 import Data.List
+import Data.Map as Map
 
 -- utils
 import XMonad.Util.Run (spawnPipe)
@@ -112,6 +113,26 @@ layoutHook' =   onWorkspace " 6-chat " imLayout $
 
 -------------------------------------------------------------------------------
 -- Looks --
+-- solarized colors
+solarized :: Map String String
+solarized = Map.fromList [
+    ("base03",   "#002b36"),
+    ("base02",   "#073642"),
+    ("base01",   "#586e75"),
+    ("base00",   "#657b83"),
+    ("base0",    "#839496"),
+    ("base1",    "#93a1a1"),
+    ("base2",    "#eee8d5"),
+    ("base3",    "#fdf6e3"),
+    ("yellow",   "#b58900"),
+    ("orange",   "#cb4b16"),
+    ("red",      "#dc322f"),
+    ("magenta",  "#d33682"),
+    ("violet",   "#6c71c4"),
+    ("blue",     "#268bd2"),
+    ("cyan",     "#2aa198"),
+    ("green",    "#859900")]
+
 -- bar
 customPP :: PP
 customPP = defaultPP { ppCurrent = xmobarColor "#1b8ac2" "" . wrap "·" "·"
@@ -124,15 +145,13 @@ customPP = defaultPP { ppCurrent = xmobarColor "#1b8ac2" "" . wrap "·" "·"
                      , ppSort = getSortByXineramaRule
                      }
 
-
 -- borders
 borderWidth' :: Dimension
-borderWidth' = 3
+borderWidth' = 2
 
 normalBorderColor', focusedBorderColor' :: String
-normalBorderColor'  = "#333333"
-{- focusedBorderColor' = "#0775a8" -}
-focusedBorderColor' = "#0799a8"
+normalBorderColor'  =  Map.findWithDefault "" "base01" solarized
+focusedBorderColor' =  Map.findWithDefault "" "orange" solarized
 
 -- workspaces
 workspaces' :: [WorkspaceId]
