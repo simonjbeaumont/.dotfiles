@@ -35,8 +35,8 @@ import XMonad.Actions.CycleWS
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h1 <- spawnPipe "xmobar -x 0 ~/.xmonad/.xmobarrc"
-       h2 <- spawnPipe "xmobar -x 1 ~/.xmonad/.xmobarrc"
+       h1 <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobarrc"
+       h2 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
        xmonad $ withUrgencyHook NoUrgencyHook $ gnomeConfig
               { workspaces = workspaces'
               , modMask = modMask'
@@ -107,8 +107,8 @@ manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
 logHook' h1 h2 = dynamicLogWithPP customPP { ppOutput = hPutStrLn h1 }
               >> dynamicLogWithPP customPP { ppOutput = hPutStrLn h2 }
 
-layoutHook' =   onWorkspace " 6-chat " imLayout $
-                onWorkspace " 3-web " rokLayout $
+layoutHook' =   onWorkspace "6-chat" imLayout $
+                onWorkspace "3-web" rokLayout $
                 customLayout
 
 -------------------------------------------------------------------------------
@@ -135,13 +135,13 @@ solarized = Map.fromList [
 
 -- bar
 customPP :: PP
-customPP = defaultPP { ppCurrent = xmobarColor "#1b8ac2" "" . wrap "·" "·"
-                     , ppVisible = wrap "·" "·"
+customPP = defaultPP { ppCurrent = xmobarColor (Map.findWithDefault "" "orange" solarized) "" . wrap "—" "—"
+                     , ppVisible = wrap "—" "—"
                      , ppTitle =  shorten 80
-                     , ppSep =  "       "
-                     , ppWsSep = "    "
-                     , ppHiddenNoWindows = xmobarColor "#777777" ""
-                     , ppUrgent = xmobarColor "#FFFFAF" "" . wrap "*" "*" . xmobarStrip
+                     , ppSep =  "  ——  "
+                     , ppWsSep = "  "
+                     , ppHiddenNoWindows = xmobarColor (Map.findWithDefault "" "base01" solarized) ""
+                     , ppUrgent = xmobarColor (Map.findWithDefault "" "yellow" solarized) "" . wrap "*" "*" . xmobarStrip
                      , ppSort = getSortByXineramaRule
                      }
 
@@ -155,7 +155,7 @@ focusedBorderColor' =  Map.findWithDefault "" "orange" solarized
 
 -- workspaces
 workspaces' :: [WorkspaceId]
-workspaces' = [" 1-mail ", " 2-work ", " 3-web ", " 4-xen ", " 5-xenrt ", " 6-chat ", " 7-music ", " 8 ", " 9 "]
+workspaces' = ["1-mail", "2-work", "3-web", "4-xen", "5-xenrt", "6-chat", "7-music", "8" , "9"]
 
 -- layouts
 customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
@@ -164,19 +164,21 @@ customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
     delta    = 2/100 -- Percentage of the screen to increment when resizing
     ratio    = 5/8   -- Defaul proportion of the screen taken up by main pane
     rt       = spacing 5 $ ResizableTall nmaster delta ratio []
-    tiled    = renamed [Replace "· T ·"] $ smartBorders rt
-    mtiled   = renamed [Replace "· M ·"] $ smartBorders $ Mirror rt
-    tab      = renamed [Replace "· * ·"] $ noBorders $ tabbed shrinkText tabTheme
-    full     = renamed [Replace "· X ·"] $ noBorders Full
+    tiled    = renamed [Replace "(T)"] $ smartBorders rt
+    mtiled   = renamed [Replace "(M)"] $ smartBorders $ Mirror rt
+    tab      = renamed [Replace "(*)"] $ noBorders $ tabbed shrinkText tabTheme
+    full     = renamed [Replace "(X)"] $ noBorders Full
     tabTheme = defaultTheme { decoHeight = 16
-                            , activeColor = "#a6c292"
-                            , activeBorderColor = "#a6c292"
-                            , activeTextColor = "#000000"
-                            , inactiveBorderColor = "#000000"
+                            , activeColor = Map.findWithDefault "" "base01" solarized
+                            , activeBorderColor = Map.findWithDefault "" "base00" solarized
+                            , activeTextColor = Map.findWithDefault "" "base2" solarized
+                            , inactiveColor = Map.findWithDefault "" "base02" solarized
+                            , inactiveBorderColor = Map.findWithDefault "" "base03" solarized
+                            , inactiveTextColor = Map.findWithDefault "" "base1" solarized
                             }
-imLayout    = renamed [Replace "· G ·"] $ avoidStruts $ spacing 5 $
+imLayout    = renamed [Replace "(G)"] $ avoidStruts $ spacing 5 $
                     withIM (1/6) (Role "buddy_list") (Mirror Grid)
-rokLayout   = renamed [Replace "· R ·"] $ avoidStruts $
+rokLayout   = renamed [Replace "(R)"] $ avoidStruts $
                     reflectHoriz $ withIM (1/18) (ClassName "rokclock-Main")
                         (reflectHoriz customLayout)
 
