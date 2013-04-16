@@ -10,13 +10,13 @@ install_dotfile () {
         return
     fi
 
-    if [ ! -h $2 ]; then
+    if [ -e $2 -a ! -h $2 ]; then
         echo "Skipping $2: installing would overwrite non-symlink"
         return
     fi
 
     echo -n "Linking $2..."
-    rm $2
+    rm $2 2> /dev/null
     ln -s $1 $2
     echo "done"
 }
