@@ -104,8 +104,7 @@ actuals_tw() {
                $(date +%d/%m/%Y --date="tomorrow")
 }
 
-cleanup_snfs ()
-{
+cleanup_snfs () {
     service snfs stop
     echo -n "Killing all tapdisks...";
     killall tapdisk 2> /dev/null;
@@ -126,8 +125,7 @@ cleanup_snfs ()
     service snfs start
 }
 
-prompt ()
-{
+prompt () {
     read -sp "Echo this: " my_pass
     echo $my_pass
 }
