@@ -66,6 +66,12 @@ set splitright      " open new vsplits to the right
 nnoremap / /\v
 vnoremap / /\v
 
+" sensible moving on wrapped lines
+noremap j gj
+noremap k gk
+noremap 0 g0
+noremap $ g$
+
 set lazyredraw      " don't redraw during macros
 
 " No annoying sound on errors
