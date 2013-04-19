@@ -1,25 +1,25 @@
 #!/bin/sh
 cd ~
 tmux start-server
-tmux new-session -d -s sm-work -n 'notes'
+tmux new-session -d -s work -n 'notes'
 
-tmux new-window -t sm-work:0 -n 'irc'
-tmux new-window -t sm-work:2 -n 'build'
-tmux new-window -t sm-work:3 -n 'xapi'
-tmux new-window -t sm-work:4 -n 'xapi-git'
-tmux new-window -t sm-work:5 -n 'dt19'
-tmux new-window -t sm-work:6 -n 'dt44'
-tmux new-window -t sm-work:9 -n 'config'
+tmux new-window -t work:0 -n 'irc'
+tmux new-window -t work:2 -n 'build'
+tmux new-window -t work:3 -n 'xapi'
+tmux new-window -t work:4 -n 'xapi-git'
+tmux new-window -t work:5 -n 'dt13'
+tmux new-window -t work:6 -n 'dt19'
+tmux new-window -t work:9 -n 'config'
 
-tmux send-keys -t sm-work:0 'irssi' C-m
-tmux send-keys -t sm-work:1 'cd /work/Defects/; vim ../todo.txt' C-m
-tmux send-keys -t sm-work:2 'r3' C-m C-l
-tmux send-keys -t sm-work:3 'xapi' C-m C-l
-tmux send-keys -t sm-work:4 'xapi' C-m C-l
-tmux send-keys -t sm-work:5 'ssh dt19' C-m
-tmux send-keys -t sm-work:6 'ssh dt44' C-m
-tmux send-keys -t sm-work:9 'cd ~/.dotfiles/; vim .' C-m
+tmux send-keys -t work:0 'irssi' C-m
+tmux send-keys -t work:1 'cd /work/Defects/; vim ../todo.txt' C-m
+tmux send-keys -t work:2 'r3' C-m C-l
+tmux send-keys -t work:3 'xapi' C-m C-l
+tmux send-keys -t work:4 'xapi' C-m C-l
+tmux send-keys -t work:5 'ssh dt13' C-m
+tmux send-keys -t work:6 'ssh dt19' C-m
+tmux send-keys -t work:9 'cd ~/.dotfiles/; vim .' C-m
 
-tmux select-window -t sm-work:1
-tmux -2 attach-session -t sm-work
+tmux select-window -t work:1
+tmux -2 attach-session -t work
 
