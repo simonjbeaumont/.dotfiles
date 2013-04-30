@@ -1,9 +1,9 @@
 #!/bin/sh
 cd ~
 tmux start-server
-tmux new-session -d -s work -n 'notes'
+tmux new-session -d -s work -n 'irc'
 
-tmux new-window -t work:0 -n 'irc'
+tmux new-window -t work:1 -n 'notes'
 tmux new-window -t work:2 -n 'build'
 tmux new-window -t work:3 -n 'xapi'
 tmux new-window -t work:4 -n 'xapi-git'
