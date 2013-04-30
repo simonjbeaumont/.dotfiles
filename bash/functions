@@ -141,3 +141,11 @@ function ssh() {
         /usr/bin/ssh "$@"
     fi
 }
+
+function get_ca_ticket() {
+    local TICKET_NUMBER=$1
+    defects
+    $(bugget.py -u simonbe -p $(prompt) $TICKET_NUMBER) || cd -
+    mv bug-$TICKET_NUMBER $TICKET_NUMBER || cd -
+    cd $TICKET_NUMBER || cd -
+}
