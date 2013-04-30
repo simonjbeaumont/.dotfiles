@@ -138,6 +138,6 @@ function ssh() {
     if [[ "${TERM}" = screen* ]]; then
         env TERM=screen ssh "$@"
     else
-        ssh "$@"
+        /usr/bin/ssh "$@"
     fi
 }

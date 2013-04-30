@@ -16,7 +16,7 @@
 
 
 get_ssh_flag() {
-    if [ -n "$SSH_TTY" ]; then echo 'ssh:'; fi
+    if [ -n "$SSH_TTY" -a -n "$SSH_CONNECTION" ]; then echo 'ssh:'; fi
 }
 
 get_git_branch() {
