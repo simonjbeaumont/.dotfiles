@@ -1,6 +1,15 @@
-set editing-mode vi
+set editing-mode emacs
 tab: complete
 set completion-ignore-case on
 set blink-matching-paren on
 set show-all-if-ambiguous On
-"\C-l":'clear\n'
+#"\C-l":'clear\n'
+# This is because of the Apple keyboard where Meta is ISO Level 3 selector
+"\C-x\C-r": re-read-init-file
+"đ": forward-word
+"”": backward-word
+"ð": kill-word
+"¢": capitalize-word
+"↓": upcase-word
+"ł": downcase-word
+"ŧ": transpose-words
