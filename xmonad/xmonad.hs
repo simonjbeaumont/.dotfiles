@@ -72,6 +72,7 @@ main = do
               , ((modMask' .|. shiftMask, xK_o), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Outlook-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_c), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Communicator-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_i), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-IE-simonbe.ica")
+              , ((modMask' .|. shiftMask, xK_r), spawn "ant -f /work/tools/RokClock/build.xml run")
               , ((modMask' .|. shiftMask, xK_p),  spawn "gmrun")
               , ((modMask',               xK_p),  spawn "gnome-do")
               ]
@@ -192,4 +193,4 @@ terminal' = "gnome-terminal"
 -- Keys/Button bindings --
 -- modmask
 modMask' :: KeyMask
-modMask' = mod1Mask
+modMask' = mod4Mask
