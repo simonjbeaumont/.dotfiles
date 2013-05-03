@@ -15,15 +15,12 @@ tripos() {
 }
 
 
-# Make a directory and change to it
+# General helper functions
 #-------------------------------------------------------------------------------
 md () {
     mkdir -p "$@" && cd "$@";
 }
 
-
-# Extract files eg: ex tarball.tar --- N.B. This can (and will) make you lazy!
-#-------------------------------------------------------------------------------
 ex () {
     if [ -f $1 ] ; then
         case $1 in
@@ -45,8 +42,18 @@ ex () {
     fi
 }
 
-# Update bash environment to latest tmux environment
-#-------------------------------------------------------------------------------
+prompt () {
+    read -sp "Echo this: " my_pass
+    echo $my_pass
+}
+
+function grml() {
+    find . -regex .*\\.mli? | xargs grep -Hn --color=always "$@"
+}
+
+
+# Tmux helper functions
+#------------------------------------------------------------------------------
 tmup() {
     echo -n "Updating to latest tmux environment..."
     export IFS=","
@@ -61,6 +68,41 @@ tmup() {
     echo "Done"
 }
 
+function irssi_nickpane() {
+    [[ -z $TMUX ]] && return 0
+    tmux renamew irc                                     # name the window
+    tmux -q setw main-pane-width $(( $(tput cols) - 31)) # make room for nicks
+    tmux splitw -v "cat ~/.irssi/nicklistfifo"           # spawn nicklist pane
+    tmux -q selectl main-vertical                        # assign the layout
+    tmux selectw -t irc                                  # select window 'irc'
+    tmux selectp -t 0                                    # select pane 0
+    tmux send-keys -t irc '/nicklist fifo' C-m
+}
+
+function irssi() {
+    irssi_nickpane
+    $(which irssi)
+}
+
+function irssi_repair() {
+    [[ -z $TMUX ]] && return 0
+    tmux selectw -t irc
+    tmux selectp -t 0
+    tmux killp -a
+    irssi_nickpane
+}
+
+function ssh() {
+    if [[ "${TERM}" = screen* ]]; then
+        env TERM=screen ssh "$@"
+    else
+        /usr/bin/ssh "$@"
+    fi
+}
+
+
+# Work utility functions
+#------------------------------------------------------------------------------
 actuals_bw() {
     if [ $# != 2 ]; then
         echo "Wrong!"
@@ -123,23 +165,6 @@ cleanup_snfs () {
      > /var/log/SMlog;
     echo "OK";
     service snfs start
-}
-
-prompt () {
-    read -sp "Echo this: " my_pass
-    echo $my_pass
-}
-
-function grml() {
-    find . -regex .*\\.mli? | xargs grep -Hn --color=always "$@"
-}
-
-function ssh() {
-    if [[ "${TERM}" = screen* ]]; then
-        env TERM=screen ssh "$@"
-    else
-        /usr/bin/ssh "$@"
-    fi
 }
 
 function get_ca_ticket() {
