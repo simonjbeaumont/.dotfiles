@@ -43,7 +43,12 @@ ex () {
 }
 
 prompt () {
-    read -sp "Echo this: " my_pass
+
+    if [ -n "$1" ]; then
+        read -sp "$1: " my_pass
+    else
+        read -sp "Prompt (unspecified): " my_pass
+    fi
     echo $my_pass
 }
 
@@ -173,4 +178,32 @@ function get_ca_ticket() {
     $(bugget.py -u simonbe -p $(prompt) $TICKET_NUMBER) || cd -
     mv bug-$TICKET_NUMBER $TICKET_NUMBER || cd -
     cd $TICKET_NUMBER || cd -
+}
+
+function get_sctx_ticket() {
+    local TICKET_NUMBER=$1
+    defects
+    $(bugget.py -u simonbe -p $(prompt) $TICKET_NUMBER) || cd - && return
+    mv bug-$TICKET_NUMBER $TICKET_NUMBER || cd - && return
+    cd $TICKET_NUMBER || cd -
+}
+
+function cifs_mount() {
+    if [ $# != 2 ]; then
+        echo "Usage: cifs_mount <citix-share> <mount-point>"
+    else
+        SHARE=$1
+        MOUNTPOINT=$2
+        sudo umount $MOUNTPOINT 2> /dev/null
+        sudo mount.cifs $SHARE $MOUNTPOINT -o user=citrite\\simonbe,password=$(prompt "Citrite password"),uid=2279,gid=10020,rw
+    fi
+}
+
+function my_cifs_mount() {
+    if [ $# != 1 ]; then
+        echo "Usage: my_cifs_mount <mount-point>"
+    else
+        MOUNTPOINT=$1
+        cifs_mount //lonpfs01/simonbe$ $MOUNTPOINT
+    fi
 }
