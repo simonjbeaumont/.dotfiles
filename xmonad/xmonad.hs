@@ -193,4 +193,4 @@ terminal' = "gnome-terminal"
 -- Keys/Button bindings --
 -- modmask
 modMask' :: KeyMask
-modMask' = mod4Mask
+modMask' = mod1Mask
