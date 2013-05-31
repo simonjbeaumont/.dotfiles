@@ -140,4 +140,7 @@ alias check_mail='killall -KILL offlineimap 2&> /dev/null; offlineimap -1 -c /lo
 alias vsm='vim /var/log/SMlog'
 alias tsm='tail -f -n 30 /var/log/SMlog'
 
+# Old CentOS based VMs don't understand termcap screen-256color
+alias vxs='TERM=screen vxs'
+
 fi
