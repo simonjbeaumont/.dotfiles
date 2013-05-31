@@ -24,6 +24,11 @@ alias snfs='cd /local/export/pr-1594/sm.hg'
 alias pp='cd /work/scratch/python-playground'
 alias op='cd /work/scratch/ocaml-playground'
 
+# rdesktop -> XenDesktop
+alias xd='rdesktop lonvmd2109 -K -g 1680x1050 -d citrite -a 32 -x l -P'
+alias xd_med='rdesktop lonvmd2109 -K -g 1400x900 -d citrite -a 32 -x l -P'
+alias xd_small='rdesktop lonvmd2109 -K -g 1024x600 -d citrite -a 32 -x l -P'
+
 # Mercurial patch queues
 alias mq='hg -R $(hg root)/.hg/patches'
 

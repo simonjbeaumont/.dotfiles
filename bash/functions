@@ -195,7 +195,7 @@ function cifs_mount() {
         SHARE=$1
         MOUNTPOINT=$2
         sudo umount $MOUNTPOINT 2> /dev/null
-        sudo mount.cifs $SHARE $MOUNTPOINT -o user=citrite\\simonbe,password=$(prompt "Citrite password"),uid=2279,gid=10020,rw
+        sudo mount.cifs $SHARE $MOUNTPOINT -o user=citrite\\simonbe,password=$(prompt "Citrite password"),uid=2279,gid=10020,rw,noserverino
     fi
 }
 
