@@ -207,3 +207,15 @@ function my_cifs_mount() {
         cifs_mount //lonpfs01/simonbe$ $MOUNTPOINT
     fi
 }
+
+lint_xapi_db() {
+    local in_file="./xapi-db-dumped.xml"
+    local out_file="./linted-xapi-db-dumped.xml"
+    if [ ! -e $in_file ]; then
+        echo "No database found in CWD"
+        return 1
+    else
+        xmllint --format $in_file > $out_file
+        echo "xmllint-ed $in_file -> $out_file"
+    fi
+}
