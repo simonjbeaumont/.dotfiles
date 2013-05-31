@@ -75,7 +75,7 @@ tmup() {
 
 function irssi_nickpane() {
     [[ -z $TMUX ]] && return 0
-    tmux renamew irc                                     # name the window
+    tmux selectw -t irc
     tmux -q setw main-pane-width $(( $(tput cols) - 31)) # make room for nicks
     tmux splitw -v "cat ~/.irssi/nicklistfifo"           # spawn nicklist pane
     tmux -q selectl main-vertical                        # assign the layout
