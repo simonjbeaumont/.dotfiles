@@ -1,0 +1,10 @@
+Don't forget to run SASL script for SSL verification:
+
+Configure with:
+
+    /script load autorun/cap_sasl.pl
+    /sasl set freenode sjbx <password> DH-BLOWFISH
+    /sasl save
+
+The use of the SASL script requires all Perl modules listed in modules.txt to
+be installed.
