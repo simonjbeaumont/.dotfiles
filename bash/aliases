@@ -2,6 +2,8 @@
 # Stuff for all OSs --- add OS specific stuff in appropriate section below
 #-------------------------------------------------------------------------------
 
+alias rebash='source ~/.bashrc'
+
 # Easier navigation
 alias ..="cd .."
 alias cd..="cd .."
@@ -139,6 +141,9 @@ alias check_mail='killall -KILL offlineimap 2&> /dev/null; offlineimap -1 -c /lo
 # XS stuff
 alias vsm='vim /var/log/SMlog'
 alias tsm='tail -f -n 30 /var/log/SMlog'
+
+# Buildsystem shortcuts
+alias clean='make distclean; make clean; make clean-repos'
 
 # Old CentOS based VMs don't understand termcap screen-256color
 alias vxs='TERM=screen vxs'
