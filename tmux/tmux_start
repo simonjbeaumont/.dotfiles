@@ -12,7 +12,7 @@ tmux new-window -t work:6 -n 'dt08'
 tmux new-window -t work:9 -n 'config'
 
 tmux send-keys -t work:0 'irssi' C-m
-tmux send-keys -t work:1 'cd /work/Defects/; vim ../todo.txt' C-m
+tmux send-keys -t work:1 'cd /work/defects/; vim ../todo.txt' C-m
 tmux send-keys -t work:2 'r3' C-m C-l
 tmux send-keys -t work:3 'xapi' C-m C-l
 tmux send-keys -t work:4 'xapi' C-m C-l
