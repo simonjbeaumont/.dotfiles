@@ -3,20 +3,26 @@ servers = (
     address = "irc.freenode.net";
     chatnet = "freenode";
     autoconnect = "yes";
-  },
+  }
 );
 
-chatnets = {
-  freenode = { type = "IRC"; nick = "sjbx"; };
-};
+chatnets = { freenode = { type = "IRC"; nick = "sjbx"; }; };
 
 channels = (
-  { name = "#xen-api";  chatnet = "freenode"; autojoin = "yes";
-        activity_msg_level = "PUBLIC";
-        beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC"; }
-  { name = "#ring3"; chatnet = "freenode"; autojoin = "yes";
-        activity_msg_level = "PUBLIC";
-        beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC"; }
+  {
+    name = "#xen-api";
+    chatnet = "freenode";
+    autojoin = "yes";
+    activity_msg_level = "PUBLIC";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC";
+  },
+  {
+    name = "#ring3";
+    chatnet = "freenode";
+    autojoin = "yes";
+    activity_msg_level = "PUBLIC";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC";
+  },
   # { name = "#xendevel"; chatnet = "freenode"; autojoin = "yes"; }
   # { name = "#xmonad";   chatnet = "freenode"; autojoin = "yes"; }
 );
@@ -136,7 +142,5 @@ settings = {
 };
 logs = { };
 ignores = ( { level = "JOINS PARTS QUITS MODES"; } );
-windows = {
-  1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
-};
+windows = { 1 = { immortal = "yes"; name = "(status)"; level = "ALL"; }; };
 mainwindows = { 2 = { first_line = "0"; lines = "75"; }; };
