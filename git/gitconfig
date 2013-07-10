@@ -16,3 +16,4 @@
 	token = [token]
 [core]
 	excludesfile = ~/.gitignore_global
+	pager = less -x4,9
