@@ -49,9 +49,9 @@ main = do
               , manageHook = manageHook'
               } `additionalKeys`
               [-- windows and session
-                ((modMask',               xK_q),     kill)
+                ((modMask',               xK_w),     kill)
               , ((modMask',               xK_r),     spawn "xmonad --recompile; xmonad --restart")
-              , ((modMask' .|. shiftMask, xK_q),     spawn "gnome-session-quit")
+              , ((modMask' .|. shiftMask, xK_w),     spawn "gnome-session-quit")
               , ((modMask' .|. shiftMask, xK_l),     sendMessage MirrorShrink)
               , ((modMask' .|. shiftMask, xK_h),     sendMessage MirrorExpand)
               -- workspaces (imagine vertical stack with horizontal screens)
@@ -62,10 +62,10 @@ main = do
               , ((modMask',               xK_grave), toggleWS)
               , ((modMask',               xK_f),     moveTo Next EmptyWS)
               -- screens
-              , ((modMask',               xK_Right), nextScreen)
-              , ((modMask',               xK_Left),  prevScreen)
-              , ((modMask' .|. shiftMask, xK_Right), shiftNextScreen)
-              , ((modMask' .|. shiftMask, xK_Left),  shiftPrevScreen)
+              , ((modMask',               xK_e), nextScreen)
+              , ((modMask',               xK_q), prevScreen)
+              , ((modMask' .|. shiftMask, xK_e), shiftNextScreen >> nextScreen)
+              , ((modMask' .|. shiftMask, xK_q), shiftPrevScreen >> nextScreen)
               -- launching
               , ((modMask' .|. shiftMask, xK_b),  spawn "google-chrome")
               , ((modMask' .|. shiftMask, xK_s),  spawn "/home/simonbe/spotify-notify/spotify-notify.py -n")
