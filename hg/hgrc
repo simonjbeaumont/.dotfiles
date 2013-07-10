@@ -39,3 +39,8 @@ preoutgoing.confirm = read -p 'Are you sure you want to push to remote? (y/n): '
 [format]
 parentdelta=0
 dotencode=0
+
+[color]
+qseries.applied = blue bold underline
+qseries.unapplied = green bold
+qseries.missing = red
