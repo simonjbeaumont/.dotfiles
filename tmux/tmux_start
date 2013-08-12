@@ -9,7 +9,6 @@ tmux new-window -t work:3 -n 'xapi'
 tmux new-window -t work:4 -n 'xapi-git'
 tmux new-window -t work:5 -n 'dt04'
 tmux new-window -t work:6 -n 'dt08'
-tmux new-window -t work:9 -n 'config'
 
 tmux send-keys -t work:0 'irssi' C-m
 tmux send-keys -t work:1 'cd /work/defects/; vim ../todo.txt' C-m
@@ -18,7 +17,6 @@ tmux send-keys -t work:3 'xapi' C-m C-l
 tmux send-keys -t work:4 'xapi' C-m C-l
 tmux send-keys -t work:5 'ssh dt04' C-m
 tmux send-keys -t work:6 'ssh dt08' C-m
-tmux send-keys -t work:9 'cd ~/.dotfiles/; vim .' C-m
 
 tmux -2 attach-session -t work
 
