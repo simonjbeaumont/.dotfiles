@@ -16,6 +16,7 @@ alias vima='vim ~/.aliases'
 alias vimb='vim ~/.bashrc'
 alias vimrl='vim /work/tools/RokClock/log.txt'
 alias rokc='ant -f /work/tools/RokClock/build.xml run'
+alias sshtb='ssh root@10.80.239.241'
 
 # Current projects
 alias sm='cd /work/branches/trunk-storage/build.hg/myrepos/sm.hg'
@@ -23,13 +24,14 @@ alias r3='cd /work/branches/trunk-ring3/build.hg/'
 alias xapi='cd /work/branches/trunk-ring3/build.hg/myrepos/xen-api'
 alias defects='cd /work/defects/'
 alias snfs='cd /local/export/pr-1594/sm.hg'
+alias vgpu='cd /work/branches/pr-1061/build.hg/myrepos/xen-api'
 alias pp='cd /work/scratch/python-playground'
 alias op='cd /work/scratch/ocaml-playground'
 
 # rdesktop -> XenDesktop
-alias xd='rdesktop lonvmd2109 -K -g 1680x1050 -d citrite -a 32 -x l -P'
-alias xd_med='rdesktop lonvmd2109 -K -g 1400x900 -d citrite -a 32 -x l -P'
-alias xd_small='rdesktop lonvmd2109 -K -g 1024x600 -d citrite -a 32 -x l -P'
+alias xd='rdesktop lonvmd2109 -K -k en-gb -g 1680x1050 -d citrite -a 32 -x 80 -r clipboard:PRIMARYCLIPBOARD'
+alias xd_med='xd -g 1400x900'
+alias xd_small='xd -g 1024x600'
 
 # Mercurial patch queues
 alias mq='hg -R $(hg root)/.hg/patches'
@@ -147,5 +149,6 @@ alias clean='make distclean; make clean; make clean-repos'
 
 # Old CentOS based VMs don't understand termcap screen-256color
 alias vxs='TERM=screen vxs'
+alias chroot='TERM=screen chroot'
 
 fi
