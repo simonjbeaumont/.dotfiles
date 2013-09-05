@@ -54,7 +54,7 @@ prompt () {
 }
 
 function grml() {
-    find . -regex .*\\.mli? | xargs grep -Hn --color=always "$@"
+    find . -regex .*\\.mli? | grep -v autogen/ | xargs grep -Hn --color=always "$@"
 }
 
 
