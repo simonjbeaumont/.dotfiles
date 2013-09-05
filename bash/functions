@@ -220,3 +220,10 @@ lint_xapi_db() {
         echo "xmllint-ed $in_file -> $out_file"
     fi
 }
+
+bugger() {
+    for i in $(find . -maxdepth 2 -type d -regex './\(.*bugtool.*/\)?bug-report-[^/]*'); do
+        host=$(head -n 1 $i/var/log/messages | awk '{print $4}')
+        mv $i bug-report-$host
+    done
+}
