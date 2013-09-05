@@ -18,10 +18,6 @@
 	path = vim/bundle/ack
 	url = git://github.com/mileszs/ack.vim.git
     ignore = dirty
-[submodule "vim/bundle/clang_complete"]
-	path = vim/bundle/clang_complete
-	url = https://github.com/Rip-Rip/clang_complete.git
-    ignore = dirty
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = https://github.com/plasticboy/vim-markdown.git
@@ -29,22 +25,6 @@
 [submodule "vim/bundle/vim-matchit"]
 	path = vim/bundle/vim-matchit
 	url = https://github.com/tsaleh/vim-matchit.git
-    ignore = dirty
-[submodule "vim/bundle/vim-snipmate"]
-	path = vim/bundle/vim-snipmate
-	url = https://github.com/garbas/vim-snipmate.git
-    ignore = dirty
-[submodule "vim/bundle/snipmate-snippets"]
-	path = vim/bundle/snipmate-snippets
-	url = https://github.com/honza/snipmate-snippets.git
-    ignore = dirty
-[submodule "vim/bundle/vim-addon-mw-utils"]
-	path = vim/bundle/vim-addon-mw-utils
-	url = https://github.com/MarcWeber/vim-addon-mw-utils.git
-    ignore = dirty
-[submodule "vim/bundle/vim-tlib"]
-	path = vim/bundle/vim-tlib
-	url = https://github.com/tomtom/tlib_vim.git
     ignore = dirty
 [submodule "vim/bundle/vim-surround"]
 	path = vim/bundle/vim-surround
@@ -62,9 +42,6 @@
 [submodule "vim/bundle/vim-repeat"]
 	path = vim/bundle/vim-repeat
 	url = http://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/vim-pandoc"]
-	path = vim/bundle/vim-pandoc
-	url = https://github.com/vim-pandoc/vim-pandoc.git
 [submodule "vim/bundle/vim-colors-solarized"]
 	path = vim/bundle/vim-colors-solarized
 	url = git://github.com/altercation/vim-colors-solarized.git
