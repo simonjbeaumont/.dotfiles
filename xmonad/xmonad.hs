@@ -90,9 +90,10 @@ manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
     , [fmap (isInfixOf a) appName   -?> doShift  " 6-chat "  |   a <- myChat     ] -- move to WS
     , [className    =? c            -?> doShift  " 7-music " |   c <- myMusic    ] -- move to WS
     -- catch all...
+    , [className =? "trayer"        -?> doF W.swapUp ]
     , [className    =? c            -?> doIgnore       |   c <- myIgnores  ] -- ignore desktop
     , [isFullscreen                 -?> myDoFullFloat                      ] -- special full screen
-    , [isDialog                     -?> doCenterFloat                      ] -- float dialogs
+    , [isDialog                     -?> doCenterFloat <+> doF W.swapUp    ] -- float dialogs
     , [return True                  -?> doF W.swapDown                     ] -- open below, not above
     ]) 
     where
