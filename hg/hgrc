@@ -12,10 +12,10 @@ record =
 color =
 rebase =
 graphlog =
-prompt = /local/work/tools/hg-extensions/hg-prompt/prompt.py
-reviewboard = /local/work/tools/hg-extensions/hg-reviewboard
+# prompt = /local/work/tools/hg-extensions/hg-prompt/prompt.py
+# reviewboard = /local/work/tools/hg-extensions/hg-reviewboard
 hgext.bookmarks =
-hggit =
+# hggit =
 
 [reviewboard]
 server = http://rb.xs.citrite.net
