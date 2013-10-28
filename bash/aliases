@@ -58,6 +58,12 @@ alias ducks='du -cksh * | sort -rh | head -11'  # List size of pwd's contents
 alias systail='tail -f /var/log/system.log'
 alias sshx="ssh -X"
 
+# todo.txt
+alias todo='todo -nd ~/Dropbox/todo/config'
+alias t='todo'
+alias tb='t lf blocked.txt'
+complete -F _todo t
+
 # Moscow ML GNU readline hack
 alias mosml='rlwrap mosml'
 
