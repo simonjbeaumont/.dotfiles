@@ -68,7 +68,7 @@ main = do
               , ((modMask' .|. shiftMask, xK_q), shiftPrevScreen >> nextScreen)
               -- launching
               , ((modMask' .|. shiftMask, xK_b),  spawn "google-chrome")
-              , ((modMask' .|. shiftMask, xK_s),  spawn "/home/simonbe/spotify-notify/spotify-notify.py -n")
+              , ((modMask' .|. shiftMask, xK_s),  spawn "/usr/local/src/spotify-notify/spotify-notify.py -n")
               , ((modMask' .|. shiftMask, xK_o), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Outlook-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_c), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Communicator-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_i), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-IE-simonbe.ica")
