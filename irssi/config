@@ -14,14 +14,14 @@ channels = (
     chatnet = "freenode";
     autojoin = "yes";
     activity_msg_level = "PUBLIC";
-    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
   },
   {
     name = "#ring3";
     chatnet = "freenode";
     autojoin = "yes";
     activity_msg_level = "PUBLIC";
-    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT PUBLIC";
+    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
   },
   # { name = "#xendevel"; chatnet = "freenode"; autojoin = "yes"; }
   # { name = "#xmonad";   chatnet = "freenode"; autojoin = "yes"; }
@@ -120,7 +120,7 @@ settings = {
     activity_hide_level = "parts joins quits nicks modes";
     #    autolog_path = "~/Library/Logs/Irssi/$tag/$0.log";
     bell_beeps = "yes";
-    beep_msg_level = "PUBLIC MSGS NOTICES DCC DCCMSGS HILIGHT";
+    beep_msg_level = "MSG NOTICES DCC DCCMSGS HILIGHT";
   };
 
   "perl/core/scripts" = {
