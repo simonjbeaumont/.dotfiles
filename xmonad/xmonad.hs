@@ -67,14 +67,14 @@ main = do
               , ((modMask' .|. shiftMask, xK_e), shiftNextScreen >> nextScreen)
               , ((modMask' .|. shiftMask, xK_q), shiftPrevScreen >> nextScreen)
               -- launching
-              , ((modMask' .|. shiftMask, xK_b),  spawn "google-chrome")
-              , ((modMask' .|. shiftMask, xK_s),  spawn "/usr/local/src/spotify-notify/spotify-notify.py -n")
+              , ((modMask' .|. shiftMask, xK_b), spawn "google-chrome")
+              , ((modMask' .|. shiftMask, xK_s), spawn "/usr/local/src/spotify-notify/spotify-notify.py -n")
               , ((modMask' .|. shiftMask, xK_o), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Outlook-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_c), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Communicator-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_i), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-IE-simonbe.ica")
               , ((modMask' .|. shiftMask, xK_r), spawn "ant -f /work/tools/RokClock/build.xml run")
-              , ((modMask' .|. shiftMask, xK_p),  spawn "gmrun")
-              , ((modMask',               xK_p),  spawn "gnome-do")
+              , ((modMask' .|. shiftMask, xK_p), spawn "gmrun")
+              , ((modMask',               xK_p), spawn "gnome-do")
               ]
 
 -------------------------------------------------------------------------------
@@ -85,10 +85,11 @@ manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
     -- XenApp stuff
     , [fmap (isInfixOf a) appName                       -?> doFloat     | a <- myXenApps ] -- float my XenApps
     , [className =? "Wfica_Seamless" <&&> appName =? "" -?> doF W.focusDown <+> doIgnore ]
+    , [className =? "Wfica_Seamless" <&&> appName =? "DummyForm" -?> doShift "9" ]
     , [className =? "Wfica_Seamless"                    -?> doCenterFloat                ]
     -- shift certain apps to certain workspaces
-    , [fmap (isInfixOf a) appName   -?> doShift  " 6-chat "  |   a <- myChat     ] -- move to WS
-    , [className    =? c            -?> doShift  " 7-music " |   c <- myMusic    ] -- move to WS
+    , [fmap (isInfixOf a) appName   -?> doShift  "6-chat"  |   a <- myChat     ] -- move to WS
+    , [className    =? c            -?> doShift  "7-music" |   c <- myMusic    ] -- move to WS
     -- catch all...
     , [className =? "trayer"        -?> doF W.swapUp ]
     , [className    =? c            -?> doIgnore       |   c <- myIgnores  ] -- ignore desktop
