@@ -34,7 +34,7 @@ patchreview = postreview --parent qparent --git --webbrowser --target_groups sto
 updatepatchreview = postreview --existing $1 --update --parent qparent --git -w
 
 [hooks]
-preoutgoing.confirm = read -p 'Are you sure you want to push to remote? (y/n): '; echo $REPLY | grep -q 'y'
+# preoutgoing.confirm = read -p 'Are you sure you want to push to remote? (y/n): '; echo $REPLY | grep -q 'y'
 
 [format]
 parentdelta=0
