@@ -1,7 +1,7 @@
 " .vimrc : Si Beaumont
 " vim: foldmethod=marker
 
-" General {{{1
+" General 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This must be first, because it changes other options as side effect
 set nocompatible
@@ -11,6 +11,11 @@ call pathogen#infect()
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Also add merlin to the run time path
+let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
+execute "set rtp+=".s:ocamlmerlin."/vim"
+execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+
 " Set to auto read when a file is changed from the outside
 set autoread
 
@@ -19,6 +24,7 @@ filetype plugin indent on
 
 " Change the mapleader from \ to ,
 let mapleader=","
+let maplocalleader=","
 
 " Use extended unicode mouse escape sequences
 if has('mouse_sgr')
@@ -29,7 +35,7 @@ endif
 au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
 
-" UI {{{1
+" UI 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set guifont=Monospace\ 9
 
@@ -59,7 +65,6 @@ set smartcase       " ...unless I use case to search
 set hlsearch        " highlight search terms
 set incsearch       " show search matches as you type
 
-set splitbelow      " open new splits below
 set splitright      " open new vsplits to the right
 
 " use sensible regex
@@ -78,15 +83,16 @@ set lazyredraw      " don't redraw during macros
 set noerrorbells
 set novisualbell
 set t_vb=
-
-" Show invisibles (in Textmate style)
-set list
-set listchars=tab:▸\ ,eol:¬
-
+  
+" Show invisibles (in Textmate style)  
+set list  
+" set listchars=tab:▸\ ,eol:¬
+set listchars=tab:┼─,eol:¬
+		" test"
 " Folding
 set foldmethod=marker
 
-" Colours {{{1
+" Colours 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Let's try to always have colours
 if &t_Co > 2 || has("gui_running")
@@ -97,8 +103,11 @@ if &t_Co >= 16 || has("gui_running")
     set bg=dark
     let g:solarized_termtrans=1
     let g:solarized_termcolors=16
-    let g:solarized_hitrail=1
+    " let g:solarized_hitrail=1
+    let g:solarized_visibility='normal'
     colorscheme solarized
+    " highlight SpecialKey ctermfg=10 ctermbg=8
+    highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red 
 endif
 
 " Custom ft recognition
@@ -107,7 +116,7 @@ au BufRead,BufNewFile *isl_trace.log* set filetype=messages
 au BufRead,BufNewFile *SMlog* set filetype=messages
 au BufRead,BufNewFile *messages* set filetype=messages
 
-" Files, backups and undo {{{1
+" Files, backups and undo 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if version >= 703
     set undodir=~/.vim/tmp/undo// " undo files
@@ -117,7 +126,7 @@ set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
 set noswapfile                    " It's 2012, Vim.
 
-" Text editing {{{1
+" Text editing 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap
 set textwidth=79
@@ -128,7 +137,8 @@ set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
 set tabstop=4     " a tab is four spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
-au FileType ocaml setl sw=2 sts=2 ts=2 tw=0 fo-=t wrapmargin=0 noexpandtab
+au FileType ocaml setl noexpandtab fo-=t
+" au FileType ocaml setl sw=4 sts=4 ts=4 tw=0 fo-=t wrapmargin=0 noexpandtab
 
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -137,7 +147,7 @@ set autoindent    " always set autoindenting on
 set smartindent   " for some auto-semantic-indenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 
-" Plugin configuration {{{1
+" Plugin configuration 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ctags
 set tags=tags;/
@@ -178,9 +188,13 @@ let g:yankring_history_file='.yankring-hist'
 let g:pandoc_use_hard_wraps=1
 
 " Syntastic
-let g:syntastic_ocaml_use_ocamlc = 1
+" let g:syntastic_ocaml_use_ocamlc = 1
+" let g:syntastic_ocaml_checkers=['merlin']
 
-" Functions {{{1
+" Quicktask
+let g:quicktask_snip_path = '/work/snips/'
+
+" Functions 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " See what you've changed before saving
 function! s:DiffWithSaved()
@@ -192,7 +206,7 @@ function! s:DiffWithSaved()
 endfunction
 com! DiffSaved call s:DiffWithSaved()
 
-" Key mappings {{{1
+" Key mappings 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -240,10 +254,13 @@ nmap <silent> <leader>o :NERDTreeToggle<CR>
 " Ack in pwd...
 nmap <leader>a :Ack 
 
+" Kill buffer but keep window layout
+nmap <leader>bd :BD<CR>
+
 " Quickly edit my todo file
 nmap <silent> <leader>et :e /work/todo.txt<CR>:set ft=pandoc<CR>
-nmap <silent> <leader>mi ^y$/\=\=\=<CR>,/o<ESC>p^r-
-nmap <silent> <leader>md ^cl☑<space><esc>
+nmap <silent> <leader>mi ^wy$/Worklog\n\=\=\=\=\=\=\=<CR>:nohlsearch<CR>j:read !date --rfc-3339='date'<CR>A: <ESC>p^
+nmap <silent> <leader>md ,mi<C-o>dd
 
 " Log to SMlog (work stuff)
 nmap <silent> <leader>sm yEoutil.SMlog("sjbx: pa = %s" % p
@@ -253,7 +270,3 @@ nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>l :wincmd l<CR>
-
-map <leader>. :call OCamlType()<CR>
-map <leader>] :call OCamlSpot()<CR>
-map <leader>t <C-o><CR>
