@@ -34,7 +34,8 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 		# "vcs_staged 64 255" \
 		# "vcs_modified 9 255" \
 		# "vcs_others 245 0" \
-		"todo_count 1 7" \
+        "todo.txt_count 1 7" \
+        # "quicktask_count 1 7"
 	)
 fi
 
