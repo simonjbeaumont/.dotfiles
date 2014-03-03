@@ -15,6 +15,7 @@ alias +='pushd .'
 alias vima='vim ~/.aliases'
 alias vimb='vim ~/.bashrc'
 alias vimrl='vim /work/tools/RokClock/log.txt'
+alias xs='vim /work/xs-tips.md'
 alias rokc='ant -f /work/tools/RokClock/build.xml run'
 alias sshtb='ssh root@10.80.239.241'
 
@@ -87,6 +88,7 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 
 alias xboard="xboard -fcp crafty -size Dinky"
 
+alias reopam="eval `opam config env`"
 
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
@@ -149,7 +151,7 @@ alias pidme='pstree -ps $$'
 alias ls="command ls -hF --color"
 
 # Work specific email
-alias check_mail='killall -KILL offlineimap 2&> /dev/null; offlineimap -1 -c /local/config/.offlineimaprc -u Quiet -l /home/simonbe/.citrix-mail.log'
+alias check_mail='killall -KILL offlineimap > /dev/null 2>&1 /dev/null; offlineimap -1 -c /local/config/.offlineimaprc -u Quiet -l /home/simonbe/.citrix-mail.log'
 
 # XS stuff
 alias vsm='vim /var/log/SMlog'
