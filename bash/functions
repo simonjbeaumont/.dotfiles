@@ -53,6 +53,9 @@ prompt () {
     echo $my_pass
 }
 
+function grmla() {
+    find . -regex .*\\.mli? | xargs grep -Hn --color=auto "$@"
+}
 function grml() {
     find . -regex .*\\.mli? | grep -v autogen/ | grep -v _build/ | xargs grep -Hn --color=auto "$@"
 }
