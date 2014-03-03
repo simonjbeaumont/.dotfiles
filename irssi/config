@@ -141,6 +141,9 @@ settings = {
   "irc/dcc" = { dcc_download_path = "~/Downloads"; dcc_timeout = "180"; };
 };
 logs = { };
-ignores = ( { level = "JOINS PARTS QUITS MODES"; } );
+ignores = (
+  { level = "JOINS PARTS QUITS MODES"; },
+  { mask = "*!*@freenode/staff/*"; level = "NOTICES"; }
+);
 windows = { 1 = { immortal = "yes"; name = "(status)"; level = "ALL"; }; };
-mainwindows = { 2 = { first_line = "0"; lines = "75"; }; };
+# mainwindows = { 2 = { first_line = "0"; lines = "75"; }; };
