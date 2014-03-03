@@ -1,17 +1,17 @@
 Config {
-         font = "xft:Ubuntu Mono:size=9"
+         font = "xft:Ubuntu Mono:size=8"
        , bgColor = "#002b36"
        , fgColor = "#93a1a1"
-       , position = Top
+       , position = TopSize L 100 16
        , lowerOnStart = True
        , commands = [ Run Com "ifconfig" ["eth0 | grep 'inet addr:' | cut -d: -f2 | awk '{ print $1}'"] "ipaddr" 50
                     , Run Cpu ["-L","20","-H","70","-n","#429942","-h","#A36666","-f","—","-b"," ","-W","6","-t","<bar>"] 50
                     , Run Memory ["-f","—","-b"," ","-W", "6","-t","<usedbar>"] 10
-                    , Run Mail [("Inbox", "~/.mail/work/INBOX")] "mail"
+                    , Run Mail [("-", "/local/.work-mail/INBOX")] "mail"
                     , Run Date "%a %b %_d, %Y — %H:%M:%S" "date" 10
                     , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ CPU:<fc=#2aa198>[</fc>%cpu%<fc=#2aa198>]</fc>  Mem:<fc=#2aa198>[</fc>%memory%<fc=#2aa198>]</fc>  IP:<fc=#2aa198>[</fc>%ipaddr%<fc=#2aa198>]</fc>  —  <fc=#2aa198>[</fc>%date%<fc=#2aa198>]</fc> "
+       , template = " %StdinReader% }{ Mail:<fc=#2aa198>[</fc>%mail%:-<fc=#2aa198>]</fc>  CPU:<fc=#2aa198>[</fc>%cpu%<fc=#2aa198>]</fc>  Mem:<fc=#2aa198>[</fc>%memory%<fc=#2aa198>]</fc>  IP:<fc=#2aa198>[</fc>%ipaddr%<fc=#2aa198>]</fc>  —  <fc=#2aa198>[</fc>%date%<fc=#2aa198>]</fc> "
        }
