@@ -230,11 +230,11 @@ Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 let g:NERDRemoveExtraSpaces=1
 
-Bundle 'klen/python-mode'
-let g:pymode_run=0
-let g:pymode_breakpoint=0
-let g:pymode_utils_whitespaces=0
-let g:pymode_lint_hold=0
+" Bundle 'klen/python-mode'
+" let g:pymode_run=0
+" let g:pymode_breakpoint=0
+" let g:pymode_utils_whitespaces=0
+" let g:pymode_lint_hold=0
 
 Bundle 'YankRing.vim'
 let g:yankring_history_file='.yankring-hist'
