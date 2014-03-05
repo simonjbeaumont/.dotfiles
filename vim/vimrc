@@ -1,15 +1,41 @@
 " .vimrc : Si Beaumont
 " vim: foldmethod=marker
 
-" General 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " This must be first, because it changes other options as side effect
 set nocompatible
 
-" Use pathogen to manage plugins under ~/.vim/bundle
-call pathogen#infect()
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+" Plugin management
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+runtime macros/matchit.vim
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+" Colors
+Bundle 'mileszs/ack.vim'
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'scrooloose/nerdtree'
+Bundle 'klen/python-mode'
+Bundle 'scrooloose/syntastic'
+Bundle 'majutsushi/tagbar'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-liquid'
+Bundle 'tpope/vim-markdown'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'YankRing.vim'
+
+" Enable filetype plugins
+filetype plugin indent on
+
+" General
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 " Also add merlin to the run time path
 let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
@@ -19,8 +45,6 @@ execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
 " Set to auto read when a file is changed from the outside
 set autoread
 
-" Enable filetype plugins
-filetype plugin indent on
 
 " Change the mapleader from \ to ,
 let mapleader=","
