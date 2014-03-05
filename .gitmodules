@@ -1,59 +1,6 @@
-[submodule "vim/bundle/nerdcommenter"]
-	path = vim/bundle/nerdcommenter
-	url = git://github.com/scrooloose/nerdcommenter.git
-    ignore = dirty
-[submodule "vim/bundle/vim-powerline"]
-	path = vim/bundle/vim-powerline
-	url = git://github.com/Lokaltog/vim-powerline.git
-    ignore = dirty
-[submodule "vim/bundle/nerdtree"]
-	path = vim/bundle/nerdtree
-	url = git://github.com/scrooloose/nerdtree.git
-    ignore = dirty
-[submodule "vim/bundle/tagbar"]
-	path = vim/bundle/tagbar
-	url = git://github.com/majutsushi/tagbar.git
-    ignore = dirty
-[submodule "vim/bundle/ack"]
-	path = vim/bundle/ack
-	url = git://github.com/mileszs/ack.vim.git
-    ignore = dirty
-[submodule "vim/bundle/vim-markdown"]
-	path = vim/bundle/vim-markdown
-	url = https://github.com/plasticboy/vim-markdown.git
-    ignore = dirty
-[submodule "vim/bundle/vim-matchit"]
-	path = vim/bundle/vim-matchit
-	url = https://github.com/tsaleh/vim-matchit.git
-    ignore = dirty
-[submodule "vim/bundle/vim-surround"]
-	path = vim/bundle/vim-surround
-	url = https://github.com/tpope/vim-surround.git
-    ignore = dirty
-[submodule "vim/bundle/delimitMate"]
-	path = vim/bundle/delimitMate
-	url = https://github.com/Raimondi/delimitMate.git
-[submodule "vim/bundle/YankRing.vim"]
-	path = vim/bundle/YankRing.vim
-	url = https://github.com/vim-scripts/YankRing.vim.git
-[submodule "vim/bundle/python-mode"]
-	path = vim/bundle/python-mode
-	url = https://github.com/klen/python-mode.git
-[submodule "vim/bundle/vim-repeat"]
-	path = vim/bundle/vim-repeat
-	url = http://github.com/tpope/vim-repeat.git
-[submodule "vim/bundle/vim-colors-solarized"]
-	path = vim/bundle/vim-colors-solarized
-	url = git://github.com/altercation/vim-colors-solarized.git
 [submodule "linux/gnome-terminal-solarized"]
 	path = linux/gnome-terminal-solarized
 	url = https://github.com/sigurdga/gnome-terminal-colors-solarized.git
 [submodule "tmux/tmux-powerline/tmux-powerline.git"]
 	path = tmux/tmux-powerline/tmux-powerline.git
 	url = https://github.com/erikw/tmux-powerline.git
-[submodule "vim/bundle/vim-ocamlspot"]
-	path = vim/bundle/vim-ocamlspot
-	url = https://github.com/simonjbeaumont/vim-ocamlspot.git
-[submodule "vim/bundle/syntastic"]
-	path = vim/bundle/syntastic
-	url = https://github.com/scrooloose/syntastic.git
