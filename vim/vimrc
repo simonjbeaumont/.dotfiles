@@ -1,41 +1,9 @@
 " .vimrc : Si Beaumont
 " vim: foldmethod=marker
 
-" This must be first, because it changes other options as side effect
+" General {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
-
-" Plugin management
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off
-runtime macros/matchit.vim
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-" Colors
-Bundle 'mileszs/ack.vim'
-Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/nerdcommenter'
-Bundle 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
-Bundle 'scrooloose/syntastic'
-Bundle 'majutsushi/tagbar'
-Bundle 'altercation/vim-colors-solarized'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-liquid'
-Bundle 'tpope/vim-markdown'
-Bundle 'Lokaltog/vim-powerline'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'YankRing.vim'
-
-" Enable filetype plugins
-filetype plugin indent on
-
-" General
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 
 " Also add merlin to the run time path
 let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
@@ -45,12 +13,14 @@ execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Search for tags file in pwd then search backwards until /
+set tags=tags;/
 
 " Change the mapleader from \ to ,
 let mapleader=","
 let maplocalleader=","
 
-" Use extended unicode mouse escape sequences
+" Use extended unicode mouse escape sequences (wide terminal support)
 if has('mouse_sgr')
     set ttym=sgr
 endif
@@ -58,9 +28,13 @@ endif
 " Get rid of nasty lag on ESC (timeout and ttimeout seem useless)
 au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
+" }}}
 
-" UI 
+" UI {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+syntax on
+
+
 set guifont=Monospace\ 9
 
 set mouse=a         " use the mouse in terminal mode
@@ -71,15 +45,16 @@ set scrolloff=4     " lines of context when scrolling
 set wildmode=longest,list     " bash-style file completion
 set wildignore=*.o,*~,*.pyc   " Ignore compiled files
 
-set ruler           " Show current position
+set ruler           " show current position
 set colorcolumn=80  " always show width marker
 set number          " always show line numbers
 set cursorline      " highlight the current line
 
+set showcmd         " display commands as entered
 set cmdheight=2     " Height of the command bar
 set laststatus=2    " Required for vim-powerline
 
-set hidden          " Handle hidden buffers
+set hidden          " allow hidden buffers
 
 set showmatch       " show matching parenthesis
 set matchtime=2     " show for 2 tenths of a second
@@ -89,6 +64,7 @@ set smartcase       " ...unless I use case to search
 set hlsearch        " highlight search terms
 set incsearch       " show search matches as you type
 
+set splitbelow      " open new splits below
 set splitright      " open new vsplits to the right
 
 " use sensible regex
@@ -107,40 +83,24 @@ set lazyredraw      " don't redraw during macros
 set noerrorbells
 set novisualbell
 set t_vb=
-  
-" Show invisibles (in Textmate style)  
-set list  
-" set listchars=tab:▸\ ,eol:¬
-set listchars=tab:┼─,eol:¬
-		" test"
+
+" Whitepsace characters
+set list
+set listchars=tab:┼─,eol:¬  " another nice option is tab:▸\ 
+set showbreak=↪\            " useful indication of wrapping
+
 " Folding
 set foldmethod=marker
+set foldlevel=100
 
-" Colours 
+" }}}
+
+" Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Let's try to always have colours
-if &t_Co > 2 || has("gui_running")
-   syntax on
-endif
-if &t_Co >= 16 || has("gui_running")
-    " Solarized colorscheme
-    set bg=dark
-    let g:solarized_termtrans=1
-    let g:solarized_termcolors=16
-    " let g:solarized_hitrail=1
-    let g:solarized_visibility='normal'
-    colorscheme solarized
-    " highlight SpecialKey ctermfg=10 ctermbg=8
-    highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red 
-endif
+au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
+" }}}
 
-" Custom ft recognition
-au BufRead,BufNewFile *xensource.log* set filetype=messages
-au BufRead,BufNewFile *isl_trace.log* set filetype=messages
-au BufRead,BufNewFile *SMlog* set filetype=messages
-au BufRead,BufNewFile *messages* set filetype=messages
-
-" Files, backups and undo 
+" Files, backups and undo {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if version >= 703
     set undodir=~/.vim/tmp/undo// " undo files
@@ -149,20 +109,19 @@ set backupdir=~/.vim/tmp/backup// " backups
 set directory=~/.vim/tmp/swap//   " swap files
 set backup                        " enable backups
 set swapfile                      " noswapfile has bitten me!
+" }}}
 
-" Text editing 
+" Text editing {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap
 set textwidth=79
 set formatoptions=qrn1t
-set showbreak=↪\  " useful indication of wrapping
 
 set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
 set tabstop=4     " a tab is four spaces
 set shiftwidth=4  " number of spaces to use for autoindenting
 au FileType ocaml setl noexpandtab fo-=t
-" au FileType ocaml setl sw=4 sts=4 ts=4 tw=0 fo-=t wrapmargin=0 noexpandtab
 
 set backspace=indent,eol,start
                   " allow backspacing over everything in insert mode
@@ -170,67 +129,9 @@ set backspace=indent,eol,start
 set autoindent    " always set autoindenting on
 set smartindent   " for some auto-semantic-indenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+" }}}
 
-" Plugin configuration 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" ctags
-set tags=tags;/
-set complete+=t
-
-" Tagbar
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-let g:tagbar_width=30
-let g:tagbar_autofocus=1
-
-" Vim Powerline
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 1
-let Powerline_colorscheme="solarized16"
-
-" NERDTree
-let NERDTreeIgnore = [
-    \ '\.pyc$',
-    \ '\.cm\(x\(a\)\?\|i\|t\)$',
-    \ '\.sp\(o\|i\)t$',
-    \ '\.o\(\(pt\|mc\)\)\=$',
-    \ '\.annot$']
-
-" NERDCommenter
-let g:NERDSpaceDelims=1
-let g:NERDRemoveExtraSpaces=1
-
-" Python mode (disable stuff for working with shared (and bad) code
-let g:pymode_run=0
-let g:pymode_breakpoint=0
-let g:pymode_utils_whitespaces=0
-let g:pymode_lint_hold=0
-
-" YankRing
-let g:yankring_history_file='.yankring-hist'
-
-" Pandoc
-let g:pandoc_use_hard_wraps=1
-
-" Syntastic
-" let g:syntastic_ocaml_use_ocamlc = 1
-" let g:syntastic_ocaml_checkers=['merlin']
-
-" Quicktask
-let g:quicktask_snip_path = '/work/snips/'
-
-" Functions 
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" See what you've changed before saving
-function! s:DiffWithSaved()
-    let filetype=&ft
-    diffthis
-    vnew | r # | normal! 1Gdd
-    diffthis
-    exe "setlocal bt=nofile bh=wipe nobl noswf ro ft=" . filetype
-endfunction
-com! DiffSaved call s:DiffWithSaved()
-
-" Key mappings 
+" Key mappings {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Quickly edit/reload the vimrc file
 nmap <silent> <leader>ev :e $MYVIMRC<CR>
@@ -263,34 +164,85 @@ vnoremap <leader>y "+ygv
 " Clean trailing whitespace from whole file
 nnoremap <leader>W mz:%s/\s\+$//<cr>:let @/=''<cr>`z
 
-" Version control blame in Vim
-vmap <Leader>g :<C-U>!git blame <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-vmap <Leader>h :<C-U>!hg blame -ucdq <C-R>=expand("%:p") <CR> \| sed -n <C-R>=line("'<") <CR>,<C-R>=line("'>") <CR>p <CR>
-
 " Rerun ctags over directory
 nmap <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
-
-" Opening sidebars (NERDTree on left, Tagbar on right)
-nmap <silent> <leader>r :TagbarToggle<CR>
-nmap <silent> <leader>O :NERDTreeFind<CR>
-nmap <silent> <leader>o :NERDTreeToggle<CR>
-
-" Ack in pwd...
-nmap <leader>a :Ack 
-
-" Kill buffer but keep window layout
-nmap <leader>bd :BD<CR>
 
 " Quickly edit my todo file
 nmap <silent> <leader>et :e /work/todo.txt<CR>:set ft=pandoc<CR>
 nmap <silent> <leader>mi ^wy$/Worklog\n\=\=\=\=\=\=\=<CR>:nohlsearch<CR>j:read !date --rfc-3339='date'<CR>A: <ESC>p^
 nmap <silent> <leader>md ,mi<C-o>dd
 
-" Log to SMlog (work stuff)
-nmap <silent> <leader>sm yEoutil.SMlog("sjbx: pa = %s" % p
-
 " Moving around splits with the leader key
 nmap <silent> <leader>h :wincmd h<CR>
 nmap <silent> <leader>j :wincmd j<CR>
 nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>l :wincmd l<CR>
+" }}}
+
+" Plugin configuration {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+filetype off
+runtime macros/matchit.vim
+set rtp+=~/.vim/bundle/vundle/
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'altercation/vim-colors-solarized'
+let g:solarized_termtrans=1
+let g:solarized_termcolors=16
+let g:solarized_visibility='normal'
+if &t_Co >= 16 || has("gui_running")
+    colorscheme solarized
+    set bg=dark
+    highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red
+endif
+
+
+Bundle 'Raimondi/delimitMate'
+Bundle 'scrooloose/syntastic'
+Bundle 'tpope/vim-fugitive'
+Bundle 'tpope/vim-repeat'
+Bundle 'tpope/vim-surround'
+Bundle 'tpope/vim-liquid'
+Bundle 'tpope/vim-markdown'
+
+Bundle 'mileszs/ack.vim'
+nmap <leader>a :Ack 
+
+Bundle 'majutsushi/tagbar'
+let g:tagbar_ctags_bin='/usr/bin/ctags'
+let g:tagbar_width=30
+let g:tagbar_autofocus=1
+nmap <silent> <leader>r :TagbarToggle<CR>
+
+Bundle 'Lokaltog/vim-powerline'
+let g:Powerline_symbols = 'fancy'
+let g:Powerline_cache_enabled = 1
+let Powerline_colorscheme="solarized16"
+
+Bundle 'scrooloose/nerdtree'
+let NERDTreeIgnore = [
+    \ '\.pyc$',
+    \ '\.cm\(x\(a\)\?\|i\|t\)$',
+    \ '\.sp\(o\|i\)t$',
+    \ '\.o\(\(pt\|mc\)\)\=$',
+    \ '\.annot$']
+nmap <silent> <leader>O :NERDTreeFind<CR>
+nmap <silent> <leader>o :NERDTreeToggle<CR>
+
+Bundle 'scrooloose/nerdcommenter'
+let g:NERDSpaceDelims=1
+let g:NERDRemoveExtraSpaces=1
+
+Bundle 'klen/python-mode'
+let g:pymode_run=0
+let g:pymode_breakpoint=0
+let g:pymode_utils_whitespaces=0
+let g:pymode_lint_hold=0
+
+Bundle 'YankRing.vim'
+let g:yankring_history_file='.yankring-hist'
+
+filetype plugin indent on
+" }}}
