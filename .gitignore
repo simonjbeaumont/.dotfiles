@@ -1,4 +1,5 @@
-vim/bundle/*
+vim/bundle/**
+~vim/bundle/vundle
 .netrwhist
 tags
 vim/tmp
