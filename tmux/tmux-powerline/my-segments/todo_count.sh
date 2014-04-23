@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Return the number of work items to do and blocked
 
-todo_file="/work/todo.txt"
+todo_file="/work/todo.md"
 
 run_segment() {
 	if [ ! -f "$todo_file" ]; then

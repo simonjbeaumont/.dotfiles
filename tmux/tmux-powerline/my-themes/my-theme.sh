@@ -1,5 +1,4 @@
 # Si's theme (to work with solarized ANSI colors)
-
 if patched_font_in_use; then
 	TMUX_POWERLINE_SEPARATOR_LEFT_BOLD="⮂"
 	TMUX_POWERLINE_SEPARATOR_LEFT_THIN="⮃"
@@ -34,8 +33,7 @@ if [ -z $TMUX_POWERLINE_LEFT_STATUS_SEGMENTS ]; then
 		# "vcs_staged 64 255" \
 		# "vcs_modified 9 255" \
 		# "vcs_others 245 0" \
-        "todo.txt_count 1 7" \
-        # "quicktask_count 1 7"
+		"todo_count 1 7" \
 	)
 fi
 
