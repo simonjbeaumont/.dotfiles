@@ -21,7 +21,7 @@ channels = (
     chatnet = "freenode";
     autojoin = "yes";
     activity_msg_level = "PUBLIC";
-    beep_msg_level = "MSGS NOTICES DCC DCCMSGS HILIGHT";
+    beep_msg_level = "PUBLIC MSGS NOTICES DCC DCCMSGS HILIGHT";
   },
   # { name = "#xendevel"; chatnet = "freenode"; autojoin = "yes"; }
   # { name = "#xmonad";   chatnet = "freenode"; autojoin = "yes"; }
@@ -42,6 +42,7 @@ aliases = {
   WA = "window goto active";
   RUN = "SCRIPT LOAD";
   Q = "QUERY";
+  QMSG = "quote privmsg $0 :$1-";
 };
 
 statusbar = {
