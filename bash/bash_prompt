@@ -24,7 +24,7 @@ get_git_branch() {
 }
 
 git_dirty_flag() {
-    if [[ -n $(git status --porcelain '--ignore-submodules=dirty' 2> /dev/null) ]]; then echo '⚡︎'; fi
+    if [[ -n $(git status --porcelain '--ignore-submodules=dirty' 2> /dev/null) ]]; then echo '⚡'; fi
 }
 
 # Note, to remove the bell, remove the \a near the end
