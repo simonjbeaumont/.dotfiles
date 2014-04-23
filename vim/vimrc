@@ -4,11 +4,15 @@
 " General {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
+filetype indent on
 
 " Also add merlin to the run time path
 let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
 execute "set rtp+=".s:ocamlmerlin."/vim"
 execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+
+scriptencoding utf-8
+set encoding=utf-8
 
 " Set to auto read when a file is changed from the outside
 set autoread
@@ -91,12 +95,6 @@ set novisualbell
 set t_vb=
 " }}}
 
-" Autocommands {{{
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
-au FileType ocaml                               setl noet fo-=t
-" }}}
-
 " Files, backups and undo {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if version >= 703
@@ -124,6 +122,12 @@ set backspace=indent,eol,start  " backpace over everything in insert mode
 set autoindent    " always set autoindenting on
 set smartindent   " for some auto-semantic-indenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
+" }}}
+
+" Autocommands {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
+au FileType ocaml                               setl noexpandtab fo-=t
 " }}}
 
 " Key mappings {{{
@@ -165,7 +169,8 @@ nmap <F8> :!/usr/bin/ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR>
 " Quickly edit my todo file
 nmap <silent> <leader>et :e /work/todo.txt<CR>:set ft=pandoc<CR>
 nmap <silent> <leader>mi ^wy$/Worklog\n\=\=\=\=\=\=\=<CR>:nohlsearch<CR>j:read !date --rfc-3339='date'<CR>A: <ESC>p^
-nmap <silent> <leader>md ,mi<C-o>dd
+" nmap <silent> <leader>md ,mi<C-o>dd
+nmap <silent> <leader>md ^r✔
 
 " Moving around splits with the leader key
 nmap <silent> <leader>h :wincmd h<CR>
@@ -193,9 +198,11 @@ if &t_Co >= 16 || has("gui_running")
     highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red
 endif
 
+Bundle 'chriskempson/base16-vim'
+" colorscheme base16-twilight
+" set bg=dark
 
 Bundle 'Raimondi/delimitMate'
-Bundle 'scrooloose/syntastic'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
@@ -219,12 +226,17 @@ let Powerline_colorscheme="solarized16"
 Bundle 'scrooloose/nerdtree'
 let NERDTreeIgnore = [
     \ '\.pyc$',
+    \ '\.class$',
     \ '\.cm\(x\(a\)\?\|i\|t\)$',
     \ '\.sp\(o\|i\)t$',
     \ '\.o\(\(pt\|mc\)\)\=$',
     \ '\.annot$']
 nmap <silent> <leader>O :NERDTreeFind<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
+
+Bundle 'scrooloose/syntastic'
+let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_pylint_post_args = '-d C0103 -d C0111 --ignored-classes=twisted.internet.reactor'
 
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
@@ -239,5 +251,5 @@ let g:NERDRemoveExtraSpaces=1
 Bundle 'YankRing.vim'
 let g:yankring_history_file='.yankring-hist'
 
-filetype plugin indent on
+filetype plugin on
 " }}}
