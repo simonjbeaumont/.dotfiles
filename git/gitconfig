@@ -2,18 +2,16 @@
 	name = Si Beaumont
 	email = simon.beaumont@citrix.com
 [color]
-   diff = auto
-   status = auto
-   branch = auto
-   interactive = auto
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
 [alias]
-   st = status -sb
-   ci = commit
-   co = checkout
-   gl = log --graph --abbrev-commit --oneline --decorate
+	st = status -sb
+	co = checkout
+	gl = log --graph --abbrev-commit --oneline --decorate
 [github]
 	user = simonjbeaumont
-	token = [token]
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -x4,9
