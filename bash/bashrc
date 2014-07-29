@@ -22,6 +22,8 @@ mount | grep /usr/groups/xen > /dev/null && \
     source /usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenusecomplete
 # OPAM
 which opam &> /dev/null && eval $(opam config env)
+# RVM
+export PATH="$PATH:/local/rvm/bin"
 
 # Make life easier with autocomplete
 #-------------------------------------------------------------------------------
