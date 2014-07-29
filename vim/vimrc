@@ -201,11 +201,13 @@ Bundle 'altercation/vim-colors-solarized'
 let g:solarized_termtrans=1
 let g:solarized_termcolors=16
 let g:solarized_visibility='normal'
+
+Bundle 'simonjbeaumont/mustang-vim'
 if &t_Co >= 16 || has("gui_running")
-    colorscheme solarized
     set bg=dark
     highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red
 endif
+colorscheme mustang
 
 Bundle 'chriskempson/base16-vim'
 " colorscheme base16-twilight
