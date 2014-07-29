@@ -1,5 +1,6 @@
 vim/bundle/**
 ~vim/bundle/vundle
+vim/spellfile.add.spl
 .netrwhist
 tags
 vim/tmp

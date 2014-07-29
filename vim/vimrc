@@ -133,10 +133,17 @@ set smartindent   " for some auto-semantic-indenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 " }}}
 
+" Spelling {{{
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set spelllang=en
+set spellfile=~/.vim/spellfile.add
+" }}}
+
 " Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
 au FileType ocaml                               setl noexpandtab fo-=t
+au FileType gitcommit                           setl spell
 " }}}
 
 " Key mappings {{{
@@ -156,6 +163,13 @@ map <leader>cd :cd %:p:h<CR>:pwd<CR>
 
 " Clear the highlight from the last search
 nnoremap <silent> <leader>/ :nohlsearch<CR>
+
+" Spelling shortcuts
+map <leader>ss :setlocal spell!<CR>
+map <leader>sn ]s
+map <leader>sp [s
+map <leader>sa zg
+map <leader>s? z=
 
 " Disable width-marker when needed
 map <leader>m :set colorcolumn=<CR>
