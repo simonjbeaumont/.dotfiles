@@ -59,6 +59,8 @@ alias g='grep -i'                               # case insensitive grep
 alias ducks='du -cksh * | sort -rh | head -11'  # List size of pwd's contents
 alias systail='tail -f /var/log/system.log'
 alias sshx="ssh -X"
+alias diff='colordiff'
+alias less='less -R'
 
 # todo.txt
 alias todo='todo -d ~/Dropbox/todo/config'
