@@ -222,10 +222,6 @@ if &t_Co >= 16 || has("gui_running")
 endif
 colorscheme mustang
 
-Bundle 'chriskempson/base16-vim'
-" colorscheme base16-twilight
-" set bg=dark
-
 Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
