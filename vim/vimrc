@@ -228,6 +228,7 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-markdown'
+Bundle 'ciaranm/detectindent'
 
 Bundle 'mileszs/ack.vim'
 nmap <leader>a :Ack 
