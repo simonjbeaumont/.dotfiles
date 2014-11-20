@@ -231,7 +231,7 @@ Bundle 'tpope/vim-markdown'
 Bundle 'ciaranm/detectindent'
 
 Bundle 'mileszs/ack.vim'
-nmap <leader>a :Ack 
+nmap <leader>a :Ack!
 
 Bundle 'majutsushi/tagbar'
 let g:tagbar_ctags_bin='/usr/bin/ctags'
