@@ -119,12 +119,12 @@ set swapfile                      " noswapfile has bitten me!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap
 set textwidth=79
-set formatoptions=qrn1t
+set formatoptions=qrn1
 
 set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
-set tabstop=4     " a tab is four spaces
-set shiftwidth=4  " number of spaces to use for autoindenting
+set tabstop=2     " a tab is four spaces
+set shiftwidth=2  " number of spaces to use for autoindenting
 
 set backspace=indent,eol,start  " backpace over everything in insert mode
 
@@ -142,7 +142,6 @@ set spellfile=~/.vim/spellfile.add
 " Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
-au FileType ocaml                               setl noexpandtab fo-=t
 au FileType gitcommit                           setl spell
 " }}}
 
