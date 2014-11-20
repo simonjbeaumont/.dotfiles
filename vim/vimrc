@@ -239,10 +239,49 @@ let g:tagbar_width=30
 let g:tagbar_autofocus=1
 nmap <silent> <leader>r :TagbarToggle<CR>
 
-Bundle 'Lokaltog/vim-powerline'
-let g:Powerline_symbols = 'fancy'
-let g:Powerline_cache_enabled = 1
-let Powerline_colorscheme="solarized16"
+Bundle 'bling/vim-airline'
+let g:airline_theme             = 'powerlineish'
+let g:airline_theme_patch_func = 'AirlineThemePatch'
+function! AirlineThemePatch(palette)
+  let a:palette.normal.airline_a[2] = 234
+  let a:palette.normal.airline_b[3] = 237
+  let a:palette.normal.airline_c[2] = 248
+  let a:palette.normal.airline_c[3] = 235
+  let a:palette.normal.airline_x = a:palette.normal.airline_c
+  let a:palette.normal.airline_y = a:palette.normal.airline_b
+  let a:palette.normal.airline_z = a:palette.normal.airline_a
+endfunction
+let g:airline_enable_branch     = 1
+let g:airline_enable_syntastic  = 1
+let g:airline_left_sep          = '⮀'
+let g:airline_left_alt_sep      = '⮁'
+let g:airline_right_sep         = '⮂'
+let g:airline_right_alt_sep     = '⮃'
+let g:airline_branch_prefix     = ''
+let g:airline_readonly_symbol   = '⭤'
+let g:airline_linecolumn_prefix = '⭡'
+let g:airline_inactive_collapse = '0'
+let g:airline_mode_map = {
+    \ '__' : '-',
+    \ 'n'  : 'N',
+    \ 'i'  : 'I',
+    \ 'R'  : 'R',
+    \ 'c'  : 'C',
+    \ 'v'  : 'V', 'V'  : 'V', '' : 'V',
+    \ 's'  : 'S', 'S'  : 'S', '' : 'S'}
+let g:airline#extensions#whitespace#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
+let g:airline#extensions#tabline#buffer_idx_mode = 1
+nmap <leader>1 <Plug>AirlineSelectTab1
+nmap <leader>2 <Plug>AirlineSelectTab2
+nmap <leader>3 <Plug>AirlineSelectTab3
+nmap <leader>4 <Plug>AirlineSelectTab4
+nmap <leader>5 <Plug>AirlineSelectTab5
+nmap <leader>6 <Plug>AirlineSelectTab6
+nmap <leader>7 <Plug>AirlineSelectTab7
+nmap <leader>8 <Plug>AirlineSelectTab8
+nmap <leader>9 <Plug>AirlineSelectTab9
 
 Bundle 'scrooloose/nerdtree'
 let NERDTreeIgnore = [
