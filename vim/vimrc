@@ -6,10 +6,9 @@
 set nocompatible
 filetype indent on
 
-" Also add merlin to the run time path
-let s:ocamlmerlin=substitute(system('opam config var share'),'\n$','','''') .  "/ocamlmerlin"
-execute "set rtp+=".s:ocamlmerlin."/vim"
-execute "set rtp+=".s:ocamlmerlin."/vimbufsync"
+" Setup for merlin
+let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
+execute "set rtp+=" . g:opamshare . "/merlin/vim"
 
 scriptencoding utf-8
 set encoding=utf-8
