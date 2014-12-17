@@ -93,6 +93,8 @@ alias xboard="xboard -fcp crafty -size Dinky"
 
 alias reopam="eval `opam config env`"
 
+alias killch="pgrep chroot | xargs sudo kill"
+
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
