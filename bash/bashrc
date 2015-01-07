@@ -55,7 +55,7 @@ fi
 #-------------------------------------------------------------------------------
 export EDITOR="vim"
 export GIT_EDITOR="vim"
-export HISTCONTROL=ignoredups # Ignores dupes in the history
+export HISTCONTROL=ignoreboth # Ignores dupes and starting ws in the history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date"
 export GREP_OPTIONS="--color=auto"
 [ -z "$DISPLAY" ] && DISPLAY=":0.0"
