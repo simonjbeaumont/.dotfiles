@@ -30,6 +30,9 @@ alias vgpu='cd /work/branches/pr-1061/build.hg/myrepos/xen-api'
 alias pp='cd /work/scratch/python-playground'
 alias op='cd /work/scratch/ocaml-playground'
 
+alias xenuse='/usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenrtuse'
+alias xenrt='/usr/groups/xenrt/production/share/control/xenrt'
+
 # rdesktop -> XenDesktop
 alias rd='rdesktop -5 -K -k en-gb -g 1680x1017 -d citrite -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
 alias rd_med='rd -g 1400x900'
