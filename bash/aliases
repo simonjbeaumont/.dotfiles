@@ -31,7 +31,7 @@ alias pp='cd /work/scratch/python-playground'
 alias op='cd /work/scratch/ocaml-playground'
 
 # rdesktop -> XenDesktop
-alias rd='rdesktop -5 -K -k en-gb -g 1680x1017 -d citrite -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
+alias rd='rdesktop -5 -K -k en-gb -g 1680x1017 -d citrite -u simonbe -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
 alias rd_med='rd -g 1400x900'
 alias rd_small='rd -g 1024x600'
 alias xd='rd amsvmd3510'
