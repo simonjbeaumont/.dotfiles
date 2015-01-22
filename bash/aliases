@@ -75,7 +75,7 @@ complete -F _todo t
 alias mosml='rlwrap mosml'
 
 # Git stuff
-which hub && alias git=hub
+which hub >/dev/null && alias git=hub
 alias gitrevert='(git reset HEAD .);(git checkout -- .)'
 alias gl='git log --graph --abbrev-commit --oneline --decorate'
 
