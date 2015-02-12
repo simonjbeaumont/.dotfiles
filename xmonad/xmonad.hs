@@ -37,6 +37,7 @@ import XMonad.Actions.CycleWS
 main = do
        h1 <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobarrc"
        h2 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
+       h3 <- spawnPipe "xmobar -x 2 ~/.xmonad/xmobarrc"
        xmonad $ withUrgencyHook NoUrgencyHook $ gnomeConfig
               { workspaces = workspaces'
               , modMask = modMask'
@@ -44,7 +45,7 @@ main = do
               , normalBorderColor = normalBorderColor'
               , focusedBorderColor = focusedBorderColor'
               , terminal = terminal'
-              , logHook = logHook' h1 h2 
+              , logHook = logHook' h1 h2 h3
               , layoutHook = layoutHook'
               , manageHook = manageHook'
               } `additionalKeys`
@@ -69,10 +70,6 @@ main = do
               -- launching
               , ((modMask' .|. shiftMask, xK_b), spawn "google-chrome")
               , ((modMask' .|. shiftMask, xK_s), spawn "/usr/local/src/spotify-notify/spotify-notify.py -n")
-              , ((modMask' .|. shiftMask, xK_o), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Outlook-simonbe.ica")
-              , ((modMask' .|. shiftMask, xK_c), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-Communicator-simonbe.ica")
-              , ((modMask' .|. shiftMask, xK_i), spawn "/opt/Citrix/ICAClient/wfica /local/config/XenApp-IE-simonbe.ica")
-              , ((modMask' .|. shiftMask, xK_r), spawn "ant -f /work/tools/RokClock/build.xml run")
               , ((modMask' .|. shiftMask, xK_p), spawn "gmrun")
               , ((modMask',               xK_p), spawn "gnome-do")
               ]
@@ -82,13 +79,7 @@ main = do
 manageHook' :: ManageHook
 manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
     [ [className =? c -?> doCenterFloat | c <- myFloats ] -- float my floats
-    -- XenApp stuff
-    , [fmap (isInfixOf a) appName                       -?> doFloat     | a <- myXenApps ] -- float my XenApps
-    , [className =? "Wfica_Seamless" <&&> appName =? "" -?> doF W.focusDown <+> doIgnore ]
-    , [className =? "Wfica_Seamless" <&&> appName =? "DummyForm" -?> doShift "9" ]
-    , [className =? "Wfica_Seamless"                    -?> doCenterFloat                ]
     -- shift certain apps to certain workspaces
-    , [fmap (isInfixOf a) appName   -?> doShift  "6-chat"  |   a <- myChat     ] -- move to WS
     , [className    =? c            -?> doShift  "7-music" |   c <- myMusic    ] -- move to WS
     -- catch all...
     , [className =? "trayer"        -?> doF W.swapUp ]
@@ -103,17 +94,14 @@ manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
         myFloats  = ["VirtualBox", "Xmessage", "XFontSel", "Nm-connection-editor", "Cinnamon-settings.py"]
         myMusic   = ["Spotify"]
         -- by appName (special treatment for _top-level_ windows of XenApps (Wfica_Seamless : className)
-        myXenApps = ["Microsoft Outlook", "XenCenter", "XenRTCenter", "- Message", " Reminder", "Office Communicator"]
-        myChat    = ["Pidgin", "Office Communicator", "- Conversation"]
         -- a trick for fullscreen but stil allow focusing of other WSs
         myDoFullFloat = doF W.focusDown <+> doFullFloat
 
-logHook' h1 h2 = dynamicLogWithPP customPP { ppOutput = hPutStrLn h1 }
-              >> dynamicLogWithPP customPP { ppOutput = hPutStrLn h2 }
+logHook' h1 h2 h3 = dynamicLogWithPP customPP { ppOutput = hPutStrLn h1 }
+                  >> dynamicLogWithPP customPP { ppOutput = hPutStrLn h2 }
+                  >> dynamicLogWithPP customPP { ppOutput = hPutStrLn h3 }
 
-layoutHook' =   onWorkspace "6-chat" imLayout $
-                onWorkspace "3-web" rokLayout $
-                customLayout
+layoutHook' = customLayout
 
 -------------------------------------------------------------------------------
 -- Looks --
@@ -139,8 +127,8 @@ solarized = Map.fromList [
 
 -- bar
 customPP :: PP
-customPP = defaultPP { ppCurrent = xmobarColor (Map.findWithDefault "" "orange" solarized) "" . wrap "—" "—"
-                     , ppVisible = wrap "—" "—"
+customPP = defaultPP { ppCurrent = xmobarColor (Map.findWithDefault "" "orange" solarized) "" . wrap "[" "]"
+                     , ppVisible = wrap "[" "]"
                      , ppTitle =  shorten 80
                      , ppSep =  "  ——  "
                      , ppWsSep = "  "
@@ -180,11 +168,6 @@ customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
                             , inactiveBorderColor = Map.findWithDefault "" "base03" solarized
                             , inactiveTextColor = Map.findWithDefault "" "base1" solarized
                             }
-imLayout    = renamed [Replace "(G)"] $ avoidStruts $ spacing 5 $
-                    withIM (1/6) (Role "buddy_list") (Mirror Grid)
-rokLayout   = renamed [Replace "(R)"] $ avoidStruts $
-                    reflectHoriz $ withIM (1/18) (ClassName "rokclock-Main")
-                        (reflectHoriz customLayout)
 
 -------------------------------------------------------------------------------
 -- Terminal --
