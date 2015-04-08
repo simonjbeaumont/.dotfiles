@@ -58,3 +58,4 @@ export GIT_EDITOR="vim"
 export HISTCONTROL=ignoreboth # Ignores dupes and starting ws in the history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date"
 [ -z "$DISPLAY" ] && DISPLAY=":0.0"
+stty -ixon
