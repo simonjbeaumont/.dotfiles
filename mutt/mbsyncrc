@@ -1,0 +1,34 @@
+Create Both
+Expunge Both
+SyncState *
+
+IMAPAccount citrix-account
+	Host lonpmail.citrite.net
+	User "CITRITE\\simonbe"
+	PassCmd "python /local/mail/imap-pass.py -g simonbe@citrite.net"
+	UseIMAPS yes
+	RequireSSL yes
+
+IMAPStore citrix-remote
+	Account citrix-account
+
+MaildirStore citrix-local
+	Path /local/mail/citrix/
+	Inbox /local/mail/citrix/Inbox
+	Flatten .
+
+Channel citrix-inbox
+	Master :citrix-remote:
+	Slave  :citrix-local:
+	Patterns INBOX "Sent Items"
+
+
+Channel citrix-other
+	Master :citrix-remote:
+	Slave  :citrix-local:
+	Patterns *
+	Patterns !search
+	Patterns !github !xen-api !xs-devel !tmux-users
+	Patterns !Calendar !"Sync Issues*" !"Junk E-Mail" !Tasks
+	Patterns !"Suggested Contacts" !Outbox !Notes !Contacts
+	Patterns !"Deleted Items/*" !Deleted !Sent !"RSS Feeds" !Journal

@@ -1,0 +1,7 @@
+# Every minute, sync my inbox
+*/1 * * * * mbsync citrix-inbox; notmuch new
+# Every 5 minutes, sync the rest of my email
+*/5 * * * * mbsync citrix-other; notmuch new
+# At midnight, sync my address book
+  0 0 * * * /home/simonbe/.mutt/pull-ldap.sh > /home/simonbe/.mutt/addrs
+
