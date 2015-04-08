@@ -141,7 +141,8 @@ set spellfile=~/.vim/spellfile.add
 " Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
-au FileType gitcommit                           setl spell
+au FileType {gitcommit,mail}                    setl spell
+au FileType ocaml                               setl noet fo-=t
 " }}}
 
 " Key mappings {{{
@@ -221,12 +222,15 @@ if &t_Co >= 16 || has("gui_running")
 endif
 colorscheme mustang
 
+Bundle 'sjl/badwolf'
+
 Bundle 'Raimondi/delimitMate'
 Bundle 'tpope/vim-fugitive'
 Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-markdown'
+Bundle 'jtratner/vim-flavored-markdown'
 Bundle 'ciaranm/detectindent'
 
 Bundle 'mileszs/ack.vim'
@@ -304,18 +308,18 @@ nmap <silent> <leader>O :NERDTreeFind<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
 
 Bundle 'scrooloose/syntastic'
-let g:syntastic_python_checkers = ['pylint']
+let g:syntastic_python_checkers = ['pylint', 'pep8']
 let g:syntastic_python_pylint_post_args = '-d C0103 -d C0111 --ignored-classes=twisted.internet.reactor'
 
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
 let g:NERDRemoveExtraSpaces=1
 
-" Bundle 'klen/python-mode'
-" let g:pymode_run=0
-" let g:pymode_breakpoint=0
-" let g:pymode_utils_whitespaces=0
-" let g:pymode_lint_hold=0
+Bundle 'klen/python-mode'
+let g:pymode_run=0
+let g:pymode_breakpoint=0
+let g:pymode_utils_whitespaces=0
+let g:pymode_lint_hold=0
 
 Bundle 'YankRing.vim'
 let g:yankring_history_file='.yankring-hist'
