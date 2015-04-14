@@ -23,6 +23,8 @@ bind editor ^T    complete
 
 # Basic Options {{{
 source ~/.vim/bundle/badwolf/contrib/badwolf.muttrc
+color indicator color15 color52  # Make the current line highlight clearer (red)
+
 set wait_key = no        # shut up, mutt
 set mbox_type = Maildir  # mailbox type
 set timeout = 3          # idle time before scanning
