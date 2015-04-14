@@ -1,3 +1,0 @@
-MAILTO=""
-# Check work exchange email every 3 minutes...
-*/3 * * * * killall -KILL offlineimap; offlineimap -1 -c /local/config/.offlineimaprc -u Quiet -l /home/simonbe/.citrix-mail.log
