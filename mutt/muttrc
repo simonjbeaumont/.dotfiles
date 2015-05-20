@@ -115,9 +115,11 @@ set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
           +github \
+          +ocaml-ctypes \
           +tmux-users \
           +xen-api \
           +xs-devel \
+          +xs-arch \
           +Sent \
           +Drafts \
           /local/mail/+search
