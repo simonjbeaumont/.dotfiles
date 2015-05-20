@@ -31,6 +31,9 @@ endif
 " Get rid of nasty lag on ESC (timeout and ttimeout seem useless)
 au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
+
+" Load bashrc for shell commands
+set shellcmdflag=-ic
 " }}}
 
 " UI {{{
