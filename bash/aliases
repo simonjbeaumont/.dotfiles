@@ -156,7 +156,7 @@ alias open='xdg-open'
 alias pidme='pstree -ps $$'
 
 # GNU style ls
-alias ls="command ls -hF --color"
+alias ls="command ls -hF --color=auto"
 
 # Work specific email
 alias check_mail='killall -KILL offlineimap > /dev/null 2>&1 /dev/null; offlineimap -1 -c /local/config/.offlineimaprc -u Quiet -l /home/simonbe/.citrix-mail.log'
