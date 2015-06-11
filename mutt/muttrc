@@ -124,8 +124,8 @@ set record = "+Sent"
 
 # Key Bindings
 ###############################################################################
+
 bind index,pager R        group-reply
-bind index,pager \#       noop  # do we need this?
 bind index,pager N        search-opposite
 
 macro index,pager V "|vim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>" "open in vim"
