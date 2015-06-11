@@ -55,6 +55,7 @@ set sort = threads                         # like gmail
 set sort_aux = reverse-last-date-received  # like gmail
 set sort_browser = reverse-date
 set uncollapse_jump                        # don't collapse on an unread message
+unset collapse_unread
 folder-hook . "exec collapse-all"          # collapse by default
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
@@ -158,12 +159,16 @@ bind index   p recall-message
 bind attach <return> view-mailcap
 
 # Gmail-style archive and delete
-macro index d "<save-message>+Deleted<enter><refresh><collapse-all>" "trash"
+#   Mutt doesn't respect tag-prefix for collapsed items so we have a bit of
+#   a dance about moving on to the next message
+macro index d "<save-message>+Deleted<enter>" "trash"
 macro pager d "<exit>d" "trash"
-macro index D "<tag-thread><tag-prefix>d" "trash thread"
-macro index e "<save-message>+Archive<enter><refresh><collapse-all>" "archive"
+macro index D "<collapse-thread><tag-thread><tag-prefix>d<previous-thread><collapse-thread><tag-thread><tag-prefix>d" "trash thread"
+macro index \Cd "D"
+macro index e "<save-message>+Archive<enter>" "archive"
 macro pager e "<exit>e" "archive"
-macro index E "<tag-thread><tag-prefix>e" "archive thread"
+macro index E "<collapse-thread><tag-thread><tag-prefix>e<previous-thread><collapse-thread><tag-thread><tag-prefix>e" "archive thread"
+macro index \Ce "E"
 
 # Gmail-style move dialog (whole thread)
 macro index M "<tag-thread><tag-prefix><save-message>?/" "move thread to mailbox"
@@ -173,8 +178,9 @@ macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "ma
 
 # Quickly change mailboxes (consider using gmail shortcuts (gi, etc.))
 macro index c  "<change-folder>?"     "change folder"
-macro index \' "<change-folder>+Inbox<enter>"   "go to inbox"
-macro index \" "<change-folder>+archive<enter>" "go to archive"
+macro index gi "<change-folder>+Inbox<enter>"   "go to inbox"
+macro pager gi "<exit>gi"                       "go to inbox"
+macro index,pager \' "gi"                       "go to inbox"
 
 # Search with notmuch
 macro index S \
@@ -193,12 +199,6 @@ macro pager S \
 # Unlimit (show [a]ll)
 macro index a "<limit>all\n" "show all messages (undo limit)"
 
-
 macro pager \Cu "|urlscan<enter>" "call urlview to open links"
 macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
-# Quickly change mailboxes
-macro pager \' "<exit><change-folder>+Inbox<enter>"   "go to inbox"
-macro pager \" "<exit><change-folder>+archive<enter>" "go to archive"
-
-# }}}
