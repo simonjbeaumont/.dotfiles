@@ -189,10 +189,12 @@ macro index a "<limit>all\n" "show all messages (undo limit)"
 
 # Pager {{{
 bind pager \# noop
-bind pager k  previous-line
-bind pager j  next-line
 bind pager gg top
 bind pager G  bottom
+bind pager k  previous-line
+bind pager j  next-line
+bind pager \Cu half-up
+bind pager \Cd half-down
 
 bind pager R  group-reply
 bind pager N  search-opposite
