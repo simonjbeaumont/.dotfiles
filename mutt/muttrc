@@ -1,4 +1,4 @@
-# Paths {{{
+# Paths
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
@@ -6,25 +6,21 @@ set certificate_file = ~/.mutt/certificates  # where to store certs
 set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.mutt/sig           # my signature file
-# }}}
 
-# Editor {{{
-# Use Vim to compose email, with a few default options.
+# Editor
 set editor = "vim -c 'normal! }' -c 'redraw'"
-# }}}
 
-# Contacts {{{
-# Access local LDAP query (already in correct form---see pull-ldap.sh)
+# Contacts (access local LDAP cache (already in correct form--see pull-ldap.sh)
 set query_command = "echo; grep -i %s ~/.mutt/addrs"
 set query_format = "%4c %t %-45.45a %-45.45n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T    complete
-# }}}
 
-# Basic Options {{{
+# Colours
 source ~/.vim/bundle/badwolf/contrib/badwolf.muttrc
 color indicator color15 color52  # Make the current line highlight clearer (red)
 
+# Basic Options
 set wait_key = no        # shut up, mutt
 set mbox_type = Maildir  # mailbox type
 set timeout = 3          # idle time before scanning
@@ -37,9 +33,8 @@ unset mark_old           # read/new is good enough for me
 set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
-# }}}
 
-# Sidebar Patch {{{
+# Sidebar Patch
 set sidebar_delim   = '  │'
 set sidebar_visible = yes
 set sidebar_width   = 26
@@ -47,14 +42,12 @@ color sidebar_new color221 color233
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
 bind index,pager <right>  sidebar-open
-# }}}
 
-# Status Bar {{{
+# Status Bar
 set status_chars  = " *%A"
 set status_format = "───[ Folder: %f ]───[%r%m messages%?n? (%n new)?%?d? (%d to delete)?%?t? (%t tagged)? ]───%>─%?p?( %p postponed )?───"
-# }}}
 
-# Index View Options {{{
+# Index View Options
 set date_format = "!%a, %d %b %Y at %H:%M"
 set index_format = "[%Z]  %D  %-20.20F  %s"
 set index_format = "[%Z]  %D  %-20.20F  %?M?[+]&   ? %s"
@@ -66,9 +59,8 @@ folder-hook . "exec collapse-all"          # collapse by default
 set sort_re                                # thread based on regex
 set reply_regexp = "^(([Rr][Ee]?(\[[0-9]+\])?: *)?(\[[^]]+\] *)?)*"
 set folder_format = "%2C %t %N %8s %f"
-# }}}
 
-# Pager View Options {{{
+# Pager View Options
 set pager_index_lines = 10 # number of inde%4c) %s lines to show
 set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
@@ -78,9 +70,8 @@ unset markers              # no ugly plus signs
 set quote_regexp = "^( {0,4}[>|:#%]| {0,4}[a-z0-9]+[>|]+)+"
 alternative_order text/calendar text/plain text/enriched text/html text/*
 auto_view text/html text/calendar
-# }}}
 
-# Compose View Options {{{
+# Compose View Options
 set envelope_from                    # which from?
 unset sig_dashes                     # dashes before sig
 set edit_headers                     # show headers when composing
@@ -95,21 +86,17 @@ set reply_to                         # reply to Reply to: field
 set reverse_name                     # reply as whomever it was to
 set include                          # include message in replies
 set forward_quote                    # include message in forwards
-# }}}
 
-# Attachment View Options {{{
+# Attachment View Options
 set attach_format = "[%D %t] %2n [%-7.7m/%10.10M] %.40d %> [%s] "
-# }}}
 
-# Headers {{{
+# Headers
 ignore *                                # ignore all headers
 unignore from: to: cc: date: subject:   # show only these
 unhdr_order *
 hdr_order from: to: cc: date: subject:  # and in this order
-# }}}
 
-# simon.beaumont@citrix.com {{{
-# Default inbox
+# Account info: simon.beaumont@citrix.com
 set folder = /local/mail/citrix/ # mailbox location
 set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
@@ -132,40 +119,57 @@ set postponed = "+Drafts"
 set realname = "Si Beaumont"
 set from     = "Si Beaumont <simon.beaumont@citrix.com>"
 set sendmail = "/usr/bin/msmtp -a citrix"
-set sendmail_wait = 0 # no please don't silently fail, email is important
+set sendmail_wait = 0   # no please don't silently fail, email is important
 set record = "+Sent"
-# }}}
 
-# Key Bindings {{{
-# Index {{{
-bind index \#       noop
-bind index R        group-reply
-bind index <tab>    sync-mailbox
+# Key Bindings
+###############################################################################
+bind index,pager R        group-reply
+bind index,pager \#       noop  # do we need this?
+bind index,pager N        search-opposite
+
+macro index,pager V "|vim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>" "open in vim"
+
+# Index navigation
 bind index k        previous-entry
 bind index j        next-entry
 bind index gg       first-entry
 bind index G        last-entry
-bind index p        recall-message
 bind index <space>  collapse-thread
-bind index N        search-opposite
+
+# Pager navigation
+bind pager gg top
+bind pager G  bottom
+bind pager k  previous-line
+bind pager j  next-line
+bind pager \Cu half-up
+bind pager \Cd half-down
+
+# Sync email
+bind  index <tab> sync-mailbox
+macro index o     "<shell-escape>mbsync citrix-inbox; notmuch new<enter>" "run mbsync to sync inbox"
+macro index O     "<shell-escape>mbsync citrix-other; notmuch new<enter>" "run mbsync to sync all mail"
+
+# Save as draft
+bind compose p postpone-message
+bind index   p recall-message
+
+# Quickly view attachments
+bind attach <return> view-mailcap
 
 # Move to trash rather than really delete
-macro index d "<save-message>+Deleted<enter>"
+macro index,pager d "<save-message>+Deleted<enter>"
 
 # Mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
-
-# Sync email
-macro index o "<shell-escape>mbsync citrix-inbox; notmuch new<enter>" "run mbsync to sync inbox"
-macro index O "<shell-escape>mbsync citrix-other; notmuch new<enter>" "run mbsync to sync all mail"
 
 # Saner copy/move dialogs
 macro index C "<copy-message>?/" "copy a message to a mailbox"
 macro index M "<save-message>?/" "move a message to a mailbox"
 macro index M "<tag-thread><tag-prefix><save-message>?/" "move a thread to a mailbox"
 
-# Quickly change mailboxes
-macro index c "<change-folder>?"     "change folder"
+# Quickly change mailboxes (consider using gmail shortcuts (gi, etc.))
+macro index c  "<change-folder>?"     "change folder"
 macro index \' "<change-folder>+Inbox<enter>"   "go to inbox"
 macro index \" "<change-folder>+archive<enter>" "go to archive"
 
@@ -185,22 +189,7 @@ macro pager S \
 
 # Unlimit (show [a]ll)
 macro index a "<limit>all\n" "show all messages (undo limit)"
-# }}}
 
-# Pager {{{
-bind pager \# noop
-bind pager gg top
-bind pager G  bottom
-bind pager k  previous-line
-bind pager j  next-line
-bind pager \Cu half-up
-bind pager \Cd half-down
-
-bind pager R  group-reply
-bind pager N  search-opposite
-
-# Move to trash rather than really delete
-macro pager d "<save-message>+Deleted<enter>"
 
 macro pager \Cu "|urlscan<enter>" "call urlview to open links"
 macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
@@ -208,17 +197,5 @@ macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 # Quickly change mailboxes
 macro pager \' "<exit><change-folder>+Inbox<enter>"   "go to inbox"
 macro pager \" "<exit><change-folder>+archive<enter>" "go to archive"
-# }}}
 
-# Compose {{{
-bind compose p postpone-message
-# }}}
-
-# Attachment {{{
-bind attach <return> view-mailcap
-# }}}
-
-# "Open in Vim" {{{
-macro index,pager V "|vim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>"              "open in vim"
-# }}}
 # }}}
