@@ -157,16 +157,19 @@ bind index   p recall-message
 # Quickly view attachments
 bind attach <return> view-mailcap
 
-# Move to trash rather than really delete
-macro index,pager d "<save-message>+Deleted<enter>"
+# Gmail-style archive and delete
+macro index d "<save-message>+Deleted<enter><refresh><collapse-all>" "trash"
+macro pager d "<exit>d" "trash"
+macro index D "<tag-thread><tag-prefix>d" "trash thread"
+macro index e "<save-message>+Archive<enter><refresh><collapse-all>" "archive"
+macro pager e "<exit>e" "archive"
+macro index E "<tag-thread><tag-prefix>e" "archive thread"
+
+# Gmail-style move dialog (whole thread)
+macro index M "<tag-thread><tag-prefix><save-message>?/" "move thread to mailbox"
 
 # Mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
-
-# Saner copy/move dialogs
-macro index C "<copy-message>?/" "copy a message to a mailbox"
-macro index M "<save-message>?/" "move a message to a mailbox"
-macro index M "<tag-thread><tag-prefix><save-message>?/" "move a thread to a mailbox"
 
 # Quickly change mailboxes (consider using gmail shortcuts (gi, etc.))
 macro index c  "<change-folder>?"     "change folder"
