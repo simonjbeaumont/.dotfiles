@@ -145,7 +145,7 @@ set spellfile=~/.vim/spellfile.add
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
 au FileType {gitcommit,mail}                    setl spell
-au FileType ocaml                               setl noet fo-=t
+au FileType ocaml                               setl fo-=t
 " }}}
 
 " Key mappings {{{
