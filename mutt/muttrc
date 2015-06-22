@@ -102,6 +102,7 @@ set folder = /local/mail/citrix/ # mailbox location
 set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
+          +caml-list \
           +github \
           +ocaml-ctypes \
           +tmux-users \
