@@ -45,13 +45,19 @@ else
     install_dotfile "$HOME/.dotfiles/tmux/tmux_start" "$HOME/tmux_start"
     install_dotfile "$HOME/.dotfiles/vim" "$HOME/.vim"
     install_dotfile "$HOME/.dotfiles/vim/vimrc" "$HOME/.vimrc"
-    install_dotfile "$HOME/.dotfiles/xmonad/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
-    install_dotfile "$HOME/.dotfiles/xmonad/xmobarrc" "$HOME/.xmonad/xmobarrc"
 
-    # if we're on a Mac, let's set it up properly
-    if [[ "$OSTYPE" =~ ^darwin ]]; then
-    	source "$HOME/.dotfiles/osx/osx-defaults-setup"
-    fi
+    # OS specific config
+    case "$OSTYPE" in
+        darwin*)
+            source "$HOME/.dotfiles/osx/osx-defaults-setup"
+            echo "Note: Terminal.app and iTerm themes can be installed from:"
+            echo "  - $HOME/.dotfiles/osx/"
+            ;;
+        linux*)
+            install_dotfile "$HOME/.dotfiles/xmonad/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
+            install_dotfile "$HOME/.dotfiles/xmonad/xmobarrc" "$HOME/.xmonad/xmobarrc"
+            ;;
+    esac
 
     # let's sort out all the vim submodules
     git submodule init
@@ -60,9 +66,4 @@ else
     source ~/.bash_profile
     cd "$HOME"
     echo "Initalisation complete!"
-
-    if [[ "$OSTYPE" =~ ^darwin ]]; then
-        echo "Note: Terminal.app and iTerm themes can be installed from:"
-        echo "  - $HOME/.dotfiles/osx/"
-    fi
 fi
