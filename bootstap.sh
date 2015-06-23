@@ -16,8 +16,7 @@ install_dotfile () {
     fi
 
     echo -n "Linking $2..."
-    rm $2 2> /dev/null
-    ln -s $1 $2
+    ln -sf $1 $2
     echo "done"
 }
 
