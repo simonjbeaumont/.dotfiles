@@ -16,6 +16,7 @@ shopt -s checkwinsize
 [ -r /usr/local/bin ] && export PATH=$PATH:/usr/local/bin
 # MacPorts
 [ -r /opt/local/bin ] && export PATH=$PATH:/opt/local/bin:/opt/local/sbin
+[ -r /local/home/sjbx/.cabal/bin ] && export PATH=/local/home/sjbx/.cabal/bin:$PATH
 # Citrix
 mount | grep /usr/groups/xen > /dev/null && \
     export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin:/usr/groups/xen/xenrt/control:/work/tools/scripts && \

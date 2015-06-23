@@ -1,16 +1,17 @@
 Config {
-         font = "xft:Meslo LG S DZ for Powerline:style=RegularForPowerline:size=7"
+         font = "xft:Meslo LG S DZ for Powerline:style=RegularForPowerline:size=8"
        , bgColor = "#002b36"
        , fgColor = "#93a1a1"
        , position = TopSize L 100 16
        , lowerOnStart = True
-       , commands = [
-                     Run Cpu ["-L","20","-H","70","-n","#429942","-h","#A36666","-f","—","-b"," ","-W","6","-t","<bar>"] 50
-                    , Run Memory ["-f","—","-b"," ","-W", "6","-t","<usedbar>"] 10
+       , iconRoot = "/local/home/sjbx/.xmonad/icons"
+       , commands = [ Run StdinReader
+                    , Run Cpu ["-L","20","-H","70","-n","#429942","-h","#A36666","-f","—","-b"," ","-W","5","-t","<bar>"] 50
+                    , Run Memory ["-f","—","-b"," ","-W", "5","-t","<usedbar>"] 10
+                    , Run Volume "default" "Master" ["-t", "<volume>% <status>"] 5
                     , Run Date "%a %b %_d, %Y — %H:%M:%S" "date" 10
-                    , Run StdinReader
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ CPU:<fc=#2aa198>[</fc>%cpu%<fc=#2aa198>]</fc>  Mem:<fc=#2aa198>[</fc>%memory%<fc=#2aa198>]</fc>  —  <fc=#2aa198>[</fc>%date%<fc=#2aa198>]</fc> "
+       , template = " %StdinReader% }{ Vol:<fc=#2aa198>[</fc>%default:Master%<fc=#3aa198>]</fc>  CPU:<fc=#2aa198>[</fc>%cpu%<fc=#2aa198>]</fc>  Mem:<fc=#2aa198>[</fc>%memory%<fc=#2aa198>]</fc>  —  <fc=#2aa198>[</fc>%date%<fc=#2aa198>]</fc> "
        }

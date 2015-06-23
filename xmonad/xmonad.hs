@@ -35,9 +35,9 @@ import XMonad.Actions.CycleWS
 -------------------------------------------------------------------------------
 -- Main --
 main = do
-       h1 <- spawnPipe "xmobar -x 0 ~/.xmonad/xmobarrc"
-       h2 <- spawnPipe "xmobar -x 1 ~/.xmonad/xmobarrc"
-       h3 <- spawnPipe "xmobar -x 2 ~/.xmonad/xmobarrc"
+       h1 <- spawnPipe "/local/home/sjbx/.cabal/bin/xmobar -x 0 ~/.xmonad/xmobarrc"
+       h2 <- spawnPipe "/local/home/sjbx/.cabal/bin/xmobar -x 1 ~/.xmonad/xmobarrc"
+       h3 <- spawnPipe "/local/home/sjbx/.cabal/bin/xmobar -x 2 ~/.xmonad/xmobarrc"
        xmonad $ withUrgencyHook NoUrgencyHook $ gnomeConfig
               { workspaces = workspaces'
               , modMask = modMask'
@@ -53,25 +53,21 @@ main = do
                 ((modMask',               xK_w),     kill)
               , ((modMask',               xK_r),     spawn "xmonad --recompile; xmonad --restart")
               , ((modMask' .|. shiftMask, xK_w),     spawn "gnome-session-quit")
+              , ((modMask' .|. shiftMask, xK_q),     spawn "xlock -mode blank")
               , ((modMask' .|. shiftMask, xK_l),     sendMessage MirrorShrink)
               , ((modMask' .|. shiftMask, xK_h),     sendMessage MirrorExpand)
-              -- workspaces (imagine vertical stack with horizontal screens)
-              , ((modMask',               xK_Down),  nextWS)
-              , ((modMask',               xK_Up),    prevWS)
-              , ((modMask' .|. shiftMask, xK_Down),  shiftToNext >> nextWS)
-              , ((modMask' .|. shiftMask, xK_Up),    shiftToPrev >> prevWS)
-              , ((modMask',               xK_grave), toggleWS)
-              , ((modMask',               xK_f),     moveTo Next EmptyWS)
-              -- screens
-              , ((modMask',               xK_e), nextScreen)
-              , ((modMask',               xK_q), prevScreen)
-              , ((modMask' .|. shiftMask, xK_e), shiftNextScreen >> nextScreen)
-              , ((modMask' .|. shiftMask, xK_q), shiftPrevScreen >> nextScreen)
+              -- volume
+              , ((modMask', xK_F10), spawn "amixer set Master 10%-")
+              , ((modMask', xK_F11), spawn "amixer set Master 10%+")
+              , ((modMask', xK_F12), spawn "amixer set Master toggle")
+              -- media
+              , ((modMask', xK_F6), spawn "~/.xmonad/spotify-cli previous")
+              , ((modMask', xK_F7), spawn "~/.xmonad/spotify-cli play-pause")
+              , ((modMask', xK_F8), spawn "~/.xmonad/spotify-cli next")
               -- launching
-              , ((modMask' .|. shiftMask, xK_b), spawn "google-chrome")
-              , ((modMask' .|. shiftMask, xK_s), spawn "/usr/local/src/spotify-notify/spotify-notify.py -n")
-              , ((modMask' .|. shiftMask, xK_p), spawn "gmrun")
               , ((modMask',               xK_p), spawn "gnome-do")
+              , ((modMask' .|. shiftMask, xK_b), spawn "firefox")
+              , ((modMask' .|. shiftMask, xK_s), spawn "spotify")
               ]
 
 -------------------------------------------------------------------------------
@@ -80,20 +76,19 @@ manageHook' :: ManageHook
 manageHook' = manageHook gnomeConfig <+> manageDocks <+> (composeOne . concat $
     [ [className =? c -?> doCenterFloat | c <- myFloats ] -- float my floats
     -- shift certain apps to certain workspaces
-    , [className    =? c            -?> doShift  "7-music" |   c <- myMusic    ] -- move to WS
-    -- catch all...
+    , [className    =? c            -?> doShift  "5-music" |   c <- myMusic    ] -- move to WS
     , [className =? "trayer"        -?> doF W.swapUp ]
     , [className    =? c            -?> doIgnore       |   c <- myIgnores  ] -- ignore desktop
     , [isFullscreen                 -?> myDoFullFloat                      ] -- special full screen
     , [isDialog                     -?> doCenterFloat <+> doF W.swapUp    ] -- float dialogs
+    -- catch all...
     , [return True                  -?> doF W.swapDown                     ] -- open below, not above
     ]) 
     where
         -- by className
         myIgnores = ["Do", "Notification-daemon", "notify-osd", "stalonetray", "trayer"]
-        myFloats  = ["VirtualBox", "Xmessage", "XFontSel", "Nm-connection-editor", "Cinnamon-settings.py"]
+        myFloats  = ["VirtualBox", "Xmessage"]
         myMusic   = ["Spotify"]
-        -- by appName (special treatment for _top-level_ windows of XenApps (Wfica_Seamless : className)
         -- a trick for fullscreen but stil allow focusing of other WSs
         myDoFullFloat = doF W.focusDown <+> doFullFloat
 
@@ -134,7 +129,7 @@ customPP = defaultPP { ppCurrent = xmobarColor (Map.findWithDefault "" "orange" 
                      , ppWsSep = "  "
                      , ppHiddenNoWindows = xmobarColor (Map.findWithDefault "" "base01" solarized) ""
                      , ppUrgent = xmobarColor (Map.findWithDefault "" "yellow" solarized) "" . wrap "*" "*" . xmobarStrip
-                     , ppSort = getSortByXineramaRule
+                     , ppSort = getSortByXineramaPhysicalRule
                      }
 
 -- borders
@@ -147,7 +142,7 @@ focusedBorderColor' =  Map.findWithDefault "" "orange" solarized
 
 -- workspaces
 workspaces' :: [WorkspaceId]
-workspaces' = ["1-mail", "2-work", "3-web", "4-xen", "5-xenrt", "6-chat", "7-music", "8" , "9"]
+workspaces' = ["1-mail", "2-work", "3-web", "4-xenia", "5-music", "6", "7", "8" , "9"]
 
 -- layouts
 customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
@@ -156,8 +151,8 @@ customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
     delta    = 2/100 -- Percentage of the screen to increment when resizing
     ratio    = 5/8   -- Defaul proportion of the screen taken up by main pane
     rt       = spacing 5 $ ResizableTall nmaster delta ratio []
-    tiled    = renamed [Replace "(T)"] $ smartBorders rt
-    mtiled   = renamed [Replace "(M)"] $ smartBorders $ Mirror rt
+    tiled    = renamed [Replace "<icon=mem.xbm/>"] $ smartBorders rt
+    mtiled   = renamed [Replace "(m)"] $ smartBorders $ Mirror rt
     tab      = renamed [Replace "(*)"] $ noBorders $ tabbed shrinkText tabTheme
     full     = renamed [Replace "(X)"] $ noBorders Full
     tabTheme = defaultTheme { decoHeight = 16
