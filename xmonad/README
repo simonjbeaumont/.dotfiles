@@ -1,0 +1,7 @@
+Install Xmonad straight from Fedora:
+
+    yum install xmonad
+
+To get icons and volume working in xmobar it needs to be compiled with extenstions:
+
+    cabal install xmobar --flags="all_extensions"
