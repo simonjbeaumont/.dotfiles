@@ -1,1 +1,1 @@
-set gui=none
+set gui=tabs,nonavigation,noaddons,nobookmarks,nomenu
