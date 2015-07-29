@@ -225,7 +225,7 @@ lint_xapi_db() {
 }
 
 bugger() {
-    for i in $(find . -maxdepth 2 -type d -regex './[^/]*bug-report-[^/]*'); do
+    for i in $(find . -maxdepth 2 -type d -regex './[^/]*bug\(-report\|tool\)-[^/]*'); do
         host=$(head -n 3 $i/inventory.xml | grep system-summary | cut -d\" -f4);
         mv $i bug-report-$host
     done
