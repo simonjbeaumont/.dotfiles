@@ -59,8 +59,8 @@ case "$OSTYPE" in
         echo "  - $HOME/.dotfiles/osx/"
         ;;
     linux*)
-        cat "$HOME/.dotfiles/linux/xinitrc-caps-escape" >> "$HOME/.xinitrc"
-        install_dotfile "$HOME/.dotfiles/linux/xmodmap" "$HOME/.Xmodmap"
+        install_dotfile "$HOME/.dotfiles/linux/xinitrc" "$HOME/.xinitrc"
+        install_dotfile "$HOME/.dotfiles/linux/Xmodmap" "$HOME/.Xmodmap"
         xmodmap "$HOME/.Xmodmap"
         install_dotfile "$HOME/.dotfiles/xmonad/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
         install_dotfile "$HOME/.dotfiles/xmonad/xmobarrc" "$HOME/.xmonad/xmobarrc"
