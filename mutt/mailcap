@@ -1,4 +1,6 @@
 text/html; elinks -dump-color-mode 4 -dump | less -R;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
 image/*; xview '%s'; test=test -n "$DISPLAY";
+message/*; less '%s';
+application/pdf; evince '%s' test=test -n "$DISPLAY";
 text/calendar; ~/.mutt/dump-ical.py %s; copiousoutput;
