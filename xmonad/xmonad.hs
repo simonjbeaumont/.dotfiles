@@ -145,16 +145,16 @@ workspaces' :: [WorkspaceId]
 workspaces' = ["1-mail", "2-work", "3-web", "4-xenia", "5-music", "6", "7", "8" , "9"]
 
 -- layouts
-customLayout = avoidStruts $ tiled ||| mtiled ||| tab ||| full
+customLayout = avoidStruts $ tiled ||| mtiled ||| full
   where
     nmaster  = 1     -- Default number of windows in master pane
     delta    = 2/100 -- Percentage of the screen to increment when resizing
     ratio    = 5/8   -- Defaul proportion of the screen taken up by main pane
     rt       = spacing 5 $ ResizableTall nmaster delta ratio []
-    tiled    = renamed [Replace "<icon=mem.xbm/>"] $ smartBorders rt
-    mtiled   = renamed [Replace "(m)"] $ smartBorders $ Mirror rt
-    tab      = renamed [Replace "(*)"] $ noBorders $ tabbed shrinkText tabTheme
-    full     = renamed [Replace "(X)"] $ noBorders Full
+    tiled    = renamed [Replace "<icon=layout-tall-black.xbm/>"] $ smartBorders rt
+    mtiled   = renamed [Replace "<icon=layout-mirror-black.xbm/>"] $ smartBorders $ Mirror rt
+    tab      = renamed [Replace "<icon=layout-tabbed-black.xbm/>"] $ noBorders $ tabbed shrinkText tabTheme
+    full     = renamed [Replace "<icon=layout-full-black.xbm/>"] $ noBorders Full
     tabTheme = defaultTheme { decoHeight = 16
                             , activeColor = Map.findWithDefault "" "base01" solarized
                             , activeBorderColor = Map.findWithDefault "" "base00" solarized

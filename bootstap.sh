@@ -64,6 +64,7 @@ case "$OSTYPE" in
         xmodmap "$HOME/.Xmodmap"
         install_dotfile "$HOME/.dotfiles/xmonad/xmonad.hs" "$HOME/.xmonad/xmonad.hs"
         install_dotfile "$HOME/.dotfiles/xmonad/xmobarrc" "$HOME/.xmonad/xmobarrc"
+        install_dotfile "$HOME/.dotfiles/xmonad/icons" "$HOME/.xmonad/icons"
         ;;
 esac
 
