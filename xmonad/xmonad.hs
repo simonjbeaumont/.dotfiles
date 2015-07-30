@@ -56,14 +56,20 @@ main = do
               , ((modMask' .|. shiftMask, xK_q),     spawn "xlock -mode blank")
               , ((modMask' .|. shiftMask, xK_l),     sendMessage MirrorShrink)
               , ((modMask' .|. shiftMask, xK_h),     sendMessage MirrorExpand)
-              -- volume
-              , ((modMask', xK_F10), spawn "amixer set Master 10%-")
-              , ((modMask', xK_F11), spawn "amixer set Master 10%+")
-              , ((modMask', xK_F12), spawn "amixer set Master toggle")
               -- media
-              , ((modMask', xK_F6), spawn "~/.xmonad/spotify-cli previous")
-              , ((modMask', xK_F7), spawn "~/.xmonad/spotify-cli play-pause")
-              , ((modMask', xK_F8), spawn "~/.xmonad/spotify-cli next")
+              , ((modMask', xK_F7), spawn "~/.xmonad/spotify-cli previous")
+              , ((modMask', xK_F8), spawn "~/.xmonad/spotify-cli play-pause")
+              , ((modMask', xK_F9), spawn "~/.xmonad/spotify-cli next")
+              , ((0, 0x1008ff16),   spawn "~/.xmonad/spotify-cli previous")
+              , ((0, 0x1008ff14),   spawn "~/.xmonad/spotify-cli play-pause")
+              , ((0, 0x1008ff17),   spawn "~/.xmonad/spotify-cli next")
+              -- volume
+              , ((modMask', xK_F10), spawn "amixer set Master toggle")
+              , ((modMask', xK_F11), spawn "amixer set Master 10%-")
+              , ((modMask', xK_F12), spawn "amixer set Master 10%+")
+              , ((0, 0x1008ff12),    spawn "amixer set Master toggle")
+              , ((0, 0x1008ff11),    spawn "amixer set Master 10%-")
+              , ((0, 0x1008ff13),    spawn "amixer set Master 10%+")
               -- launching
               , ((modMask',               xK_p), spawn "gnome-do")
               , ((modMask' .|. shiftMask, xK_b), spawn "firefox")
