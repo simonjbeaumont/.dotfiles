@@ -50,6 +50,7 @@ install_dotfile "$HOME/.dotfiles/tmux/tmux_start" "$HOME/tmux_start"
 install_dotfile "$HOME/.dotfiles/vim" "$HOME/.vim"
 install_dotfile "$HOME/.dotfiles/vim/vimrc" "$HOME/.vimrc"
 install_dotfile "$HOME/.dotfiles/vimperatorrc" "$HOME/.vimperatorrc"
+install_dotfile "$HOME/.dotfiles/ssh/config" "$HOME/.ssh/config"
 
 # OS specific config
 case "$OSTYPE" in
