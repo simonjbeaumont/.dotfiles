@@ -3,31 +3,22 @@ Host *
 GSSAPIAuthentication no
 AddressFamily inet
 ServerAliveInterval 60
+ForwardX11Timeout 1d
+IdentityFile ~/.ssh/id_rsa
 
-# Dev VM
-Host morbo morbo.uk.xensource.com
+# Dev VM + build VMs
+Host morbo drall eddie
 User simonbe
-IdentityFile ~/.ssh/ctx-id_rsa
 ForwardX11 yes
 ForwardAgent yes
 
 # Mercurial
 Host hg
 User xenhg
-IdentityFile ~/.ssh/ctx-id_rsa
-ForwardX11 no
-ForwardAgent no
-
-# Github
-Host github.com
-IdentityFile ~/.ssh/personal-id_rsa
 
 # Test machines
-Host dt* st* laurel hardy
+Host dt* st* laurel hardy *.xenrt.xs.citrite.net *.xenrt.citrite.net
 User root
-IdentityFile ~/.ssh/ctx-id_rsa
-ForwardX11 no
-ForwardAgent no
 UserKnownHostsFile /dev/null
 StrictHostKeyChecking no
 LogLevel ERROR
@@ -36,12 +27,8 @@ LogLevel ERROR
 Host citrix-gate
 Hostname gate.ctxuk.citrix.com
 User simonbe
-IdentityFile = ~/.ssh/personal-id_rsa
-Compression no
-ServerAliveInterval 123
 ForwardAgent yes
 ForwardX11 yes
-ForwardX11Timeout 1d
-TCPKeepAlive yes
+TCPKeepAlive no
 LocalForward 3389 simonbe-xenia:3389
 DynamicForward localhost:1080
