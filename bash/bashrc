@@ -33,9 +33,8 @@ if [[ "$OSTYPE" =~ ^darwin ]]; then
         . /usr/local/etc/bash_completion
     fi
 elif [[ "$OSTYPE" =~ ^linux ]]; then
-    if [ -r /etc/bash_completion ] && ! shopt -oq posix; then
-        . /etc/bash_completion
-    fi
+    [[ $PS1 && -f /usr/share/bash-completion/bash_completion ]] && \
+        . /usr/share/bash-completion/bash_completion
 fi
 
 # Setting up GNU coreutils/ls
