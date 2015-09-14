@@ -9,6 +9,7 @@ filetype indent on
 " Setup for merlin
 let g:opamshare = substitute(system('opam config var share'),'\n$','','''')
 execute "set rtp+=" . g:opamshare . "/merlin/vim"
+set rtp^="/home/simonbe/.opam/4.02.1/share/ocp-indent/vim"
 
 scriptencoding utf-8
 set encoding=utf-8
