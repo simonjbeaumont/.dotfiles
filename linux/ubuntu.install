@@ -1,0 +1,63 @@
+# Dev
+git
+vim-gnome
+tmux xclip
+exuberant-ctags
+colordiff
+
+# Distro package management
+apt-file
+
+# OCaml packages
+aspcud
+opam
+
+# General
+nfs-kernel-server
+tree
+rlwrap
+evince
+midori
+xdiskusage
+
+# Python packages
+pylint
+pep8
+python-nose
+python-tox
+python-demjson
+
+# TeX
+texlive-base
+texlive-latex-base
+texlive-latex-extra
+texlive-fonts-recommended
+pandoc
+gnuplot
+
+# Virt
+vagrant
+lxc-docker
+docker.io
+rdesktop
+
+# Debug
+valgrind
+wireshark
+
+# Mock
+mock
+python-mock
+createrepo
+
+# XS dev
+gawk
+libreadline6-dev
+libyaml-dev
+libsqlite3-dev
+sqlite3
+autoconf
+libgdbm-dev
+automake
+libtool
+bison
