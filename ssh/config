@@ -5,8 +5,8 @@ AddressFamily inet
 ServerAliveInterval 60
 ForwardX11Timeout 1d
 
-# Dev VM + build VMs
-Host morbo drall eddie
+# Dev VM
+Host morbo
 User simonbe
 ForwardX11 yes
 ForwardAgent yes
