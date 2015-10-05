@@ -52,6 +52,7 @@ install_dotfile "$HOME/.dotfiles/vim" "$HOME/.vim"
 install_dotfile "$HOME/.dotfiles/vim/vimrc" "$HOME/.vimrc"
 install_dotfile "$HOME/.dotfiles/vimperatorrc" "$HOME/.vimperatorrc"
 install_dotfile "$HOME/.dotfiles/ssh/config" "$HOME/.ssh/config"
+install_dotfile "$HOME/.dotfiles/utoprc" "$HOME/.utoprc"
 
 # OS specific config
 case "$OSTYPE" in
