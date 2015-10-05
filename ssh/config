@@ -4,7 +4,6 @@ GSSAPIAuthentication no
 AddressFamily inet
 ServerAliveInterval 60
 ForwardX11Timeout 1d
-IdentityFile ~/.ssh/id_rsa
 
 # Dev VM + build VMs
 Host morbo drall eddie
