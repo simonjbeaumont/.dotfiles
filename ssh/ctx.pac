@@ -13,6 +13,8 @@ var FindProxyForURL = function(init, profiles) {
         "use strict";
         if (/(?:^|\.)citrite\.net$/.test(host)) return "+Local SOCKS";
         if (/(?:^|\.)uk\.xensource\.com$/.test(host)) return "+Local SOCKS";
+        if (/(?:^|\.)backstage.citrix.com$/.test(host)) return "+Local SOCKS";
+        if (/(?:^|\.)identity.citrix.com$/.test(host)) return "+Local SOCKS";
         return "DIRECT";
     },
     "+Local SOCKS": function(url, host, scheme) {
