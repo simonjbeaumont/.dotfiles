@@ -5,7 +5,7 @@
 # If the destination already exists then overwrite it iff it is a symlink,
 # otherwise leave it alone
 
-set -x
+set +ev
 
 install_dotfile () {
     if [ ! -d $(dirname $2) ]; then
