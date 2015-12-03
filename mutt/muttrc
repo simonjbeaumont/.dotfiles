@@ -96,13 +96,13 @@ ignore *                                # ignore all headers
 unignore from: to: cc: date: subject:   # show only these
 unhdr_order *
 hdr_order from: to: cc: date: subject:  # and in this order
+# my_hdr  Bcc: Si Beaumont <simon.beaumont@citrix.com>
 
 # Account info: simon.beaumont@citrix.com
 set folder = /local/mail/citrix/ # mailbox location
 set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
-          +caml-list \
           +github \
           +ocaml-ctypes \
           +tmux-users \

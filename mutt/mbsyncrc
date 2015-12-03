@@ -28,7 +28,7 @@ Channel citrix-other
 	Slave  :citrix-local:
 	Patterns *
 	Patterns !search
-	Patterns !github !xen-api !xs-devel !xs-arch !tmux-users !ocaml-ctypes !caml-list
+	Patterns !github !xen-api !xs-devel !xs-arch !tmux-users !ocaml-ctypes
 	Patterns !Calendar !"Sync Issues*" !"Junk E-Mail" !Tasks
 	Patterns !"Suggested Contacts" !Outbox !Notes !Contacts
 	Patterns !"Deleted Items/*" !Deleted !Sent !"RSS Feeds" !Journal
