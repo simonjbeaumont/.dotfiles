@@ -201,6 +201,6 @@ macro pager S \
 # Unlimit (show [a]ll)
 macro index a "<limit>all\n" "show all messages (undo limit)"
 
-macro pager \Cu "|urlscan<enter>" "call urlview to open links"
+macro pager \CU "|urlscan<enter>" "call urlview to open links"
 macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
