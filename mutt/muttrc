@@ -65,6 +65,7 @@ set folder_format = "%2C %t %N %8s %f"
 set pager_index_lines = 10 # number of inde%4c) %s lines to show
 set pager_context = 3      # number of context lines to show
 set pager_stop             # don't go to next message automatically
+set wrap = 126             # 100 + sidebar_width
 set menu_scroll            # scroll in menus
 set tilde                  # show tildes like in vim
 unset markers              # no ugly plus signs
