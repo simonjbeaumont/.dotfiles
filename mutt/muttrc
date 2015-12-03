@@ -123,7 +123,7 @@ set realname = "Si Beaumont"
 set from     = "Si Beaumont <simon.beaumont@citrix.com>"
 set sendmail = "/usr/bin/msmtp -a citrix"
 set sendmail_wait = 0   # no please don't silently fail, email is important
-set record = "+Sent"
+set record = "+Inbox"
 
 # Key Bindings
 ###############################################################################
