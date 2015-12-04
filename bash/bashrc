@@ -1,5 +1,5 @@
 # Note: .bashrc is sourced for non-login shells
-for file in ~/.{bash_prompt,aliases,functions}; do
+for file in ~/.{bash_prompt,aliases,functions,tokens}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
