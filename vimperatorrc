@@ -1,1 +1,3 @@
 set gui=tabs,nonavigation,noaddons,nobookmarks,nomenu
+set defsearch=google
+set complete+=S
