@@ -1,6 +1,7 @@
 text/html; elinks -dump-color-mode 4 -dump | less -R;
 text/html; w3m -I %{charset} -T text/html; copiousoutput;
+text/plain; less '%s';
 message/*; less '%s';
-image/*; xview '%s'; test=sh -c "timeout .2s xset q >/dev/null"
-application/pdf; evince '%s'; test=sh -c "timeout .2s xset q >/dev/null"
+image/*; xview '%s' &; test=sh -c "timeout .2s xset q >/dev/null"; copiousoutput;
+application/pdf; evince '%s' &; test=sh -c "timeout .2s xset q >/dev/null"; copiousoutput;
 text/calendar; ~/.mutt/dump-ical.py %s; copiousoutput;
