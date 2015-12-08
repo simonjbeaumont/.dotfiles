@@ -50,6 +50,7 @@ set scrolloff=4     " lines of context when scrolling
 
 set wildmode=longest,list     " bash-style file completion
 set wildignore=*.o,*~,*.pyc   " Ignore compiled files
+set wildignore+=*.cmi,*.cmt,*.cmx,*.cmti,*.cmxa,*.annot,*.native,*.opt
 
 set ruler           " show current position
 set colorcolumn=80  " always show width marker
