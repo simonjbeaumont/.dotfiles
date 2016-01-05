@@ -32,3 +32,9 @@ ForwardX11 yes
 TCPKeepAlive no
 LocalForward 3389 simonbe-xenia:3389
 DynamicForward localhost:1080
+
+Host pi
+Hostname 192.168.0.9
+User pi
+ForwardX11 yes
+ForwardAgent no
