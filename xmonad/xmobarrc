@@ -10,8 +10,9 @@ Config {
                     , Run Memory ["-f","—","-b"," ","-W", "5","-t","<usedbar>"] 10
                     , Run Volume "default" "Master" ["-t", "<volume>% <status>"] 5
                     , Run Date "%a %b %_d, %Y — %H:%M:%S" "date" 10
+                    , Run Com "/local/home/sjbx/.dotfiles/xmonad/now-playing.sh" [] "nowplaying" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
-       , template = " %StdinReader% }{ Vol:<fc=#2aa198>[</fc>%default:Master%<fc=#3aa198>]</fc>  CPU:<fc=#2aa198>[</fc>%cpu%<fc=#2aa198>]</fc>  Mem:<fc=#2aa198>[</fc>%memory%<fc=#2aa198>]</fc>  —  <fc=#2aa198>[</fc>%date%<fc=#2aa198>]</fc> "
+       , template = " %StdinReader% }{ NP:<fc=#2aa198>[</fc>%nowplaying%<fc=#2aa198>]</fc>  Vol:<fc=#2aa198>[</fc>%default:Master%<fc=#2aa198>]</fc>  CPU:<fc=#2aa198>[</fc>%cpu%<fc=#2aa198>]</fc>  Mem:<fc=#2aa198>[</fc>%memory%<fc=#2aa198>]</fc>  —  <fc=#2aa198>[</fc>%date%<fc=#2aa198>]</fc> "
        }
