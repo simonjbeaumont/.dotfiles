@@ -17,19 +17,21 @@ print_results()
   mail=
   name=
   title=
+  ext=
 
   while read s; do
     case "$s" in
     dn:*)
       # New entry
       if [ -n "$mail" -a -n "$name" ]; then
-        echo -e "$mail\t$name\t$title"
+        echo -e "$mail\t$name\t$title ext:$ext"
       fi
 
       # Clear all variables
       mail=
       name=
       title=
+      ext=
       ;;
     mail:*)
       mail=${s#mail:[   ]*}
@@ -40,14 +42,17 @@ print_results()
     title:*)
       title=${s#title:[   ]*}
       ;;
+    otherTelephone:*)
+      ext=${s#otherTelephone:[   ]*}
+      ;;
     esac
   done
 
   # Catch last entry
   if [ -n "$mail" -a -n "$name" ]; then
-    echo -e "$mail\t$name\t$title"
+    echo -e "$mail\t$name\t$title ext:$ext"
   fi
 }
 
 filter="(|(objectClass=person)(objectClass=group))"
-ldapsearch -h $host -p $port -x -D $bindDN -w $pw -b "$base" -LLL -E pr=500/noprompt "$filter" mail cn title | print_results | sort | uniq
+ldapsearch -h $host -p $port -x -D $bindDN -w $pw -b "$base" -LLL -E pr=500/noprompt "$filter" mail cn title otherTelephone | print_results | sort | uniq
