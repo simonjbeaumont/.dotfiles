@@ -20,6 +20,8 @@ keycode  49 = section plusminus
 keycode  51 = backslash bar brokenbar
 ! ` -> ` ~ ¬
 keycode  94 = grave asciitilde notsign
+! - -> - _ <en-dash> <em-dash>
+keycode  20 = minus underscore endash emdash
 
 ! -------------------------------------------------------------------------------
 ! Defaults. Obtained using `xmodmap -pke`:
