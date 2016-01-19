@@ -1,4 +1,3 @@
-
 # Stuff for all OSs --- add OS specific stuff in appropriate section below
 #-------------------------------------------------------------------------------
 
@@ -14,10 +13,7 @@ alias +='pushd .'
 # Shortcuts
 alias vima='vim ~/.aliases'
 alias vimb='vim ~/.bashrc'
-alias vimrl='vim /work/tools/RokClock/log.txt'
 alias xs='vim /work/xs-tips.md'
-alias rokc='ant -f /work/tools/RokClock/build.xml run'
-alias sshtb='ssh root@10.80.239.241'
 
 # Current projects
 alias sm='cd /work/branches/trunk-storage/build.hg/myrepos/sm.hg'
@@ -37,11 +33,7 @@ alias xenrt='/usr/groups/xenrt/production/share/control/xenrt'
 alias rd='rdesktop -5 -K -k en-gb -g 1680x1031 -d citrite -u simonbe -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
 alias rd_med='rd -g 1400x900'
 alias rd_small='rd -g 1024x600'
-alias xd='rd amsvmd3510'
 alias xia='rd simonbe-xenia'
-
-# Mercurial patch queues
-alias mq='hg -R $(hg root)/.hg/patches'
 
 # Like to know what's just happened
 alias cp='cp -v'
@@ -86,16 +78,11 @@ alias gl='git log --graph --abbrev-commit --oneline --decorate'
 alias hl='hg log --template "* \x1B[0;33m{node|short}\x1B[0;30m———\x1B[0;31m\x1B[33m{date|shortdate}\x1B[30m———\x1B[33m{author|person}\n\x1B[0m{desc|strip|firstline|fill76|strip}\n\n" --color true | less -R'
 alias hlx='hl | less -RX'
 
-# Finding stuff (although I tend to use Ack now)
+# Finding stuff
 alias f='find . -iname'
-alias findsrc='find . -name "*.java" -o -name "*.cpp" -o -name "*.h" -o -name "*.c" -o -name "*.mm" -o -name "*.m" '
-alias fs='findsrc | xargs grep --color'
-alias fwc='find . -name "*.h" -o -name "*.c" -o -name "*.cpp" -o -name "*.m" -o -name "*.mm" | xargs cat | wc -l'
 
 # Wonder what I actually use...
 alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' | sort | uniq -c | sort -n | tail -n 20 | sort -nr"
-
-alias xboard="xboard -fcp crafty -size Dinky"
 
 alias reopam="eval \`opam config env\`"
 
@@ -145,13 +132,6 @@ fi
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^linux ]]; then
 
-# gVim for the win
-function gvim () { (/usr/bin/gvim -f "$@" &) }
-alias e='gvim'
-
-# Quickly lock screen
-alias lock='gnome-screensaver-command -l ; gdmflexiserver'
-
 # open file with the default application for its type
 alias open='xdg-open'
 
@@ -160,13 +140,6 @@ alias pidme='pstree -ps $$'
 
 # GNU style ls
 alias ls="command ls -hF --color=auto"
-
-# Work specific email
-alias check_mail='killall -KILL offlineimap > /dev/null 2>&1 /dev/null; offlineimap -1 -c /local/config/.offlineimaprc -u Quiet -l /home/simonbe/.citrix-mail.log'
-
-# XS stuff
-alias vsm='vim /var/log/SMlog'
-alias tsm='tail -f -n 30 /var/log/SMlog'
 
 # Buildsystem shortcuts
 alias clean='make distclean; make clean; make clean-repos'
