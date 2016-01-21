@@ -322,5 +322,7 @@ let g:pymode_lint_hold=0
 Bundle 'YankRing.vim'
 let g:yankring_history_file='.yankring-hist'
 
+Bundle 'rgrinberg/vim-ocaml'
+
 filetype plugin on
 " }}}
