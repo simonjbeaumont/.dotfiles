@@ -75,6 +75,7 @@ esac
 # let's sort out all the vim submodules
 git submodule init
 git submodule update
+vi -c :VundleInstall -c :qall
 
 source ~/.bash_profile
 cd "$HOME"

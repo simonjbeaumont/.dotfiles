@@ -225,7 +225,7 @@ if &t_Co >= 16 || has("gui_running")
     set bg=dark
     highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red
 endif
-colorscheme mustang
+silent! colorscheme mustang
 
 Bundle 'sjl/badwolf'
 
