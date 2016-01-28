@@ -215,11 +215,6 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
-Bundle 'altercation/vim-colors-solarized'
-let g:solarized_termtrans=1
-let g:solarized_termcolors=16
-let g:solarized_visibility='normal'
-
 Bundle 'simonjbeaumont/mustang-vim'
 if &t_Co >= 16 || has("gui_running")
     set bg=dark
@@ -240,12 +235,6 @@ Bundle 'ciaranm/detectindent'
 
 Bundle 'mileszs/ack.vim'
 nmap <leader>a :Ack!
-
-Bundle 'majutsushi/tagbar'
-let g:tagbar_ctags_bin='/usr/bin/ctags'
-let g:tagbar_width=30
-let g:tagbar_autofocus=1
-nmap <silent> <leader>r :TagbarToggle<CR>
 
 Bundle 'bling/vim-airline'
 let g:airline_theme             = 'powerlineish'
@@ -305,9 +294,9 @@ let NERDTreeIgnore = [
 nmap <silent> <leader>O :NERDTreeFind<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
 
-Bundle 'scrooloose/syntastic'
-let g:syntastic_python_checkers = ['pylint', 'pep8']
-let g:syntastic_python_pylint_post_args = '-d C0103 -d C0111 --ignored-classes=twisted.internet.reactor'
+" Bundle 'scrooloose/syntastic'
+" let g:syntastic_python_checkers = ['pylint', 'pep8']
+" let g:syntastic_python_pylint_post_args = '-d C0103 -d C0111 --ignored-classes=twisted.internet.reactor'
 
 Bundle 'scrooloose/nerdcommenter'
 let g:NERDSpaceDelims=1
