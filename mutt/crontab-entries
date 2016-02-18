@@ -1,7 +1,7 @@
 # Every minute, sync my inbox
-*/1 * * * * mbsync citrix-inbox; notmuch new
+*/1 * * * * timeout 1m mbsync citrix-inbox; notmuch new
 # Every 5 minutes, sync the rest of my email
-*/5 * * * * mbsync citrix-other; notmuch new
+*/5 * * * * timeout 5m mbsync citrix-other; notmuch new
 # At midnight, sync my address book
-  0 0 * * * /home/simonbe/.mutt/pull-ldap.sh > /home/simonbe/.mutt/addrs
+  0 0 * * * timeout 20m /home/simonbe/.mutt/pull-ldap.sh > /home/simonbe/.mutt/addrs
 
