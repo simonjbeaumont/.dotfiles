@@ -5,7 +5,7 @@ SyncState *
 IMAPAccount citrix-account
 	Host lonpmail.citrite.net
 	User "CITRITE\\simonbe"
-	PassCmd "python /local/mail/imap-pass.py -g simonbe@citrite.net"
+	PassCmd "python /work/mail/imap-pass.py -g simonbe@citrite.net"
 	UseIMAPS yes
 	RequireSSL yes
 
@@ -13,8 +13,8 @@ IMAPStore citrix-remote
 	Account citrix-account
 
 MaildirStore citrix-local
-	Path /local/mail/citrix/
-	Inbox /local/mail/citrix/Inbox
+	Path /work/mail/citrix/
+	Inbox /work/mail/citrix/Inbox
 	Flatten .
 
 Channel citrix-inbox

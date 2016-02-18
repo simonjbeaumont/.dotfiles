@@ -100,7 +100,7 @@ hdr_order from: to: cc: date: subject:  # and in this order
 # my_hdr  Bcc: Si Beaumont <simon.beaumont@citrix.com>
 
 # Account info: simon.beaumont@citrix.com
-set folder = /local/mail/citrix/ # mailbox location
+set folder = /work/mail/citrix/ # mailbox location
 set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
@@ -112,7 +112,7 @@ mailboxes +Inbox \
           +xs-arch \
           +Sent \
           +Drafts \
-          /local/mail/+search
+          /work/mail/+search
 # Show all other directories
 unset mask
 # Other special folders.
@@ -187,14 +187,14 @@ macro index,pager \' "gi"                       "go to inbox"
 # Search with notmuch
 macro index S \
 "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-<shell-escape>notmuch-mutt -r --prompt --o /local/mail/+search search<enter>\
-<change-folder-readonly>/local/mail/+search<enter>\
+<shell-escape>notmuch-mutt -r --prompt --o /work/mail/+search search<enter>\
+<change-folder-readonly>/work/mail/+search<enter>\
 <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
       "notmuch: search mail"
 macro pager S \
 "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-<pipe-message>notmuch-mutt -r -o /local/mail/+search thread<enter>\
-<change-folder-readonly>/local/mail/+search<enter>\
+<pipe-message>notmuch-mutt -r -o /work/mail/+search thread<enter>\
+<change-folder-readonly>/work/mail/+search<enter>\
 <enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
       "notmuch: reconstruct thread"
 

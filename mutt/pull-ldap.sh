@@ -7,7 +7,7 @@
 host=lonpdc01.citrite.net
 port=389
 bindDN=CITRITE\\simonbe
-pw=$(python /local/mail/imap-pass.py -g simonbe@citrite.net)
+pw=$(python /work/mail/imap-pass.py -g simonbe@citrite.net)
 base='dc=citrite,dc=net'
 sort_by=givenName
 max=100
