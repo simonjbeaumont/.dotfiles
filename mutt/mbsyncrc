@@ -3,7 +3,7 @@ Expunge Both
 SyncState *
 
 IMAPAccount citrix-account
-	Host lonpmail.citrite.net
+	Host amsmail.citrix.com
 	User "CITRITE\\simonbe"
 	PassCmd "python /work/mail/imap-pass.py -g simonbe@citrite.net"
 	UseIMAPS yes
