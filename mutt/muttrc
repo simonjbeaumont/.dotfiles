@@ -104,14 +104,14 @@ set folder = /work/mail/citrix/ # mailbox location
 set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
-          +github \
-          +ocaml-ctypes \
-          +tmux-users \
-          +xen-api \
-          +xs-devel \
-          +xs-arch \
-          +Sent \
-          +Drafts \
+          /work/mail/aliases/github \
+          /work/mail/aliases/ocaml-ctypes \
+          /work/mail/aliases/tmux-users \
+          /work/mail/aliases/xen-api \
+          /work/mail/aliases/xs-devel \
+          /work/mail/aliases/xs-arch \
+          /work/mail/aliases/Sent \
+          /work/mail/aliases/Drafts \
           /work/mail/+search
 # Show all other directories
 unset mask
