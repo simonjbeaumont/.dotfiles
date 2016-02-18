@@ -163,7 +163,7 @@ bind attach <return> view-mailcap
 # Gmail-style archive and delete
 #   Mutt doesn't respect tag-prefix for collapsed items so we have a bit of
 #   a dance about moving on to the next message
-macro index d "<save-message>+Deleted<enter>" "trash"
+macro index d "<save-message>/work/mail/aliases/Deleted<enter>" "trash"
 macro pager d "<exit>d" "trash"
 macro index D "<collapse-thread><tag-thread><tag-prefix>d<previous-thread><collapse-thread><tag-thread><tag-prefix>d" "trash thread"
 macro index \Cd "D"
