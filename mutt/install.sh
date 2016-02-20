@@ -4,7 +4,7 @@ set -ex
 
 sudo apt-get install -y \
   mutt-patched \
-  msmpt isync \
+  msmtp isync \
   notmuch notmuch-mutt \
   ldap-utils \
   urlscan elinks w3m xloadimage python-vobject
