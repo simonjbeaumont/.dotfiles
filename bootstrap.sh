@@ -60,9 +60,7 @@ install_dotfile "$HOME/.dotfiles/utoprc" "$HOME/.utoprc"
 # OS specific config
 case "$OSTYPE" in
     darwin*)
-        source "$HOME/.dotfiles/osx/osx-defaults-setup"
-        echo "Note: Terminal.app and iTerm themes can be installed from:"
-        echo "  - $HOME/.dotfiles/osx/"
+        echo "Note: iTerm colors and defaults script are in $HOME/.dotfiles/osx"
         ;;
     linux*)
         install_dotfile "$HOME/.dotfiles/linux/xinitrc" "$HOME/.xinitrc"
