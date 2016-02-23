@@ -35,8 +35,12 @@ def pretty_print_invitation(invitation):
     end = event['dtend'][0].value
     location = event['location'][0].value
     description = event['description'][0].value
+    sequence = event['sequence'][0].value
     print "="*70
-    print "MEETING INVITATION".center(70)
+    if int(sequence) > 0:
+        print "MEETING UPDATE".center(70)
+    else:
+        print "MEETING INVITATION".center(70)
     print "="*70
     print "Event:\n\t%s" % title.encode('utf-8')
     print "Organiser:\n\t%s" % person_string(org).encode('utf-8')
