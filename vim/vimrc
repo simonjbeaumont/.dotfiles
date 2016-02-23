@@ -146,7 +146,8 @@ set spellfile=~/.vim/spellfile.add
 " Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead {*xensource.log*,*SMlog*,*messages*} setl ft=messages
-au FileType {gitcommit,mail}                    setl spell
+au FileType gitcommit                           setl spell tw=72
+au FileType mail                                setl spell
 au FileType ocaml                               setl fo-=t
 " }}}
 
