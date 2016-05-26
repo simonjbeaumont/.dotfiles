@@ -3,3 +3,14 @@ set defsearch=google
 set complete+=S
 set animations
 set hintchars=hjklasdfgyuiopqwertnmzxcvb
+
+map , <Leader>
+
+nmap <Leader>sv :source ~/.vimperatorrc<CR>
+
+nmap <Leader>gt :set gui=none,tabs<CR>
+nmap <Leader>ga :set gui=all<CR>
+
+nmap <Leader>/ :nohlsearch<CR>
+
+inoremap <Leader>i <C-i>
