@@ -29,7 +29,17 @@ alias op='cd /work/scratch/ocaml-playground'
 alias xenuse='/usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenrtuse'
 alias xenrt='/usr/groups/xenrt/production/share/control/xenrt'
 
-# rdesktop -> XenDesktop
+# rdesktop
+# -x flags for rdesktop:
+# 0x001: Disable desktop wallpaper
+# 0x002: Disable full-window drag (only the window outline is displayed when the window is moved)
+# 0x004: Disable menu animations
+# 0x008: Disable user interface themes
+# 0x020: Disable mouse cursor shadows
+# 0x040: Disable cursor blinking
+# 0x080: Enable font smoothing
+# 0x100: Enable Desktop Composition
+# to make most performant but still have font smoothing 0xef
 alias rd='rdesktop -5 -K -k en-gb -g 1680x1031 -d citrite -u simonbe -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
 alias rd_med='rd -g 1400x900'
 alias rd_small='rd -g 1024x600'
