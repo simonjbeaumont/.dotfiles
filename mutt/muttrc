@@ -105,6 +105,7 @@ set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
           /work/mail/aliases/github \
+          /work/mail/aliases/caml-list \
           /work/mail/aliases/ocaml-ctypes \
           /work/mail/aliases/tmux-users \
           /work/mail/aliases/xen-api \
