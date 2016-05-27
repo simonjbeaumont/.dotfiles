@@ -15,17 +15,6 @@ alias vima='vim ~/.aliases'
 alias vimb='vim ~/.bashrc'
 alias xs='vim /work/xs-tips.md'
 
-# Current projects
-alias sm='cd /work/branches/trunk-storage/build.hg/myrepos/sm.hg'
-alias r3='cd /work/branches/trunk-ring3/build.hg/'
-alias xapi='cd /work/branches/trunk-ring3/build.hg/myrepos/xen-api'
-alias defects='cd /work/defects/'
-alias branches='cd /work/branches/'
-alias snfs='cd /local/export/pr-1594/sm.hg'
-alias vgpu='cd /work/branches/pr-1061/build.hg/myrepos/xen-api'
-alias pp='cd /work/scratch/python-playground'
-alias op='cd /work/scratch/ocaml-playground'
-
 alias xenuse='/usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenrtuse'
 alias xenrt='/usr/groups/xenrt/production/share/control/xenrt'
 
