@@ -11,8 +11,6 @@ alias -- -="cd -"
 alias +='pushd .'
 
 # Shortcuts
-alias vima='vim ~/.aliases'
-alias vimb='vim ~/.bashrc'
 alias xs='vim /work/xs-tips.md'
 
 alias xenuse='/usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenrtuse'
@@ -51,32 +49,19 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # Useful...
 alias g='grep -i'                               # case insensitive grep
 alias ducks='du -cksh * | sort -rh | head -11'  # List size of pwd's contents
-alias systail='tail -f /var/log/system.log'
-alias sshx="ssh -X"
 which colordiff >/dev/null && alias diff='colordiff'
 alias less='less -R'
 
 # more useful variants
 which vimx >/dev/null && alias vim=vimx
 
-# todo.txt
-alias todo='todo -d ~/Dropbox/todo/config'
-alias t='todo'
-alias tb='t lf blocked.txt'
-complete -F _todo t
-
-# Moscow ML GNU readline hack
-alias mosml='rlwrap mosml'
-
 # Git stuff
 which hub >/dev/null && alias git=hub
-alias gitrevert='(git reset HEAD .);(git checkout -- .)'
 alias gl='git log --graph --abbrev-commit --oneline --decorate'
 __git_complete gl _git_log 2&>/dev/null
 
 # Mercurial
-alias hl='hg log --template "* \x1B[0;33m{node|short}\x1B[0;30m———\x1B[0;31m\x1B[33m{date|shortdate}\x1B[30m———\x1B[33m{author|person}\n\x1B[0m{desc|strip|firstline|fill76|strip}\n\n" --color true | less -R'
-alias hlx='hl | less -RX'
+alias hl='hg log --template "* \x1B[0;33m{node|short}\x1B[0;30m———\x1B[0;31m\x1B[33m{date|shortdate}\x1B[30m———\x1B[33m{author|person}\n\x1B[0m{desc|strip|firstline|fill76|strip}\n\n" --color true | less -RX'
 
 # Finding stuff
 alias f='find . -iname'
@@ -117,9 +102,6 @@ alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && kil
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
 
-# Total terminal (quake stile terminal)
-alias visor='/Applications/TotalTerminal.app/Contents/MacOS/applet 2> /dev/null'
-
 # Quickly lock screen
 alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 
@@ -140,12 +122,5 @@ alias pidme='pstree -ps $$'
 
 # GNU style ls
 alias ls="command ls -hF --color=auto"
-
-# Buildsystem shortcuts
-alias clean='make distclean; make clean; make clean-repos'
-
-# Old CentOS based VMs don't understand termcap screen-256color
-alias vxs='TERM=screen vxs'
-alias chroot='TERM=screen chroot'
 
 fi
