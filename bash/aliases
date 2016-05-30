@@ -73,6 +73,8 @@ alias reopam="eval \`opam config env\`"
 
 alias killch="pgrep chroot | xargs sudo kill"
 
+alias sshuttle="sshuttle --dns -vvr citrix-gate 10.0.0.0/8 -x 10.0.2.0/24"
+
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
