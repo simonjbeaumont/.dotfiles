@@ -1,9 +1,3 @@
-# Note: .bashrc is sourced for non-login shells
-for file in ~/.{bash_prompt,aliases,functions,tokens}; do
-    [ -r "$file" ] && source "$file"
-done
-unset file
-
 # Give me 256 colors! gnome-terminal hardcodes TERM to xterm...
 if [[ $TERM = xterm ]]; then export TERM=xterm-256color; fi
 
@@ -62,3 +56,9 @@ export HISTCONTROL=ignoreboth # Ignores dupes and starting ws in the history
 export HISTIGNORE="ls:cd:cd -:pwd:exit:date:reboot"
 [ -z "$DISPLAY" ] && DISPLAY=":0.0"
 stty -ixon
+
+# additional files to source
+for file in ~/.{bash_prompt,aliases,functions,tokens}; do
+    [ -r "$file" ] && source "$file"
+done
+unset file
