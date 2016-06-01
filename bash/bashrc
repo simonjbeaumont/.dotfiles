@@ -15,7 +15,7 @@ shopt -s checkwinsize
 # Gems
 [ -r $HOME/bin ] && export PATH=$HOME/bin:$PATH
 # Citrix
-mount | grep /usr/groups/xen > /dev/null && \
+mount | grep -q /usr/groups/xen && \
     export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin:/usr/groups/xen/xenrt/control:/work/tools/scripts && \
     source /usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenusecomplete
 # OPAM
