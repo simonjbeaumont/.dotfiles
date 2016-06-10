@@ -207,6 +207,9 @@ nmap <silent> <leader>k :wincmd k<CR>
 nmap <silent> <leader>l :wincmd l<CR>
 " }}}
 
+" Open prompt with current directory
+nmap <leader>e :e %:h/
+
 " Plugin configuration {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 filetype off
