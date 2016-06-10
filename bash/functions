@@ -64,7 +64,7 @@ function grml() {
 #------------------------------------------------------------------------------
 tmup() {
     echo -n "Updating to latest tmux environment..."
-    export IFS=","
+    IFS=","
     for line in $(tmux showenv -t $(tmux display -p "#S") | tr "\n" ","); do
         if [[ $line == -* ]]; then
             unset $(echo $line | cut -c2-)
@@ -72,6 +72,7 @@ tmup() {
             export $line
         fi
     done
+    unset line
     unset IFS
     echo "Done"
 }
