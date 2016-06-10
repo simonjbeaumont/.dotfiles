@@ -44,7 +44,6 @@ ex () {
 }
 
 prompt () {
-
     if [ -n "$1" ]; then
         read -sp "$1: " my_pass
     else
