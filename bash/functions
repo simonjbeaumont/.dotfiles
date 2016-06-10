@@ -112,22 +112,6 @@ function ssh() {
 
 # Work utility functions
 #------------------------------------------------------------------------------
-function get_ca_ticket() {
-    local TICKET_NUMBER=$1
-    defects
-    $(bugget.py -u simonbe -p $(prompt) $TICKET_NUMBER) || cd -
-    mv bug-$TICKET_NUMBER $TICKET_NUMBER || cd -
-    cd $TICKET_NUMBER || cd -
-}
-
-function get_sctx_ticket() {
-    local TICKET_NUMBER=$1
-    defects
-    $(bugget.py -u simonbe -p $(prompt) $TICKET_NUMBER) || cd - && return
-    mv bug-$TICKET_NUMBER $TICKET_NUMBER || cd - && return
-    cd $TICKET_NUMBER || cd -
-}
-
 function cifs_mount() {
     if [ $# != 2 ]; then
         echo "Usage: cifs_mount <citix-share> <mount-point>"
@@ -145,18 +129,6 @@ function my_cifs_mount() {
     else
         MOUNTPOINT=$1
         cifs_mount //lonpfs01/simonbe$ $MOUNTPOINT
-    fi
-}
-
-lint_xapi_db() {
-    local in_file="./xapi-db-dumped.xml"
-    local out_file="./linted-xapi-db-dumped.xml"
-    if [ ! -e $in_file ]; then
-        echo "No database found in CWD"
-        return 1
-    else
-        xmllint --format $in_file > $out_file
-        echo "xmllint-ed $in_file -> $out_file"
     fi
 }
 
