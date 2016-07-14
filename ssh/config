@@ -5,34 +5,6 @@ AddressFamily inet
 ServerAliveInterval 60
 ForwardX11Timeout 1d
 
-# Dev VM
-Host morbo
-User simonbe
-ForwardX11 yes
-ForwardAgent yes
-
-# Mercurial
-Host hg
-User xenhg
-
-# Test machines
-Host dt* st* laurel hardy *.xenrt.xs.citrite.net *.xenrt.citrite.net
-User root
-PreferredAuthentications password
-UserKnownHostsFile /dev/null
-StrictHostKeyChecking no
-LogLevel ERROR
-
-# SSH gateway
-Host citrix-gate
-Hostname gate.ctxuk.citrix.com
-User simonbe
-ForwardAgent yes
-ForwardX11 yes
-TCPKeepAlive no
-LocalForward 3389 simonbe-xenia:3389
-DynamicForward localhost:1080
-
 Host pi
 Hostname 192.168.0.9
 User pi

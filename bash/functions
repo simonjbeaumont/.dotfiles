@@ -91,38 +91,3 @@ function ssh() {
         /usr/bin/ssh "$@"
     fi
 }
-
-
-# Work utility functions
-#------------------------------------------------------------------------------
-function cifs_mount() {
-    if [ $# != 2 ]; then
-        echo "Usage: cifs_mount <citix-share> <mount-point>"
-    else
-        SHARE=$(echo ${1} | tr '\' '/')
-        MOUNTPOINT=$2
-        sudo umount $MOUNTPOINT 2> /dev/null
-        sudo mount.cifs ${SHARE} ${MOUNTPOINT} -o user=citrite\\simonbe,password=$(prompt "Citrite password"),uid=2279,gid=10020,rw,noserverino
-    fi
-}
-
-function my_cifs_mount() {
-    if [ $# != 1 ]; then
-        echo "Usage: my_cifs_mount <mount-point>"
-    else
-        MOUNTPOINT=$1
-        cifs_mount //lonpfs01/simonbe$ $MOUNTPOINT
-    fi
-}
-
-bugger() {
-    for i in $(find . -maxdepth 2 -type d -regex '.*bug-report-[0-9]*'); do
-        if [ $(dirname $i) != '.' ]; then
-            mv $i .
-            rm -ri $(dirname $i)
-            i=$(basename $i)
-        fi
-        host=$(head -n 3 $i/inventory.xml | grep system-summary | cut -d\" -f4);
-        mv $i bug-report-$host
-    done
-}

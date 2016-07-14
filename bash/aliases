@@ -10,12 +10,6 @@ alias ...="cd ../.."
 alias -- -="cd -"
 alias +='pushd .'
 
-# Shortcuts
-alias xs='vim /work/xs-tips.md'
-
-alias xenuse='/usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenrtuse'
-alias xenrt='/usr/groups/xenrt/production/share/control/xenrt'
-
 # rdesktop
 # -x flags for rdesktop:
 # 0x001: Disable desktop wallpaper
@@ -27,10 +21,9 @@ alias xenrt='/usr/groups/xenrt/production/share/control/xenrt'
 # 0x080: Enable font smoothing
 # 0x100: Enable Desktop Composition
 # to make most performant but still have font smoothing 0xef
-alias rd='rdesktop -5 -K -k en-gb -g 1680x1031 -d citrite -u simonbe -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
+alias rd='rdesktop -5 -K -k en-gb -g 1680x1031 -a 32 -x 0xc0 -r clipboard:PRIMARYCLIPBOARD -r disk:~=$HOME -r disk:work=/work -p-'
 alias rd_med='rd -g 1400x900'
 alias rd_small='rd -g 1024x600'
-alias xia='rd simonbe-xenia'
 
 # Like to know what's just happened
 alias cp='cp -v'
@@ -72,8 +65,6 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 alias reopam="eval \`opam config env\`"
 
 alias killch="pgrep chroot | xargs sudo kill"
-
-alias sshuttle="sshuttle --dns -vvr citrix-gate 10.0.0.0/8 -x 10.0.2.0/24"
 
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------

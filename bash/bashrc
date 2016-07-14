@@ -14,10 +14,6 @@ shopt -s checkwinsize
 [ -r $HOME/.cabal/bin ] && export PATH=$HOME/.cabal/bin:$PATH
 # Gems
 [ -r $HOME/bin ] && export PATH=$HOME/bin:$PATH
-# Citrix
-mount | grep -q /usr/groups/xen && \
-    export PATH=$PATH:/usr/groups/xen/xenuse/bin:/usr/groups/xencore/systems/bin:/usr/groups/xen/xenrt/control:/work/tools/scripts && \
-    source /usr/groups/xenrt/xenrt-internal.hg/scripts/xenrtuse/xenusecomplete
 # OPAM
 which opam &> /dev/null && eval $(opam config env)
 # Load RVM into a shell session *as a function*
