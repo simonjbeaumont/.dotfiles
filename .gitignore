@@ -5,3 +5,4 @@ vim/spellfile.add*
 tags
 vim/tmp
 *.pyc
+vimperator/info
