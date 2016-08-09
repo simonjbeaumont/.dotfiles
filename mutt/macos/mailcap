@@ -1,0 +1,19 @@
+# MS Word documents
+application/msword; ~/.mutt/macos/view_attachment.sh %s "-" '/Applications/TextEdit.app'
+
+# Images
+image/jpg; ~/.mutt/macos/view_attachment.sh %s jpg
+image/jpeg; ~/.mutt/macos/view_attachment.sh %s jpg
+image/pjpeg; ~/.mutt/macos/view_attachment.sh %s jpg
+image/png; ~/.mutt/macos/view_attachment.sh %s png
+image/gif; ~/.mutt/macos/view_attachment.sh %s gif
+
+# PDFs
+application/pdf; ~/.mutt/macos/view_attachment.sh %s pdf
+
+# HTML
+text/html; ~/.mutt/macos/view_attachment.sh %s html; needsterminal
+text/html; elinks -dump | less -R; copiousoutput
+
+# Unidentified files
+application/octet-stream; ~/.mutt/macos/view_attachment.sh %s "-"

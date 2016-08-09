@@ -3,7 +3,7 @@ set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
 set message_cachedir = ~/.mutt/cache/bodies  # where to store bodies
 set certificate_file = ~/.mutt/certificates  # where to store certs
-set mailcap_path     = ~/.mutt/mailcap       # entries for filetypes
+set mailcap_path     = ~/.mutt/macos/mailcap # entries for filetypes
 set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.mutt/sig           # my signature file
 
@@ -38,6 +38,8 @@ set thorough_search      # strip headers and eval mimes before searching
 set sidebar_delim   = '  │'
 set sidebar_visible = yes
 set sidebar_width   = 26
+set sidebar_shortpath = yes
+set sidebar_format = "%B%?F? [%F]?%?N? (%N)?%* %4S"
 color sidebar_new color221 color233
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
@@ -187,21 +189,12 @@ macro index,pager \' "gi"                       "go to inbox"
 
 # Search with notmuch
 macro index S \
-"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-<shell-escape>notmuch-mutt -r --prompt --o /work/mail/+search search<enter>\
-<change-folder-readonly>/work/mail/+search<enter>\
-<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
-      "notmuch: search mail"
-macro pager S \
-"<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
-<pipe-message>notmuch-mutt -r -o /work/mail/+search thread<enter>\
-<change-folder-readonly>/work/mail/+search<enter>\
-<enter-command>set pipe_decode=\$my_old_pipe_decode wait_key=\$my_old_wait_key<enter>" \
-      "notmuch: reconstruct thread"
+  "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch-py/mutt-notmuch-py /Users/Si/work/mail/+search<enter><change-folder-readonly>/Users/Si/work/mail/+search<enter>" \
+  "search mail (using notmuch)"
 
 # Unlimit (show [a]ll)
 macro index a "<limit>all\n" "show all messages (undo limit)"
 
-macro pager \CU "|urlscan<enter>" "call urlview to open links"
+macro pager \CU "|urlview<enter>" "call urlview to open links"
 macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
