@@ -16,5 +16,9 @@ application/pdf; ~/.mutt/macos/view_attachment.sh %s pdf
 text/html; ~/.mutt/macos/view_attachment.sh %s html; needsterminal
 text/html; elinks -dump | less -R; copiousoutput
 
+# Calendar
+text/calendar; ~/.mutt/macos/view_attachment.sh %s ics; needsterminal
+text/calendar; ~/.mutt/dump-ical.py %s; copiousoutput;
+
 # Unidentified files
 application/octet-stream; ~/.mutt/macos/view_attachment.sh %s "-"
