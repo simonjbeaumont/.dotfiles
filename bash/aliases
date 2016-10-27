@@ -46,6 +46,7 @@ which colordiff >/dev/null && alias diff='colordiff'
 alias less='less -R'
 
 # more useful variants
+which vim >/dev/null && alias vi=vim
 which vimx >/dev/null && alias vim=vimx
 
 # Git stuff
