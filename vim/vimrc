@@ -37,6 +37,11 @@ au InsertLeave * set timeoutlen=1000
 
 " Load bashrc for shell commands
 set shellcmdflag=-ic
+
+" Use system clipboard on OSX
+if has('mac')
+    set clipboard=unnamed
+endif
 " }}}
 
 " UI {{{
