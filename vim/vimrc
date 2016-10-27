@@ -300,6 +300,7 @@ nmap <leader>9 <Plug>AirlineSelectTab9
 Bundle 'vim-airline/vim-airline-themes'
 
 Bundle 'scrooloose/nerdtree'
+let NERDTreeWinSize = 40
 let NERDTreeIgnore = [
     \ '\.pyc$',
     \ '\.class$',
