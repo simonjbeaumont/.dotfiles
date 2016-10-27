@@ -328,5 +328,12 @@ let g:pymode_lint_hold=0
 Bundle 'YankRing.vim'
 let g:yankring_history_file='.yankring-hist'
 
+Bundle 'Valloric/YouCompleteMe'
+let g:ycm_confirm_extra_conf    = 0
+let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
+let g:ycm_extra_conf_vim_data   = ['&filetype']
+let g:ycm_seed_identifiers_with_syntax = 1
+nnoremap <leader>g :YcmCompleter GoTo<CR>
+
 filetype plugin on
 " }}}
