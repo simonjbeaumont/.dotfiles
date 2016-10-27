@@ -153,7 +153,7 @@ set spellfile=~/.vim/spellfile.add
 " Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead *.xtx                                setl ft=tex
-au FileType gitcommit                           setl spell tw=72
+au FileType gitcommit                           setl spell tw=72 cc=72
 au FileType mail                                setl spell
 au FileType ocaml                               setl fo-=t
 " }}}
