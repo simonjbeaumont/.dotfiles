@@ -134,7 +134,7 @@ set formatoptions=qrn1
 
 set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
-set tabstop=2     " a tab is four spaces
+set tabstop=2     " a tab is two spaces
 set shiftwidth=2  " number of spaces to use for autoindenting
 
 set backspace=indent,eol,start  " backpace over everything in insert mode
