@@ -44,6 +44,7 @@ def pretty_print_invitation(invitation):
     location = event['location'][0].value if 'location' in event else None
     description = event['description'][0].value
     sequence = event['sequence'][0].value if 'sequence' in event else None
+    rrule = event['rrule'][0].value if 'rrule' in event else None
     print("="*70)
     if sequence is not None and int(sequence) > 0:
         print("MEETING UPDATE".center(70))
@@ -58,6 +59,8 @@ def pretty_print_invitation(invitation):
         for i in invitees:
             print("\t{}".format(person_string(i)))
     print("When:\n\t{}".format(when_str_of_start_end(start, end)))
+    if rrule:
+        print("Rrule:\n\t{}".format(rrule))
     if location:
         print("Location:\n\t{}".format(location))
     print("---\n{}---".format(description))
