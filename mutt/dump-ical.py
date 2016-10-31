@@ -42,7 +42,7 @@ def pretty_print_invitation(invitation):
     start = event['dtstart'][0].value
     end = event['dtend'][0].value
     location = event['location'][0].value if 'location' in event else None
-    description = event['description'][0].value
+    description = event['description'][0].value if 'description' in event else ''
     sequence = event['sequence'][0].value if 'sequence' in event else None
     print("="*70)
     if sequence is not None and int(sequence) > 0:
