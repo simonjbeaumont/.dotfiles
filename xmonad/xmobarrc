@@ -10,7 +10,7 @@ Config {
                     , Run Memory ["-f","—","-b"," ","-W", "5","-t","<usedbar>"] 10
                     , Run Volume "default" "Master" ["-t", "<volume>% <status>"] 5
                     , Run Date "%a %b %_d, %Y — %H:%M:%S" "date" 10
-                    , Run Com "/local/home/sjbx/.dotfiles/xmonad/now-playing.sh" [] "nowplaying" 10
+                    , Run Com "/bin/bash /local/home/sjbx/.dotfiles/xmonad/now-playing.sh" [] "nowplaying" 10
                     ]
        , sepChar = "%"
        , alignSep = "}{"
