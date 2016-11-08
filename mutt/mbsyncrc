@@ -3,9 +3,9 @@ Expunge Both
 SyncState *
 
 IMAPAccount work-account
-	Host @@MAIL_HOST@@
-	User "@@MAIL_USER@@"
-	PassCmd "/usr/bin/security find-internet-password -w -a @@MAIL_USER@@ -s @@MAIL_HOST@@ /Users/Si/Library/Keychains/login.keychain"
+	Host @@HOST@@
+	User "@@USER@@"
+	PassCmd "/usr/bin/security find-internet-password -w -a @@USER@@ -s @@HOST@@ /Users/Si/Library/Keychains/login.keychain"
 	SSLType IMAPS
 	SSLVersions TLSv1.2
 

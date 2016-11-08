@@ -1,0 +1,64 @@
+# bash
+~/.aliases: bash/aliases
+~/.bash_profile: bash/bash_profile
+~/.bash_prompt: bash/bash_prompt
+~/.bashrc: bash/bashrc
+~/.dircolors: bash/dircolors.solarized_ansi_dark
+~/.functions: bash/functions
+~/.inputrc: bash/inputrc
+
+# git
+~/.gitconfig: git/gitconfig
+~/.gitignore_global: git/gitignore_global
+
+# hg
+~/.hgignore: hg/hgignore
+~/.hgrc: hg/hgrc
+
+# mutt
+~/.mutt: mutt/
+~/.mbsyncrc:
+  comment_delim: '#'
+  template: mutt/mbsyncrc
+  subs:
+    - HOST
+    - USER
+~/.msmtprc:
+  template: mutt/msmtprc
+  comment_delim: '#'
+  subs:
+    - HOST
+    - USER
+    - FROM
+~/.notmuch-config:
+  template: mutt/notmuch-config
+  comment_delim: '#'
+  subs:
+    - PRIMARY_EMAIL
+    - OTHER_EMAIL
+
+# ssh
+~/.ssh/config: ssh/config
+
+# tmux
+~/.tmux.conf: tmux/tmux.conf
+
+# utop
+~/.utoprc: utoprc
+
+# vim
+~/.vim: vim/
+~/.vimrc: vim/vimrc
+
+# vimperator
+~/.vimperator: vimperator/
+~/.vimperatorrc: vimperator/vimperatorrc
+
+# X
+~/.Xmodmap: linux/Xmodmap
+~/.xinitrc: linux/xinitrc
+
+# xmonad
+~/.xmonad/icons: xmonad/icons/
+~/.xmonad/xmobarrc: xmonad/xmobarrc
+~/.xmonad/xmonad.hs: xmonad/xmonad.hs

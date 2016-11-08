@@ -1,0 +1,13 @@
+# simple symlinks:
+~/desired/location/of/symlink: relative/path/to/file/in/repo
+
+# templates:
+~/desired/location/of/symlink:
+  template: relative/path/to/template/in/repo
+  # list of substitutions to make
+  subs:
+    # replace occurences of "@@TO_REPLACE_STRING@@" with "REPLACE_WITH_STRING"
+    - TO_REPLACE_STRING: REPLACE_WITH_STRING
+    # entries in the list with no value will cause a prompt for the value
+    - TO_PROMPT_STRING
+    # ...

@@ -30,8 +30,8 @@ path=/Users/Si/work/mail/REMOTE
 #
 [user]
 name=Si Beaumont
-primary_email=@@MAIL_ADDRESS@@
-other_email=@@MAIL_USER@@
+primary_email=@@PRIMARY_EMAIL@@
+other_email=@@OTHER_EMAIL@@
 
 # Configuration for "notmuch new"
 #
