@@ -11,7 +11,7 @@
 # configured here named ".notmuch".
 #
 [database]
-path=/work/mail/citrix
+path=/Users/Si/work/mail/REMOTE
 
 # User configuration
 #
@@ -29,8 +29,9 @@ path=/work/mail/citrix
 # address to which the original email was addressed.
 #
 [user]
-name=Simon Beaumont
-primary_email=simon.beaumont@citrix.com
+name=Si Beaumont
+primary_email=@@MAIL_ADDRESS@@
+other_email=@@MAIL_USER@@
 
 # Configuration for "notmuch new"
 #

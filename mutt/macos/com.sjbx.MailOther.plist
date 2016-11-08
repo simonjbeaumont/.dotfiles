@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+  <key>Label</key>
+  <string>com.sjbx.MailOther</string>
+
+  <key>ProgramArguments</key>
+  <array>
+    <string>/Users/Si/.mutt/check-update.sh</string>
+    <string>other</string>
+  </array>
+
+  <key>Nice</key>
+  <integer>1</integer>
+
+  <key>StartInterval</key>
+  <integer>300</integer>
+
+  <key>RunAtLoad</key>
+  <true/>
+
+  <key>StandardErrorPath</key>
+  <string>/tmp/mailfetchinbox.err</string>
+
+  <key>StandardOutPath</key>
+  <string>/tmp/mailfetchinbox.out</string>
+</dict>
+</plist>

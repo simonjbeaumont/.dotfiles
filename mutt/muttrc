@@ -10,8 +10,7 @@ set signature        = ~/.mutt/sig           # my signature file
 # Editor
 set editor = "vim -c 'normal! }' -c 'redraw'"
 
-# Contacts (access local LDAP cache (already in correct form--see pull-ldap.sh)
-set query_command = "echo; grep -i %s ~/.mutt/addrs"
+set query_command = "echo; echo \"\n\n \t \tSet this in muttrc.local\n\n\""
 set query_format = "%4c %t %-45.45a %-45.45n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T    complete
@@ -33,14 +32,22 @@ unset mark_old           # read/new is good enough for me
 set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
+set mail_check_stats     # this is required for mutt-sidebar with neomutt
 
-# Sidebar Patch
-set sidebar_delim   = '  │'
-set sidebar_visible = yes
-set sidebar_width   = 26
-set sidebar_shortpath = yes
-set sidebar_format = "%B%?F? [%F]?%?N? (%N)?%* %4S"
-color sidebar_new color221 color233
+# Sidebar Patch (this uses the sidebar with neomutt)
+set sidebar_divider_char  = ' │ '
+set sidebar_visible       = yes
+set sidebar_width         = 30
+set sidebar_short_path    = yes
+set sidebar_format        = "%B%?F? [%F]?%?N? (%N)?%* %4S"
+set sidebar_new_mail_only = yes
+sidebar_whitelist         /Users/Si/work/mail/REMOTE/Archive
+sidebar_whitelist         /Users/Si/work/mail/REMOTE/github
+unsidebar_whitelist       /Users/Si/work/mail/+search
+color sidebar_new         color221 color233
+color sidebar_flagged     brightcolor211 color233
+color sidebar_divider     brightcolor39 color233
+bind index,pager B        sidebar-toggle-visible
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
 bind index,pager <right>  sidebar-open
@@ -99,23 +106,15 @@ ignore *                                # ignore all headers
 unignore from: to: cc: date: subject:   # show only these
 unhdr_order *
 hdr_order from: to: cc: date: subject:  # and in this order
-# my_hdr  Bcc: Si Beaumont <simon.beaumont@citrix.com>
 
-# Account info: simon.beaumont@citrix.com
-set folder = /work/mail/citrix/ # mailbox location
+# Account info
+set folder = ~/work/mail/REMOTE/ # mailbox location
 set spoolfile = "+Inbox"
 # Mailboxes to show in the sidebar.
 mailboxes +Inbox \
-          /work/mail/aliases/github \
-          /work/mail/aliases/caml-list \
-          /work/mail/aliases/ocaml-ctypes \
-          /work/mail/aliases/tmux-users \
-          /work/mail/aliases/xen-api \
-          /work/mail/aliases/xs-devel \
-          /work/mail/aliases/xs-arch \
-          /work/mail/aliases/Sent \
-          /work/mail/aliases/Drafts \
-          /work/mail/+search
+          +Drafts \
+          +Archive \
+          ~/work/mail/+search
 # Show all other directories
 unset mask
 # Other special folders.
@@ -123,8 +122,8 @@ set mbox      = "+Archive"
 set postponed = "+Drafts"
 # Sending email.
 set realname = "Si Beaumont"
-set from     = "Si Beaumont <simon.beaumont@citrix.com>"
-set sendmail = "/usr/bin/msmtp -a citrix"
+set from     = "" # set in muttrc.local
+set sendmail = "msmtp -a work-account"
 set sendmail_wait = 0   # no please don't silently fail, email is important
 set record = "+Inbox"
 
@@ -153,8 +152,8 @@ bind pager \Cd half-down
 
 # Sync email
 bind  index <tab> sync-mailbox
-macro index o     "<shell-escape>mbsync citrix-inbox; notmuch new<enter>" "run mbsync to sync inbox"
-macro index O     "<shell-escape>mbsync citrix-other; notmuch new<enter>" "run mbsync to sync all mail"
+macro index o     "<shell-escape>mbsync inbox; notmuch new<enter>" "run mbsync to sync inbox"
+macro index O     "<shell-escape>mbsync other; notmuch new<enter>" "run mbsync to sync all mail"
 
 # Save as draft
 bind compose p postpone-message
@@ -166,14 +165,16 @@ bind attach <return> view-mailcap
 # Gmail-style archive and delete
 #   Mutt doesn't respect tag-prefix for collapsed items so we have a bit of
 #   a dance about moving on to the next message
-macro index d "<save-message>/work/mail/aliases/Deleted<enter>" "trash"
+macro index d "<save-message>~/work/mail/aliases/Deleted<enter>" "trash"
 macro pager d "<exit>d" "trash"
-macro index D "<collapse-thread><tag-thread><tag-prefix>d<previous-thread><collapse-thread><tag-thread><tag-prefix>d" "trash thread"
-macro index \Cd "D"
+# macro index D "<collapse-thread><tag-thread><tag-prefix>d<previous-thread><collapse-thread><tag-thread><tag-prefix>d" "trash thread"
+macro index D "<tag-thread><tag-prefix>d" "trash thread"
+# macro index \Cd "D"
 macro index e "<save-message>+Archive<enter>" "archive"
 macro pager e "<exit>e" "archive"
-macro index E "<collapse-thread><tag-thread><tag-prefix>e<previous-thread><collapse-thread><tag-thread><tag-prefix>e" "archive thread"
-macro index \Ce "E"
+# macro index E "<collapse-thread><tag-thread><tag-prefix>e<previous-thread><collapse-thread><tag-thread><tag-prefix>e" "archive thread"
+macro index E "<tag-thread><tag-prefix>e" "archive thread"
+# macro index \Ce "E"
 
 # Gmail-style move dialog (whole thread)
 macro index M "<tag-thread><tag-prefix><save-message>?/" "move thread to mailbox"
@@ -200,3 +201,6 @@ macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
 bind index - collapse-thread
 bind index _ collapse-all
+
+# Local overrides
+source ~/.mutt/muttrc.local
