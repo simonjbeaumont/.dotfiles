@@ -8,6 +8,7 @@ hub
 isync
 msmtp
 mutt
+neomutt
 notmuch
 python
 reattach-to-user-namespace
