@@ -16,3 +16,5 @@
 	excludesfile = ~/.gitignore_global
 	pager = less -x4,9
 	editor = /usr/local/bin/vim
+[include]
+	path = ~/.gitconfig.local
