@@ -195,6 +195,6 @@ macro index S \
 # Unlimit (show [a]ll)
 macro index a "<limit>all\n" "show all messages (undo limit)"
 
-macro pager \CU "|urlview<enter>" "call urlview to open links"
+macro pager U "|urlview<enter>" "call urlview to open links"
 macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
