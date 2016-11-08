@@ -2,4 +2,6 @@
 .DS_Store
 .swp
 tags
+tags.lock
+tags.temp
 .ropeproject/
