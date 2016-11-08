@@ -53,7 +53,7 @@ export HISTIGNORE="ls:cd:cd -:pwd:exit:date:reboot"
 stty -ixon
 
 # additional files to source
-for file in ~/.{bash_prompt,aliases,functions,tokens}; do
+for file in ~/.{bash_prompt,aliases,functions,tokens,localrc}; do
     [ -r "$file" ] && source "$file"
 done
 unset file
