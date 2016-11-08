@@ -189,7 +189,7 @@ macro index,pager \' "gi"                       "go to inbox"
 
 # Search with notmuch
 macro index S \
-  "<enter-command>unset wait_key<enter><shell-escape>~/.mutt/mutt-notmuch-py/mutt-notmuch-py /Users/Si/work/mail/+search<enter><change-folder-readonly>/Users/Si/work/mail/+search<enter>" \
+  "<enter-command>unset wait_key<enter><shell-escape>python ~/.mutt/mutt-notmuch.py ~/work/mail/+search<enter><change-folder-readonly>~/work/mail/+search<enter>" \
   "search mail (using notmuch)"
 
 # Unlimit (show [a]ll)
