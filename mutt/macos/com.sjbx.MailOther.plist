@@ -7,6 +7,7 @@
 
   <key>ProgramArguments</key>
   <array>
+    <string>/bin/bash</string>
     <string>/Users/Si/.mutt/check-update.sh</string>
     <string>other</string>
   </array>

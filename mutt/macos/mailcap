@@ -1,24 +1,24 @@
 # MS Word documents
-application/msword; ~/.mutt/macos/view_attachment.sh %s "-" '/Applications/TextEdit.app'
+application/msword; /bin/bash ~/.mutt/macos/view_attachment.sh %s "-" '/Applications/TextEdit.app'
 
 # Images
-image/jpg; ~/.mutt/macos/view_attachment.sh %s jpg
-image/jpeg; ~/.mutt/macos/view_attachment.sh %s jpg
-image/pjpeg; ~/.mutt/macos/view_attachment.sh %s jpg
-image/png; ~/.mutt/macos/view_attachment.sh %s png
-image/gif; ~/.mutt/macos/view_attachment.sh %s gif
-image/tiff; ~/.mutt/macos/view_attachment.sh %s tiff
+image/jpg; /bin/bash ~/.mutt/macos/view_attachment.sh %s jpg
+image/jpeg; /bin/bash ~/.mutt/macos/view_attachment.sh %s jpg
+image/pjpeg; /bin/bash ~/.mutt/macos/view_attachment.sh %s jpg
+image/png; /bin/bash ~/.mutt/macos/view_attachment.sh %s png
+image/gif; /bin/bash ~/.mutt/macos/view_attachment.sh %s gif
+image/tiff; /bin/bash ~/.mutt/macos/view_attachment.sh %s tiff
 
 # PDFs
-application/pdf; ~/.mutt/macos/view_attachment.sh %s pdf
+application/pdf; /bin/bash ~/.mutt/macos/view_attachment.sh %s pdf
 
 # HTML
-text/html; ~/.mutt/macos/view_attachment.sh %s html; needsterminal
+text/html; /bin/bash ~/.mutt/macos/view_attachment.sh %s html; needsterminal
 text/html; elinks -dump | less -R; copiousoutput
 
 # Calendar
-text/calendar; ~/.mutt/macos/view_attachment.sh %s ics; needsterminal
-text/calendar; ~/.mutt/dump-ical.py %s; copiousoutput;
+text/calendar; /bin/bash ~/.mutt/macos/view_attachment.sh %s ics; needsterminal
+text/calendar; python ~/.mutt/dump-ical.py %s; copiousoutput;
 
 # Unidentified files
-application/octet-stream; ~/.mutt/macos/view_attachment.sh %s "-"
+application/octet-stream; /bin/bash ~/.mutt/macos/view_attachment.sh %s "-"

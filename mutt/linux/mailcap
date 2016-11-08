@@ -4,4 +4,4 @@ text/plain; less '%s';
 message/*; less '%s';
 image/*; xview '%s' &; test=sh -c "timeout .2s xset q >/dev/null"; copiousoutput;
 application/pdf; evince '%s' &; test=sh -c "timeout .2s xset q >/dev/null"; copiousoutput;
-text/calendar; ~/.mutt/dump-ical.py %s; copiousoutput;
+text/calendar; python ~/.mutt/dump-ical.py %s; copiousoutput;
