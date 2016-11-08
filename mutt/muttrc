@@ -198,3 +198,5 @@ macro index a "<limit>all\n" "show all messages (undo limit)"
 macro pager U "|urlview<enter>" "call urlview to open links"
 macro pager s "<pipe-message>cat > ~/Desktop/"  "save message as"
 
+bind index - collapse-thread
+bind index _ collapse-all
