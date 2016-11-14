@@ -16,7 +16,7 @@ which opam &>/dev/null && eval $(opam config env)
 # Homebrew GNU coreutils
 brew list coreutils &>/dev/null && export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
 # Xmodmap
-which xmodmap &>/dev/null && xmodmap "$HOME/.Xmodmap"
+[[ $OSTYPE =~ ^linux ]] && xmodmap "$HOME/.Xmodmap"
 
 # bash completion
 [ -r "/usr/local/etc/bash_completion" ] && source "/usr/local/etc/bash_completion"
