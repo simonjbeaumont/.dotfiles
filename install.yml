@@ -44,7 +44,7 @@
 ~/.tmux.conf: tmux/tmux.conf
 
 # utop
-~/.utoprc: utoprc
+~/.utoprc: utop/utoprc
 
 # vim
 ~/.vim: vim/
