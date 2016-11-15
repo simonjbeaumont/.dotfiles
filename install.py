@@ -6,7 +6,7 @@ import sys
 import yaml
 
 
-def create_derived_file(src, subs, comment_delim=None):
+def create_derived_file(src, subs, comment_delim=None, dry_run=False):
     derived_path = "%s.sub" % src
     print("Creating %s from %s:" % (derived_path, src))
     with open(src, 'r') as f_src:
@@ -39,7 +39,7 @@ def prompt_for_missing_subs(template, subs):
     return result
 
 
-def install_symlink(link_to, link_from, force=False):
+def install_symlink(link_to, link_from, force=False, dry_run=False):
     print("Installing symlink: %s -> %s" % (link_from, link_to))
 
     link_to = os.path.abspath(link_to)
@@ -50,7 +50,7 @@ def install_symlink(link_to, link_from, force=False):
     if os.path.islink(link_from) and os.path.realpath(link_from) == link_to:
         return
 
-    if os.path.exists(link_from):
+    if os.path.lexists(link_from):
         if not force:
             print("- Skipping (exists)")
             return
@@ -59,9 +59,12 @@ def install_symlink(link_to, link_from, force=False):
     link_from_dir = os.path.dirname(link_from)
     if link_from_dir and not os.path.exists(link_from_dir):
         print("- Creating directory: %s" % link_from_dir)
-        os.makedirs(link_from_dir)
+        if not dry_run:
+            os.makedirs(link_from_dir)
 
-    os.symlink(link_to, link_from)
+    print("- Creating link: %s -> %s" % (link_from, link_to))
+    if not dry_run:
+        os.symlink(link_to, link_from)
 
 
 def parse_args_or_exit(argv=None):
@@ -70,6 +73,8 @@ def parse_args_or_exit(argv=None):
                         help="Path to config YAML")
     parser.add_argument("--force", action="store_true",
                         help="Force overwrite of existing files or links")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Don't do anything, just print")
     return parser.parse_args(argv)
 
 
@@ -83,8 +88,9 @@ def main(argv):
             template = config["template"]
             subs = prompt_for_missing_subs(template, config.get("subs", []))
             comment_delim = config.get("comment_delim", None)
-            link_to = create_derived_file(template, subs, comment_delim)
-        install_symlink(link_to, link_from, args.force)
+            link_to = create_derived_file(template, subs, comment_delim,
+                                          args.dry_run)
+        install_symlink(link_to, link_from, args.force, args.dry_run)
 
 
 if __name__ == "__main__":
