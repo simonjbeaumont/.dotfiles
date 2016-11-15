@@ -14,7 +14,9 @@ which opam &>/dev/null && eval $(opam config env)
 # Load RVM into a shell session *as a function*
 [ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # Homebrew GNU coreutils
-brew list coreutils &>/dev/null && export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+[ -r "/usr/local/opt/coreutils/libexec/gnubin" ] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+[ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
 # Xmodmap
 [[ $OSTYPE =~ ^linux ]] && xmodmap "$HOME/.Xmodmap"
 

@@ -30,7 +30,8 @@ alias cp='cp -v'
 alias mv='mv -v'
 
 # Listing files
-alias ls='ls -hF'
+alias ls="command ls -hF"
+$(ls --color &>/dev/null) && alias ls="command ls -hF --color=auto"
 alias ll='ls -lh'
 alias l='ls -1'
 alias la='ls -a'
@@ -69,17 +70,10 @@ alias killch="pgrep chroot | xargs sudo kill"
 
 alias centos='docker run --rm -v $(pwd):/mnt -it centos:7 /bin/bash -c "cd /mnt && bash"'
 
+
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-
-if [[ $(brew list coreutils) ]]; then
-    # GNU style ls
-    alias ls="command ls -hF --color"
-else
-    # BSD style ls
-    alias ls="command ls -hFG"
-fi
 
 # gVim for the win
 alias gvim=mvim
@@ -115,8 +109,5 @@ alias open='xdg-open'
 
 # show pstree to self
 alias pidme='pstree -ps $$'
-
-# GNU style ls
-alias ls="command ls -hF --color=auto"
 
 fi
