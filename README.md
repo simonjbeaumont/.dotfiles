@@ -31,16 +31,6 @@ If you just wish to have a symlink to a file in your dotfiles repo:
   subs:
     # replace occurences of "@@TO_REPLACE_STRING@@" with "REPLACE_WITH_STRING"
     - TO_REPLACE_STRING: REPLACE_WITH_STRING
-    ...
-```
-
-### Templates with value prompts
-
-```yaml
-~/desired/location/of/symlink:
-  template: relative/path/to/template/in/repo
-  # list of substitutions to make
-  subs:
     # entries in the list with no value will cause a prompt for the value
     - TO_PROMPT_STRING
     ...
