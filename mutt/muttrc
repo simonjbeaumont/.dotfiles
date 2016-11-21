@@ -1,3 +1,19 @@
+# Account info
+set folder = ~/work/mail/REMOTE/
+set spoolfile = "+Inbox"
+set mbox      = "+Archive"
+set postponed = "+Drafts"
+
+# Sending email
+set realname = "Si Beaumont"
+set from     = "" # set in muttrc.local
+set sendmail = "msmtp -a work-account"
+set sendmail_wait = 0   # don't silently fail
+set record = "+Inbox"   # put sent mail in inbox for threading
+
+# Show all other directories
+unset mask
+
 # Paths
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers
@@ -32,18 +48,27 @@ unset mark_old           # read/new is good enough for me
 set beep_new             # bell on new mails
 set pipe_decode          # strip headers and eval mimes when piping
 set thorough_search      # strip headers and eval mimes before searching
-set mail_check_stats     # this is required for mutt-sidebar with neomutt
 
-# Sidebar Patch (this uses the sidebar with neomutt)
-set sidebar_divider_char  = ' │ '
-set sidebar_visible       = yes
-set sidebar_width         = 30
-set sidebar_short_path    = yes
-set sidebar_format        = "%B%?F? [%F]?%?N? (%N)?%* %4S"
-set sidebar_new_mail_only = yes
+# What to show in sidebar
+mailboxes +Inbox
+mailboxes +Drafts
+mailboxes +Archive
+mailboxes `find ~/work/mail/REMOTE -type d -maxdepth 1 -exec echo -n '"{}" ' \;`
+unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
+sidebar_whitelist         /Users/Si/work/mail/REMOTE/Inbox
+sidebar_whitelist         /Users/Si/work/mail/REMOTE/Drafts
 sidebar_whitelist         /Users/Si/work/mail/REMOTE/Archive
 sidebar_whitelist         /Users/Si/work/mail/REMOTE/github
-unsidebar_whitelist       /Users/Si/work/mail/+search
+sidebar_whitelist         /Users/Si/work/mail/+search
+
+# Sidebar config (this uses the sidebar with neomutt)
+set mail_check_stats      = yes
+set sidebar_divider_char  = ' │ '
+set sidebar_format        = "%B%?F? [%F]?%?N? (%N)?%* %4S"
+set sidebar_new_mail_only = yes
+set sidebar_short_path    = yes
+set sidebar_visible       = yes
+set sidebar_width         = 30
 color sidebar_new         color221 color233
 color sidebar_flagged     brightcolor211 color233
 color sidebar_divider     brightcolor39 color233
@@ -106,26 +131,6 @@ ignore *                                # ignore all headers
 unignore from: to: cc: date: subject:   # show only these
 unhdr_order *
 hdr_order from: to: cc: date: subject:  # and in this order
-
-# Account info
-set folder = ~/work/mail/REMOTE/ # mailbox location
-set spoolfile = "+Inbox"
-# Mailboxes to show in the sidebar.
-mailboxes +Inbox \
-          +Drafts \
-          +Archive \
-          ~/work/mail/+search
-# Show all other directories
-unset mask
-# Other special folders.
-set mbox      = "+Archive"
-set postponed = "+Drafts"
-# Sending email.
-set realname = "Si Beaumont"
-set from     = "" # set in muttrc.local
-set sendmail = "msmtp -a work-account"
-set sendmail_wait = 0   # no please don't silently fail, email is important
-set record = "+Inbox"
 
 # Key Bindings
 ###############################################################################
