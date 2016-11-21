@@ -21,16 +21,18 @@ def parse_args_or_exit(argv=None):
                         help="Starting point for the search")
     parser.add_argument("--sortby", default="givenName",
                         help="Sort by this field (default: givenName)")
-    parser.add_argument("--mock-input", default=None,
-                        help="Use file input instead of server (default: None)")
     parser.add_argument("--extra-fields", nargs="+",
                         help="Extra fields to search and display")
     parser.add_argument("--filter", required=True,
                         help="Search term (part of name)")
+    parser.add_argument("--mock-input", default=None,
+                        help="Use file input instead of server (default: None)")
+    parser.add_argument("--dry-run", action="store_true",
+                        help="Just print ldapsearch command but don't execute")
     return parser.parse_args(argv)
 
 
-def ldapsearch(host, base, sortby, filter, fields):
+def ldapsearch(host, base, sortby, filter, fields, dry_run=False):
     ldap_cmd = [
         "ldapsearch",
         "-h", host,
@@ -41,6 +43,9 @@ def ldapsearch(host, base, sortby, filter, fields):
         "-S", sortby,
         "(cn=*{}*)".format(filter),
     ] + fields
+    if dry_run:
+        print ' '.join(ldap_cmd)
+        return ""
     return subprocess.check_output(ldap_cmd)
 
 
@@ -89,7 +94,7 @@ def main(argv):
         ldap_results = read_mock_file(args.mock_input)
     else:
         ldap_results = ldapsearch(args.host, args.base, args.sortby,
-                                  args.filter, fields)
+                                  args.filter, fields, args.dry_run)
     results = process_results(ldap_results)
     print_results_for_mutt(results, args.extra_fields)
 
