@@ -53,6 +53,7 @@ set thorough_search      # strip headers and eval mimes before searching
 mailboxes +Inbox
 mailboxes +Drafts
 mailboxes +Archive
+mailboxes `find ~/work/mail/aliases -type l -maxdepth 1 -exec echo -n '"{}" ' \;`
 mailboxes `find ~/work/mail/REMOTE -type d -maxdepth 1 -exec echo -n '"{}" ' \;`
 unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
 sidebar_whitelist         /Users/Si/work/mail/REMOTE/Inbox
