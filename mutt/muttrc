@@ -182,6 +182,7 @@ macro pager e "<exit>e" "archive"
 # macro index E "<collapse-thread><tag-thread><tag-prefix>e<previous-thread><collapse-thread><tag-thread><tag-prefix>e" "archive thread"
 macro index E "<tag-thread><tag-prefix>e" "archive thread"
 # macro index \Ce "E"
+macro index q "<sync-mailbox><quit>"
 
 # Gmail-style move dialog (whole thread)
 macro index M "<tag-thread><tag-prefix><save-message>?/" "move thread to mailbox"
