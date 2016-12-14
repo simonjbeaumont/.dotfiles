@@ -26,7 +26,8 @@ set signature        = ~/.mutt/sig           # my signature file
 # Editor
 set editor = "vim -c 'normal! }' -c 'redraw'"
 
-set query_command = "echo; echo \"\n\n \t \tSet this in muttrc.local\n\n\""
+# Note this cannot be more than 256 characters so we use a wrapper
+set query_command = "echo; bash ~/.pull-ldap-wrapper.sh"
 set query_format = "%4c %t %-45.45a %-45.45n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T    complete
