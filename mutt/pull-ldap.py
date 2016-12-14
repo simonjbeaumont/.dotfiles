@@ -2,6 +2,7 @@
 
 import subprocess
 import argparse
+import os
 import sys
 
 FIELD_MAIL = "mail"
@@ -46,7 +47,12 @@ def ldapsearch(host, base, sortby, filter, fields, dry_run=False):
     if dry_run:
         print ' '.join(ldap_cmd)
         return ""
-    return subprocess.check_output(ldap_cmd)
+    try:
+        return subprocess.check_output(ldap_cmd)
+    except subprocess.CalledProcessError as e:
+        if e.returncode == 4:
+            sys.exit(4)
+        raise e
 
 
 def read_mock_file(path):
