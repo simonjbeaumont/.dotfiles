@@ -3,20 +3,20 @@
 <plist version="1.0">
 <dict>
   <key>Label</key>
-  <string>com.sjbx.MailInboxOnly</string>
+  <string>sjbx.mail.all</string>
 
   <key>ProgramArguments</key>
   <array>
     <string>/bin/bash</string>
     <string>/Users/Si/.mutt/check-update.sh</string>
-    <string>inbox</string>
+    <string>other</string>
   </array>
 
   <key>Nice</key>
   <integer>1</integer>
 
   <key>StartInterval</key>
-  <integer>60</integer>
+  <integer>300</integer>
 
   <key>RunAtLoad</key>
   <true/>
