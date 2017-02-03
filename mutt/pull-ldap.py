@@ -22,7 +22,7 @@ def parse_args_or_exit(argv=None):
                         help="Starting point for the search")
     parser.add_argument("--sortby", default="givenName",
                         help="Sort by this field (default: givenName)")
-    parser.add_argument("--extra-fields", nargs="+",
+    parser.add_argument("--extra-fields", nargs="+", default=[],
                         help="Extra fields to search and display")
     parser.add_argument("--filter", required=True,
                         help="Search term (part of name)")
