@@ -2,7 +2,6 @@
 
 import subprocess
 import argparse
-import os
 import sys
 
 FIELD_MAIL = "mail"
