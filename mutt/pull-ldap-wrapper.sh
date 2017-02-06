@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILTER="$1"
+FILTER="$@"
 
 main () {
   people=$(python ~/.mutt/pull-ldap.py --host @@HOST@@ --base '@@BASE_PEOPLE@@' --extra-fields @@EXTRA_FIELDS_PEOPLE@@ --filter "${FILTER}" 2>/dev/null) \
