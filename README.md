@@ -40,9 +40,15 @@ If you just wish to have a symlink to a file in your dotfiles repo:
 
 ### For Mac:
 
+The launchctl scripts for mutt (mbsync) need to be placed in
+`~/Library/LaunchAgents/` and then loaded:
+
 ```bash
-$ launchctl load ~/.mutt/macos/*.plist
+$ sudo cp ~/.mutt/macos/sjbx.*.plist ~/Library/LaunchAgents
+$ sudo chown Si ~/Library/LaunchAgents/sjbx.*.plist
+$ launchctl load ~/Library/LaunchAgents/sjbx.*.plist
 ```
+
 iTerm colors and macOS defaults script are in `macos/` directory.
 
 ### For Linux:
