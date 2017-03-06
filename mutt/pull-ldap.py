@@ -41,7 +41,7 @@ def ldapsearch(host, base, sortby, filter, fields, dry_run=False):
         "-x",
         "-z", "100",
         "-S", sortby,
-        "(|(cn=*{0}*)(mail=*{0}*))".format(filter),
+        "(|(cn=*{0}*)(mail=*{0}*))".format(filter.strip())
     ] + fields
     if dry_run:
         print ' '.join(ldap_cmd)
