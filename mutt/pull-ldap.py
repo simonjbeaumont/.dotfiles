@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import base64
 import subprocess
 import argparse
 import sys
@@ -76,6 +77,11 @@ def process_results(lines):
                 result = {}
                 continue
             (field, _, value) = line.partition(":")
+            if value.startswith(": "):
+                try:
+                    value = base64.b64decode(value)
+                except:
+                    pass
             result[field] = value.strip()
     except StopIteration:
         if all(field in result for field in REQUIRED_FIELDS):
