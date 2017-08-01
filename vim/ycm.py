@@ -16,7 +16,7 @@ BASE_FLAGS = [
         '-DNDEBUG',
         '-std=c++11',
         '-xc++',
-        '-I/usr/lib/'
+        '-I/usr/lib/',
         '-I/usr/include/'
         ]
 
@@ -154,6 +154,7 @@ def FlagsForFile(filename):
         include_flags = FlagsForInclude(root)
         if include_flags:
             final_flags = final_flags + include_flags
+    logging.info("Final flags: %s" % final_flags)
     return {
             'flags': final_flags,
             'do_cache': True
