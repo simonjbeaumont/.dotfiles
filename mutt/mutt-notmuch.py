@@ -1,115 +1,114 @@
 #!/usr/bin/env python
 """
 mutt-notmuch-py
-
-This is a Gmail-only version of the original mutt-notmuch script.
-
-It will interactively ask you for a search query and then symlink the matching
-messages to $HOME/.cache/mutt_results.
-
-Add this to your muttrc.
-
-macro index / "<enter-command>unset wait_key<enter><shell-escape>mutt-notmuch-py<enter><change-folder-readonly>~/.cache/mutt_results<enter>" \
-          "search mail (using notmuch)"
-
-This script overrides the $HOME/.cache/mutt_results each time you run a query.
-
-Install this by adding this file somewhere on your PATH.
-
-Tested on OSX Lion, OSX El Capitan, Fedora 23, and Arch Linux.
-
-(c) 2012-2016 --- Honza Pokorny
-Licensed under BSD
 """
 
-import os
+import argparse
+import collections
+import email
 import hashlib
+import mailbox
+import os
+import signal
+import subprocess
+import sys
+import traceback
 
-from commands import getoutput, mkarg
-from mailbox import Maildir
-from optparse import OptionParser
-from collections import defaultdict
 
-
-def digest(filename):
-    with open(filename) as f:
+def digest(path):
+    with open(path) as f:
         return hashlib.sha1(f.read()).hexdigest()
 
 
-def pick_all_mail(messages):
-    for m in messages:
-        if 'All Mail' in m:
-            return m
-
-
-def empty_dir(directory):
-    box = Maildir(directory)
+def empty_maildir(dir):
+    subprocess.call(["mkdir", "-p", "{}/cur".format(dir)])
+    subprocess.call(["mkdir", "-p", "{}/new".format(dir)])
+    box = mailbox.Maildir(dir)
     box.clear()
 
 
-def command(cmd):
-    return getoutput(cmd)
+def search(query, output_mbox):
+    empty_maildir(output_mbox)
 
+    files = subprocess.check_output([
+        "notmuch", "search", "--duplicate=1",
+        "--output=files", query]).split("\n")
 
-def main(dest_box, options):
-    is_gmail = options.gmail
-    filter_path = options.base_path
-    query = raw_input('Query: ')
-
-    command('mkdir -p %s/cur' % dest_box)
-    command('mkdir -p %s/new' % dest_box)
-
-    empty_dir(dest_box)
-
-    files = command('notmuch search --output=files %s' % mkarg(query)).split('\n')
-
-    data = defaultdict(list)
+    data = collections.defaultdict(list)
     messages = []
-
     for f in files:
         if not f:
             continue
-
-        if filter_path is not None and filter_path not in f:
-            continue
-
         try:
             sha = digest(f)
             data[sha].append(f)
         except IOError:
-            print('File %s does not exist' % f)
+            sys.stderr.write("File {} does not exist\n".format(f))
 
     for sha in data:
-        if is_gmail and len(data[sha]) > 1:
-            messages.append(pick_all_mail(data[sha]))
-        else:
-            messages.append(data[sha][0])
+        messages.append(data[sha][0])
 
     for m in messages:
         if not m:
             continue
-
-        target = os.path.join(dest_box, 'cur', os.path.basename(m))
+        target = os.path.join(output_mbox, 'cur', os.path.basename(m))
         if not os.path.exists(target):
             os.symlink(m, target)
 
 
-if __name__ == '__main__':
-    p = OptionParser("usage: %prog [OPTIONS] [RESULTDIR]")
-    p.add_option('-g', '--gmail', dest='gmail',
-                 action='store_true', default=True,
-                 help='gmail-specific behavior')
-    p.add_option('-G', '--not-gmail', dest='gmail',
-                 action='store_false',
-                 help='Normal, non-gmail-specific behavior')
-    p.add_option('-p', '--base-path', dest='base_path',
-                 help='Only include messages in given base path')
-    (options, args) = p.parse_args()
+def thread(message, output_mbox):
+    if "message-id" not in message:
+        sys.stderr.write("Cannot find message ID")
+        sys.exit(1)
+    message_id = message["message-id"].strip("<>")
+    thread_id = subprocess.check_output([
+        "notmuch", "search", "--output=threads",
+        "id:{}".format(message_id)]).strip()
+    search(thread_id, output_mbox)
 
-    if args:
-        dest = args[0]
-    else:
-        dest = '~/.cache/mutt_results'
 
-    # Use expanduser() so that os.symlink() won't get weirded out by tildes.
-    main(os.path.expanduser(dest).rstrip('/'), options)
+def search_command(args):
+    query = raw_input('Query: ')
+    search(query, args.output_mbox)
+
+
+def thread_command(args):
+    message = email.message_from_file(sys.stdin)
+    thread(message, args.output_mbox)
+
+
+def parse_args_or_exit(argv=None):
+    parser = argparse.ArgumentParser(
+        description="Notmuch interaction for mutt",
+        formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    # common arguments
+    parser.add_argument("-o", "--output-mbox", default="~/.cache/mutt_results",
+                        help="Output dir for results")
+    parser.add_argument("--backtrace", action="store_true",
+                        help="Print backtrace on error")
+    subparsers = parser.add_subparsers()
+    # search command
+    subparser = subparsers.add_parser("search", help="Search")
+    subparser.set_defaults(func=search_command)
+    # thread command
+    subparser = subparsers.add_parser("thread", help="Reconstruct thread")
+    subparser.set_defaults(func=thread_command)
+    return parser.parse_args(argv)
+
+
+def main(argv):
+    args = parse_args_or_exit(argv)
+    args.output_mbox = os.path.expanduser(args.output_mbox).rstrip("/")
+    try:
+        args.func(args)
+    except Exception as e:  # pylint: disable=broad-except
+        sys.stderr.write("error: {}\n".format(e))
+        if args.backtrace:
+            traceback.print_exc()
+        empty_maildir(args.output_mbox)
+        sys.exit(1)
+
+
+if __name__ == "__main__":
+    signal.signal(signal.SIGINT, lambda x, _: sys.exit(128 + x))
+    main(sys.argv[1:])
