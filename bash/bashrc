@@ -12,12 +12,15 @@
 # Gems
 [ -r "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 # OPAM
-which opam &>/dev/null && eval $(opam config env)
+which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
 # Load RVM into a shell session *as a function*
 [ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # Homebrew GNU coreutils
 [ -r "/usr/local/opt/coreutils/libexec/gnubin" ] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-[ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+
+# $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
+# [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
+# which opam &>/dev/null && eval $(opam config env | grep MANPATH)
 
 # Xmodmap
 [[ $OSTYPE =~ ^linux ]] && xmodmap "$HOME/.Xmodmap"
