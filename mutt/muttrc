@@ -24,7 +24,9 @@ set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.mutt/sig           # my signature file
 
 # Editor
-set editor = "vim -c 'normal! }' -c 'redraw'"
+set editor = "vim -c 'normal! }' -c 'redraw' -c'setl tw=72 fo+=aw'"
+set text_flowed
+set reflow_text
 
 # Note this cannot be more than 256 characters so we use a wrapper
 set query_command = "echo; bash ~/.pull-ldap-wrapper.sh"
