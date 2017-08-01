@@ -3,6 +3,8 @@
 
 # Linux tools and Mac homebrews
 [ -r "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
+# Tmux from homebrew (xcode updates clobber /usr/local/bin/tmux)
+[ -r "/usr/local/opt/tmux/bin" ] && export PATH="/usr/local/opt/tmux/bin:$PATH"
 # MacPorts
 [ -r "/opt/local/bin" ] && export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Cabal
