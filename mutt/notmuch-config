@@ -49,7 +49,7 @@ other_email=@@OTHER_EMAIL@@
 #
 [new]
 tags=unread;inbox;
-ignore=
+ignore=.mbsyncstate;.uidvalidity
 
 # Search configuration
 #
