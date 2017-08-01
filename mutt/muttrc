@@ -164,7 +164,7 @@ bind pager \Cu half-up
 bind pager \Cd half-down
 
 # Sync email
-bind  index <tab> sync-mailbox
+macro index <tab> "<sync-mailbox><enter-command>unset wait_key<enter><shell-escape>notmuch new<enter>"
 macro index o     "<shell-escape>mbsync inbox; notmuch new<enter>" "run mbsync to sync inbox"
 macro index O     "<shell-escape>mbsync other; notmuch new<enter>" "run mbsync to sync all mail"
 
