@@ -75,7 +75,7 @@ set sidebar_format        = "%B%?F? [%F]?%?N? (%N)?%* %4S"
 set sidebar_new_mail_only = yes
 set sidebar_short_path    = yes
 set sidebar_visible       = yes
-set sidebar_width         = 35
+set sidebar_width         = 36
 color sidebar_new         color221 color233
 color sidebar_flagged     brightcolor211 color233
 color sidebar_divider     brightcolor39 color233
