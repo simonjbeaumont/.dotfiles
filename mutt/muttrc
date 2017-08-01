@@ -193,8 +193,8 @@ macro index q "<sync-mailbox><quit>"
 # Gmail-style move dialog (whole thread)
 macro index M "<tag-thread><tag-prefix><save-message>?/" "move thread to mailbox"
 
-# Mark all as read
 macro index \Cr "T~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
+# macro index \Cr "<tag-thread><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark thread read"
 
 # Quickly change mailboxes (consider using gmail shortcuts (gi, etc.))
 macro index c  "<change-folder>?"     "change folder"
