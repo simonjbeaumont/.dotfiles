@@ -39,6 +39,9 @@ source ~/.vim/bundle/badwolf/contrib/badwolf.muttrc
 color indicator color15 color52  # Make the current line highlight clearer (red)
 
 # Basic Options
+set assumed_charset = "utf-8"
+set send_charset = "utf-8"
+set charset = "utf-8"
 set wait_key = no        # shut up, mutt
 set mbox_type = Maildir  # mailbox type
 set timeout = 3          # idle time before scanning
