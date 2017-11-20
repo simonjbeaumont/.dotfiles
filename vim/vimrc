@@ -130,7 +130,7 @@ set swapfile                      " noswapfile has bitten me!
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set wrap
 set textwidth=79
-set formatoptions=qrn1
+set formatoptions=qrn1j
 
 set expandtab     " use tabs instead of spaces
 set smarttab      " insert tabs at start of line with shiftwidth, not tabstop
@@ -154,9 +154,10 @@ set spellfile=~/.vim/spellfile.add
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 au BufRead *.xtx                                setl ft=tex
 au FileType gitcommit                           setl spell tw=72 cc=72
-au FileType mail                                setl spell
+au FileType mail                                setl spell tw=100 cc=100 fo=ajqrw1
 au FileType ocaml                               setl fo-=t
 au FileType cpp                                 setl sw=4 ts=4 tw=100 cc=100
+au FileType cmake                               setl sw=4 ts=4 tw=100 cc=100
 " }}}
 
 " Key mappings {{{
