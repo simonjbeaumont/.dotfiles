@@ -8,8 +8,8 @@
 #    When on in a git repo:
 #       [user@host directory branch]
 #
-#    When on a git repo with uncommitted changes (where * is a lightning bolt):
-#       [user@host directory branch*]
+#    When on a git repo with uncommitted changes:
+#       [user@host directory branch ⚑]
 #
 # Note: it might be worth ripping out more info such as the status.
 #   See https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh#L40
@@ -30,7 +30,7 @@ ___git_dirty_flag() {
 
     fi
   else
-    echo " ✽"
+    echo " «⋯»"
   fi
 }
 
