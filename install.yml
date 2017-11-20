@@ -1,3 +1,6 @@
+# ack
+~/.ackrc: ack/ackrc
+
 # bash
 ~/.aliases: bash/aliases
 ~/.bash_profile: bash/bash_profile
