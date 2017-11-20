@@ -54,6 +54,7 @@ which neomutt >/dev/null && alias mutt=neomutt
 # Git stuff
 which hub >/dev/null && alias git=hub
 alias gl='git log --graph --abbrev-commit --oneline --decorate'
+alias gg='git grep'
 __git_complete gl _git_log 2&>/dev/null
 
 # Mercurial
