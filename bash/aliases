@@ -49,6 +49,7 @@ alias less='less -R'
 # more useful variants
 which vim >/dev/null && alias vi=vim
 which vimx >/dev/null && alias vim=vimx
+which neomutt >/dev/null && alias mutt=neomutt
 
 # Git stuff
 which hub >/dev/null && alias git=hub
