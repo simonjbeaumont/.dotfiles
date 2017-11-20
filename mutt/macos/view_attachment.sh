@@ -60,7 +60,7 @@
 tmpdir="$HOME/.tmp/mutt_attach"
 
 # the name of the debug file if debugging is turned on.
-debug_file=$tmpdir/debug
+debug_file=$tmpdir/debug.txt
 
 # debug.  yes or no.
 #debug="no"
