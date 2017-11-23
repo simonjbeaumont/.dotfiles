@@ -1,0 +1,15 @@
+/* Hide the top bar with some extra space for macOS */
+#TabsToolbar {
+  height: 26px;
+}
+
+#tabbrowser-tabs {
+  visibility: collapse;
+}
+
+/* Hide the tabcenter header */
+#sidebar-box #sidebar-header {
+  visibility: collapse;
+}
+
+#browser { -moz-box-direction: reverse; }
