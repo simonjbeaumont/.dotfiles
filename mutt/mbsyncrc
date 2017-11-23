@@ -15,7 +15,7 @@ IMAPStore work-remote
 MaildirStore work-local
 	Path /Users/Si/work/mail/REMOTE/
 	Inbox /Users/Si/work/mail/REMOTE/Inbox
-	Flatten .
+	SubFolders Verbatim
 
 Channel inbox
 	Master :work-remote:
