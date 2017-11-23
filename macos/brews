@@ -3,16 +3,13 @@ bash-completion
 coreutils
 elinks
 git
-gradle
 hub
 isync
 msmtp
-mutt
 neomutt
 notmuch
 python
 reattach-to-user-namespace
-sloccount
 tig
 tmux
 toilet
