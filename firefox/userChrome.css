@@ -1,15 +1,9 @@
-/* Hide the top bar with some extra space for macOS */
-#TabsToolbar {
-  height: 26px;
-}
+/* to hide the native tabs */
+#TabsToolbar { visibility: collapse; }
 
-#tabbrowser-tabs {
-  visibility: collapse;
-}
+/* to hide the sidebar header */
+#sidebar-header { visibility: collapse; }
 
-/* Hide the tabcenter header */
-#sidebar-box #sidebar-header {
-  visibility: collapse;
-}
-
-#browser { -moz-box-direction: reverse; }
+/* to hide the window control buttons (which overlap with above rules) */
+#titlebar {display: none !important;}
+#main-window {-moz-appearance:none !important;}
