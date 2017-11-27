@@ -38,18 +38,24 @@ If you just wish to have a symlink to a file in your dotfiles repo:
 
 ## Extra steps
 
+```sh
+$ cd ~/.vim/bundle/YouCompleteMe
+$ ./install.py --clang-completer
+```
+
 ### For Mac:
 
 The launchctl scripts for mutt (mbsync) need to be placed in
 `~/Library/LaunchAgents/` and then loaded:
 
 ```bash
-$ sudo cp ~/.mutt/macos/sjbx.*.plist ~/Library/LaunchAgents
-$ sudo chown Si ~/Library/LaunchAgents/sjbx.*.plist
+$ cp ~/.mutt/macos/sjbx.*.plist ~/Library/LaunchAgents
 $ launchctl load ~/Library/LaunchAgents/sjbx.*.plist
 ```
 
 iTerm colors and macOS defaults script are in `macos/` directory.
+
+List of useful Homebrew packages aslo in the `macos/` directory.
 
 ### For Linux:
 
