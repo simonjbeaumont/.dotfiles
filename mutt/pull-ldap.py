@@ -45,7 +45,7 @@ def ldapsearch(host, base, sortby, filter, fields, dry_run=False):
         "(|(cn=*{0}*)(mail=*{0}*))".format(filter.strip())
     ] + fields
     if dry_run:
-        print ' '.join(ldap_cmd)
+        print ' '.join(["\"{}\"".format(x) for x in ldap_cmd])
         return ""
     try:
         return subprocess.check_output(ldap_cmd)
