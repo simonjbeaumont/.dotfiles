@@ -19,6 +19,8 @@ which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
 [ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # Homebrew GNU coreutils
 [ -r "/usr/local/opt/coreutils/libexec/gnubin" ] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# iTerm shell integration
+[ -r "$HOME/.iterm2_shell_integration.bash" ] && source "$HOME/.iterm2_shell_integration.bash"
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
