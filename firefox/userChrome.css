@@ -2,8 +2,8 @@
 #TabsToolbar { visibility: collapse; }
 
 /* to hide the sidebar header */
-#sidebar-header { visibility: collapse; }
+/* #sidebar-header { visibility: collapse; } */
 
 /* to hide the window control buttons (which overlap with above rules) */
-#titlebar {display: none !important;}
-#main-window {-moz-appearance:none !important;}
+/* #titlebar {display: none !important;} */
+/* #main-window {-moz-appearance:none !important;} */
