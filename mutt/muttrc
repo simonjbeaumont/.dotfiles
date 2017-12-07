@@ -63,15 +63,15 @@ set new_mail_command  = "bash ~/.mutt/inbox_bell.sh"
 mailboxes +Inbox
 mailboxes +Drafts
 mailboxes +Archive
-mailboxes ~/work/mail/aliases/Deleted
 mailboxes `find -s ~/work/mail/aliases -type l -maxdepth 1 -exec echo -n '"{}" ' \;`
 mailboxes `find -s ~/work/mail/REMOTE -type d -maxdepth 1 -exec echo -n '"{}" ' \;`
+unmailboxes ~/work/mail/aliases/Deleted
 unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
 sidebar_whitelist ~/work/mail/REMOTE/Inbox
 sidebar_whitelist ~/work/mail/REMOTE/Drafts
 sidebar_whitelist ~/work/mail/REMOTE/Archive
 sidebar_whitelist ~/work/mail/REMOTE/github
-sidebar_whitelist ~/work/mail/+search
+sidebar_whitelist `find ~/work/mail/aliases -type l -maxdepth 1 -exec echo -n '"{}" ' \;`
 
 # Sidebar config (this uses the sidebar with neomutt)
 set mail_check_stats      = yes
