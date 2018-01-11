@@ -20,6 +20,8 @@
 
 # mutt
 ~/.mutt: mutt/
+~/.mutt/cache/.create-dir: /dev/null
+~/.mutt/temp/.create-dir: /dev/null
 ~/.mbsyncrc:
   comment_delim: '#'
   template: mutt/mbsyncrc
