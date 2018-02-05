@@ -343,5 +343,8 @@ nnoremap <leader>g :YcmCompleter GoTo<CR>
 
 Bundle 'ludovicchabant/vim-gutentags'
 
+Bundle 'ctrlpvim/ctrlp.vim'
+let g:ctrlp_map = '<leader>p'
+
 filetype plugin on
 " }}}
