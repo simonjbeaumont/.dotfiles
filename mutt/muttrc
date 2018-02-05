@@ -64,7 +64,7 @@ mailboxes +Inbox
 mailboxes +Drafts
 mailboxes +Archive
 mailboxes `find -s ~/work/mail/aliases -type l -maxdepth 1 -exec echo -n '"{}" ' \;`
-mailboxes `find -s ~/work/mail/REMOTE -type d -maxdepth 1 -exec echo -n '"{}" ' \;`
+mailboxes `find -s ~/work/mail/REMOTE -type d -maxdepth 2 -exec echo -n '"{}" ' \;`
 unmailboxes ~/work/mail/aliases/Deleted
 unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
 sidebar_whitelist ~/work/mail/REMOTE/Inbox
