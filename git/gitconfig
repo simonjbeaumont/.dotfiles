@@ -18,3 +18,5 @@
 	editor = /usr/local/bin/vim
 [include]
 	path = ~/.gitconfig.local
+[hub]
+	protocol = ssh
