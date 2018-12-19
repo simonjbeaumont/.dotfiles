@@ -5,13 +5,9 @@
 [ -r "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
 # Tmux from homebrew (xcode updates clobber /usr/local/bin/tmux)
 [ -r "/usr/local/opt/tmux/bin" ] && export PATH="/usr/local/opt/tmux/bin:$PATH"
-# Python from Homebrew
-[ -r "/usr/local/opt/python/libexec/bin" ] && export PATH="/usr/local/opt/python/libexec/bin:$PATH"
-# MacPorts
-[ -r "/opt/local/bin" ] && export PATH="/opt/local/bin:/opt/local/sbin:$PATH"
 # Cabal
 [ -r "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
-# Gems
+# Scripts
 [ -r "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 # OPAM
 which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
@@ -21,6 +17,16 @@ which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
 [ -r "/usr/local/opt/coreutils/libexec/gnubin" ] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # iTerm shell integration
 [ -r "$HOME/.iterm2_shell_integration.bash" ] && source "$HOME/.iterm2_shell_integration.bash"
+# Python from Homebrew
+[ -r "/usr/local/opt/python/libexec/bin" ] && export PATH="/usr/local/opt/python/libexec/bin:$PATH"
+# Miniconda3
+[ -r "$HOME/miniconda3/bin" ] && export PATH="$HOME/miniconda3/bin:$PATH"
+# Python3.6 from miniconda
+[ -r "$HOME/miniconda3/envs/py3.6/bin" ] && export PATH="$HOME/miniconda3/envs/py3.6/bin:$PATH"
+# Python2.7 from miniconda
+[ -r "$HOME/miniconda3/envs/py2.7/bin" ] && export PATH="$HOME/miniconda3/envs/py2.7/bin:$PATH"
+# Ruby
+which rbenv &>/dev/null && eval "$(rbenv init -)"
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
