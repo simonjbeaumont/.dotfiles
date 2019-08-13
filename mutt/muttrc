@@ -214,7 +214,7 @@ macro pager gi "<exit>gi"                       "go to inbox"
 macro index,pager \' "gi"                       "go to inbox"
 
 # Search with notmuch
-macro index S \
+macro index s \
   "<enter-command>set my_old_pipe_decode=\$pipe_decode my_old_wait_key=\$wait_key nopipe_decode nowait_key<enter>\
   <shell-escape>python ~/.mutt/mutt-notmuch.py -o ~/work/mail/+search search<enter>\
   <change-folder-readonly>~/work/mail/+search<enter>\
