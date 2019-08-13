@@ -3,9 +3,9 @@
 FILTER="$@"
 
 main () {
-  people=$(python ~/.mutt/pull-ldap.py --host @@HOST@@ --base '@@BASE_PEOPLE@@' --extra-fields @@EXTRA_FIELDS_PEOPLE@@ --filter "${FILTER}" 2>/dev/null) \
+  people=$(python2 ~/.mutt/pull-ldap.py --host @@HOST@@ --base '@@BASE_PEOPLE@@' --extra-fields @@EXTRA_FIELDS_PEOPLE@@ --filter "${FILTER}" 2>/dev/null) \
   && \
-  groups=$(python ~/.mutt/pull-ldap.py --host @@HOST@@ --base '@@BASE_GROUPS@@' --extra-fields @@EXTRA_FIELDS_GROUPS@@ --filter "${FILTER}" 2>/dev/null)
+  groups=$(python2 ~/.mutt/pull-ldap.py --host @@HOST@@ --base '@@BASE_GROUPS@@' --extra-fields @@EXTRA_FIELDS_GROUPS@@ --filter "${FILTER}" 2>/dev/null)
 
   if [[ $? == 4 ]]; then
     echo "--"
