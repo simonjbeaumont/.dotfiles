@@ -138,8 +138,13 @@ set include         = yes                 # include message in replies
 set forward_quote   = yes                 # include message in forwards
 
 # Attachment View Options
-attachments +A message/.* multipart/.*
-attachments +I message/.* multipart/.*
+attachments  +A */.*
+attachments  -A text/x-vcard application/pgp.*
+attachments  -A application/pkcs7-signature
+attachments  -A application/pgp-signature
+attachments  +I text/plain
+attachments  -A message/external-body
+attachments  -I message/external-body
 
 # Headers
 ignore *                                # ignore all headers
