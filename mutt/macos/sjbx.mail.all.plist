@@ -22,9 +22,9 @@
   <true/>
 
   <key>StandardErrorPath</key>
-  <string>/tmp/mailfetchinbox.err</string>
+  <string>/tmp/mailfetchother.err</string>
 
   <key>StandardOutPath</key>
-  <string>/tmp/mailfetchinbox.out</string>
+  <string>/tmp/mailfetchother.out</string>
 </dict>
 </plist>
