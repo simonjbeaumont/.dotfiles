@@ -143,9 +143,9 @@ attachments +I message/.* multipart/.*
 
 # Headers
 ignore *                                # ignore all headers
-unignore from: to: cc: date: subject:   # show only these
+unignore from: to: cc: x-member-count: list-unsubscribe: date: subject:   # show only these
 unhdr_order *
-hdr_order from: to: cc: date: subject:  # and in this order
+hdr_order from: to: cc: x-member-count: list-unsubscribe: date: subject:  # and in this order
 
 # neomutt options
 set abort_noattach = ask-yes
