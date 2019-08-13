@@ -30,7 +30,7 @@ def when_str_of_start_end(s, e):
     if type(e) == datetime.date:
         e = datetime.datetime.combine(e, datetime.time.min)
 
-    until_format = "%H:%M" if s.date() == e.date() else datetime_format
+    until_format = "%H:%M %Z" if s.date() == e.date() else datetime_format
     return "{} -- {}".format(s.strftime(datetime_format), e.strftime(until_format))
 
 
@@ -42,7 +42,7 @@ def pretty_print_invitation(invitation):
     start = event['dtstart'][0].value
     end = event['dtend'][0].value
     location = event['location'][0].value if 'location' in event else None
-    description = event['description'][0].value if 'description' in event else ''
+    description = event['description'][0].value if 'description' in event else None
     sequence = event['sequence'][0].value if 'sequence' in event else None
     rrule = event['rrule'][0].value if 'rrule' in event else None
     print("="*70)
@@ -63,7 +63,8 @@ def pretty_print_invitation(invitation):
         print("Rrule:\n\t{}".format(rrule))
     if location:
         print("Location:\n\t{}".format(location))
-    print("---\n{}---".format(description))
+    if description:
+        print("---\n{}\n---".format(description))
 
 
 if __name__ == "__main__":
