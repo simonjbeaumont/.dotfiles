@@ -203,7 +203,7 @@ macro index E "<tag-thread><tag-prefix>e" "archive thread"
 macro index q "<sync-mailbox><quit>"
 
 # Gmail-style move dialog (whole thread)
-macro index M "<tag-thread><tag-prefix><save-message>?/" "move thread to mailbox"
+macro index M "<tag-thread><tag-prefix><save-message>?<tab>/" "move thread to mailbox"
 
 macro index \Cr "<tag-pattern>~U<enter><tag-prefix><clear-flag>N<untag-pattern>.<enter>" "mark all messages as read"
 
