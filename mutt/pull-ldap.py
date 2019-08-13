@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import base64
 import subprocess
@@ -45,7 +45,7 @@ def ldapsearch(host, base, sortby, filter, fields, dry_run=False):
         "(|(cn=*{0}*)(mail=*{0}*))".format(filter.strip())
     ] + fields
     if dry_run:
-        print ' '.join(["\"{}\"".format(x) for x in ldap_cmd])
+        print(' '.join(["\"{}\"".format(x) for x in ldap_cmd]))
         return ""
     try:
         return subprocess.check_output(ldap_cmd)
@@ -92,9 +92,9 @@ def process_results(lines):
 def print_results_for_mutt(ldap_results, extra_fields):
     for result in ldap_results:
         extra_info = " | ".join([result.get(f, "") for f in extra_fields])
-        print "{}\t{}\t{}".format(result[FIELD_MAIL],
+        print("{}\t{}\t{}".format(result[FIELD_MAIL],
                                   result[FIELD_CN],
-                                  extra_info)
+                                  extra_info))
 
 
 def main(argv):
