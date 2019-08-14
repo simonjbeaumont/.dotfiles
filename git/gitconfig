@@ -6,6 +6,8 @@
 	status = auto
 	branch = auto
 	interactive = auto
+[grep]
+	lineNumber = true
 [alias]
 	st = status -sb
 	co = checkout
