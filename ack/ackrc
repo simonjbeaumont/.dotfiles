@@ -1,1 +1,7 @@
 --ignore-file=is:tags
+--ignore-dir=.idea/
+--ignore-dir=node_modules/
+--ignore-dir=.pytest_cache/
+--ignore-dir=venv/
+--ignore-dir=*.egg-info/
+--ignore-dir=.build/
