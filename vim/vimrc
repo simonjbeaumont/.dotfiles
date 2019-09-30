@@ -73,7 +73,13 @@ set wildignore+=*.xcodeproj                      " Xcode projects
 set ruler           " show current position
 set colorcolumn=+1  " always show width marker
 set number          " always show line numbers
-set cursorline      " highlight the current line
+
+" highlight current line but only in current window and in normal mode
+augroup cline
+    au!
+    au WinLeave,InsertEnter * set nocursorline
+    au WinEnter,InsertLeave * set cursorline
+augroup END
 
 set showcmd         " display commands as entered
 set cmdheight=2     " Height of the command bar
