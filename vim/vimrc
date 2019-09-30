@@ -71,7 +71,7 @@ set wildignore+=.build                           " Swift build output
 set wildignore+=*.xcodeproj                      " Xcode projects
 
 set ruler           " show current position
-set colorcolumn=80  " always show width marker
+set colorcolumn=+1  " always show width marker
 set number          " always show line numbers
 set cursorline      " highlight the current line
 
