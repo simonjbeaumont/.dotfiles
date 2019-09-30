@@ -2,10 +2,10 @@
 
 inbox=$(notmuch search "path:Inbox/new" | wc -l)
 
-team=$(notmuch search "path:lists.siri-vector-platform-team/new" | wc -l)
-
 github=$(notmuch search "path:github/new" | wc -l)
 
-if [[ ${inbox} -gt 0 || ${github} -gt 0 ]]; then
-  echo "┃ ✉ i:${inbox} t:${team} g:${github} "
+if [ $(( ${inbox} + ${github} )) -eq 0 ]; then
+  exit 0
 fi
+
+echo "✉ i:${inbox} g:${github}"
