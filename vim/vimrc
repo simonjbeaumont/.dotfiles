@@ -42,6 +42,10 @@ set shellcmdflag=-ic
 if has('mac')
     set clipboard=unnamed
 endif
+
+" Save when losing focus
+au FocusLost * :silent! wall
+
 " }}}
 
 " UI {{{
