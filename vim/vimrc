@@ -173,12 +173,50 @@ set spellfile=~/.vim/spellfile.add
 
 " Autocommands {{{
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-au BufRead *.xtx                                setl ft=tex
-au FileType gitcommit                           setl spell tw=72 cc=72
-au FileType mail                                setl spell tw=100 cc=100 fo=ajqrw1
-au FileType ocaml                               setl fo-=t
-au FileType cpp                                 setl sw=4 ts=4 tw=100 cc=100
-au FileType cmake                               setl sw=4 ts=4 tw=100 cc=100
+augroup ft_tex
+  au!
+  au BufRead *.xtx             setl ft=tex
+augroup END
+
+augroup ft_gitcommit
+  au!
+  au FileType gitcommit        setl spell tw=72 cc=72
+augroup END
+
+augroup ft_mail
+  au!
+  au FileType mail             setl spell tw=100 cc=100 fo=ajqrw1
+augroup END
+
+augroup ft_markdown
+  au!
+  au FileType markdown         setl spell
+augroup END
+
+augroup ft_ocaml
+  au!
+  au FileType ocaml            setl fo-=t
+augroup END
+
+augroup ft_cpp
+  au!
+  au FileType cpp              setl sw=4 ts=4 tw=100 cc=100
+augroup END
+
+augroup ft_cmake
+  au!
+  au FileType cmake            setl sw=4 ts=4 tw=100 cc=100
+augroup END
+
+augroup ft_swift
+  au!
+  au FileType swift            setl sw=4 ts=4 tw=100 cc=100
+augroup END
+
+augroup ft_json
+  au!
+  au FileType json syntax match Comment +\/\/.\+$+
+augroup END
 " }}}
 
 " Key mappings {{{
