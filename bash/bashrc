@@ -7,26 +7,46 @@
 [ -r "/usr/local/opt/tmux/bin" ] && export PATH="/usr/local/opt/tmux/bin:$PATH"
 # Cabal
 [ -r "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
-# Scripts
-[ -r "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
-# OPAM
-which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
-# Load RVM into a shell session *as a function*
-[ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # Homebrew GNU coreutils
 [ -r "/usr/local/opt/coreutils/libexec/gnubin" ] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
-# iTerm shell integration
-[ -r "$HOME/.iterm2_shell_integration.bash" ] && source "$HOME/.iterm2_shell_integration.bash"
-# Python from Homebrew
-[ -r "/usr/local/opt/python/libexec/bin" ] && export PATH="/usr/local/opt/python/libexec/bin:$PATH"
 # Miniconda3
 [ -r "$HOME/miniconda3/bin" ] && export PATH="$HOME/miniconda3/bin:$PATH"
 # Python3.6 from miniconda
 [ -r "$HOME/miniconda3/envs/py3.6/bin" ] && export PATH="$HOME/miniconda3/envs/py3.6/bin:$PATH"
 # Python2.7 from miniconda
 [ -r "$HOME/miniconda3/envs/py2.7/bin" ] && export PATH="$HOME/miniconda3/envs/py2.7/bin:$PATH"
+# Python user packages
+[ -r "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+# Scripts
+[ -r "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+# Swift toolchain
+export TOOLCHAINS=swift
+# bash completion
+[ -r "/usr/local/etc/bash_completion" ] && source "/usr/local/etc/bash_completion"
+[ -r "/usr/share/bash-completion/bash_completion" ] && source "/usr/share/bash-completion/bash_completion"
+# rvm
+[ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
+# iTerm shell integration
+[ -r "$HOME/.iterm2_shell_integration.bash" ] && source "$HOME/.iterm2_shell_integration.bash"
+# nvm (lazy initialisation)
+if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
+  export NVM_DIR="$HOME/.nvm"
+  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+  declare -a __node_commands=('nvm' 'node' 'npm' 'nvim')
+  function __init_nvm() {
+    for i in "${__node_commands[@]}"; do unalias $i; done
+    . "$NVM_DIR"/nvm.sh
+    unset __node_commands
+    unset -f __init_nvm
+  }
+  for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
+fi
+# OPAM
+which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
 # Ruby
 which rbenv &>/dev/null && eval "$(rbenv init -)"
+# dircolors
+which dircolors &>/dev/null && eval $(dircolors ~/.dircolors)
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
@@ -34,13 +54,6 @@ which rbenv &>/dev/null && eval "$(rbenv init -)"
 
 # Xmodmap
 [[ $OSTYPE =~ ^linux ]] && xmodmap "$HOME/.Xmodmap"
-
-# bash completion
-[ -r "/usr/local/etc/bash_completion" ] && source "/usr/local/etc/bash_completion"
-[ -r "/usr/share/bash-completion/bash_completion" ] && source "/usr/share/bash-completion/bash_completion"
-
-# dircolors
-which dircolors &>/dev/null && eval $(dircolors ~/.dircolors)
 
 # editor
 export EDITOR="vim"
