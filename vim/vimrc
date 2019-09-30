@@ -104,6 +104,10 @@ set splitright      " open new vsplits to the right
 
 set lazyredraw      " don't redraw during macros
 
+set synmaxcol=800   " don't syntax highlight lines longer than this
+
+set redrawtime=10000  " so syntax highlighting works for large files
+
 set list                    " show invisibles
 set listchars=tab:┼─,eol:¬  " another nice option is tab:▸\ 
 set showbreak=↪\            " useful indication of wrapping
