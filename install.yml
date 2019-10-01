@@ -52,6 +52,9 @@
     - EXTRA_FIELDS_PEOPLE
     - EXTRA_FIELDS_GROUPS
 
+# neovim
+~/.config/nvim: nvim/
+
 # ssh
 ~/.ssh/config: ssh/config
 

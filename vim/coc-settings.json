@@ -1,0 +1,102 @@
+// Schema: https://github.com/neoclide/coc.nvim/blob/master/data/schema.json
+{
+  // COC OPTIONS
+  // --------------------------------------------------------------------------
+
+  // Used to show a menu item is a snippet.
+  "suggest.snippetIndicator": " ►",
+  "suggest.enablePreview": true,
+
+  // Symbols used in the gutter.
+  "diagnostic.errorSign": "●",
+  "diagnostic.warningSign": "●",
+  "diagnostic.infoSign": "ℹ",
+  "diagnostic.hintSign": "ℹ",
+
+  // Write errors and warnings to location list.
+  "diagnostic.locationlist": true,
+
+  // These three options found on an issue about gutter redraw
+  "diagnostic.signOffset": 9999999,
+  "diagnostic.displayByAle": false,
+  "diagnostic.refreshOnInsertMode": true,
+
+  // Used in diagnostics lists etc (:h coc-list-mappings).
+  "list.insertMappings": {
+    // Select all options (use with an action).
+    "<C-a>": "do:selectall",
+    "<C-r>": "do:refresh",
+    "<C-q>": "action:quickfix"
+  },
+
+  "codeLens.enable": true,
+
+  "coc.preferences.colorSupport": true,
+
+  // Unset this as the python autoformat disagrees with flake8.
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.currentFunctionSymbolAutoUpdate": true,
+
+  // The symbols in the completion menu.
+  "coc.source.around.shortcut": "↕",
+  "coc.source.buffer.shortcut": "↔",
+  "coc.source.file.shortcut": "F",
+
+  // COC EXTENSION OPTIONS
+  // --------------------------------------------------------------------------
+
+  // coc-python
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pydocstyleEnabled": false,
+  "python.jediEnabled": false,
+
+  // coc-yaml
+  "yaml.format.enable": true,
+  "yaml.hover": true,
+  "yaml.schemas": {
+    "http://json.schemastore.org/gitlab-ci": "/.gitlab-ci.yml"
+  },
+
+  // coc-json
+  "json.schemas": [
+    {
+      "fileMatch": ["package.json"],
+      "url": "http://json.schemastore.org/package"
+    }
+  ],
+
+  // coc-prettier
+  "prettier.disableLanguages": ["markdown"],
+  "prettier.trailingComma": "all",
+
+  // coc-diagnostic
+  "diagnostic-languageserver.filetypes": {
+    "vim": "vint",
+    "email": "languagetool",
+    "sh": "shellcheck"
+  },
+
+  // CUSTOM LANGUAGE SERVERS (not ones provided by extensions)
+  // --------------------------------------------------------------------------
+  "languageserver": {
+    "bash": {
+      "command": "bash-language-server",
+      "args": ["start"],
+      "filetypes": ["sh"],
+      "ignoredRootPaths": ["~"]
+    },
+    "kotlin": {
+      "command": "kotlin-language-server",
+      "filetypes": ["kotlin"]
+    },
+    "ocaml": {
+      "command": "ocaml-language-server",
+      "filetypes": ["ocaml"]
+    },
+    "swift": {
+      "command": "sourcekit-lsp",
+      "filetypes": ["swift"]
+    }
+  }
+}

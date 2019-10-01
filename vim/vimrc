@@ -292,88 +292,164 @@ nmap <silent> <leader>l :wincmd l<CR>
 " Open prompt with current directory
 nmap <leader>e :e %:h/
 
-" Plugin configuration {{{
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-filetype off
-runtime macros/matchit.vim
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-Bundle 'gmarik/vundle'
-
-Bundle 'simonjbeaumont/mustang-vim'
-if &t_Co >= 16 || has("gui_running")
-    set bg=dark
-    highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red
+" Plugin installation {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+if empty(glob('~/.vim/autoload/plug.vim'))
+  echo "Vim-Plug not installed, downloading..."
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
-silent! colorscheme mustang
 
-Bundle 'sjl/badwolf'
+call plug#begin('~/.vim/bundle')
+  Plug 'airblade/vim-gitgutter'                     " Show git diffs in the gutter (left of line numbers) (:h gitgutter).
+  Plug 'ap/vim-buftabline'
+  Plug 'ciaranm/detectindent'
+  Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'ekalinin/Dockerfile.vim'
+  Plug 'itchyny/lightline.vim'
+  Plug 'jtratner/vim-flavored-markdown'
+  Plug 'junegunn/fzf', { 'dir': '~/.local/share/fzf', 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+  Plug 'mileszs/ack.vim'
+  Plug 'nelstrom/vim-markdown-folding'
+  Plug 'neoclide/coc.nvim', {'branch': 'release', 'do': './install.sh'}
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'scrooloose/nerdcommenter'
+  Plug 'scrooloose/nerdtree'
+  Plug 'simonjbeaumont/mustang-vim'
+  Plug 'sjl/badwolf'
+  Plug 'tpope/vim-abolish'
+  Plug 'tpope/vim-commentary'                       " Autodetect comment type for lang.
+  Plug 'tpope/vim-fugitive'
+  Plug 'tpope/vim-liquid'
+  Plug 'tpope/vim-markdown'
+  Plug 'tpope/vim-repeat'
+  Plug 'tpope/vim-surround'
+  Plug 'vim-scripts/YankRing.vim'
+  Plug 'simnalamburt/vim-mundo'                     " Graphical undo tree (updated fork of Gundo).
 
-Bundle 'Raimondi/delimitMate'
-Bundle 'tpope/vim-fugitive'
-Bundle 'tpope/vim-repeat'
-Bundle 'tpope/vim-surround'
-Bundle 'tpope/vim-liquid'
-Bundle 'tpope/vim-markdown'
-Bundle 'jtratner/vim-flavored-markdown'
-Bundle 'ciaranm/detectindent'
-Bundle 'rgrinberg/vim-ocaml'
-Bundle 'ekalinin/Dockerfile.vim'
+  " Plugins where order is important (last one wins).
+  Plug 'sheerun/vim-polyglot'                       " Syntax files for a bunch languages.
+  Plug 'tpope/vim-sleuth'                           " Automatically detect indentation.
+call plug#end()
 
-Bundle 'mileszs/ack.vim'
+" Plugins to try at some point
+" raghur/vim-ghost
+" junegunn/vim-peekaboo
+" /justinmk/vim-sneak
+
+let g:yankring_history_file='.yankring-hist'
+let g:NERDSpaceDelims=1
+let g:NERDRemoveExtraSpaces=1
+"}}}
+
+" Plugin configuration {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap <leader>a :Ack!
 
-Bundle 'bling/vim-airline'
-let g:airline_theme             = 'powerlineish'
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-function! AirlineThemePatch(palette)
-  let a:palette.normal.airline_a[2] = 234
-  let a:palette.normal.airline_b[3] = 237
-  let a:palette.normal.airline_c[2] = 248
-  let a:palette.normal.airline_c[3] = 235
-  let a:palette.normal.airline_x = a:palette.normal.airline_c
-  let a:palette.normal.airline_y = a:palette.normal.airline_b
-  let a:palette.normal.airline_z = a:palette.normal.airline_a
-endfunction
-if !exists('g:airline_symbols')
-  let g:airline_symbols = {}
+let g:buftabline_indicators = 1                " Show a + if the buffer has been modified.
+let g:buftabline_numbers = 2                   " Show buftabline's count (use <leader>1-9 to switch.
+nmap <leader>1 <Plug>BufTabLine.Go(1)|         " go to buffer 1 (see number in tab bar).
+nmap <leader>2 <Plug>BufTabLine.Go(2)|         " go to buffer 2 (see number in tab bar).
+nmap <leader>3 <Plug>BufTabLine.Go(3)|         " go to buffer 3 (see number in tab bar).
+nmap <leader>4 <Plug>BufTabLine.Go(4)|         " go to buffer 4 (see number in tab bar).
+nmap <leader>5 <Plug>BufTabLine.Go(5)|         " go to buffer 5 (see number in tab bar).
+nmap <leader>6 <Plug>BufTabLine.Go(6)|         " go to buffer 6 (see number in tab bar).
+nmap <leader>7 <Plug>BufTabLine.Go(7)|         " go to buffer 7 (see number in tab bar).
+nmap <leader>8 <Plug>BufTabLine.Go(8)|         " go to buffer 8 (see number in tab bar).
+nmap <leader>9 <Plug>BufTabLine.Go(1) :bp<CR>| " go to last buffer.
+
+let g:coc_global_extensions = [
+  \ 'coc-ccls',
+  \ 'coc-css',
+  \ 'coc-diagnostic',
+  \ 'coc-dictionary',
+  \ 'coc-docker',
+  \ 'coc-emoji',
+  \ 'coc-gocode',
+  \ 'coc-highlight',
+  \ 'coc-html',
+  \ 'coc-java',
+  \ 'coc-json',
+  \ 'coc-prettier',
+  \ 'coc-python',
+  \ 'coc-snippets',
+  \ 'coc-svg',
+  \ 'coc-syntax',
+  \ 'coc-word',
+  \ 'coc-yaml',
+\ ]
+
+let g:ctrlp_map = '<leader>p'
+let g:ctrlp_custom_ignore = {
+  \ 'dir':  '\v[\/]\.(git|hg|svn|build)$',
+  \ 'file': '\v\.(exe|so|dll)$',
+  \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
+  \ }
+
+let g:gitgutter_sign_added = '▎'
+let g:gitgutter_sign_modified = '▎'
+let g:gitgutter_sign_removed = '▎'
+let g:gitgutter_sign_removed_first_line = '▔'
+let g:gitgutter_sign_modified_removed = '▎'
+" for reference, different thickness bars: ▏ ▎ ▋ ▔
+
+let g:lightline = {
+\   'active': {
+\     'left': [ [ 'mode', 'paste' ],
+\               [ 'readonly', 'relativepath', 'modified' ],
+\               [ 'gitbranch' ],
+\               [ 'truncate_here' ],
+\               [ 'cocstatus' ] ],
+\     'right': [ [ 'lineinfo' ],
+\                [ 'percent' ],
+\                [ 'fileformat', 'fileencoding', 'filetype' ],
+\                [ 'currentfunction' ] ]
+\   },
+\   'inactive': {
+\     'left': [ [ 'filename' ], [ 'currentfunction' ]],
+\     'right': [ [ 'lineinfo' ],
+\                [ 'percent' ] ]
+\   },
+\   'tabline': {
+\     'left': [ [ 'tabs' ] ],
+\     'right': [ [ 'close' ] ]
+\   },
+\   'component': {
+\     'truncate_here': '%<',
+\     'fileformat': '%{&ff=="unix"?"":&ff}',
+\     'fileencoding': '%{&fenc=="utf-8"?"":&fenc}'
+\   },
+\   'component_visible_condition': {
+\      'truncate_here': 0,
+\      'fileformat': '&ff&&&ff!="unix"',
+\      'fileencoding': '&fenc&&&fenc!="utf-8"'
+\   },
+\   'component_type': { 'truncate_here': 'raw' },
+\   'component_function': {
+\     'cocstatus': 'coc#status',
+\     'currentfunction': 'CocCurrentFunction',
+\     'gitbranch': 'fugitive#head',
+\   },
+\   'mode_map': {
+\     'n' : 'N',
+\     'i' : 'I',
+\     'R' : 'R',
+\     'v' : 'V', 'V' : 'V', "\<C-v>": 'V',
+\     'c' : 'N',
+\     's' : 'S', 'S' : 'S', "\<C-s>": 'S',
+\     't': 'TERMINAL',
+\   },
+\ }
+
+silent! colorscheme mustang
+if &t_Co >= 16 || has("gui_running")
+    " set bg=dark
+    highlight ExtraWhitespace ctermbg=DarkRed ctermfg=Red
+    hi Folded ctermbg=235
 endif
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline_left_sep = ''
-let g:airline_left_alt_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_alt_sep = ''
-let g:airline_symbols.branch = ''
-let g:airline_symbols.readonly = ''
-let g:airline_symbols.linenr = ''
-let g:airline_inactive_collapse = '0'
-let g:airline_mode_map = {
-    \ '__' : '-',
-    \ 'n'  : 'N',
-    \ 'i'  : 'I',
-    \ 'R'  : 'R',
-    \ 'c'  : 'C',
-    \ 'v'  : 'V', 'V'  : 'V', '' : 'V',
-    \ 's'  : 'S', 'S'  : 'S', '' : 'S'}
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#tab_nr_type = 1 " tab number
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-nmap <leader>1 <Plug>AirlineSelectTab1
-nmap <leader>2 <Plug>AirlineSelectTab2
-nmap <leader>3 <Plug>AirlineSelectTab3
-nmap <leader>4 <Plug>AirlineSelectTab4
-nmap <leader>5 <Plug>AirlineSelectTab5
-nmap <leader>6 <Plug>AirlineSelectTab6
-nmap <leader>7 <Plug>AirlineSelectTab7
-nmap <leader>8 <Plug>AirlineSelectTab8
-nmap <leader>9 <Plug>AirlineSelectTab9
 
-Bundle 'vim-airline/vim-airline-themes'
-
-Bundle 'scrooloose/nerdtree'
 let NERDTreeWinSize = 40
 let NERDTreeIgnore = [
     \ '\.pyc$',
@@ -384,40 +460,68 @@ let NERDTreeIgnore = [
     \ '\.annot$']
 nmap <silent> <leader>O :NERDTreeFind<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
+"}}}
 
-" Bundle 'scrooloose/syntastic'
-" let g:syntastic_python_checkers = ['pylint', 'pep8']
-" let g:syntastic_python_pylint_post_args = '-d C0103 -d C0111 --ignored-classes=twisted.internet.reactor'
+" CoC Remappings {{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-Bundle 'scrooloose/nerdcommenter'
-let g:NERDSpaceDelims=1
-let g:NERDRemoveExtraSpaces=1
+" Remap keys for gotos
+nmap <silent> <Leader>cd <Plug>(coc-definition)
+nmap <silent> <Leader>cD :call DupBuffer()<CR><Plug>(coc-definition)
+nmap <silent> <Leader>cy <Plug>(coc-type-definition)
+nmap <silent> <Leader>cY :call DupBuffer()<CR><Plug>(coc-type-definition)
+nmap <silent> <Leader>ci <Plug>(coc-implementation)
+nmap <silent> <Leader>cI :call DupBuffer()<CR><Plug>(coc-implementation)
+nmap <silent> <Leader>cu <Plug>(coc-references)
+nmap <silent> <Leader>cU :call DupBuffer()<CR><Plug>(coc-references)
 
-Bundle 'klen/python-mode'
-let g:pymode_run=0
-let g:pymode_breakpoint=0
-let g:pymode_trim_whitespaces=0
-let g:pymode_lint_hold=0
-let g:pymode_rope = 0
+" Use K for show documentation in preview window
+nnoremap <silent> <Leader>K :call CocAction('doHover')<CR>
 
-Bundle 'YankRing.vim'
-let g:yankring_history_file='.yankring-hist'
+" Remap for rename current word
+nmap <Leader>cr <Plug>(coc-rename)
 
-Bundle 'Valloric/YouCompleteMe'
-let g:ycm_confirm_extra_conf    = 0
-let g:ycm_global_ycm_extra_conf = '~/.vim/ycm.py'
-let g:ycm_extra_conf_vim_data   = ['&filetype']
-let g:ycm_seed_identifiers_with_syntax = 1
-let g:ycm_filetype_blacklist = {
-  \ 'tagbar': 1,
-  \ 'python': 1,
-\}
-nnoremap <leader>g :YcmCompleter GoTo<CR>
+" Remap for format selected region
+vmap <Leader>cf  <Plug>(coc-format-selected)
+nmap <Leader>cf  <Plug>(coc-format-selected)
 
-Bundle 'ludovicchabant/vim-gutentags'
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+" vmap <Leader>a  <Plug>(coc-codeaction-selected)
+" nmap <Leader>a  <Plug>(coc-codeaction-selected)
 
-Bundle 'ctrlpvim/ctrlp.vim'
-let g:ctrlp_map = '<leader>p'
+" Remap for do codeAction of current line
+nmap <Leader>ca  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <Leader>cF  <Plug>(coc-fix-current)
 
-filetype plugin on
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <Leader>ca  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <Leader>ce  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <Leader>cc  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <Leader>co  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>cs  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>cj  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>ck  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>cp  :<C-u>CocListResume<CR>
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
 " }}}

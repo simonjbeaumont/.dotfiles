@@ -6,6 +6,7 @@ tags
 vim/tmp
 *.pyc
 vimperator/info
+vim/autoload/plug.vim
 
 *.sub
 install.yml.local
