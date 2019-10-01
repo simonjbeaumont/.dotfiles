@@ -1,25 +1,9 @@
-# Global settings
+Include config.d/*
+
 Host *
 GSSAPIAuthentication no
 AddressFamily inet
 ServerAliveInterval 60
 ForwardX11Timeout 1d
 
-Host pi
-Hostname 192.168.0.9
-User pi
-ForwardX11 yes
-ForwardAgent no
-
-Host meeseeks
-  HostName 127.0.0.1
-  User simonbe
-  Port 2222
-  UserKnownHostsFile /dev/null
-  StrictHostKeyChecking no
-  PasswordAuthentication no
-  IdentityFile /Users/Si/work/dev-vm/.vagrant/machines/meeseeks/virtualbox/private_key
-  IdentitiesOnly yes
-  LogLevel FATAL
-  ForwardAgent yes
-  ForwardX11 yes
+# vim: ft=sshconfig
