@@ -67,15 +67,9 @@ set new_mail_command  = "bash ~/.mutt/inbox_bell.sh"
 mailboxes +Inbox
 mailboxes +Drafts
 mailboxes +Archive
-mailboxes `find -s ~/work/mail/aliases -type l -maxdepth 1 -exec echo -n '"{}" ' \;`
+mailboxes `cat ~/work/mail/sidebar | xargs -I{} echo -n '"{}" '`
 mailboxes `find -s ~/work/mail/REMOTE -type d -maxdepth 2 -exec echo -n '"{}" ' \;`
-unmailboxes ~/work/mail/aliases/Deleted
-unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
-sidebar_whitelist ~/work/mail/REMOTE/Inbox
-sidebar_whitelist ~/work/mail/REMOTE/Drafts
-sidebar_whitelist ~/work/mail/REMOTE/Archive
-sidebar_whitelist ~/work/mail/REMOTE/github
-sidebar_whitelist `find ~/work/mail/aliases -type l -maxdepth 1 -exec echo -n '"{}" ' \;`
+sidebar_whitelist `cat ~/work/mail/sidebar | xargs -I{} echo -n '"{}" '`
 
 # Sidebar config (this uses the sidebar with neomutt)
 set mail_check_stats      = yes
@@ -199,7 +193,7 @@ bind index   p recall-message
 bind attach <return> view-mailcap
 
 # Gmail-style archive and delete
-macro index d "<save-message>~/work/mail/aliases/Deleted<enter>" "trash"
+macro index d "<save-message>~/work/mail/REMOTE/Deleted<quote-char><space>Messages<enter>" "trash"
 macro pager d "<exit>d" "trash"
 macro index D "<tag-thread><tag-prefix>d" "trash thread"
 macro index e "<save-message>+Archive<enter>" "archive"
