@@ -18,6 +18,9 @@
 ~/.hgignore: hg/hgignore
 ~/.hgrc: hg/hgrc
 
+# karabiner
+~/.config/karabiner: karabiner/
+
 # mutt
 ~/.mutt: mutt/
 ~/.mutt/cache/headers/.create-dir: /dev/null
