@@ -95,8 +95,9 @@
       "filetypes": ["ocaml"]
     },
     "swift": {
-      "command": "sourcekit-lsp",
-      "filetypes": ["swift"]
+      "command": "/Library/Developer/Toolchains/swift-5.1-DEVELOPMENT-SNAPSHOT-2019-09-12-a.xctoolchain/usr/bin/sourcekit-lsp",
+      "filetypes": ["swift"],
+      "rootPatterns": ["Package.swift"]
     }
   }
 }
