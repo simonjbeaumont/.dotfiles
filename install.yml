@@ -83,3 +83,5 @@
 ~/.xmonad/icons: xmonad/icons/
 ~/.xmonad/xmobarrc: xmonad/xmobarrc
 ~/.xmonad/xmonad.hs: xmonad/xmonad.hs
+
+# vim: ft=yaml
