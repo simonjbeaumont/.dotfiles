@@ -47,6 +47,8 @@ which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
 which rbenv &>/dev/null && eval "$(rbenv init -)"
 # dircolors
 which dircolors &>/dev/null && eval $(dircolors ~/.dircolors)
+# fzf fuzzy finder
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
