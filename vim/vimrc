@@ -306,6 +306,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'ap/vim-buftabline'
   Plug 'ciaranm/detectindent'
   Plug 'ctrlpvim/ctrlp.vim'
+  Plug 'dhruvasagar/vim-table-mode'
   Plug 'ekalinin/Dockerfile.vim'
   Plug 'itchyny/lightline.vim'
   Plug 'jtratner/vim-flavored-markdown'
@@ -460,6 +461,8 @@ let NERDTreeIgnore = [
     \ '\.annot$']
 nmap <silent> <leader>O :NERDTreeFind<CR>
 nmap <silent> <leader>o :NERDTreeToggle<CR>
+
+let g:table_mode_corner='|'
 "}}}
 
 " CoC Remappings {{{
