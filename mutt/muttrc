@@ -69,6 +69,7 @@ mailboxes +Drafts
 mailboxes +Archive
 mailboxes `cat ~/work/mail/sidebar | xargs -I{} echo -n '"{}" '`
 mailboxes `find -s ~/work/mail/REMOTE -type d -maxdepth 2 -exec echo -n '"{}" ' \;`
+unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
 sidebar_whitelist `cat ~/work/mail/sidebar | xargs -I{} echo -n '"{}" '`
 
 # Sidebar config (this uses the sidebar with neomutt)
