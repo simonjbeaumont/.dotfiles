@@ -36,7 +36,7 @@ au InsertEnter * set timeoutlen=1
 au InsertLeave * set timeoutlen=1000
 
 " Load bashrc for shell commands
-set shellcmdflag=-ic
+set shell=/bin/bash\ --login
 
 " Use system clipboard on OSX
 if has('mac')
