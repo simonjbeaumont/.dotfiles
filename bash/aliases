@@ -43,23 +43,20 @@ alias ips="ifconfig -a | perl -nle'/(\d+\.\d+\.\d+\.\d+)/ && print $1'"
 # Useful...
 alias g='grep -i'                               # case insensitive grep
 alias ducks='du -cksh * | sort -rh | head -11'  # List size of pwd's contents
-which colordiff >/dev/null && alias diff='colordiff'
 alias less='less -R'
 
-# more useful variants
+# more useful variants of normal commands
+which colordiff >/dev/null && alias diff='colordiff'
 which vim >/dev/null && alias vi=vim
 which vimx >/dev/null && alias vim=vimx
 which nvim >/dev/null && alias vim=nvim
 which neomutt >/dev/null && alias mutt=neomutt
+which hub >/dev/null && alias git=hub
 
 # Git stuff
-which hub >/dev/null && alias git=hub
 alias gl='git log --graph --abbrev-commit --oneline --decorate'
 alias gg='git grep'
 __git_complete gl _git_log 2&>/dev/null
-
-# Mercurial
-alias hl='hg log --template "* \x1B[0;33m{node|short}\x1B[0;30m———\x1B[0;31m\x1B[33m{date|shortdate}\x1B[30m———\x1B[33m{author|person}\n\x1B[0m{desc|strip|firstline|fill76|strip}\n\n" --color true | less -RX'
 
 # Finding stuff
 alias f='find . -iname'
@@ -69,17 +66,17 @@ alias profileme="history | awk '{print \$2}' | awk 'BEGIN{FS=\"|\"}{print \$1}' 
 
 alias reopam="eval \`opam config env\`"
 
-alias killch="pgrep chroot | xargs sudo kill"
-
 alias centos='docker run --rm -v $(pwd):/mnt -it centos:7 /bin/bash -c "cd /mnt && bash"'
 
+# lowercase UUID generation
+alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
+
+# cat all the files...
+alias catall='tail -n +1'
 
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
-
-# gVim for the win
-alias gvim=mvim
 
 # Wireless IP address
 alias localip="ipconfig getifaddr en1"
@@ -94,9 +91,6 @@ alias hide="defaults write com.apple.Finder AppleShowAllFiles -bool false && kil
 # Hide/show all desktop icons (useful when presenting)
 alias hidedesktop="defaults write com.apple.finder CreateDesktop -bool false && killall Finder"
 alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && killall Finder"
-
-# Quickly lock screen
-alias lock='/System/Library/CoreServices/Menu\ Extras/User.menu/Contents/Resources/CGSession -suspend'
 
 alias top='top -o cpu'
 
@@ -114,3 +108,4 @@ alias open='xdg-open'
 alias pidme='pstree -ps $$'
 
 fi
+
