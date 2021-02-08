@@ -12,17 +12,26 @@ brew "devd"
 brew "dovecot"
 brew "elinks"
 brew "entr"
+brew "fd"
+brew "extract_url"
 brew "ffmpeg"
 brew "fzf"
 brew "git"
 brew "gnu-sed"
+brew "homebrew/cask-fonts/font-hack-nerd-font"
+brew "homebrew/cask-fonts/font-meslo-nerd-font"
 brew "htop"
 brew "hub"
 brew "imagemagick"
 brew "isync"
 brew "jq"
+brew "jrnl"
 brew "jsonlint"
+brew "koekeishiya/formulae/skhd", restart_service: :changed
+brew "koekeishiya/formulae/yabai", restart_service: :changed
+brew "mas"
 brew "make"
+brew "maven"
 brew "modd"
 brew "msmtp"
 brew "neomutt"
@@ -41,13 +50,48 @@ brew "sloccount"
 brew "swiftlint"
 brew "telnet"
 brew "tig"
+brew "todo-txt"
 brew "tmux"
 brew "toilet"
 brew "tree"
 brew "urlview"
 brew "vim"
 brew "watch"
+brew "w3m"
 brew "wget"
 brew "xdot"
 brew "youtube-dl"
 brew "yq"
+
+# casks
+cask "google-chrome"
+cask "dropbox"
+cask "imageoptim"
+cask "inkscape"
+cask "keepingyouawake"
+cask "quicksilver"
+cask "rectangle"
+cask "spotify"
+cask "wireshark"
+cask "xquartz"
+
+# app store
+mas "1Password", id: 443987910
+
+# apple stuff
+
+tap "apple/pie", "git@github.pie.apple.com:pie/homebrew-tap.git"
+brew "apple/pie/secrets"
+brew "apple/pie/rio-sidecar"
+brew "apple/pie/pie-ci" # Rio PIE CI CLI.
+brew "apple/pie/rio-bdz" # Rio buildozer CLI.
+brew "apple/pie/pcl" # Pcl templating language CLI.
+
+tap "apple/devicecompute" "https://github.pie.apple.com/trieste/releases"
+brew "apple/devicecompute/apple-devicecompute"
+
+tap "apple/aci", "git@github.pie.apple.com:aci/homebrew-tools.git"
+brew "apple/aci/kcli" # Kubernetes CLI for interacting with ACI Kube.
+
+tap "apple/swe", "ssh://git@stash.sd.apple.com/epq/swe-tap.git"
+brew "apple/swe/nsd", args: ['HEAD'] # Download images from NFA.
