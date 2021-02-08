@@ -4,6 +4,9 @@ defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 # Enable subpixel font rendering on non-Apple LCDs
 defaults write NSGlobalDomain AppleFontSmoothing -int 2
 
+# Make notification banners last long enough to actually read
+defaults write com.apple.notificationcenterui bannerTime -int 10
+
 # Enable the 2D Dock
 # defaults write com.apple.dock no-glass -bool true
 
