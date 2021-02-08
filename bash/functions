@@ -96,3 +96,16 @@ function nb() {
     title="$*"
     date -u +"${HOME}/work/notes/%Y-%m-%d-${title// /-}.txt" | xargs -o nvim
 }
+
+# pkill -v is not verbose!
+pkill() {
+  local args="$@"
+  while (( $# )); do
+    if [ "$1" == "-v" ]; then
+      echo "stupid."
+      return
+    fi
+    shift
+  done
+  command -p pkill ${args}
+}
