@@ -1,14 +1,17 @@
 # Give me 256 colors! gnome-terminal hardcodes TERM to xterm...
 [ $TERM = xterm ] && export TERM=xterm-256color
 
-# Linux tools and Mac homebrews
+
+# Linux tools and Homebrew
 [ -r "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
-# Tmux from homebrew (xcode updates clobber /usr/local/bin/tmux)
-[ -r "/usr/local/opt/tmux/bin" ] && export PATH="/usr/local/opt/tmux/bin:$PATH"
+# Apple Homebrew
+[ -r "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
+# Homebrew
+eval $(brew shellenv)
+[ -r "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ] && export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
+[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
 # Cabal
 [ -r "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
-# Homebrew GNU coreutils
-[ -r "/usr/local/opt/coreutils/libexec/gnubin" ] && export PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # Miniconda3
 [ -r "$HOME/miniconda3/bin" ] && export PATH="$HOME/miniconda3/bin:$PATH"
 # Python3.6 from miniconda
@@ -23,9 +26,6 @@
 [ -r "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 # Swift toolchain
 export TOOLCHAINS=swift
-# bash completion
-[ -r "/usr/local/etc/bash_completion" ] && source "/usr/local/etc/bash_completion"
-[ -r "/usr/share/bash-completion/bash_completion" ] && source "/usr/share/bash-completion/bash_completion"
 # rvm
 [ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # iTerm shell integration
