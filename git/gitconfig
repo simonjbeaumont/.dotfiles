@@ -25,3 +25,5 @@
 	editor = /usr/local/bin/vim
 [hub]
 	protocol = ssh
+[pull]
+	ff = only
