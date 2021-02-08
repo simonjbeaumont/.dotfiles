@@ -91,3 +91,8 @@ function ssh() {
         /usr/bin/ssh "$@"
     fi
 }
+
+function nb() {
+    title="$*"
+    date -u +"${HOME}/work/notes/%Y-%m-%d-${title// /-}.txt" | xargs -o nvim
+}
