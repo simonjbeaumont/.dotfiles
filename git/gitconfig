@@ -12,7 +12,13 @@
 [alias]
 	st = status -sb
 	co = checkout
+	ci = commit
+	d = diff
+	dst = diff --stat
+	ds = diff --staged
+	dsst = diff --staged --stat
 	gl = log --graph --abbrev-commit --oneline --decorate
+	change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR  $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch  --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;};  f "  # e.g. git change-commits GIT_COMMITTER_NAME "old name" "new name"
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -x4,9
