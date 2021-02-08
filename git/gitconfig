@@ -1,6 +1,7 @@
-[user]
-	name = Si Beaumont
-	email = simonjbeaumont@gmail.com
+[include]
+    path = ~/.gitconfig.personal
+[includeIf "gitdir:~/work/**"]
+    path = ~/.gitconfig.work
 [color]
 	diff = auto
 	status = auto
@@ -12,13 +13,9 @@
 	st = status -sb
 	co = checkout
 	gl = log --graph --abbrev-commit --oneline --decorate
-[github]
-	user = simonjbeaumont
 [core]
 	excludesfile = ~/.gitignore_global
 	pager = less -x4,9
 	editor = /usr/local/bin/vim
-[include]
-	path = ~/.gitconfig.local
 [hub]
 	protocol = ssh
