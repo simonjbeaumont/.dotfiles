@@ -13,6 +13,8 @@
 [ -r "$HOME/miniconda3/bin" ] && export PATH="$HOME/miniconda3/bin:$PATH"
 # Python3.6 from miniconda
 [ -r "$HOME/miniconda3/envs/py3.6/bin" ] && export PATH="$HOME/miniconda3/envs/py3.6/bin:$PATH"
+# Python3.7 from miniconda
+[ -r "$HOME/miniconda3/envs/py3.7/bin" ] && export PATH="$HOME/miniconda3/envs/py3.7/bin:$PATH"
 # Python2.7 from miniconda
 [ -r "$HOME/miniconda3/envs/py2.7/bin" ] && export PATH="$HOME/miniconda3/envs/py2.7/bin:$PATH"
 # Python user packages
