@@ -45,7 +45,7 @@ defaults write NSGlobalDomain PMPrintingExpandedStateForPrint -bool true
 # defaults write com.apple.LaunchServices LSQuarantine -bool false
 
 # Disable shadow in screenshots
-# defaults write com.apple.screencapture disable-shadow -bool true
+defaults write com.apple.screencapture disable-shadow -bool true
 
 # Enable highlight hover effect for the grid view of a stack (Dock)
 # defaults write com.apple.dock mouse-over-hilte-stack -bool true
