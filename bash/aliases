@@ -96,6 +96,9 @@ alias showdesktop="defaults write com.apple.finder CreateDesktop -bool true && k
 
 alias top='top -o cpu'
 
+# Copy last command
+alias cl="fc -ln -1 | xargs echo -n | pbcopy"
+
 fi
 
 
