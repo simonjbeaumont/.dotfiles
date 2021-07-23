@@ -74,6 +74,8 @@ alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 # cat all the files...
 alias catall='tail -n +1'
 
+alias k='kubectl'
+
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
