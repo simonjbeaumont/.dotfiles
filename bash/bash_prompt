@@ -15,6 +15,10 @@
 #   See https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh#L40
 
 
+___aws_profile() {
+    if [ -n "$AWS_PROFILE" ]; then echo "aws:$AWS_PROFILE "; fi
+}
+
 ___ssh_flag() {
     if [ -n "$SSH_TTY" -a -n "$SSH_CONNECTION" ]; then echo 'ssh:'; fi
 }
@@ -35,7 +39,7 @@ ___git_dirty_flag() {
 }
 
 # Note, to remove the bell, remove the \a near the end
-PS1="\[\e[0;37;40m\][\[\e[33;40m\]$(___ssh_flag)\[\e[0;36;40m\]\u@\h \[\e[32;40m\]\W\[\e[33;40m\]\$(___git_branch)\$(___git_dirty_flag)\[\e[37;40m\]]\[\e[0;0m\]\[\a\] "
+export PS1="\[\e[0;37;40m\][\[\e[33;40m\]\$(___ssh_flag)\$(___aws_profile)\[\e[0;36;40m\]\u@\h \[\e[32;40m\]\W\[\e[33;40m\]\$(___git_branch)\$(___git_dirty_flag)\[\e[37;40m\]]\[\e[0;0m\]\[\a\] "
 PS2="\[\a\]"$PS2
 
 #---Colour codes---
