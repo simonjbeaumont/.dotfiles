@@ -1,9 +1,10 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 import sys
 import warnings
 import vobject
 import datetime
+from zoneinfo import ZoneInfo
 
 
 def get_invitation_from_path(path):
@@ -18,7 +19,8 @@ def get_invitation_from_path(path):
 
 
 def person_string(c):
-    return "{} {}".format(c.params['CN'][0], "<%s>" % c.value.split(':')[1])
+    cn = c.params['CN'][0] if 'CN' in c.params else 'unknown'
+    return "{} {}".format(cn, "<%s>" % c.value.split(':')[1])
 
 
 def when_str_of_start_end(s, e):
@@ -29,9 +31,15 @@ def when_str_of_start_end(s, e):
         s = datetime.datetime.combine(s, datetime.time.min)
     if type(e) == datetime.date:
         e = datetime.datetime.combine(e, datetime.time.min)
+    sl = s.astimezone(ZoneInfo('localtime'))
+    e = e.astimezone(ZoneInfo('localtime'))
 
-    until_format = "%H:%M %Z" if s.date() == e.date() else datetime_format
-    return "{} -- {}".format(s.strftime(datetime_format), e.strftime(until_format))
+    tz = ""
+    if s.tzname() != sl.tzname():
+        tz = " (Event timezone: {})".format(s.strftime("%Z"))
+
+    until_format = "%H:%M %Z" if sl.date() == e.date() else datetime_format
+    return "{} -- {}{}".format(sl.strftime(datetime_format), e.strftime(until_format), tz)
 
 
 def pretty_print_invitation(invitation):
@@ -40,7 +48,12 @@ def pretty_print_invitation(invitation):
     org = event['organizer'][0] if 'organizer' in event else None
     invitees = event['attendee'] if 'attendee' in event else None
     start = event['dtstart'][0].value
-    end = event['dtend'][0].value
+    if 'dtend' in event:
+        end = event['dtend'][0].value
+    elif 'duration' in event:
+        end = start + event['duration'][0].value
+    else:
+        end = start
     location = event['location'][0].value if 'location' in event else None
     description = event['description'][0].value if 'description' in event else None
     sequence = event['sequence'][0].value if 'sequence' in event else None
