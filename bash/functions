@@ -94,7 +94,7 @@ function ssh() {
 
 function nb() {
     title="$*"
-    date -u +"${HOME}/work/notes/%Y-%m-%d-${title// /-}.txt" | xargs -o nvim
+    date -u +"${HOME}/work/notes/%Y-%m-%d-${title// /-}.md" | xargs -o nvim
 }
 
 # pkill -v is not verbose!
