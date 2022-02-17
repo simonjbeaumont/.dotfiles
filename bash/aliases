@@ -75,6 +75,7 @@ alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"'
 alias catall='tail -n +1'
 
 alias k='kubectl'
+complete -F __start_kubectl k
 
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
