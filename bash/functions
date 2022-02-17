@@ -109,3 +109,17 @@ pkill() {
   done
   command -p pkill ${args}
 }
+
+function ps1() {
+    if [ "${#@}" -gt 0 ]; then
+        echo
+        echo '$' "${(q-)@}"
+        "$@"
+        echo
+    elif [[ "$PS1" == $'\n$ ' ]]; then
+        PS1="$_ORIGINAL_PS1"
+    else
+        _ORIGINAL_PS1="$PS1"
+        PS1=$'\n$ '
+    fi
+}
