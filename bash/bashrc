@@ -10,6 +10,7 @@
 # Homebrew
 which brew &>/dev/null && eval "$(brew shellenv)"
 [ -r "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:$PATH"
+[ -r "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman" ] && export MANPATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman:$MANPATH"
 [ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 # Cabal
 [ -r "${HOME}/.cabal/bin" ] && export PATH="${HOME}/.cabal/bin:$PATH"
@@ -45,7 +46,7 @@ if [ -s "${HOME}/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; the
   for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
 fi
 # OPAM
-which opam &>/dev/null && eval "$(opam config env | grep -v MANPATH)"
+which opam &>/dev/null && eval "$(opam config env)"
 # Ruby
 which rbenv &>/dev/null && eval "$(rbenv init -)"
 # dircolors
@@ -57,10 +58,6 @@ which gh &>/dev/null && eval "$(gh completion -s bash)"
 # SwiftEnv
 [ -r "${HOME}/.swiftenv/bin" ] && PATH="${HOME}/.swiftenv/bin:$PATH"
 which swiftenv &>/dev/null && eval "$(swiftenv init -)"
-
-# $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
-# [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
-# which opam &>/dev/null && eval $(opam config env | grep MANPATH)
 
 # Xmodmap
 [[ $OSTYPE =~ ^linux ]] && xmodmap "${HOME}/.Xmodmap"
