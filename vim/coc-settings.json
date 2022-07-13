@@ -76,6 +76,7 @@
     "email": "languagetool",
     "sh": "shellcheck"
   },
+  "diagnostic-languageserver.mergeConfig": true,
 
   // CUSTOM LANGUAGE SERVERS (not ones provided by extensions)
   // --------------------------------------------------------------------------
