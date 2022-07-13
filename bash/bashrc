@@ -70,8 +70,20 @@ export EDITOR="vim"
 export GIT_EDITOR="vim"
 
 # history
+shopt -s histappend
+export HISTTIMEFORMAT="[%F %T] "
+export HISTFILESIZE=
+export HISTSIZE=
 export HISTCONTROL="ignoreboth"
-export HISTIGNORE="ls:cd:cd -:pwd:exit:date:reboot"
+export HISTIGNORE="ls:cd:cd -:fg:bg:clear:history:pwd:exit:date:reboot"
+export HISTFILE=~/.bash_eternal_history
+PROMPT_COMMAND="history -a; $PROMPT_COMMAND"
+stophistory() {
+  set +o history
+}
+resumehistory() {
+  set -o history
+}
 
 # display
 [ -z "$DISPLAY" ] && DISPLAY=":0.0"
