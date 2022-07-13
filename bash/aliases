@@ -79,6 +79,10 @@ alias catall='tail -n +1'
 alias k='kubectl'
 complete -F __start_kubectl k
 
+alias kg='kubectl get'
+alias kgpo='kubectl get pods'
+alias kdpo='kubectl describe pod'
+
 # Mac OSX specific aliases
 #-------------------------------------------------------------------------------
 if [[ "$OSTYPE" =~ ^darwin ]]; then
