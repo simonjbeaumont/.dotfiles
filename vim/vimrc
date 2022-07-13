@@ -231,6 +231,11 @@ augroup ft_json
   au!
   au FileType json syntax match Comment +\/\/.\+$+
 augroup END
+
+augroup ft_sandbox
+  au!
+  au BufRead *.sb             setl ft=scheme
+augroup END
 " }}}
 
 " Key mappings {{{
