@@ -54,6 +54,9 @@ which dircolors &>/dev/null && eval "$(dircolors "${HOME}/.dircolors")"
 [ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 # Github CLI
 which gh &>/dev/null && eval "$(gh completion -s bash)"
+# SwiftEnv
+[ -r "${HOME}/.swiftenv/bin" ] && PATH="${HOME}/.swiftenv/bin:$PATH"
+which swiftenv &>/dev/null && eval "$(swiftenv init -)"
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
