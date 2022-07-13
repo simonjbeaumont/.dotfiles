@@ -1,63 +1,66 @@
-# Give me 256 colors! gnome-terminal hardcodes TERM to xterm...
-[ $TERM = xterm ] && export TERM=xterm-256color
+#!/usr/bin/env bash
 
+# Give me 256 colors! gnome-terminal hardcodes TERM to xterm...
+[ "${TERM}" == xterm ] && export TERM=xterm-256color
 
 # Linux tools and Homebrew
 [ -r "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
-# Apple Homebrew
-[ -r "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
+# Apple Homebrew (will eat your homework, put it last)
+[ -r "/opt/brew/bin" ] && export PATH="$PATH:/opt/brew/bin"
 # Homebrew
-eval $(brew shellenv)
-[ -r "$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin" ] && export PATH="$HOMEBREW_PREFIX/opt/coreutils/libexec/gnubin:$PATH"
-[ -r "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh" ] && source "$HOMEBREW_PREFIX/etc/profile.d/bash_completion.sh"
+which brew &>/dev/null && eval "$(brew shellenv)"
+[ -r "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:$PATH"
+[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 # Cabal
-[ -r "$HOME/.cabal/bin" ] && export PATH="$HOME/.cabal/bin:$PATH"
+[ -r "${HOME}/.cabal/bin" ] && export PATH="${HOME}/.cabal/bin:$PATH"
 # Miniconda3
-[ -r "$HOME/miniconda3/bin" ] && export PATH="$HOME/miniconda3/bin:$PATH"
+[ -r "${HOME}/miniconda3/bin" ] && export PATH="${HOME}/miniconda3/bin:$PATH"
 # Python3.6 from miniconda
-[ -r "$HOME/miniconda3/envs/py3.6/bin" ] && export PATH="$HOME/miniconda3/envs/py3.6/bin:$PATH"
+[ -r "${HOME}/miniconda3/envs/py3.6/bin" ] && export PATH="${HOME}/miniconda3/envs/py3.6/bin:$PATH"
 # Python3.7 from miniconda
-[ -r "$HOME/miniconda3/envs/py3.7/bin" ] && export PATH="$HOME/miniconda3/envs/py3.7/bin:$PATH"
+[ -r "${HOME}/miniconda3/envs/py3.7/bin" ] && export PATH="${HOME}/miniconda3/envs/py3.7/bin:$PATH"
+# Python3.8 from miniconda
+[ -r "${HOME}/miniconda3/envs/py3.8/bin" ] && export PATH="${HOME}/miniconda3/envs/py3.8/bin:$PATH"
 # Python2.7 from miniconda
-[ -r "$HOME/miniconda3/envs/py2.7/bin" ] && export PATH="$HOME/miniconda3/envs/py2.7/bin:$PATH"
+[ -r "${HOME}/miniconda3/envs/py2.7/bin" ] && export PATH="${HOME}/miniconda3/envs/py2.7/bin:$PATH"
 # Python user packages
-[ -r "$HOME/.local/bin" ] && PATH="$HOME/.local/bin:$PATH"
+[ -r "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:$PATH"
 # Scripts
-[ -r "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -r "${HOME}/bin" ] && export PATH="${HOME}/bin:$PATH"
 # Swift toolchain
 export TOOLCHAINS=swift
 # rvm
 [ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # iTerm shell integration
-[ -r "$HOME/.iterm2_shell_integration.bash" ] && source "$HOME/.iterm2_shell_integration.bash"
+# [ -r "${HOME}/.iterm2_shell_integration.bash" ] && source "${HOME}/.iterm2_shell_integration.bash"
 # nvm (lazy initialisation)
-if [ -s "$HOME/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
-  export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/bash_completion" ] && . "$NVM_DIR/bash_completion"
+if [ -s "${HOME}/.nvm/nvm.sh" ] && [ ! "$(type -t __init_nvm)" = function ]; then
+  export NVM_DIR="${HOME}/.nvm"
+  [ -s "${NVM_DIR}/bash_completion" ] && source "${NVM_DIR}/bash_completion"
   declare -a __node_commands=('nvm' 'node' 'npm' 'nvim')
   function __init_nvm() {
-    for i in "${__node_commands[@]}"; do unalias $i; done
-    . "$NVM_DIR"/nvm.sh
+    for i in "${__node_commands[@]}"; do unalias "${i}"; done
+    source "${NVM_DIR}/nvm.sh"
     unset __node_commands
     unset -f __init_nvm
   }
   for i in "${__node_commands[@]}"; do alias $i='__init_nvm && '$i; done
 fi
 # OPAM
-which opam &>/dev/null && eval $(opam config env | grep -v MANPATH)
+which opam &>/dev/null && eval "$(opam config env | grep -v MANPATH)"
 # Ruby
 which rbenv &>/dev/null && eval "$(rbenv init -)"
 # dircolors
-which dircolors &>/dev/null && eval $(dircolors ~/.dircolors)
+which dircolors &>/dev/null && eval "$(dircolors "${HOME}/.dircolors")"
 # fzf fuzzy finder
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
 # which opam &>/dev/null && eval $(opam config env | grep MANPATH)
 
 # Xmodmap
-[[ $OSTYPE =~ ^linux ]] && xmodmap "$HOME/.Xmodmap"
+[[ $OSTYPE =~ ^linux ]] && xmodmap "${HOME}/.Xmodmap"
 
 # editor
 export EDITOR="vim"
@@ -76,6 +79,6 @@ stty -ixon
 
 # additional files to source
 for file in ~/.{bash_prompt,aliases,functions,tokens,localrc}; do
-    [ -r "$file" ] && source "$file"
+    [ -r "${file}" ] && source "${file}"
 done
 unset file
