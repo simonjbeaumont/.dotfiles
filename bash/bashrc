@@ -27,8 +27,6 @@ which brew &>/dev/null && eval "$(brew shellenv)"
 [ -r "${HOME}/.local/bin" ] && PATH="${HOME}/.local/bin:$PATH"
 # Scripts
 [ -r "${HOME}/bin" ] && export PATH="${HOME}/bin:$PATH"
-# Swift toolchain
-export TOOLCHAINS=swift
 # rvm
 [ -r "/local/rvm/scripts/rvm" ] && source "/local/rvm/scripts/rvm"
 # iTerm shell integration
