@@ -52,6 +52,8 @@ which rbenv &>/dev/null && eval "$(rbenv init -)"
 which dircolors &>/dev/null && eval "$(dircolors "${HOME}/.dircolors")"
 # fzf fuzzy finder
 [ -f "${HOME}/.fzf.bash" ] && source "${HOME}/.fzf.bash"
+# Github CLI
+which gh &>/dev/null && eval "$(gh completion -s bash)"
 
 # $MANPATH updates -- currently disabled as it borks built in Mac MANPATH
 # [ -r "/usr/local/opt/coreutils/libexec/gnuman" ] && export MANPATH="/usr/local/opt/coreutils/libexec/gnuman:$MANPATH"
