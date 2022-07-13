@@ -1,8 +1,6 @@
 Include config.d/*
 
 Host *
-GSSAPIAuthentication no
-AddressFamily inet
 ServerAliveInterval 60
 ForwardX11Timeout 1d
 
