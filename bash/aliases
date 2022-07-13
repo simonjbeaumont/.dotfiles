@@ -121,3 +121,4 @@ alias pidme='pstree -ps $$'
 
 fi
 
+# vim: ft=bash

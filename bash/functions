@@ -123,3 +123,5 @@ function ps1() {
         PS1=$'\n$ '
     fi
 }
+
+# vim: ft=bash

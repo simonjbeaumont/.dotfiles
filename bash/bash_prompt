@@ -53,3 +53,5 @@ PS2="\[\a\]"$PS2
 # CYAN_GREYBG="\[\e[36;40m\]"
 # COLOR_NONE="\[\e[0m\]"
 # COLOR_NONEP="\[\e[38;40m\]"
+
+# vim: ft=bash
