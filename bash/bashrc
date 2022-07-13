@@ -99,3 +99,6 @@ unset file
 if [[ ! "$MANPATH" =~ .*:$ ]]; then
   export MANPATH="$MANPATH:"
 fi
+
+# Silence warning on macOS about switching to zsh
+export BASH_SILENCE_DEPRECATION_WARNING=1
