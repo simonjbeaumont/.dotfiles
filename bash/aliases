@@ -10,6 +10,8 @@ alias ...="cd ../.."
 alias -- -="cd -"
 alias +='pushd .'
 
+alias box='cd ~/Library/CloudStorage/Box-Box/'
+
 # rdesktop
 # -x flags for rdesktop:
 # 0x001: Disable desktop wallpaper
