@@ -97,3 +97,8 @@ for file in ~/.{bash_prompt,aliases,functions,tokens,localrc}; do
     [ -r "${file}" ] && source "${file}"
 done
 unset file
+
+# Fix MANPATH if needed (bug in macOS)
+if [[ ! "$MANPATH" =~ .*:$ ]]; then
+  export MANPATH="$MANPATH:"
+fi
