@@ -4,7 +4,7 @@
 # bash
 ~/.aliases: bash/aliases
 ~/.bash_profile: bash/bash_profile
-~/.bash_prompt: bash/bash_prompt
+~/.bash_prompt: bash/prompt
 ~/.bashrc: bash/bashrc
 ~/.dircolors: bash/dircolors.solarized_ansi_dark
 ~/.functions: bash/functions

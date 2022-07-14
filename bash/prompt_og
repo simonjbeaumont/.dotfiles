@@ -1,19 +1,18 @@
-# My PS1 prompt.
+# My OG PS1 prompt.
 #    Normally:
 #       [user@host directory]
-#    
+#
 #    When logged in via SSH:
 #       [ssh:user@host directory]
+#
+#    When AWS profile is set:
+#       [aws:<profile> user@host directory branch ⚑]
 #
 #    When on in a git repo:
 #       [user@host directory branch]
 #
 #    When on a git repo with uncommitted changes:
 #       [user@host directory branch ⚑]
-#
-# Note: it might be worth ripping out more info such as the status.
-#   See https://github.com/robbyrussell/oh-my-zsh/blob/master/lib/git.zsh#L40
-
 
 ___aws_profile() {
     if [ -n "$AWS_PROFILE" ]; then echo "aws:$AWS_PROFILE "; fi
@@ -31,27 +30,13 @@ ___git_dirty_flag() {
   if [ x$(git config --get prompt.status) != xfalse ]; then
     if [[ -n $(git status --porcelain '--ignore-submodules=dirty' 2>/dev/null) ]]; then
       echo " ⚑"
-
     fi
   else
     echo " «⋯»"
   fi
 }
 
-# Note, to remove the bell, remove the \a near the end
+# Note, to remove the bell, remove the \[\a\] at the end.
 export PS1="\[\e[0;37;40m\][\[\e[33;40m\]\$(___ssh_flag)\$(___aws_profile)\[\e[0;36;40m\]\u@\h \[\e[32;40m\]\W\[\e[33;40m\]\$(___git_branch)\$(___git_dirty_flag)\[\e[37;40m\]]\[\e[0;0m\]\[\a\] "
-PS2="\[\a\]"$PS2
-
-#---Colour codes---
-# In the form of \[\e[bold?;fg;bgm\]
-# YELLOW_GREYBG="\[\e[33;40m\]"
-# RED_GREYBG="\[\e[31;40m\]"
-# GREEN_GREYBG="\[\e[32;40m\]"
-# BLUE_GREYBG="\[\e[34;40m\]"
-# PURPLE_GREYBG="\[\e[35;40m\]"
-# WHITE_GREYBG="\[\e[37;40m\]"
-# CYAN_GREYBG="\[\e[36;40m\]"
-# COLOR_NONE="\[\e[0m\]"
-# COLOR_NONEP="\[\e[38;40m\]"
 
 # vim: ft=bash

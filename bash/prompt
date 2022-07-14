@@ -1,0 +1,21 @@
+PROMPT=starship
+
+case "${PROMPT}" in
+  starship)
+    if which starship &>/dev/null; then
+      eval "$(starship init bash)"
+      function ___prompt_bell() {
+        echo -ne "\a"
+      }
+      starship_precmd_user_func="___prompt_bell"
+    else
+      echo "warining: No starship on PATH; falling back to bootleg approximation."
+      source "${HOME}/.dotfiles/bash/prompt_bootleg_starship"
+    fi
+    ;;
+  og)
+    source "${HOME}/.dotfiles/bash/prompt_og"
+    ;;
+esac
+
+# vim: ft=bash

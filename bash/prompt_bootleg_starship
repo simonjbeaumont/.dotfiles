@@ -1,0 +1,61 @@
+# Janky approximation of starship prompt, for when it is not installed:
+#
+#   ~/p/t/directory on branch ⚑
+#   ❯
+
+RED=$(tput setaf 1)
+GREEN=$(tput setaf 2)
+YELLOW=$(tput setaf 3)
+BLUE=$(tput setaf 4)
+PURPLE=$(tput setaf 5)
+CYAN=$(tput setaf 6)
+WHITE=$(tput setaf 7)
+BRIGHT=$(tput bold)
+NORMAL=$(tput sgr0)
+
+___prompt_user() {
+  if [[ $(id -u) == 0 ]]; then
+    echo "\[${BRIGHT}${RED}\]root \[${NORMAL}\]in "
+  fi
+}
+
+___prompt_dir() {
+  PS1_PATH=$(sed "s:\([^/\.]\)[^/]*/:\1/:g" <<< ${PWD/#$HOME/\~})
+  echo "\[${BRIGHT}${CYAN}\]${PS1_PATH}\[${NORMAL}\]"
+}
+
+___prompt_git() {
+  if ! git rev-parse --is-inside-work-tree 2>/dev/null >/dev/null; then
+    return
+  fi
+  local git_branch=$(git branch --format="%(refname:short)")
+  if [ x$(git config --local --get prompt.status) != xfalse ]; then
+    if [[ -n $(git status --porcelain '--ignore-submodules=dirty' 2>/dev/null) ]]; then
+      local git_branch="${git_branch} ⚑"
+    fi
+  else
+    local git_branch="${git_branch} «⋯»"
+  fi
+  echo " on \[${BRIGHT}${PURPLE}\]${git_branch}\[${NORMAL}\]"
+}
+
+___prompt_prompt() {
+  if [[ "$1" == "0" ]]; then
+    echo -e "\[${BRIGHT}${GREEN}\]❯ \[${NORMAL}\]"
+  else
+    echo '\[${BRIGHT}${RED}\]❯ \[${NORMAL}\]'
+  fi
+}
+
+___prompt_bell() {
+  echo -ne "\a"
+}
+
+___prompt_all() {
+  last_rc=$?
+  PS1="\n$(___prompt_bell)$(___prompt_user)$(___prompt_dir)$(___prompt_git)\n$(___prompt_prompt $last_rc)"
+}
+
+PROMPT_COMMAND=___prompt_all
+
+# vim: ft=bash
