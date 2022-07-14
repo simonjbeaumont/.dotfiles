@@ -110,18 +110,25 @@ pkill() {
   command -p pkill ${args}
 }
 
-function ps1() {
-    if [ "${#@}" -gt 0 ]; then
-        echo
-        echo '$' "${(q-)@}"
-        "$@"
-        echo
-    elif [[ "$PS1" == $'\n$ ' ]]; then
-        PS1="$_ORIGINAL_PS1"
-    else
-        _ORIGINAL_PS1="$PS1"
-        PS1=$'\n$ '
-    fi
+# Toggles between configured bash prompt and a minimal one for clean demos
+#
+# usage: `demo`
+function demo() {
+  local PURPLE=$(tput setaf 5)
+  local BRIGHT=$(tput bold)
+  local NORMAL=$(tput sgr0)
+
+  if [[ -n "$_ORIGINAL_PS1" ]]; then
+    PS1="$_ORIGINAL_PS1"
+    PROMPT_COMMAND="$_ORIGINAL_PROMPT_COMMAND"
+    unset _ORIGINAL_PS1
+    unset _ORIGINAL_PROMPT_COMMAND
+  else
+    _ORIGINAL_PS1="$PS1"
+    _ORIGINAL_PROMPT_COMMAND="$PROMPT_COMMAND"
+    PS1="\n\[${BRIGHT}${PURPLE}\]❯ \[${NORMAL}\]"
+    unset PROMPT_COMMAND
+  fi
 }
 
 # vim: ft=bash
