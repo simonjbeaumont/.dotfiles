@@ -10,18 +10,35 @@
 [grep]
 	lineNumber = true
 [alias]
+	aliases = !git config --get-regexp alias
 	st = status -sb
 	co = checkout
+	cob = checkout -b
 	ci = commit
+	cia = commit -a
+	cim = commit -m
+	ciam = commit -am
+	cism = commit -sm
+	ciasm = commit -asm
+	fixup = commit --amend --no-edit
 	d = diff
-	dst = diff --stat
-	ds = diff --staged
-	dsst = diff --staged --stat
+	ds = diff --stat
+	dc = diff --staged
+	dcs = diff --staged --stat
 	l = log --graph --abbrev-commit --oneline --decorate
+	la = log --graph --abbrev-commit --oneline --decorate --all
 	ll = log
 	a = add
 	ap = add -p
 	aa = add -a
+	p = push
+	fp = push -f
+	shove = push -f
+	cp = cherry-pick
+	g = grep
+	ls = ls-files
+	whoami = !git config --show-origin --show-scope user.name && git config --show-origin --show-scope user.email
+	dump-config = !git config --show-origin --show-scope --list
 	change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR  $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch  --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;};  f "  # e.g. git change-commits GIT_COMMITTER_NAME "old name" "new name"
 [core]
 	excludesfile = ~/.gitignore_global
