@@ -68,16 +68,12 @@ brew "youtube-dl"
 brew "yq"
 
 # casks
-cask "google-chrome"
 cask "dropbox"
 cask "imageoptim"
-cask "inkscape"
 cask "keepingyouawake"
-cask "quicksilver"
 cask "rectangle"
 cask "spotify"
 cask "wireshark"
-cask "xquartz"
 
 # app store
 mas "1Password", id: 443987910
