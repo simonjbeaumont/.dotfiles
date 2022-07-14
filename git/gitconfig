@@ -39,6 +39,7 @@
 	cp = cherry-pick
 	g = grep
 	ls = ls-files
+	root = rev-parse --show-toplevel
 	whoami = !git config --show-origin --show-scope user.name && git config --show-origin --show-scope user.email
 	dump-config = !git config --show-origin --show-scope --list
 	change-commits = "!f() { VAR1=$1; VAR='$'$1; OLD=$2; NEW=$3; echo \"Are you sure for replace $VAR  $OLD => $NEW ?(Y/N)\";read OK;if [ \"$OK\" = 'Y' ] ; then shift 3; git filter-branch  --env-filter \"if [ \\\"${VAR}\\\" = '$OLD' ]; then export $VAR1='$NEW';echo 'to $NEW'; fi\" $@; fi;};  f "  # e.g. git change-commits GIT_COMMITTER_NAME "old name" "new name"
