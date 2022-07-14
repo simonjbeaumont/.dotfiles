@@ -17,6 +17,8 @@ set mask = no
 # use high $read_inc to speed up reading hcached maildirs
 folder-hook . 'set read_inc=1000'
 
+set header_cache_backend = lmdb
+
 # Paths
 set alias_file       = ~/.mutt/alias         # where to store aliases
 set header_cache     = ~/.mutt/cache/headers # where to store headers

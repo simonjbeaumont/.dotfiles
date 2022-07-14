@@ -31,6 +31,7 @@ brew "jrnl"
 brew "jsonlint"
 brew "koekeishiya/formulae/skhd", restart_service: :changed
 brew "koekeishiya/formulae/yabai", restart_service: :changed
+brew "lmdb"
 brew "mas"
 brew "make"
 brew "maven"
