@@ -10,6 +10,8 @@
 [grep]
 	lineNumber = true
 [alias]
+	# Bucket-load of aliases here:
+	#  https://github.com/brauliobo/gitconfig/blob/master/configs/.gitconfig
 	aliases = !git config --get-regexp alias
 	st = status -sb
 	co = checkout
