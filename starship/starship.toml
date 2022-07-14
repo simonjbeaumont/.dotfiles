@@ -1,0 +1,130 @@
+# Get editor completions based on the config schema
+"$schema" = 'https://starship.rs/config-schema.json'
+
+# Inserts a blank line between shell prompts
+add_newline = true
+
+format = "$all"
+
+# Increase timeout from default (500)
+command_timeout = 1_000
+
+[character]
+# success_symbol = "[❯](bold purple)"
+
+[aws]
+symbol = "aws "
+
+[c]
+symbol = "C "
+
+[cmd_duration]
+show_notifications = false
+min_time_to_notify = 45_000  # 45 seconds
+
+[conda]
+symbol = "conda "
+
+[cmake]
+symbol = "cmake "
+
+[directory]
+# truncation_length = 2
+# fish_style_pwd_dir_length = 1
+read_only = " ro"
+
+[docker_context]
+symbol = "docker "
+
+[git_branch]
+# symbol = "git "
+
+[git_commit]
+tag_symbol = " tag "
+
+[git_metrics]
+disabled = true
+
+[git_status]
+# ahead = ">"
+# behind = "<"
+# diverged = "<>"
+# renamed = "r"
+# deleted = "x"
+
+[golang]
+symbol = "go "
+
+[hg_branch]
+symbol = "hg "
+
+[java]
+symbol = "java "
+
+[kotlin]
+symbol = "kt "
+
+[kubernetes]
+symbol = "k8s "
+disabled = true
+[kubernetes.context_aliases]
+# Map GKE format (`gke_<projectname>_<zone>_<cluster-name>`) to `gke:<cluster-name>`
+"gke_.*_(?P<cluster>[\\w-]+)" = "gke:$cluster"
+# Map EKS format (`arn:aws:eks:<region>:<account>:cluster/<cluster-name>`) to `eks:<account_suffix>:<cluster-name>`
+"arn:aws:eks:(?P<region>[^:]+):[0-9]{8}(?P<account_suffix>[^:]+):cluster/(?P<cluster>[\\w-]+)" = "eks:$account_suffix:$cluster"
+
+[nodejs]
+symbol = "nodejs "
+
+[memory_usage]
+symbol = "memory "
+
+[ocaml]
+symbol = "ocaml "
+
+[package]
+symbol = "pkg "
+
+[perl]
+symbol = "pl "
+
+[pulumi]
+symbol = "pulumi "
+
+[python]
+symbol = "py "
+# Don't trigger for files with the py extension
+detect_extensions = []
+detect_folders = [
+ "venv",
+ ".venv",
+ "virtualenv",
+]
+# Order of python binaries to check versions
+python_binary = [
+  "venv/bin/python",
+  ".venv/bin/python",
+  "virtualenv/bin/python",
+  "python3",
+  "python",
+  "python2",
+]
+
+[ruby]
+symbol = "rb "
+
+[rust]
+symbol = "rs "
+
+[scala]
+symbol = "scala "
+
+[status]
+format = '[$common_meaning$signal_name$maybe_int]($style) '
+disabled = true
+
+[sudo]
+symbol = "sudo "
+
+[swift]
+symbol = "swift "
