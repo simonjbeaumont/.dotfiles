@@ -13,7 +13,7 @@ image/tiff; /bin/bash ~/.mutt/macos/view_attachment.sh %s tiff
 application/pdf; /bin/bash ~/.mutt/macos/view_attachment.sh %s pdf
 
 # HTML
-text/html; /bin/bash ~/.mutt/macos/view_attachment.sh %s html; needsterminal
+text/html; /bin/bash ~/.mutt/macos/view_attachment.sh %s html '/Applications/Safari.app'; needsterminal
 text/html; elinks -dump | less -R; copiousoutput
 
 # Calendar
