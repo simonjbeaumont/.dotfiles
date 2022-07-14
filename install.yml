@@ -9,6 +9,7 @@
 ~/.dircolors: bash/dircolors.solarized_ansi_dark
 ~/.functions: bash/functions
 ~/.inputrc: bash/inputrc
+~/.fzf_extras: bash/fzf_extras
 
 # git
 ~/.gitconfig: git/gitconfig

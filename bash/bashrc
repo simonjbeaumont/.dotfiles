@@ -90,7 +90,7 @@ shopt -s checkwinsize
 stty -ixon
 
 # additional files to source
-for file in ~/.{bash_prompt,aliases,functions,tokens,localrc}; do
+for file in ~/.{bash_prompt,aliases,functions,fzf_extras,tokens,localrc}; do
     [ -r "${file}" ] && source "${file}"
 done
 unset file
