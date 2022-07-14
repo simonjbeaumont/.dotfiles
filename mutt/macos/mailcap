@@ -24,3 +24,4 @@ text/calendar; python ~/.mutt/dump-ical.py %s; copiousoutput;
 application/octet-stream; /bin/bash ~/.mutt/macos/view_attachment.sh %s "-"
 application/*; /bin/bash ~/.mutt/macos/view_attachment.sh %s "-"
 text/*; /bin/bash ~/.mutt/macos/view_attachment.sh %s "-"
+image/*; /bin/bash ~/.mutt/macos/view_attachment.sh %s "-"
