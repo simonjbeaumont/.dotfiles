@@ -48,7 +48,7 @@ def ldapsearch(host, base, sortby, filter, fields, dry_run=False):
         print(' '.join(["\"{}\"".format(x) for x in ldap_cmd]))
         return ""
     try:
-        return subprocess.check_output(ldap_cmd)
+        return subprocess.check_output(ldap_cmd).decode("utf-8")
     except subprocess.CalledProcessError as e:
         if e.returncode == 4:
             sys.exit(4)
@@ -70,7 +70,7 @@ def process_results(lines):
     result = {}
     try:
         while True:
-            line = line_iter.next()
+            line = line_iter.__next__()
             if line.startswith("dn:"):
                 if all(field in result for field in REQUIRED_FIELDS):
                     results.append(result)
