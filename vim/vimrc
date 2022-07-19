@@ -32,9 +32,10 @@ if has('mouse_sgr')
     set ttym=sgr
 endif
 
-" Get rid of nasty lag on ESC (timeout and ttimeout seem useless)
-au InsertEnter * set timeoutlen=1
-au InsertLeave * set timeoutlen=1000
+" Get rid of nasty lag on ESC
+set notimeout
+set ttimeout
+set ttimeoutlen=10
 
 " Load bashrc for shell commands
 set shell=/bin/bash\ --login
