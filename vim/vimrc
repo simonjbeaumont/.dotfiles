@@ -5,6 +5,7 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible
 filetype indent on
+filetype plugin indent on
 
 " Setup for merlin
 if executable("opam")
