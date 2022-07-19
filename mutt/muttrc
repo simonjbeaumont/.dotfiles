@@ -29,7 +29,7 @@ set tmpdir           = ~/.mutt/temp          # where to keep temp files
 set signature        = ~/.mutt/sig           # my signature file
 
 # Editor
-set editor = "vim -c 'normal! }' -c 'redraw' -c'setl ft=mail spell tw=100 cc=101 fo=ajqrw1'"
+set editor = "nvim -c 'normal! }' -c 'redraw' -c'setl ft=mail spell tw=100 cc=101 fo=ajqrw1'"
 set text_flowed
 set reflow_text
 set reflow_space_quotes
@@ -159,7 +159,7 @@ set attach_keyword = "\\<attach(|ed|ments?)\\>"
 bind index,pager R        group-reply
 # bind index,pager N        search-opposite
 
-macro index,pager V "|vim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>" "open in vim"
+macro index,pager V "|nvim -c 'setlocal ft=mail' -c 'setlocal buftype=nofile' -<enter>" "open in vim"
 
 # Index navigation
 bind index k        previous-entry
