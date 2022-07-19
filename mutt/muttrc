@@ -151,7 +151,7 @@ hdr_order from: to: cc: x-member-count: list-unsubscribe: date: subject:  # and 
 
 # neomutt options
 set abort_noattach = ask-yes
-set attach_keyword = "\\<attach(|ed|ments?)\\>"
+set abort_noattach_regexp = "\<(attach|attached|attachments?)\>"
 
 # Key Bindings
 ###############################################################################
