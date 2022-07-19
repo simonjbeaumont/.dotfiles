@@ -46,15 +46,6 @@
   subs:
     - PRIMARY_EMAIL
     - OTHER_EMAIL
-~/.pull-ldap-wrapper.sh:
-  comment_delim: '#'
-  template: mutt/pull-ldap-wrapper.sh
-  subs:
-    - HOST
-    - BASE_PEOPLE
-    - BASE_GROUPS
-    - EXTRA_FIELDS_PEOPLE
-    - EXTRA_FIELDS_GROUPS
 
 # neovim
 ~/.config/nvim: nvim/
