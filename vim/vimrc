@@ -342,6 +342,7 @@ call plug#begin('~/.vim/bundle')
   Plug 'tpope/vim-surround'
   Plug 'vim-scripts/YankRing.vim'
   Plug 'simnalamburt/vim-mundo'                     " Graphical undo tree (updated fork of Gundo).
+  Plug 'easymotion/vim-easymotion'
 
   " Plugins where order is important (last one wins).
   Plug 'sheerun/vim-polyglot'                       " Syntax files for a bunch languages.
