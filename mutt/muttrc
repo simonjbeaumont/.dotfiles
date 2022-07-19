@@ -7,7 +7,7 @@ set postponed = "+Drafts"
 # Sending email
 set sendmail = "msmtp -a work-account"
 set realname = "Si Beaumont"
-set from     = ""       # set in muttrc.local
+set from     = ""       # set in muttrc.private
 set sendmail_wait = 0   # don't silently fail
 set record = "+Inbox"   # put sent mail in inbox for threading
 
@@ -240,5 +240,5 @@ bind index - collapse-thread
 bind index _ collapse-all
 
 # Local overrides
-source ~/.mutt/muttrc.local
+source ~/.mutt/muttrc.private
 source $alias_file
