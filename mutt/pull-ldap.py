@@ -12,6 +12,9 @@ REQUIRED_FIELDS = [
     FIELD_CN,
 ]
 
+ARG_FORMAT_MUTT = "mutt"
+ARG_FORMAT_VIM = "vim"
+
 
 def parse_args_or_exit(argv=None):
     parser = argparse.ArgumentParser(
@@ -30,6 +33,8 @@ def parse_args_or_exit(argv=None):
                         help="Use file input instead of server (default: None)")
     parser.add_argument("--dry-run", action="store_true",
                         help="Just print ldapsearch command but don't execute")
+    parser.add_argument("--format", choices=[ARG_FORMAT_MUTT, ARG_FORMAT_VIM],
+                        default=ARG_FORMAT_MUTT)
     return parser.parse_args(argv)
 
 
@@ -97,6 +102,11 @@ def print_results_for_mutt(ldap_results, extra_fields):
                                   extra_info))
 
 
+def print_results_for_vim(ldap_results, extra_fields):
+    for result in ldap_results:
+        print("{} <{}>".format(result[FIELD_CN], result[FIELD_MAIL]))
+
+
 def main(argv):
     args = parse_args_or_exit(argv)
     fields = REQUIRED_FIELDS + args.extra_fields + [args.sortby]
@@ -107,7 +117,10 @@ def main(argv):
         ldap_results = ldapsearch(args.host, args.base, args.sortby,
                                   args.filter, fields, args.dry_run)
     results = process_results(ldap_results)
-    print_results_for_mutt(results, args.extra_fields)
+    if args.format == ARG_FORMAT_MUTT:
+        print_results_for_mutt(results, args.extra_fields)
+    elif args.format == ARG_FORMAT_VIM:
+        print_results_for_vim(results, args.extra_fields)
 
 
 if __name__ == "__main__":
