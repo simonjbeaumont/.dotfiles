@@ -380,7 +380,7 @@ let g:coc_global_extensions = [
   \ 'coc-java',
   \ 'coc-json',
   \ 'coc-prettier',
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-snippets',
   \ 'coc-svg',
   \ 'coc-syntax',
