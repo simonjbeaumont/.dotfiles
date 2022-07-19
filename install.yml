@@ -28,13 +28,7 @@
 ~/.mutt/cache/bodies/.create-dir: /dev/null
 ~/.mutt/temp/.create-dir: /dev/null
 ~/.mbsyncrc: private/mbsync/mbsyncrc
-~/.msmtprc:
-  template: mutt/msmtprc
-  comment_delim: '#'
-  subs:
-    - HOST
-    - USER
-    - FROM
+~/.msmtprc: private/msmtp/msmtprc
 ~/.notmuch-config:
   template: mutt/notmuch-config
   comment_delim: '#'
