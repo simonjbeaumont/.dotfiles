@@ -65,23 +65,19 @@ set pipe_decode       = yes
 set thorough_search   = yes
 set new_mail_command  = "bash ~/.mutt/inbox_bell.sh"
 
-# What to show in sidebar
-mailboxes +Inbox
-mailboxes +Drafts
-mailboxes +Archive
-mailboxes `cat ~/work/mail/sidebar | xargs -I{} echo -n '"{}" '`
-mailboxes `find -s ~/work/mail/REMOTE -type d -maxdepth 2 -exec echo -n '"{}" ' \;`
-unmailboxes ~/work/mail/REMOTE/Deleted\ Messages
-sidebar_whitelist `cat ~/work/mail/sidebar | xargs -I{} echo -n '"{}" '`
+# Mailboxes and sidebar
+source ~/.mutt/muttrc.sidebar-mailboxes
+mailboxes `bash ~/.mutt/find-mailboxes.sh ~/work/mail/REMOTE`
+sidebar_whitelist `cat ~/.mutt/muttrc.sidebar-mailboxes | awk '{ print $NF }' | xargs echo -n '"{}" '`
 
-# Sidebar config (this uses the sidebar with neomutt)
 set mail_check_stats      = yes
 set sidebar_divider_char  = ' │ '
-set sidebar_format        = '%B%*┈%?F?[%F]?%?N?(%N)?'
+set sidebar_format        = ' %D%*┈%?F?[%F]?%?N?(%N)?'
 set sidebar_new_mail_only = yes
 set sidebar_short_path    = yes
 set sidebar_visible       = yes
-set sidebar_width         = 36
+set sidebar_width         = 35
+set sidebar_sort_method   = unsorted
 bind index,pager B        sidebar-toggle-visible
 bind index,pager <down>   sidebar-next
 bind index,pager <up>     sidebar-prev
