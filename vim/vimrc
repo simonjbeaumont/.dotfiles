@@ -368,7 +368,7 @@ nmap <leader>8 <Plug>BufTabLine.Go(8)|         " go to buffer 8 (see number in t
 nmap <leader>9 <Plug>BufTabLine.Go(1) :bp<CR>| " go to last buffer.
 
 let g:coc_global_extensions = [
-  \ 'coc-ccls',
+  \ 'coc-clangd',
   \ 'coc-css',
   \ 'coc-diagnostic',
   \ 'coc-dictionary',
