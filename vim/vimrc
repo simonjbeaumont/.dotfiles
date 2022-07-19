@@ -117,6 +117,11 @@ set fillchars=diff:⣿,vert:│
 set foldmethod=marker   " fold on markers
 set foldlevel=100       " ...but not by default
 
+" Some config to play nicely with coc.nvim
+set updatetime=300
+set shortmess+=c
+set signcolumn=yes
+
 " use sensible regex
 nnoremap / /\v
 vnoremap / /\v
