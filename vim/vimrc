@@ -404,6 +404,13 @@ let g:ctrlp_custom_ignore = {
   \ 'link': 'SOME_BAD_SYMBOLIC_LINKS',
   \ }
 
+" FZF command for git grep
+" - fzf#vim#grep(command, with_column, [options], [fullscreen])
+command! -bang -nargs=* GGrep
+  \ call fzf#vim#grep(
+  \   'git grep --line-number '.shellescape(<q-args>), 0,
+  \   { 'dir': systemlist('git rev-parse --show-toplevel')[0] }, <bang>0)
+
 let g:gitgutter_sign_added = '▎'
 let g:gitgutter_sign_modified = '▎'
 let g:gitgutter_sign_removed = '▎'
