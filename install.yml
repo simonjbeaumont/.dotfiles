@@ -29,12 +29,7 @@
 ~/.mutt/temp/.create-dir: /dev/null
 ~/.mbsyncrc: private/mbsync/mbsyncrc
 ~/.msmtprc: private/msmtp/msmtprc
-~/.notmuch-config:
-  template: mutt/notmuch-config
-  comment_delim: '#'
-  subs:
-    - PRIMARY_EMAIL
-    - OTHER_EMAIL
+~/.notmuch-config: private/notmuch/notmuch-config
 
 # neovim
 ~/.config/nvim: nvim/
