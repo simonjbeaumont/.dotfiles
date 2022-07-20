@@ -11,6 +11,9 @@
 ~/.inputrc: bash/inputrc
 ~/.fzf_extras: bash/fzf_extras
 
+# curl
+~/.curlrc: curl/curlrc
+
 # git
 ~/.gitconfig: git/gitconfig
 ~/.gitignore_global: git/gitignore_global
