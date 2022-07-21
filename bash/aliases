@@ -54,6 +54,7 @@ which vimx >/dev/null && alias vim=vimx
 which nvim >/dev/null && alias vim=nvim
 which neomutt >/dev/null && alias mutt=neomutt
 which hub >/dev/null && alias git=hub
+which bat >/dev/null && alias cat=bat
 
 # Git stuff
 alias gl='git log --graph --abbrev-commit --oneline --decorate'

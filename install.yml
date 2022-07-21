@@ -11,6 +11,9 @@
 ~/.inputrc: bash/inputrc
 ~/.fzf_extras: bash/fzf_extras
 
+# bat
+~/.config/bat: bat/
+
 # curl
 ~/.curlrc: curl/curlrc
 
