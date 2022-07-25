@@ -10,8 +10,9 @@ RUN_ID=$(uuidgen)
 
 log "Starting run ${RUN_ID} at $(date -u +"%Y-%m-%dT%H:%M:%SZ"): $0 $@"
 
-
 # The tools used are probably installed by Homebrew, need to set the PATH
+[ -r "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
+[ -r "/opt/brew/bin" ] && export PATH="/opt/brew/bin:$PATH"
 which -s brew || fatal "Required executable not found: brew"
 eval $(brew shellenv)
 
