@@ -35,7 +35,7 @@ set reflow_text
 set reflow_space_quotes
 
 # LDAP support (Note 256 character limit so we use a wrapper)
-set query_command = "echo; python3 ~/.mutt/pull-ldap.py -c ~/.dotfiles/private/search-ldap-conf.json --filter"
+set query_command = "echo; python3 ~/.mutt/pull-ldap.py -c ~/.dotfiles/private/mutt/search-ldap-conf.json --filter"
 set query_format = "%4c %t %-45.45a %-45.45n %?e?(%e)?"
 bind editor <Tab> complete-query
 bind editor ^T    complete
