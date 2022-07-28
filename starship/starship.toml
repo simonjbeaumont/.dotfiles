@@ -70,8 +70,8 @@ disabled = true
 [kubernetes.context_aliases]
 # Map GKE format (`gke_<projectname>_<zone>_<cluster-name>`) to `gke:<cluster-name>`
 "gke_.*_(?P<cluster>[\\w-]+)" = "gke:$cluster"
-# Map EKS format (`arn:aws:eks:<region>:<account>:cluster/<cluster-name>`) to `eks:<account_suffix>:<cluster-name>`
-"arn:aws:eks:(?P<region>[^:]+):[0-9]{8}(?P<account_suffix>[^:]+):cluster/(?P<cluster>[\\w-]+)" = "eks:$account_suffix:$cluster"
+# Map EKS format (`arn:aws:eks:<region>:<account>:cluster/<cluster-name>`) to `eks:<cluster-name>`
+"arn:aws:eks:(?P<region>[^:]+):[0-9]{8}(?P<account_suffix>[^:]+):cluster/(?P<cluster>[\\w-]+)" = "eks:$cluster"
 
 [nodejs]
 symbol = "nodejs "
