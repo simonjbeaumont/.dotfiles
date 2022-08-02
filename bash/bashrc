@@ -16,10 +16,6 @@ which brew &>/dev/null && eval "$(brew shellenv)"
 [ -r "${HOME}/.cabal/bin" ] && export PATH="${HOME}/.cabal/bin:$PATH"
 # Miniconda3
 [ -r "${HOME}/miniconda3/bin" ] && export PATH="${HOME}/miniconda3/bin:$PATH"
-# Python3.6 from miniconda
-[ -r "${HOME}/miniconda3/envs/py3.6/bin" ] && export PATH="${HOME}/miniconda3/envs/py3.6/bin:$PATH"
-# Python3.7 from miniconda
-[ -r "${HOME}/miniconda3/envs/py3.7/bin" ] && export PATH="${HOME}/miniconda3/envs/py3.7/bin:$PATH"
 # Python3.8 from miniconda
 [ -r "${HOME}/miniconda3/envs/py3.8/bin" ] && export PATH="${HOME}/miniconda3/envs/py3.8/bin:$PATH"
 # Python2.7 from miniconda
