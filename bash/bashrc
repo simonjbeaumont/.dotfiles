@@ -3,15 +3,18 @@
 # Give me 256 colors! gnome-terminal hardcodes TERM to xterm...
 [ "${TERM}" == xterm ] && export TERM=xterm-256color
 
-# Linux tools and Homebrew
-[ -r "/usr/local/bin" ] && export PATH="/usr/local/bin:$PATH"
-# Apple Homebrew (will eat your homework, put it last)
-[ -r "/opt/brew/bin" ] && export PATH="$PATH:/opt/brew/bin"
-# Homebrew
-which brew &>/dev/null && eval "$(brew shellenv)"
+# Homebrew installations (reverse order of precedence)
+# Public Intel Homebrew
+[ -x "/usr/local/bin/brew" ] && eval "$(/usr/local/bin/brew shellenv)"
+# Internal Intel Homebrew
+[ -x "/opt/brew/bin/brew" ] && eval "$(/opt/brew/bin/brew shellenv)"
+# Apple Silicon Homebrew (public or internal)
+[ -x "/opt/homebrew/bin/brew" ] && eval "$(/opt/homebrew/bin/brew shellenv)"
+# Bash completion
+[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
+# GNU coreutils
 [ -r "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin" ] && export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:$PATH"
 [ -r "${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman" ] && export MANPATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnuman:$MANPATH"
-[ -r "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh" ] && source "${HOMEBREW_PREFIX}/etc/profile.d/bash_completion.sh"
 # Cabal
 [ -r "${HOME}/.cabal/bin" ] && export PATH="${HOME}/.cabal/bin:$PATH"
 # Miniconda3
