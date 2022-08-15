@@ -46,6 +46,7 @@ brew "k9s"
 brew "kind"
 # brew "koekeishiya/formulae/skhd", restart_service: :changed
 # brew "koekeishiya/formulae/yabai", restart_service: :changed
+brew "kn"
 brew "kubectx"
 brew "kubernetes-cli"
 brew "llvm"
