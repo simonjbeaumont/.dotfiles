@@ -111,9 +111,11 @@ set synmaxcol=800   " don't syntax highlight lines longer than this
 set redrawtime=10000  " so syntax highlighting works for large files
 
 set list                    " show invisibles
-set listchars=tab:┼─
+set listchars=tab:——⇥,space:·,nbsp:␣,trail:•,eol:¶,precedes:«,extends:»
 set showbreak=↪\            " useful indication of wrapping
 set fillchars=diff:⣿,vert:│
+
+match Error /\%xA0/     " highlight unicode non-breaking space
 
 set foldmethod=marker   " fold on markers
 set foldlevel=100       " ...but not by default
